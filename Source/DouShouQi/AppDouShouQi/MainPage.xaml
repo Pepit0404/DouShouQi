@@ -14,7 +14,7 @@
                 SemanticProperties.Description="dot net bot in a race car number eight" />
 
             <Label
-                Text="Hello, World!"
+                Text="DouShouQi"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
@@ -23,6 +23,31 @@
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+
+            <Button
+                Text="Jouer"
+                WidthRequest="400" HeightRequest="50"
+                HorizontalOptions="Center"
+                FontSize="24"
+                Clicked="Toto" />
+
+            <Button
+                Text="Charger Partie"
+                WidthRequest="400" HeightRequest="50"
+                HorizontalOptions="Center"
+                FontSize="24" />
+
+            <Button
+                Text="Tableau des scores"
+                WidthRequest="400" HeightRequest="50"
+                HorizontalOptions="Center"
+                FontSize="24" />
+
+            <Button
+                Text="Credit"
+                WidthRequest="400" HeightRequest="50"
+                HorizontalOptions="Center"
+                FontSize="24" />
 
             <Button
                 x:Name="CounterBtn"

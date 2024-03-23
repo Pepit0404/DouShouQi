@@ -9,6 +9,13 @@
             InitializeComponent();
         }
 
+        private void Toto(object sender, EventArgs e)
+        {
+            CounterBtn.Text = "Hello There";
+
+            SemanticScreenReader.Announce(CounterBtn.Text);
+        }
+
         private void OnCounterClicked(object sender, EventArgs e)
         {
             count++;
