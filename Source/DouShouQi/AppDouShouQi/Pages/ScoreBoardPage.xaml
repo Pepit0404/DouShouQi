@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDouShouQi.Pages.ScoreBoardPage"
+             BackgroundColor="Black">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label 
+                Text="Tableau des scores"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                Style="{StaticResource Headline}"
+                FontSize="80"
+                SemanticProperties.HeadingLevel="Level1" 
+                TextColor="MediumPurple" />
+            <Grid   HeightRequest="1300"
+                    RowDefinitions="500, 10,100"
+                    ColumnDefinitions="*,*,*"
+                    HorizontalOptions="Center">
+                <Label
+                        Grid.Row="0"
+                        Text="Maeva"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple"
+                        FontSize="30" />
+                <Label  Grid.Column="1"
+                        Text="R1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple" 
+                        FontSize="70" />
+                <Label  Grid.Column="2"
+                        Grid.Row="0"
+                        Text="Pinto"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple" 
+                        FontSize="50" />
+                <Image Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    Grid.RowSpan="2"
+                    Source="podium.webp"
+                    WidthRequest="600"
+                    HeightRequest="1000" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

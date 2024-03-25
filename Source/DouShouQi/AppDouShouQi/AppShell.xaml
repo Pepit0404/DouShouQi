@@ -5,11 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppDouShouQi"
     Shell.FlyoutBehavior="Disabled"
-    Title="AppDouShouQi">
+    Title="AppDouShouQi"
+    xmlns:pages="clr-namespace:AppDouShouQi.Pages">
 
-    <ShellContent
+    <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" />-->
+    <ShellContent
+        Title="ScoreBoard"
+        ContentTemplate="{DataTemplate pages:ScoreBoardPage}"
+        Route="ScoreBoardPage" />
 
 </Shell>
