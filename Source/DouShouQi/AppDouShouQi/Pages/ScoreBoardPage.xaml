@@ -14,35 +14,63 @@
                 SemanticProperties.HeadingLevel="Level1" 
                 TextColor="MediumPurple" />
             <Grid   HeightRequest="1300"
-                    RowDefinitions="500, 10,100"
-                    ColumnDefinitions="*,*,*"
+                    RowDefinitions="200,10,10,10,10,100,100,100"
+                    ColumnDefinitions="270,100,230"
                     HorizontalOptions="Center">
+                <Image Grid.Row="3"
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="5"
+                        Source="podium.jpg"
+                        WidthRequest="600"
+                        HeightRequest="1000" />
                 <Label
-                        Grid.Row="0"
-                        Text="Maeva"
+                        Grid.Row="2"
+                        Grid.RowSpan="4"
+                        Text="Pinto"
                         VerticalOptions="Center" 
                         HorizontalOptions="Center"
                         TextColor="MediumPurple"
-                        FontSize="30" />
+                        FontSize="40" />
+                <Label
+                        Grid.Row="2"
+                        Grid.RowSpan="4"
+                        Text="0 victoire(s)"
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple"
+                        FontSize="15" />
                 <Label  Grid.Column="1"
+                        Grid.RowSpan="6"
                         Text="R1"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         TextColor="MediumPurple" 
                         FontSize="70" />
+                <Label  Grid.Column="1"
+                        Grid.RowSpan="5"
+                        Text="2 victoire(s)"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple" 
+                        FontSize="15" />
                 <Label  Grid.Column="2"
-                        Grid.Row="0"
-                        Text="Pinto"
+                        Grid.Row="2"
+                        Grid.RowSpan="4"
+                        Text="Maeva"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         TextColor="MediumPurple" 
-                        FontSize="50" />
-                <Image Grid.Row="2"
-                    Grid.ColumnSpan="3"
-                    Grid.RowSpan="2"
-                    Source="podium.webp"
-                    WidthRequest="600"
-                    HeightRequest="1000" />
+                        FontSize="30" />
+                <Label
+                        Grid.Column="2"
+                        Grid.Row="2"
+                        Grid.RowSpan="4"
+                        Text="0 victoire(s)"
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple"
+                        FontSize="15" />
+                
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
