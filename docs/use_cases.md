@@ -45,3 +45,99 @@ UC7 --|> UC13
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
 | Conditions de Fin | afzaev |
+
+| USE CASE | Charger une partie |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Regarder les crédit |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Regarder le tableau des Scores |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Changer options |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Activer/Désactiver son |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Changer thème |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Entrer noms des joueurs |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Importer joueur |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Activer règle |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Jouer |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Sauvegarder la partie |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
+
+| USE CASE | Quitter la partie |
+| :----------- |:----------------- |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
