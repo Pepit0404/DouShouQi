@@ -1,3 +1,5 @@
+# Use cases
+
 ``` plantuml
 @startuml
 left to right direction
