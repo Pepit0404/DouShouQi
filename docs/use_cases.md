@@ -40,8 +40,7 @@ UC7 --|> UC13
 
 | USE CASE | Lancer une nouvelle partie |
 | :----------- |:----------------- |
-| Objectif | Pouvoir jouer 
-              au jeu |
+| Objectif | Pouvoir jouer au jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | deux joueurs veulent commencer une toute nouvelle parti |
@@ -123,7 +122,8 @@ UC7 --|> UC13
 | :----------- |:----------------- |
 | Objectif | Lancer la nouvelle partie après l'avoir configurer |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Les deux noms des joueurs doivent être rentré 
+ou alors ils sont importés |
 | Scénario d'utilisation | deux joueurs veulent jouer l'un contre l'autre |
 | Conditions de Fin | afzaev |
 
