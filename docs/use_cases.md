@@ -39,3 +39,5 @@ UC7 --|> UC13
 ```
 
 | USE CASE "X" | Lancer une partie |
+| :----------- |:----------------- |
+| Finalité dans le contexte | afzaev |
