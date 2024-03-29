@@ -1,3 +1,4 @@
+``` plantuml
 @startuml
 left to right direction
 actor "Joueur" as j
@@ -33,3 +34,4 @@ UC8 --|> UC10
 UC7 --|> UC12
 UC7 --|> UC13
 @enduml
+```
