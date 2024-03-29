@@ -27,10 +27,10 @@ j-- UC4
 j-- UC8
 UC1 ---|> UC5 
 UC1 ---|> UC11 
-UC1 <... UC6 : <extend>
-UC5 ...> UC7 : <include>
-UC2 ....> UC7 : <include>
-UC11 ...> UC7 : <include>
+UC1 <... UC6 : <<extend>>
+UC5 ...> UC7 : <<include>>
+UC2 ....> UC7 : <<include>>
+UC11 ...> UC7 : <<include>>
 UC8 --|> UC9 
 UC8 --|> UC10
 UC7 --|> UC12
@@ -67,7 +67,7 @@ UC7 --|> UC13
 | Objectif | Regarder le classement des différents joueurs en fonction de leur nombre de victoire |
 | Acteur | Utilisateur |
 | Conditions initial | Avoir lancé l'application |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | L'utilisateur souhaite savoir son positionnement dans le classement du jeu |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Changer options |
@@ -91,7 +91,7 @@ UC7 --|> UC13
 | Objectif | Modifier les thèmes général de l'application |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | L'utilisateur souhaite changer le thèmes général de l'application pour avoir une nouvelle expérience du jeu |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Entrer noms des joueurs |
@@ -99,7 +99,7 @@ UC7 --|> UC13
 | Objectif | Ecrire les noms des deux joueurs qui vont joueur une nouvelle partie |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | De nouveaux utilisateurs souhaitent créer deux nouveaux joueurs  |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Importer joueur |
@@ -107,7 +107,7 @@ UC7 --|> UC13
 | Objectif | Utiliser des joueurs déja existant dans le jeux |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | Des utilisateurs souhaite récupérer des profils de joueurs qui existent déja |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Activer règle |
@@ -115,7 +115,7 @@ UC7 --|> UC13
 | Objectif | Pouvoir jouer à la variante du jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | Les joueurs souhaitent jouer à la variante pour avoir une nouvelle expérience |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Jouer |
