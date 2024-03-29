@@ -132,7 +132,7 @@ UC7 ..> UC13 : <<extend>>
 | Acteur | Utilisateur |
 | Conditions initial | Avoir lancer une partie |
 | Scénario d'utilisation | Les joueurs veulent arrèter la partie en la sauvegardant |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | La partie a bien était sauvegarder dans les fichiers du jeux |
 
 | USE CASE | Quitter la partie |
 | :-----------: |:----------------- |
