@@ -33,8 +33,8 @@ UC2 ....> UC7 : <<include>>
 UC11 ...> UC7 : <<include>>
 UC8 --|> UC9 
 UC8 --|> UC10
-UC7 --|> UC12
-UC7 --|> UC13
+UC7 ..> UC12 : <<extend>>
+UC7 ..> UC13 : <<extend>>
 @enduml
 ```
 
