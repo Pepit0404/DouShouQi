@@ -40,7 +40,7 @@ UC7 --|> UC13
 
 | USE CASE | Lancer une partie |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Pouvoir jouer au jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
@@ -123,7 +123,7 @@ UC7 --|> UC13
 | Objectif | afzaev |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | deux joueurs veulent jouer l'un contre l'autre |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Sauvegarder la partie |
@@ -131,7 +131,7 @@ UC7 --|> UC13
 | Objectif | afzaev |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | Les joueurs veulent arrèter la partie en la sauvegardant |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Quitter la partie |
@@ -139,5 +139,5 @@ UC7 --|> UC13
 | Objectif | afzaev |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | Les joueurs veulent arrèter la partie sans la sauvegarder |
 | Conditions de Fin | afzaev |
