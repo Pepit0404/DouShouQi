@@ -10,7 +10,9 @@
 
         La partie se joue sur un plateau de 7 par 9 cases. Chaque camp possède une tanière entourée de 3 pièges. Et on trouve au milieu deux rivières de taille 2x3. Chaque joueur possède 8 animaux qui ont chacun leur propre force.
 
-<img src="https://www.pousseurdebois.fr/wp-content/uploads/2012/07/dou-shou-qi-plateau-de-jeu.png" title="" alt="" data-align="center">
+<div align="center">
+<img src="https://www.pousseurdebois.fr/wp-content/uploads/2012/07/dou-shou-qi-plateau-de-jeu.png" title="" alt="">
+</div>
 
 ### But du jeux
 
