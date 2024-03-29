@@ -75,7 +75,7 @@ UC7 --|> UC13
 | Objectif | Apporter des modifications à l'application |
 | Acteur | Utilisateur |
 | Conditions initial | Avoir lancé l'application |
-| Scénario d'utilisation | L'utilisateur souhaite apporter des  |
+| Scénario d'utilisation | L'utilisateur souhaite apporter des modifications à l'application |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Activer/Désactiver le son |
@@ -83,7 +83,7 @@ UC7 --|> UC13
 | Objectif | Soit activer, soit désactiver les sons de l'application |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | L'utilisateur souhaite soit activer les différents sons de l'application pour augmenter l'immersion dans le jeux ou le désactiver pour être au calme |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Changer le thème |
