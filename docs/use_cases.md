@@ -5,8 +5,8 @@
 left to right direction
 actor "Utilisateur" as j
 rectangle Dou_Shou_Qi{
-  usecase "Lancer une partie" as UC1
-  usecase "Charger une partie" as UC2
+  usecase "Lancer une nouvelle partie" as UC1
+  usecase "Charger une ancienne partie" as UC2
   usecase "Regarder les crédit" as UC3
   usecase "Regarder le tableau des Scores" as UC4
   usecase "Changer options" as UC8
@@ -38,17 +38,17 @@ UC7 --|> UC13
 @enduml
 ```
 
-| USE CASE | Lancer une partie |
+| USE CASE | Lancer une nouvelle partie |
 | :----------- |:----------------- |
 | Objectif | Pouvoir jouer au jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Scénario d'utilisation | deux joueurs veulent commencer une toute nouvelle parti |
 | Conditions de Fin | afzaev |
 
-| USE CASE | Charger une partie |
+| USE CASE | Charger une ancienne partie |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Pouvoir reprendre une ancienne partie non terminée |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
@@ -56,7 +56,7 @@ UC7 --|> UC13
 
 | USE CASE | Regarder les crédit |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Regarder les différents créateurs du jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
