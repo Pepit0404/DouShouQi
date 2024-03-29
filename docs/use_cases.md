@@ -3,7 +3,7 @@
 ``` plantuml
 @startuml
 left to right direction
-actor "Joueur" as j
+actor "Utilisateur" as j
 rectangle Dou_Shou_Qi{
   usecase "Lancer une partie" as UC1
   usecase "Charger une partie" as UC2
@@ -38,6 +38,10 @@ UC7 --|> UC13
 @enduml
 ```
 
-| USE CASE "X" | Lancer une partie |
+| USE CASE | Lancer une partie |
 | :----------- |:----------------- |
-| Finalité dans le contexte | afzaev |
+| Objectif | afzaev |
+| Acteur | Utilisateur |
+| Conditions initial | afzaev |
+| Scénario d'utilisation | afzaev |
+| Conditions de Fin | afzaev |
