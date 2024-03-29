@@ -10,8 +10,8 @@ rectangle Dou_Shou_Qi{
   usecase "Regarder les crédit" as UC3
   usecase "Regarder le tableau des Scores" as UC4
   usecase "Changer options" as UC8
-  usecase "Activer/Désactiver son" as UC9
-  usecase "Changer thème" as UC10
+  usecase "Activer/Désactiver le son" as UC9
+  usecase "Changer le thème" as UC10
   usecase "Entrer noms des joueurs" as UC5
   usecase "Activer règle" as UC6
   usecase "Jouer" as UC7
@@ -64,7 +64,7 @@ UC7 --|> UC13
 
 | USE CASE | Regarder le tableau des Scores |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Regarder le classement des différents joueurs en fonction de leur nombre de victoire |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
@@ -72,23 +72,23 @@ UC7 --|> UC13
 
 | USE CASE | Changer options |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Apporter des modifications à l'application |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
 | Conditions de Fin | afzaev |
 
-| USE CASE | Activer/Désactiver son |
+| USE CASE | Activer/Désactiver le son |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Soit activer, soit désactiver les sons de l'application |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
 | Conditions de Fin | afzaev |
 
-| USE CASE | Changer thème |
+| USE CASE | Changer le thème |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Modifier les thèmes général de l'application |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
@@ -96,7 +96,7 @@ UC7 --|> UC13
 
 | USE CASE | Entrer noms des joueurs |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Ecrire les noms des deux joueurs qui vont joueur une nouvelle partie |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
@@ -104,7 +104,7 @@ UC7 --|> UC13
 
 | USE CASE | Importer joueur |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Utiliser des joueurs déja existant dans le jeux |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
@@ -112,7 +112,7 @@ UC7 --|> UC13
 
 | USE CASE | Activer règle |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Pouvoir jouer à la variante du jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | afzaev |
@@ -120,7 +120,7 @@ UC7 --|> UC13
 
 | USE CASE | Jouer |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Lancer la nouvelle partie après l'avoir configurer |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | deux joueurs veulent jouer l'un contre l'autre |
@@ -128,7 +128,7 @@ UC7 --|> UC13
 
 | USE CASE | Sauvegarder la partie |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Quitter la partie en cours et la sauvegarder pour pouvoir la relancer plus tard |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | Les joueurs veulent arrèter la partie en la sauvegardant |
@@ -136,7 +136,7 @@ UC7 --|> UC13
 
 | USE CASE | Quitter la partie |
 | :----------- |:----------------- |
-| Objectif | afzaev |
+| Objectif | Quitter la partie en cours |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
 | Scénario d'utilisation | Les joueurs veulent arrèter la partie sans la sauvegarder |
