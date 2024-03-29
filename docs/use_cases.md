@@ -37,3 +37,5 @@ UC7 --|> UC12
 UC7 --|> UC13
 @enduml
 ```
+
+|| Lancer une partie
