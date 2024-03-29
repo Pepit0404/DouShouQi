@@ -38,4 +38,4 @@ UC7 --|> UC13
 @enduml
 ```
 
-| Lancer une partie
+| USE CASE "X" | Lancer une partie |
