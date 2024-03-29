@@ -39,7 +39,7 @@ UC7 --|> UC13
 ```
 
 | USE CASE | Lancer une nouvelle partie |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Pouvoir jouer au jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
@@ -47,39 +47,39 @@ UC7 --|> UC13
 | Conditions de Fin | afzaev |
 
 | USE CASE | Charger une ancienne partie |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Pouvoir reprendre une ancienne partie non terminée |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir déja lancer une partie et l'avoir sauvegarder |
 | Scénario d'utilisation | afzaev |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Regarder les crédit |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Regarder les différents créateurs du jeu |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir lancé l'application |
 | Scénario d'utilisation | afzaev |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Regarder le tableau des Scores |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Regarder le classement des différents joueurs en fonction de leur nombre de victoire |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir lancé l'application |
 | Scénario d'utilisation | afzaev |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Changer options |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Apporter des modifications à l'application |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
-| Scénario d'utilisation | afzaev |
+| Conditions initial | Avoir lancé l'application |
+| Scénario d'utilisation | L'utilisateur souhaite apporter des  |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Activer/Désactiver le son |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Soit activer, soit désactiver les sons de l'application |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
@@ -87,7 +87,7 @@ UC7 --|> UC13
 | Conditions de Fin | afzaev |
 
 | USE CASE | Changer le thème |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Modifier les thèmes général de l'application |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
@@ -95,7 +95,7 @@ UC7 --|> UC13
 | Conditions de Fin | afzaev |
 
 | USE CASE | Entrer noms des joueurs |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Ecrire les noms des deux joueurs qui vont joueur une nouvelle partie |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
@@ -103,7 +103,7 @@ UC7 --|> UC13
 | Conditions de Fin | afzaev |
 
 | USE CASE | Importer joueur |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Utiliser des joueurs déja existant dans le jeux |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
@@ -111,7 +111,7 @@ UC7 --|> UC13
 | Conditions de Fin | afzaev |
 
 | USE CASE | Activer règle |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Pouvoir jouer à la variante du jeu |
 | Acteur | Utilisateur |
 | Conditions initial | afzaev |
@@ -119,26 +119,25 @@ UC7 --|> UC13
 | Conditions de Fin | afzaev |
 
 | USE CASE | Jouer |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Lancer la nouvelle partie après l'avoir configurer |
 | Acteur | Utilisateur |
-| Conditions initial | Les deux noms des joueurs doivent être rentré 
-ou alors ils sont importés |
+| Conditions initial | Les deux noms des joueurs doivent être rentré ou alors ils sont importés |
 | Scénario d'utilisation | deux joueurs veulent jouer l'un contre l'autre |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Sauvegarder la partie |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Quitter la partie en cours et la sauvegarder pour pouvoir la relancer plus tard |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir lancer une partie |
 | Scénario d'utilisation | Les joueurs veulent arrèter la partie en la sauvegardant |
 | Conditions de Fin | afzaev |
 
 | USE CASE | Quitter la partie |
-| :----------- |:----------------- |
+| :-----------: |:----------------- |
 | Objectif | Quitter la partie en cours |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir lancer une partie |
 | Scénario d'utilisation | Les joueurs veulent arrèter la partie sans la sauvegarder |
 | Conditions de Fin | afzaev |
