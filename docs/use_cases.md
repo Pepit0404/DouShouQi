@@ -42,25 +42,25 @@ UC7 ..> UC13 : <<extend>>
 | :-----------: |:----------------- |
 | Objectif | Pouvoir jouer au jeu |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir lancé l'application |
 | Scénario d'utilisation | deux joueurs veulent commencer une toute nouvelle parti |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | lance la page de configuration de partie |
 
 | USE CASE | Charger une ancienne partie |
 | :-----------: |:----------------- |
 | Objectif | Pouvoir reprendre une ancienne partie non terminée |
 | Acteur | Utilisateur |
 | Conditions initial | Avoir déja lancer une partie et l'avoir sauvegarder |
-| Scénario d'utilisation | afzaev |
-| Conditions de Fin | afzaev |
+| Scénario d'utilisation | Des joueurs souhaitent reprendre une partie qu'ils avaient enregistré pour la terminer ou juste la continuer |
+| Conditions de Fin | lance une ancienne partie |
 
 | USE CASE | Regarder les crédit |
 | :-----------: |:----------------- |
 | Objectif | Regarder les différents créateurs du jeu |
 | Acteur | Utilisateur |
 | Conditions initial | Avoir lancé l'application |
-| Scénario d'utilisation | afzaev |
-| Conditions de Fin | afzaev |
+| Scénario d'utilisation | Un utilisateur veut se renseigner sur les différentes personnes qui ont travaillé sur ce jeux |
+| Conditions de Fin | retour au menu |
 
 | USE CASE | Regarder le tableau des Scores |
 | :-----------: |:----------------- |
@@ -68,7 +68,7 @@ UC7 ..> UC13 : <<extend>>
 | Acteur | Utilisateur |
 | Conditions initial | Avoir lancé l'application |
 | Scénario d'utilisation | L'utilisateur souhaite savoir son positionnement dans le classement du jeu |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | retour au menu |
 
 | USE CASE | Changer options |
 | :-----------: |:----------------- |
@@ -76,47 +76,47 @@ UC7 ..> UC13 : <<extend>>
 | Acteur | Utilisateur |
 | Conditions initial | Avoir lancé l'application |
 | Scénario d'utilisation | L'utilisateur souhaite apporter des modifications à l'application |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | retour au menu |
 
 | USE CASE | Activer/Désactiver le son |
 | :-----------: |:----------------- |
 | Objectif | Soit activer, soit désactiver les sons de l'application |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir lancé l'application |
 | Scénario d'utilisation | L'utilisateur souhaite soit activer les différents sons de l'application pour augmenter l'immersion dans le jeux ou le désactiver pour être au calme |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | retour au menu |
 
 | USE CASE | Changer le thème |
 | :-----------: |:----------------- |
 | Objectif | Modifier les thèmes général de l'application |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir lancé l'application |
 | Scénario d'utilisation | L'utilisateur souhaite changer le thèmes général de l'application pour avoir une nouvelle expérience du jeu |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | retour au menu |
 
 | USE CASE | Entrer noms des joueurs |
 | :-----------: |:----------------- |
 | Objectif | Ecrire les noms des deux joueurs qui vont joueur une nouvelle partie |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Lancer une partie |
 | Scénario d'utilisation | De nouveaux utilisateurs souhaitent créer deux nouveaux joueurs  |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | Les deux noms de joueur ont été remplis avec au moins 1 caractère |
 
 | USE CASE | Importer joueur |
 | :-----------: |:----------------- |
 | Objectif | Utiliser des joueurs déja existant dans le jeux |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Avoir des déja crée des joueurs dans des parties passées |
 | Scénario d'utilisation | Des utilisateurs souhaite récupérer des profils de joueurs qui existent déja |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | Les profils des joueurs demandés ont bien été chargé |
 
 | USE CASE | Activer règle |
 | :-----------: |:----------------- |
 | Objectif | Pouvoir jouer à la variante du jeu |
 | Acteur | Utilisateur |
-| Conditions initial | afzaev |
+| Conditions initial | Lancer une partie |
 | Scénario d'utilisation | Les joueurs souhaitent jouer à la variante pour avoir une nouvelle expérience |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | activer la variante en cochant la case |
 
 | USE CASE | Jouer |
 | :-----------: |:----------------- |
@@ -124,7 +124,7 @@ UC7 ..> UC13 : <<extend>>
 | Acteur | Utilisateur |
 | Conditions initial | Les deux noms des joueurs doivent être rentré ou alors ils sont importés |
 | Scénario d'utilisation | deux joueurs veulent jouer l'un contre l'autre |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | Un des deux joueurs gagne la partie ou les joueurs la quittent |
 
 | USE CASE | Sauvegarder la partie |
 | :-----------: |:----------------- |
@@ -140,4 +140,4 @@ UC7 ..> UC13 : <<extend>>
 | Acteur | Utilisateur |
 | Conditions initial | Avoir lancer une partie |
 | Scénario d'utilisation | Les joueurs veulent arrèter la partie sans la sauvegarder |
-| Conditions de Fin | afzaev |
+| Conditions de Fin | La partie s'arrète |
