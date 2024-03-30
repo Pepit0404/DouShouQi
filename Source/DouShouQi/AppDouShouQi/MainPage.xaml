@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppDouShouQi.MainPage">
+             x:Class="AppDouShouQi.MainPage"
+             xmlns:Views="clr-namespace:AppDouShouQi.Views">
 
     <ScrollView>
         <Grid ColumnDefinitions="*,*"
               RowDefinitions="*">
             <VerticalStackLayout Grid.Row="0" Grid.Column="0"
-                                 VerticalOptions="Center" 
-                                 Padding="0, 100,0,0">
+                                 VerticalOptions="Center" >
                 <Image
                     Source="dotnet_bot.png"
                     HeightRequest="185"
@@ -30,13 +30,7 @@
             <VerticalStackLayout Grid.Column="1"
                 VerticalOptions="Center" 
                 HorizontalOptions="Fill">
-                <Button
-                    Text="Jouer"
-                    WidthRequest="350" HeightRequest="50"
-                    HorizontalOptions="Center"
-                    FontSize="24"
-                    Clicked="Toto"
-                    Margin="5,5" />
+                <Views:ButtonHomePage />
 
                 <Button
                     Text="Charger Partie"
@@ -58,27 +52,18 @@
                     HorizontalOptions="Center"
                     FontSize="24"
                     Margin="5,5" />
-
-                <Button
-                    x:Name="CounterBtn"
-                    Text="Click me" 
-                    SemanticProperties.Hint="Counts the number of times you click"
-                    Clicked="OnCounterClicked"
-                    WidthRequest="350" HeightRequest="50"
-                    HorizontalOptions="Center"
-                    Margin="5,5" />
             </VerticalStackLayout>
             <AbsoluteLayout>
                 <ImageButton Grid.Row="1"
-                     Source="setting.png"
-                     Padding="10,10"
-                     WidthRequest="75" HeightRequest="75"
+                     Source="dark_mode_icon.png"
+                     Padding="18,18"
+                     WidthRequest="65" HeightRequest="65"
                      CornerRadius="50"
-                     BackgroundColor="{StaticResource MySecondaryColor}"
-                     Margin="20,20"
-                     Clicked="OnCounterClicked"
+                     BackgroundColor="{StaticResource PointBonus}"
                      AbsoluteLayout.LayoutFlags="PositionProportional"
                      AbsoluteLayout.LayoutBounds="2.1,.99,80,80" />
+                <Views:FloatButtonHomePage AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="1.97,.99,80,80" />
             </AbsoluteLayout>
         </Grid>
     </ScrollView>
