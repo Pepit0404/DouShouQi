@@ -59,6 +59,10 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\elephantsouris.jpg" />
 	  <None Remove="Resources\Images\erwan.jpg" />
+	  <None Remove="Resources\Images\iut.png" />
+	  <None Remove="Resources\Images\mae.jpg" />
+	  <None Remove="Resources\Images\samuel.webp" />
+	  <None Remove="Resources\Images\uca.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -69,6 +73,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\CreditsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProfilCredit.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

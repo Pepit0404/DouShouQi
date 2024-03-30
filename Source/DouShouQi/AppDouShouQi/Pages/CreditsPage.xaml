@@ -2,54 +2,83 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Pages.CreditsPage"
-             Title="CreditsPage">
+             Title="Page des crédits"
+             xmlns:Views="clr-namespace:AppDouShouQi.Views">
     <ScrollView>
     <VerticalStackLayout>
-            <Image
-               Source="elephantsouris.jpg"
-               WidthRequest="300"
-               
-                
-            />
+            
             
             <Label
-            Text="DouShouQi"
-            BackgroundColor="Pink"
-            VerticalOptions="Center"
+            Text="Crédit"
+            VerticalOptions="Center"        
             HorizontalOptions="Center"
             Padding="20"
-            FontSize="30"
+            FontSize="60"
             Margin="0,20"
             
             
             />
-            <VerticalStackLayout>
-                <Grid ColumnDefinitions="auto, *"
-                      ColumnSpacing="10"
-                      Margin="10"> 
-                    
-                    <Frame
-                    WidthRequest="30"
-                    HeightRequest="30"
-                    CornerRadius="15"
-                    BorderColor="Red">
-                        <Image
-                        
-                        Source="erwan.jpg"
-                    />
+            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                <HorizontalStackLayout>
+                    <Frame Margin="10"
+                       BorderColor="Black"
+                       CornerRadius="90"
+                       IsClippedToBounds="True"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+
+                        <Image Source="erwan.jpg"
+                             Aspect="AspectFill"
+                             Margin="-20"
+                             HeightRequest="80"
+                             WidthRequest="80" />  
                     </Frame>
-                    <Label Grid.Column="1">
-                        erwan
-                        
-                    </Label>
-                    
-                </Grid>
-                
+
+                    <Label  Grid.Column="1" Text="Erwan MECHOUD"  FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20"/>
+                    <Label Grid.Column="2" Text="Le roux et la mascotte du groupe"  FontSize="15" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray"/>
+
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+
+
+                    <Frame Margin="10"
+                           BorderColor="Black"
+                            IsClippedToBounds="True"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           CornerRadius="90">
+                        <Image Source="samuel.webp"
+                             Aspect="AspectFill"
+                             Margin="-20"
+                             HeightRequest="80"
+                             WidthRequest="80" 
+                         />
+                    </Frame>
+                    <Label  Text="Samuel PINTO" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20"/>
+                    <Label  Text="Rale beaucoup et est très têtu"  FontSize="15" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray"/>
+
+                </HorizontalStackLayout>
+                <Views:ProfilCredit />
+
+
             </VerticalStackLayout>
             
-            <!-- No corresponding C# code is needed for this example. -->
-
+            <HorizontalStackLayout HorizontalOptions="Center" 
+                                   VerticalOptions="End">
+                <Image Source="iut.png"
+                    Aspect="AspectFill"
+                    HeightRequest="120" />
+                <Image Grid.Column="1" 
+                    Source="uca.png" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    HeightRequest="80"/>
+            </HorizontalStackLayout>
             
+
+           
 
         </VerticalStackLayout></ScrollView>
 </ContentPage>
