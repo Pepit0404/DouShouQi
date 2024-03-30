@@ -66,10 +66,19 @@
 	  <Compile Update="Pages\ScoreBoardPage.xaml.cs">
 	    <DependentUpon>ScoreBoardPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\VictoireScoreBoardView.xaml.cs">
+	    <DependentUpon>VictoireScoreBoardView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\ScoreBoardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\JoueurScoreBoardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\VictoireScoreBoardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
