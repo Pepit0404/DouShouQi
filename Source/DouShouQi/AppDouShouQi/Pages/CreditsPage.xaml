@@ -43,19 +43,14 @@
                 <HorizontalStackLayout>
 
 
-                    <Frame Margin="10"
-                           BorderColor="Black"
-                            IsClippedToBounds="True"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           CornerRadius="90">
-                        <Image Source="samuel.webp"
-                             Aspect="AspectFill"
-                             Margin="-20"
-                             HeightRequest="80"
-                             WidthRequest="80" 
-                         />
-                    </Frame>
+                    
+                        <Image Source="capybara-mexican.jpg"
+                                 Aspect="AspectFill"
+                                 Margin="-20"
+                                 HeightRequest="80"
+                                 WidthRequest="80" />   
+
+                    
                     <Label  Text="Samuel PINTO" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20"/>
                     <Label  Text="Rale beaucoup et est très têtu"  FontSize="15" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray"/>
 

@@ -57,12 +57,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Resources\Images\capybara-mexican.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\capybara-mexican.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\capybara-mexican.jpg" />
 	  <None Remove="Resources\Images\elephantsouris.jpg" />
 	  <None Remove="Resources\Images\erwan.jpg" />
 	  <None Remove="Resources\Images\iut.png" />
 	  <None Remove="Resources\Images\mae.jpg" />
-	  <None Remove="Resources\Images\samuel.webp" />
 	  <None Remove="Resources\Images\uca.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Resources\Images\capybara-mexican.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
