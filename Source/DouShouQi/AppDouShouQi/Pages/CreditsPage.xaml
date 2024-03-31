@@ -9,15 +9,12 @@
             
             
             <Label
-            Text="Crédit"
+            Text="Crédits"
             VerticalOptions="Center"        
             HorizontalOptions="Center"
             Padding="20"
             FontSize="60"
-            Margin="0,20"
-            
-            
-            />
+            Margin="0,20"  />
             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
                 <HorizontalStackLayout>
@@ -43,14 +40,23 @@
                 <HorizontalStackLayout>
 
 
-                    
-                        <Image Source="capybara-mexican.jpg"
-                                 Aspect="AspectFill"
-                                 Margin="-20"
-                                 HeightRequest="80"
-                                 WidthRequest="80" />   
+                    <Frame Margin="10"
+                           BorderColor="Black"
+                           CornerRadius="90"
+                           IsClippedToBounds="True"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
 
-                    
+                        <Image Source="pinto.png"
+                             Aspect="AspectFill"
+                             Margin="-20"
+                             HeightRequest="80"
+                             WidthRequest="80" />   
+                    </Frame>    
+
+
+
+
                     <Label  Text="Samuel PINTO" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20"/>
                     <Label  Text="Rale beaucoup et est très têtu"  FontSize="15" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray"/>
 
@@ -59,9 +65,10 @@
 
 
             </VerticalStackLayout>
-            
-            <HorizontalStackLayout HorizontalOptions="Center" 
-                                   VerticalOptions="End">
+            <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="End" Margin="0,300">
+
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
+                                   
                 <Image Source="iut.png"
                     Aspect="AspectFill"
                     HeightRequest="120" />
@@ -70,10 +77,12 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     HeightRequest="80"/>
+                
             </HorizontalStackLayout>
-            
+                <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." FontSize="10"/>
+            </VerticalStackLayout>
 
-           
+
 
         </VerticalStackLayout></ScrollView>
 </ContentPage>
