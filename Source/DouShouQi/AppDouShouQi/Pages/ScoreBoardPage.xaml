@@ -5,16 +5,27 @@
              xmlns:Views="clr-namespace:AppDouShouQi.Views">
     <ScrollView>
         <VerticalStackLayout>
-            <Label 
-                Margin="0,0,0,100"
-                Text="Tableau des scores"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                Style="{StaticResource Headline}"
-                FontSize="80"
-                SemanticProperties.HeadingLevel="Level1" 
-                TextColor="MediumPurple" />
-            <Grid
+            <Grid ColumnDefinitions="Auto,*">
+                <Label 
+                    Grid.Column="1"
+                    Margin="0,0,0,100"
+                    Text="Tableau des scores"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    Style="{StaticResource Headline}"
+                    FontSize="80"
+                    SemanticProperties.HeadingLevel="Level1" 
+                    TextColor="MediumPurple" 
+                    Padding="0,0,100,0"/>
+                <Button
+                    Text="Retour"
+                    HeightRequest="50"
+                    WidthRequest="100"
+                    VerticalOptions="Start"
+                    BackgroundColor="MediumPurple"/>
+            </Grid>
+
+                <Grid
                     RowDefinitions="100,50,30,100,60,50,30,50,30,50,30,50,30,50,30,50,30,50,30,50"
                     ColumnDefinitions="270,100,250"
                     HorizontalOptions="Center">
