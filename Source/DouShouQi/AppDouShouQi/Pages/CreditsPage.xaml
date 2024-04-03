@@ -4,19 +4,18 @@
              x:Class="AppDouShouQi.Pages.CreditsPage"
              Title="Page des crédits"
              xmlns:Views="clr-namespace:AppDouShouQi.Views">
+                
     <ScrollView>
     <VerticalStackLayout>
-            
-            
-            <Label
-            Text="Crédits"
-            VerticalOptions="Center"        
-            HorizontalOptions="Center"
-            Padding="20"
-            FontSize="60"
-            Margin="0,20"  />
-            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-
+            <Grid ColumnDefinitions="auto,*"  >
+                <Views:ReturnButtonView />
+                <Label Text="Crédits"
+                       FontSize="40"
+                       Grid.Column="1"
+                       HorizontalOptions="Center"
+                       Padding="0,0,80,0"/>
+            </Grid>
+            <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="Center">
                 <HorizontalStackLayout>
                     <Frame Margin="10"
                        BorderColor="Black"
@@ -32,14 +31,20 @@
                              WidthRequest="80" />  
                     </Frame>
 
-                    <Label  Grid.Column="1" Text="Erwan MECHOUD"  FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20"/>
-                    <Label Grid.Column="2" Text="Le roux et la mascotte du groupe"  FontSize="15" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray"/>
+                    <Label Grid.Column="1" 
+                           Text="Erwan MECHOUD"  
+                           FontSize="25" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center" 
+                           Margin="20" />
+                    <Label Grid.Column="2" Text="Le roux et la mascotte du groupe" 
+                           FontSize="15" VerticalOptions="Center" 
+                           HorizontalOptions="Center" 
+                           TextColor="Gray" />
 
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-
-
                     <Frame Margin="10"
                            BorderColor="Black"
                            CornerRadius="90"
@@ -53,36 +58,32 @@
                              HeightRequest="80"
                              WidthRequest="80" />   
                     </Frame>    
-
-
-
-
-                    <Label  Text="Samuel PINTO" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20"/>
-                    <Label  Text="Rale beaucoup et est très têtu"  FontSize="15" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray"/>
+                    <Label  Text="Samuel PINTO" 
+                            FontSize="25" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            Margin="20"/>
+                    <Label  Text="Rale beaucoup et est très têtu"  
+                            FontSize="15" VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            TextColor="Gray"/>
 
                 </HorizontalStackLayout>
                 <Views:ProfilCredit />
-
-
             </VerticalStackLayout>
-            <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="End" Margin="0,300">
-
-                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
-                                   
-                <Image Source="iut.png"
+            <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="End" >
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End" >
+                    <Image Source="iut.png"
                     Aspect="AspectFill"
                     HeightRequest="120" />
-                <Image Grid.Column="1" 
-                    Source="uca.png" 
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" 
-                    HeightRequest="80"/>
-                
-            </HorizontalStackLayout>
+                    <Image Grid.Column="1" 
+                        Source="uca.png" 
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" 
+                        HeightRequest="80" />
+                </HorizontalStackLayout>
                 <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." FontSize="10"/>
             </VerticalStackLayout>
-
-
-
-        </VerticalStackLayout></ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
