@@ -92,6 +92,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+
 	<ItemGroup>
 	  <Compile Update="Views\ButtonHomePage.xaml.cs">
 	    <DependentUpon>ButtonHomePage.xaml</DependentUpon>
@@ -115,13 +116,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\CreditsPage.xaml">
+		<MauiXaml Update="Pages\CreditsPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\ProfilCredit.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\ReturnButtonView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\ScoreBoardPage.xaml.cs">
+	    <DependentUpon>ScoreBoardPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\VictoireScoreBoardView.xaml.cs">
+	    <DependentUpon>VictoireScoreBoardView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\ScoreBoardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ProfilCredit.xaml">
+	  <MauiXaml Update="Views\JoueurScoreBoardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ReturnButtonView.xaml">
+	  <MauiXaml Update="Views\VictoireScoreBoardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDouShouQi.Pages.ScoreBoardPage"
+             xmlns:Views="clr-namespace:AppDouShouQi.Views"
+             BackgroundImageSource="back.jpg">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="Auto,*">
+                <Label 
+                    Grid.Column="1"
+                    Margin="0,0,0,100"
+                    Text="Tableau des scores"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    Style="{StaticResource Headline}"
+                    FontSize="80"
+                    SemanticProperties.HeadingLevel="Level1" 
+                    TextColor="MediumPurple" 
+                    Padding="0,0,100,0"/>
+                <Button
+                    Text="Retour"
+                    HeightRequest="50"
+                    WidthRequest="100"
+                    VerticalOptions="Start"
+                    BackgroundColor="MediumPurple"/>
+            </Grid>
+
+                <Grid
+                    RowDefinitions="100,50,30,100,60,50,30,50,30,50,30,50,30,50,30,50,30,50,30,50"
+                    ColumnDefinitions="270,100,250"
+                    HorizontalOptions="Center">
+                <Image Grid.Row="3"
+                        Grid.ColumnSpan="3"
+                        Source="podium.jpg"
+                        WidthRequest="600"
+                        HeightRequest="1000" />
+                <Label
+                        Grid.Row="1"
+                        Text="Pinto"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple"
+                        FontSize="40" />
+                <Label
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Text="1 victoire(s)"
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple"
+                        FontSize="15" />
+                <Label  Grid.Column="1"
+                        Text="R1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple" 
+                        FontSize="70" />
+                <Label  Grid.Column="1"
+                        Text="2 victoire(s)"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple" 
+                        FontSize="15" />
+                <Label  Grid.Column="2"
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Text="Maeva"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple" 
+                        FontSize="30" />
+                <Label
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Text="0 victoire(s)"
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center"
+                        TextColor="MediumPurple"
+                        FontSize="15" />
+                <Views:JoueurScoreBoardView 
+                    Grid.Row="6"
+                    Grid.Column="1" />
+                <Views:VictoireScoreBoardView 
+                    Grid.Row="7"
+                    Grid.Column="1" />
+                <Views:JoueurScoreBoardView 
+                    Grid.Row="8"
+                    Grid.Column="1" />
+                <Views:VictoireScoreBoardView 
+                    Grid.Row="9"
+                    Grid.Column="1" />
+                <Views:JoueurScoreBoardView 
+                    Grid.Row="10"
+                    Grid.Column="1" />
+                <Views:VictoireScoreBoardView 
+                    Grid.Row="11"
+                    Grid.Column="1" />
+                <Views:JoueurScoreBoardView 
+                    Grid.Row="12"
+                    Grid.Column="1" />
+                <Views:VictoireScoreBoardView 
+                    Grid.Row="13"
+                    Grid.Column="1" />
+                <Views:JoueurScoreBoardView 
+                    Grid.Row="14"
+                    Grid.Column="1" />
+                <Views:VictoireScoreBoardView 
+                    Grid.Row="15"
+                    Grid.Column="1" />
+                <Views:JoueurScoreBoardView 
+                    Grid.Row="16"
+                    Grid.Column="1" />
+                <Views:VictoireScoreBoardView 
+                    Grid.Row="17"
+                    Grid.Column="1" />
+                <Views:JoueurScoreBoardView 
+                    Grid.Row="18"
+                    Grid.Column="1" />
+                <Views:VictoireScoreBoardView 
+                    Grid.Row="19"
+                    Grid.Column="1" />
+
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--<Shell
-    x:Class="AppDouShouQi.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AppDouShouQi"
-    Shell.FlyoutBehavior="Disabled"
-    Title="AppDouShouQi">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
-</Shell>-->
 <Shell
     x:Class="AppDouShouQi.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppDouShouQi"
-    xmlns:pages="clr-namespace:AppDouShouQi.Pages"
-    Shell.FlyoutBehavior="Disabled"
-    Title="AppDouShouQi">
+    Shell.FlyoutBehavior="Flyout"
+    Title="AppDouShouQi"
+    xmlns:pages="clr-namespace:AppDouShouQi.Pages">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate pages:CreditsPage}"
+        ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <ShellContent
+        Title="ScoreBoard"
+        ContentTemplate="{DataTemplate pages:ScoreBoardPage}"
+        Route="ScoreBoardPage" />
+    <ShellContent
+        Title="CreditsPage"
+        ContentTemplate="{DataTemplate pages:CreditsPage}"
+        Route="CreditsPage" />
 
 </Shell>
+
+
