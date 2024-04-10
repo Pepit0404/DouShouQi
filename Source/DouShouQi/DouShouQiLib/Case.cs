@@ -10,18 +10,9 @@ namespace DouShouQiLib
     {
         public int X {  get; init; }
         
-        public int Y { get; private set; }
+        public int Y { get; init; }
 
-        public Piece Onthis 
-        {
-            get => _onThis;
-            set
-            {
-                _onThis = value;
-            }
-        }   
-        private Piece? _onThis;
-
+        public Piece? Onthis { get; set; }   
         public CaseType Type { get; init; }
 
         public Case(int x, int y, CaseType type)
@@ -39,6 +30,7 @@ namespace DouShouQiLib
 
     public enum CaseType
     {
+        Inconnue,
         Terre,
         Eau,
         Piege,

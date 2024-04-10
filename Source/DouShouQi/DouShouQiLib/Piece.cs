@@ -1,19 +1,16 @@
 ﻿namespace DouShouQiLib
 {
-    public class Piece
+    public struct Piece
     {
-        public string Name { get; init; }
-
         public PieceType Type { get; init; }
 
 
         //public Joueur proprietaire *joueur => _joueur;
-        //private Joueur proprietaire *_joueur;
+        //private Joueur proprietaire *_joueur; // juste id
 
 
-        public Piece(string name, PieceType type)
+        public Piece(PieceType type)
         {
-            Name = name;
             Type = type;
         }
 
@@ -25,6 +22,7 @@
 
     public enum PieceType
     {
+        inconnue,
         souris,
         chat,
         chien,

@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DouShouQiLib;
 
-Piece toto = new Piece("erwan", PieceType.chien);
+Piece toto = new Piece(PieceType.chien);
 Case tutu = new Case(0, 0, CaseType.Eau);
 
 Console.WriteLine(toto);
@@ -16,5 +16,12 @@ Console.WriteLine(plateau);
 Console.WriteLine();
 
 Console.WriteLine("Ajout toto dans le plateau");
-plateau.echequier[4,4].Onthis = toto;
+try
+{
+    plateau[4, 4].Onthis = toto;
+    plateau[404, 4].Onthis = toto;
+} catch (MyOutOfRangeException e)
+{
+    Console.WriteLine(e);
+}
 Console.WriteLine(plateau);
