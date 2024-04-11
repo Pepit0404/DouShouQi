@@ -9,6 +9,8 @@ namespace DouShouQiLib
     public interface IRegles
     {
         bool manger(PieceType meurtrier, PieceType victime);
+        Case[,] CreateBoard();
+
     }
 
     public class regleOrigin : IRegles
@@ -29,6 +31,19 @@ namespace DouShouQiLib
             }
             return false;
         }
+
+        public Case[,] CreateBoard()
+        {
+            Case[,] echequier = new Case[9,7];
+            for (int i = 0; i < echequier.GetLength(0); i++)
+            {
+                for (int j = 0; j < echequier.GetLength(1); j++)
+                {
+                    echequier[i, j] = new Case(i, j, CaseType.Terre);
+                }
+            }
+            return echequier;
+        }
     }
 
     public class regleVariente : IRegles
@@ -44,6 +59,19 @@ namespace DouShouQiLib
                 return true;
             }
             return false;
+        }
+
+        public Case[,] CreateBoard()
+        {
+            Case[,] echequier = new Case[7, 9];
+            for (int i = 0; i < echequier.GetLength(0); i++)
+            {
+                for (int j = 0; j < echequier.GetLength(1); j++)
+                {
+                    echequier[i, j] = new Case(i, j, CaseType.Terre);
+                }
+            }
+            return echequier;
         }
     }
 }

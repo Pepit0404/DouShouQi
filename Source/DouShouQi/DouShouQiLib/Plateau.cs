@@ -35,7 +35,7 @@ namespace DouShouQiLib
             }
         }
 
-        private IRegles setRegles(int regle)
+        private IRegles SetRegles(int regle)
         {
             if (regle == 0)
             {
@@ -56,7 +56,7 @@ namespace DouShouQiLib
             this.height = height;
             this.width = width;
             echequier = new Case[height, width];
-            this.regle = setRegles(regle);
+            this.regle = SetRegles(regle);
             initPlateau();
         }
 
