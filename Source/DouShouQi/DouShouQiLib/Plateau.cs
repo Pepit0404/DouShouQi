@@ -12,6 +12,7 @@ namespace DouShouQiLib
         private int height;
         private int width;
         private Case[,] echequier;
+        public IRegles regle { get; init; }
 
         public Case this[int i, int j]
         {
@@ -34,14 +35,28 @@ namespace DouShouQiLib
             }
         }
 
-        public Plateau() : this(7,9)
+        private IRegles setRegles(int regle)
+        {
+            if (regle == 0)
+            {
+                return new regleOrigin();
+            }
+            if (regle == 1)
+            {
+                return new regleVariente();
+            }
+            throw new NumberRulesException($"La valeur {regle} n'existe pas");
+        }
+
+        public Plateau() : this(7,9,0)
         { }
 
-        public Plateau(int height, int width)
+        public Plateau(int height, int width, int regle )
         {
             this.height = height;
             this.width = width;
             echequier = new Case[height, width];
+            this.regle = setRegles(regle);
             initPlateau();
         }
 
@@ -63,7 +78,14 @@ namespace DouShouQiLib
 
     public class MyOutOfRangeException : Exception
     {
-        public MyOutOfRangeException(string message = "Valeur rentrée inconnue")
+        public MyOutOfRangeException(string message="Valeur rentrée inconnue")
+            : base(message)
+        { }
+    }
+
+    public class NumberRulesException : Exception
+    {
+        public NumberRulesException(string message="Veleur rentrée inconnue") 
             : base(message)
         { }
     }
