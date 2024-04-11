@@ -36,4 +36,13 @@ namespace DouShouQiLib
         Piege,
         Taniere
     }
+
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right,
+
+    }
 }
