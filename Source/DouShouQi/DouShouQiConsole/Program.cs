@@ -9,20 +9,20 @@ void testReglesMange()
 
     IRegles regles = new regleOrigin();
 
-    Console.WriteLine(regles.manger(elephant.Type, souris.Type)); // non
-    Console.WriteLine(regles.manger(souris.Type, elephant.Type)); // oui
-    Console.WriteLine(regles.manger(elephant.Type, chien.Type)); // oui
-    Console.WriteLine(regles.manger(souris.Type, chien.Type)); // non
-    Console.WriteLine(regles.manger(chien.Type, souris.Type)); // oui
+    Console.WriteLine(regles.Manger(elephant.Type, souris.Type)); // non
+    Console.WriteLine(regles.Manger(souris.Type, elephant.Type)); // oui
+    Console.WriteLine(regles.Manger(elephant.Type, chien.Type)); // oui
+    Console.WriteLine(regles.Manger(souris.Type, chien.Type)); // non
+    Console.WriteLine(regles.Manger(chien.Type, souris.Type)); // oui
 
     Console.WriteLine("-----------------------------------------------");
     IRegles nregles = new regleVariente();
 
-    Console.WriteLine(nregles.manger(elephant.Type, souris.Type)); // oui
-    Console.WriteLine(nregles.manger(souris.Type, elephant.Type)); // oui
-    Console.WriteLine(nregles.manger(elephant.Type, chien.Type)); // oui
-    Console.WriteLine(nregles.manger(souris.Type, chien.Type)); // non
-    Console.WriteLine(nregles.manger(chien.Type, souris.Type)); // oui
+    Console.WriteLine(nregles.Manger(elephant.Type, souris.Type)); // oui
+    Console.WriteLine(nregles.Manger(souris.Type, elephant.Type)); // oui
+    Console.WriteLine(nregles.Manger(elephant.Type, chien.Type)); // oui
+    Console.WriteLine(nregles.Manger(souris.Type, chien.Type)); // non
+    Console.WriteLine(nregles.Manger(chien.Type, souris.Type)); // oui
 }
 
 void testRegle()

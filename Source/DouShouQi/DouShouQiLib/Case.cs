@@ -39,10 +39,10 @@ namespace DouShouQiLib
 
     public enum Direction
     {
+        Unknown,
         Up,
         Down,
         Left,
-        Right,
-
+        Right
     }
 }
