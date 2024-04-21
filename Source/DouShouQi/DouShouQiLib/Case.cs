@@ -12,7 +12,8 @@ namespace DouShouQiLib
         
         public int Y { get; init; }
 
-        public Piece? Onthis { get; set; }   
+        public Piece? Onthis { get; set; }
+   
         public CaseType Type { get; init; }
 
         public Case(int x, int y, CaseType type)
@@ -43,6 +44,7 @@ namespace DouShouQiLib
         Up,
         Down,
         Left,
-        Right
+        Right,
+
     }
 }
