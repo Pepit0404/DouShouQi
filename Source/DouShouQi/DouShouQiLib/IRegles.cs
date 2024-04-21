@@ -8,54 +8,67 @@ namespace DouShouQiLib
 {
     public interface IRegles
     {
-        bool manger(PieceType meurtrier, PieceType victime);
-        Case[,] CreateBoard();
-
+        bool Manger(PieceType meurtrier, PieceType victime);
+        bool Bouger(Case caseActu, Piece piece, Case caseAdja, Piece? pieceAdja);
     }
 
     public class regleOrigin : IRegles
     {
-        public bool Manger(Piece meurtrier, Piece victime)
+        public bool Manger(PieceType meurtrier, PieceType victime)
         {
-            if (meurtrier.Type == PieceType.souris && victime.Type == PieceType.elephant)
+            if (meurtrier == PieceType.souris && victime == PieceType.elephant)
             {
                 return true;
             }
-            if (meurtrier.Type == PieceType.elephant && victime.Type == PieceType.souris)
+            if (meurtrier == PieceType.elephant && victime == PieceType.souris)
             {
                 return false;
             }
-            if ((int)meurtrier.Type >= (int)victime.Type)
+            if ((int)meurtrier >= (int)victime)
             {
                 return true;
             }
             return false;
         }
-        public bool Bouger(Piece piece, Case caseAdja)
+        public bool Bouger(Case caseActu, Piece piece, Case caseAdja, Piece? pieceAdja = null)
         {
-            if(caseAdja.Onthis!=null)
+            if (pieceAdja == null && caseAdja.Type == CaseType.Eau && piece.Type != PieceType.souris)
             {
-                if()
+                return false;
             }
-            if (caseAdja.Type == CaseType.Eau && piece.Type == PieceType.souris)
-            {
-                return true;
-            }
-            return false;
-        }
 
-        public Case[,] CreateBoard()
-        {
-            Case[,] echequier = new Case[9,7];
-            for (int i = 0; i < echequier.GetLength(0); i++)
+            if (pieceAdja != null)
             {
-                for (int j = 0; j < echequier.GetLength(1); j++)
+                if (caseAdja.Type == CaseType.Eau && (piece.Type != PieceType.souris && piece.Type != PieceType.chien))
                 {
-                    echequier[i, j] = new Case(i, j, CaseType.Terre);
+                    return false;
+                }
+                if (caseAdja.Type == CaseType.Terre && caseActu.Type==CaseType.Eau)
+                {
+                    return false;
+                }
+                if (piece.Type == PieceType.souris && pieceAdja.Value.Type == PieceType.elephant)
+                {
+                    return true;
+                }
+                if (piece.Type < pieceAdja.Value.Type )
+                {
+                    return false;
+                }
+                if (piece.Type == PieceType.elephant && pieceAdja.Value.Type == PieceType.souris)
+                {
+                    return false;
+                }
+                if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre)
+                {
+                    return false;
                 }
             }
-            return echequier;
+
+
+            return true;
         }
+
     }
 
     public class regleVariente : IRegles
@@ -72,18 +85,42 @@ namespace DouShouQiLib
             }
             return false;
         }
-
-        public Case[,] CreateBoard()
+        public bool Bouger(Case caseActu, Piece piece, Case caseAdja, Piece? pieceAdja = null)
         {
-            Case[,] echequier = new Case[7, 9];
-            for (int i = 0; i < echequier.GetLength(0); i++)
+            if (pieceAdja == null && caseAdja.Type == CaseType.Eau && (piece.Type != PieceType.souris && piece.Type != PieceType.chien) )
             {
-                for (int j = 0; j < echequier.GetLength(1); j++)
+                return false;
+            }
+
+            if (pieceAdja != null )
+            {
+                if (caseAdja.Type == CaseType.Eau && (piece.Type != PieceType.souris && piece.Type != PieceType.chien))
                 {
-                    echequier[i, j] = new Case(i, j, CaseType.Terre);
+                    return false;
+                }
+
+                if (caseAdja.Type == CaseType.Terre && caseActu.Type == CaseType.Eau)
+                {
+                    return false;
+                }
+                if (piece.Type == PieceType.souris && pieceAdja.Value.Type == PieceType.elephant)
+                {
+                    return true;
+                }
+                if (piece.Type < pieceAdja.Value.Type)
+                {
+                    return false;
+                }
+                
+                if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre)
+                {
+                    return false;
                 }
             }
-            return echequier;
+
+
+            return true;
         }
     }
-}
+        
+    }

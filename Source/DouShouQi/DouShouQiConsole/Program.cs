@@ -24,9 +24,51 @@ void testReglesMange()
     Console.WriteLine(nregles.Manger(souris.Type, chien.Type)); // non
     Console.WriteLine(nregles.Manger(chien.Type, souris.Type)); // oui
 }
+void testReglesBouger()
+{
+    Piece souris = new Piece(PieceType.souris);
+    Piece elephant = new Piece(PieceType.elephant);
+    Piece chien = new Piece(PieceType.chien);
+    Case eau = new Case(4, 5, CaseType.Eau);
+    Case terre = new Case(4, 6, CaseType.Terre);
+
+    IRegles regles = new regleOrigin();
+    Console.WriteLine("----------------bouger regles basiques");
+    
+    Console.WriteLine(regles.Bouger(terre, elephant, eau, null)); //non, elephant qui va dans leau
+    Console.WriteLine(regles.Bouger(eau, souris, terre, elephant));//non, souris qui sort de leau pour manger un elephant
+    Console.WriteLine(regles.Bouger(eau, souris, eau, null));//oui, une souris qui marche dans leau
+    Console.WriteLine(regles.Bouger(terre, chien, eau, null)); //non, chien qui va dansleau
+    Console.WriteLine(regles.Bouger(terre, elephant, terre, chien)); //oui, un elephant qui mange un chien
+    Console.WriteLine(regles.Bouger(terre, elephant, terre, souris)); //non, un elephant qui mange une souris
+    Console.WriteLine(regles.Bouger(terre,  souris, terre,elephant)); //oui, une souris qui mange un elephant
+    Console.WriteLine(regles.Bouger(eau, souris, eau, souris)); //oui, une souris qui mange une autre souris toute 2 dans leau
+    Console.WriteLine(regles.Bouger(eau, souris, terre, souris));//non, souris qui sort de leau pour manger une souris
+    Console.WriteLine(regles.Bouger(terre, elephant, eau, chien)); //non elephant qui mange chien dans leau 
+
+    Console.WriteLine("----------------bouger regles differentes");
+    IRegles nregles = new regleVariente();
+    Console.WriteLine(nregles.Bouger(terre, elephant, eau, null)); //non, elephant qui va dans leau
+    Console.WriteLine(nregles.Bouger(eau, souris, terre, elephant));//non, souris qui sort de leau pour manger un elephant
+    Console.WriteLine(nregles.Bouger(eau, souris, eau, null));//oui, une souris qui marche dans leau
+    Console.WriteLine(nregles.Bouger(terre, chien, eau, null)); //oui, chien qui va dans leau
+    Console.WriteLine(nregles.Bouger(terre, elephant, terre, chien)); //oui, un elephant qui mange un chien
+    Console.WriteLine(nregles.Bouger(terre, elephant, terre, souris)); //oui, un elephant qui mange une souris
+    Console.WriteLine(nregles.Bouger(terre, souris, terre, elephant)); //oui, une souris qui mange un elephant
+    Console.WriteLine(nregles.Bouger(eau, souris, eau, souris)); //oui, une souris qui mange une autre souris toute 2 dans leau
+    Console.WriteLine(nregles.Bouger(eau, souris, terre, souris));//non, souris qui sort de leau pour manger une souris
+    Console.WriteLine(nregles.Bouger(eau, chien, eau, souris));//oui un chien dans leau qui mange une souris dans leau 
+    Console.WriteLine(nregles.Bouger(eau, chien, eau, chien));//oui un chien dans leau qui mange un chien dans leau
+    Console.WriteLine(nregles.Bouger(terre, chien, terre, chien));//oui un chien qui mange un chien
+    Console.WriteLine(nregles.Bouger(terre,elephant,terre,chien));//oui un elephant qui mange un chien
+    Console.WriteLine(nregles.Bouger(eau, souris, eau, chien));//non, souris qui mange chien
+    Console.WriteLine(nregles.Bouger(terre, elephant, eau, chien)); //non elephant qui mange chien dans leau 
+}
+
 
 void testRegle()
 {
+    Console.WriteLine("----------------");
     Plateau plt = new Plateau();
     if (plt.regle is regleOrigin) Console.WriteLine("ok");
     else Console.WriteLine("pas bon");
@@ -74,4 +116,5 @@ try
 Console.WriteLine(plateau);
 
 testReglesMange();
+testReglesBouger();
 testRegle();
