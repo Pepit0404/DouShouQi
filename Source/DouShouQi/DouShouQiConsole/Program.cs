@@ -24,7 +24,15 @@ void testReglesMange()
     Console.WriteLine(nregles.Manger(souris.Type, chien.Type)); // non
     Console.WriteLine(nregles.Manger(chien.Type, souris.Type)); // oui
 }
+void tesReglesBouge()
+{
+    Piece souris = new Piece(PieceType.souris);
+    Piece elephant = new Piece(PieceType.elephant);
+    Piece chien = new Piece(PieceType.chien);
+    IRegles regles = new regleOrigin();
+    Console.WriteLine(regles.Bouger(souris.Type));
 
+}
 void testRegle()
 {
     Plateau plt = new Plateau();
