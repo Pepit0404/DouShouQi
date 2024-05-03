@@ -5,9 +5,11 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppDouShouQi", "AppDouShouQi\AppDouShouQi.csproj", "{17A9DC08-7DD6-4CF6-81E5-FE30CEF26886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DouShouQiLib", "DouShouQiLib\DouShouQiLib.csproj", "{DF304BE8-B216-4616-99B9-B1394E2D4F7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DouShouQiLib", "DouShouQiLib\DouShouQiLib.csproj", "{DF304BE8-B216-4616-99B9-B1394E2D4F7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DouShouQiConsole", "DouShouQiConsole\DouShouQiConsole.csproj", "{E169E37C-D096-4351-ACDC-5321129D337F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DouShouQiConsole", "DouShouQiConsole\DouShouQiConsole.csproj", "{E169E37C-D096-4351-ACDC-5321129D337F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDouShouQi", "TestDouShouQi\TestDouShouQi.csproj", "{29631787-A7ED-446B-BCB5-E3AA5D1054BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{E169E37C-D096-4351-ACDC-5321129D337F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E169E37C-D096-4351-ACDC-5321129D337F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E169E37C-D096-4351-ACDC-5321129D337F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29631787-A7ED-446B-BCB5-E3AA5D1054BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29631787-A7ED-446B-BCB5-E3AA5D1054BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29631787-A7ED-446B-BCB5-E3AA5D1054BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29631787-A7ED-446B-BCB5-E3AA5D1054BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
