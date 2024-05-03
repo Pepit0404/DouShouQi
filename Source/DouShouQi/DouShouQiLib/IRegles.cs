@@ -11,7 +11,8 @@ namespace DouShouQiLib
 
         Plateau initPlateau(Plateau plateau);
         bool Manger(PieceType meurtrier, PieceType victime);
-        bool Bouger(Case caseActu, Piece piece, Case caseAdja, Piece? pieceAdja);
+        bool PouvoirBouger(Case caseActu, Case caseAdja);
+
     }
 
     public class regleOrigin : IRegles
@@ -41,6 +42,7 @@ namespace DouShouQiLib
             return plateau;
         }
         public bool Manger(PieceType meurtrier, PieceType victime)
+
         {
             if (meurtrier == PieceType.souris && victime == PieceType.elephant)
             {
@@ -56,44 +58,31 @@ namespace DouShouQiLib
             }
             return false;
         }
-        public bool Bouger(Case caseActu, Piece piece, Case caseAdja, Piece? pieceAdja = null)
+        public bool PouvoirBouger(Case caseActu, Case caseAdja)
         {
-            if (pieceAdja == null && caseAdja.Type == CaseType.Eau && piece.Type != PieceType.souris)
+            if (!caseActu.Onthis.HasValue)
             {
                 return false;
             }
-
-            if (pieceAdja != null)
+            if (!caseAdja.Onthis.HasValue)
             {
-                if (caseAdja.Type == CaseType.Eau && (piece.Type != PieceType.souris && piece.Type != PieceType.chien))
-                {
-                    return false;
-                }
-                if (caseAdja.Type == CaseType.Terre && caseActu.Type==CaseType.Eau)
-                {
-                    return false;
-                }
-                if (piece.Type == PieceType.souris && pieceAdja.Value.Type == PieceType.elephant)
-                {
-                    return true;
-                }
-                if (piece.Type < pieceAdja.Value.Type )
-                {
-                    return false;
-                }
-                if (piece.Type == PieceType.elephant && pieceAdja.Value.Type == PieceType.souris)
-                {
-                    return false;
-                }
-                if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre)
+                if (caseActu.Onthis.Value.Type != PieceType.souris && caseAdja.Type == CaseType.Eau)
                 {
                     return false;
                 }
             }
+            else
+            {
+                if (!Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type) || (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre))
+                {
+                    return false;
+                }
 
 
+            }
             return true;
         }
+
 
     }
 
@@ -132,42 +121,35 @@ namespace DouShouQiLib
             }
             return false;
         }
-        public bool Bouger(Case caseActu, Piece piece, Case caseAdja, Piece? pieceAdja = null)
+        public bool PouvoirBouger(Case caseActu, Case caseAdja)
         {
-            if (pieceAdja == null && caseAdja.Type == CaseType.Eau && (piece.Type != PieceType.souris && piece.Type != PieceType.chien) )
+            if (!caseActu.Onthis.HasValue)
             {
                 return false;
             }
-
-            if (pieceAdja != null )
+            if (!caseAdja.Onthis.HasValue)
             {
-                if (caseAdja.Type == CaseType.Eau && (piece.Type != PieceType.souris && piece.Type != PieceType.chien))
+                if ((caseActu.Onthis.Value.Type != PieceType.souris && caseActu.Onthis.Value.Type != PieceType.chien) && caseAdja.Type == CaseType.Eau)
                 {
                     return false;
                 }
 
-                if (caseAdja.Type == CaseType.Terre && caseActu.Type == CaseType.Eau)
-                {
-                    return false;
-                }
-                if (piece.Type == PieceType.souris && pieceAdja.Value.Type == PieceType.elephant)
-                {
-                    return true;
-                }
-                if (piece.Type < pieceAdja.Value.Type)
-                {
-                    return false;
-                }
-                
-                if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre)
-                {
-                    return false;
-                }
             }
+            else
+            {
+                if ((caseActu.Onthis.Value.Type != PieceType.souris && caseActu.Onthis.Value.Type != PieceType.chien) && caseAdja.Type == CaseType.Eau)
+                {
+                    return false;
+                }
+                if (!Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type) || (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre))
+                {
+                    return false;
+                }
 
-
+            }
             return true;
         }
     }
-        
-    }
+}
+
+  
