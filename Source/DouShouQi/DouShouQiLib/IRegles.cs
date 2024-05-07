@@ -36,7 +36,9 @@ namespace DouShouQiLib
                         plateau.echequier[i, j] = new Case(i, j, CaseType.Eau);
                     }
                     else
+                    {
                         plateau.echequier[i, j] = new Case(i, j, CaseType.Terre);
+                    }
                 }
             }
             return plateau;
