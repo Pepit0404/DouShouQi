@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DouShouQiLib", "DouShouQiLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DouShouQiConsole", "DouShouQiConsole\DouShouQiConsole.csproj", "{E169E37C-D096-4351-ACDC-5321129D337F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDouShouQi", "TestDouShouQi\TestDouShouQi.csproj", "{29631787-A7ED-446B-BCB5-E3AA5D1054BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDouShouQi", "TestDouShouQi\TestDouShouQi.csproj", "{29631787-A7ED-446B-BCB5-E3AA5D1054BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3211FC35-2FCA-4238-84B7-5BCC8A023921}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{29631787-A7ED-446B-BCB5-E3AA5D1054BF} = {3211FC35-2FCA-4238-84B7-5BCC8A023921}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15481977-7F57-4FB7-A06A-D2C1F32D4514}
