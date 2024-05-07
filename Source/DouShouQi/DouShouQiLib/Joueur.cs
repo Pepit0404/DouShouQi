@@ -15,5 +15,6 @@ namespace DouShouQiLib
             Identifiant = identifiant;
             nbVictoire = 0;
         }
+        
     }
 }

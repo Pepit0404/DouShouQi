@@ -1,4 +1,5 @@
 using DouShouQiLib;
+using System;
 
 namespace TestDouShouQi
 {
@@ -81,7 +82,19 @@ namespace TestDouShouQi
             Assert.False(nregles.PouvoirBouger(terre, eau2)); //non elephant qui mange chien dans leau 
             Assert.True(nregles.PouvoirBouger(terre2, eau2));//oui un chien qui mange un chien
         }
-
-        
+        [Theory] 
+        [InlineData(PieceType.souris, PieceType.elephant)]
+        [InlineData(PieceType.souris, PieceType.souris)]
+       
+        public void MemePiece_UT(PieceType expectedPieceType, PieceType givenPieceType)
+        {
+            Piece piece = new Piece(PieceType.chien);
+            Assert.Equal(expectedPieceType, givenPieceType);
+        }
+        Piece souris = new Piece(PieceType.souris);
+        Piece elephant = new Piece(PieceType.elephant);
+       
     }
+
+
 }
