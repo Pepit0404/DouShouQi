@@ -114,25 +114,25 @@ void testPlateau()
     Console.WriteLine(tutu);
 
     Plateau plateau = new Plateau();
-    plateau.regle.initPlateau(plateau);
+    plateau=plateau.regle.initPlateau();
     Console.WriteLine(plateau);
     Console.WriteLine();
 
-    Plateau plateau2 = new Plateau(6, 6, 1);
-    plateau2.regle.initPlateau(plateau2);
+    Plateau plateau2 = new Plateau(9, 7, 1);
+    plateau2=plateau2.regle.initPlateau();
     Console.WriteLine(plateau2);
     Console.WriteLine();
 
-    Console.WriteLine("Ajout toto dans le plateau");
-    try
-    {
-        plateau[4, 4].Onthis = toto;
-        plateau[404, 4].Onthis = toto;
-    }
-    catch (MyOutOfRangeException e)
-    {
-        Console.WriteLine(e);
-    }
+    //Console.WriteLine("Ajout toto dans le plateau");
+    //try
+    //{
+    //    plateau.echequier[4, 4].Onthis = toto;
+    //    plateau.echequier[404, 4].Onthis = toto;
+    //}
+    //catch (MyOutOfRangeException e)
+    //{
+    //    Console.WriteLine(e);
+    //}
     Console.WriteLine(plateau);
 }
 

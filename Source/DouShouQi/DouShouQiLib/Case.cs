@@ -25,7 +25,15 @@ namespace DouShouQiLib
 
         public override string ToString()
         {
-            return $"[{X},{Y}];{Type};{Onthis}";
+            if(Onthis  != null)
+            {
+                return $"[{X},{Y}];{Type};{Onthis}";
+            }
+            else
+            {
+                return $"[{X},{Y}];{Type};     ";
+            }
+            
         }
     }
 

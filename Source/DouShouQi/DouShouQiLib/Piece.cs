@@ -27,7 +27,7 @@
         chat,
         chien,
         loup,
-        leopart,
+        leopard,
         tigre,
         lion,
         elephant
