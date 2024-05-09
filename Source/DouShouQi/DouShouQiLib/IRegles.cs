@@ -9,7 +9,7 @@ namespace DouShouQiLib
     public interface IRegles
     {
 
-        Plateau initPlateau(Plateau plateau);
+        Plateau initPlateau();
         bool Manger(PieceType meurtrier, PieceType victime);
         bool PouvoirBouger(Case caseActu, Case caseAdja);
 
@@ -17,8 +17,29 @@ namespace DouShouQiLib
 
     public class regleOrigin : IRegles
     {
-        public Plateau initPlateau(Plateau plateau)
+        private Plateau PlacementAnimaux(Plateau plateau)
         {
+            plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris);
+            plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant);
+            plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien);
+            plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre);
+            plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion);
+            plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat);
+            plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard);
+            plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup);
+            plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien);
+            plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris);
+            plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant);
+            plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup);
+            plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat);
+            plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard);
+            plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre);
+            plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion);
+            return plateau;
+        }
+        public Plateau initPlateau()
+        {
+            Plateau plateau = new Plateau();
             for (int i = 0; i < plateau.echequier.GetLength(0); i++)
             {
                 for (int j = 0; j < plateau.echequier.GetLength(1); j++)
@@ -41,6 +62,7 @@ namespace DouShouQiLib
                     }
                 }
             }
+            plateau = PlacementAnimaux(plateau);
             return plateau;
         }
         public bool Manger(PieceType meurtrier, PieceType victime)
@@ -90,9 +112,30 @@ namespace DouShouQiLib
 
     public class regleVariente : IRegles
     {
-
-        public Plateau initPlateau(Plateau plateau)
+        private Plateau PlacementAnimaux(Plateau plateau)
         {
+            plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris);
+            plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant);
+            plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien);
+            plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre);
+            plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion);
+            plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat);
+            plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard);
+            plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup);
+            plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien);
+            plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris);
+            plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant);
+            plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup);
+            plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat);
+            plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard);
+            plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre);
+            plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion);
+            return plateau;
+        }
+
+        public Plateau initPlateau()
+        {
+            Plateau plateau = new Plateau();
             for (int i = 0; i < plateau.echequier.GetLength(0); i++)
             {
                 for (int j = 0; j < plateau.echequier.GetLength(1); j++)
@@ -109,6 +152,7 @@ namespace DouShouQiLib
                         plateau.echequier[i, j] = new Case(i, j, CaseType.Terre);
                 }
             }
+            plateau = PlacementAnimaux(plateau);
             return plateau;
         }
         public bool Manger(PieceType meurtrier, PieceType victime)
