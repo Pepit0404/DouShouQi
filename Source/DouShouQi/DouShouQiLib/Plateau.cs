@@ -72,7 +72,7 @@ namespace DouShouQiLib
                     str.Append(echequier[i, j]);
                     str.Append(" | ");
                 }
-                str.Append("\n");
+                Console.Write("\n---------------------------------------------------\n");
             }
             return str.ToString();
         }
