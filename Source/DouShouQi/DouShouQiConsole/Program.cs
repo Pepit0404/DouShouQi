@@ -27,47 +27,45 @@ using System.Text;
 //        Console.WriteLine(e.Message);
 //    }
 //}
-void testPlateau()
+//void testPlateau()
+//{
+//    Joueur joueur1("toto");
+//    Piece toto = new Piece(PieceType.chien);
+//    Case tutu = new Case(0, 0, CaseType.Eau);
+
+//    Console.WriteLine(toto);
+//    Console.WriteLine(tutu);
+
+//    Console.WriteLine("Ajout de toto sur tutu");
+//    tutu.Onthis = toto;
+//    Console.WriteLine(tutu);
+
+//    Plateau plateau = new Plateau();
+//    plateau.regle.initPlateau();
+//    Console.WriteLine(plateau);
+//    Console.WriteLine();
+
+//    Plateau plateau2 = new Plateau(6, 6, 1);
+//    plateau2.regle.initPlateau();
+//    Console.WriteLine(plateau2);
+//    Console.WriteLine();
+
+//    Console.WriteLine("Ajout toto dans le plateau");
+//    try
+//    {
+//        plateau[4, 4].Onthis = toto;
+//        plateau[404, 4].Onthis = toto;
+//    }
+//    catch (MyOutOfRangeException e)
+//    {
+//        Console.WriteLine(e);
+//    }
+//    Console.WriteLine(plateau);
+//}
+
+void affichePlateau(Case[,] echequier)
 {
-    Piece toto = new Piece(PieceType.chien);
-    Case tutu = new Case(0, 0, CaseType.Eau);
-
-    Console.WriteLine(toto);
-    Console.WriteLine(tutu);
-
-    Console.WriteLine("Ajout de toto sur tutu");
-    tutu.Onthis = toto;
-    Console.WriteLine(tutu);
-
-    Plateau plateau = new Plateau();
-    plateau.regle.initPlateau();
-    Console.WriteLine(plateau);
-    Console.WriteLine();
-
-    Plateau plateau2 = new Plateau(6, 6, 1);
-    plateau2.regle.initPlateau();
-    Console.WriteLine(plateau2);
-    Console.WriteLine();
-
-    Console.WriteLine("Ajout toto dans le plateau");
-    try
-    {
-        plateau[4, 4].Onthis = toto;
-        plateau[404, 4].Onthis = toto;
-    }
-    catch (MyOutOfRangeException e)
-    {
-        Console.WriteLine(e);
-    }
-    Console.WriteLine(plateau);
-}
-
-void testPlateau2()
-{
-    Plateau plateau = new Plateau();
-    plateau.regle.initPlateau();
-    Case[,] echequier = plateau.echequier;
-    echequier[0, 0].Onthis = new Piece(PieceType.chien);
+    Console.WriteLine("\n");
     for (int i = 0; i < echequier.GetLength(0); i++)
     {
         for (int j = 0; j < echequier.GetLength(1); j++)
@@ -84,7 +82,7 @@ void testPlateau2()
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
             }
-            else if (echequier[i,j].Type == CaseType.Taniere)
+            else if (echequier[i, j].Type == CaseType.Taniere)
             {
                 Console.BackgroundColor = ConsoleColor.DarkMagenta;
             }
@@ -101,8 +99,21 @@ void testPlateau2()
         }
         Console.Write("\n---------------------------------------------------\n");
     }
+    Console.WriteLine("\n");
 }
 
-testPlateau();
+void testPlateau2()
+{
+    Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi") );
+
+    affichePlateau(game.Plateau.echequier);
+    Console.Write(game.MovePiece(game.Plateau.echequier[2, 0], game.Plateau.echequier[3, 0]));
+    Console.Write(game.MovePiece(game.Plateau.echequier[2, 2], game.Plateau.echequier[3, 2]));
+    affichePlateau(game.Plateau.echequier);
+    
+
+}
+
+//testPlateau();
 testPlateau2();
 //testRegle();

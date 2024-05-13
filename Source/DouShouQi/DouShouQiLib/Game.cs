@@ -18,13 +18,16 @@ namespace DouShouQiLib
 
         public Joueur JoueurCourant { get; private set; }
 
-        public Game(IRegles regles, Joueur joueur1, Joueur joueur2) 
+        public Piece[] Piece { get; private set; }
+
+    public Game(IRegles regles, Joueur joueur1, Joueur joueur2) 
         {
-            Regle= regles;
-            Plateau= Regle.initPlateau();
+            this.Plateau = new Plateau();
+            Regle = regles;
             Joueur1 = joueur1;
             Joueur2 = joueur2;
             JoueurCourant = Joueur1;
+            Regle.initPlateau(this);
         }
 
         public bool MovePiece(Case caseD, Case caseA)
@@ -36,6 +39,18 @@ namespace DouShouQiLib
             caseA.Onthis = caseD.Onthis;
             caseD.Onthis = null; 
             return true;
+        }
+
+        public void ChangePlayer()
+        {
+            if (JoueurCourant == Joueur1)
+            {
+                JoueurCourant = Joueur2;
+            }
+            else
+            {
+                JoueurCourant = Joueur2;
+            }
         }
 
     }

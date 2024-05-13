@@ -9,62 +9,62 @@ namespace DouShouQiLib
     public interface IRegles
     {
 
-        Plateau initPlateau();
+        Game initPlateau(Game game);
         bool Manger(PieceType meurtrier, PieceType victime);
         bool PouvoirBouger(Case caseActu, Case caseAdja);
+
 
     }
 
     public class regleOrigin : IRegles
     {
-        private Plateau PlacementAnimaux(Plateau plateau)
+        private Game PlacementAnimaux(Game game)
         {
-            plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris);
-            plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant);
-            plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien);
-            plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre);
-            plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion);
-            plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat);
-            plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard);
-            plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup);
+            game.Plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris, game.Joueur1);
+            game.Plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant, game.Joueur1);
+            game.Plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien, game.Joueur1);
+            game.Plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre, game.Joueur1);
+            game.Plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion, game.Joueur1);
+            game.Plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat, game.Joueur1);
+            game.Plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard, game.Joueur1);
+            game.Plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup, game.Joueur1);
 
-            plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien);
-            plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris);
-            plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant);
-            plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup);
-            plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat);
-            plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard);
-            plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre);
-            plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion);
-            return plateau;
+            game.Plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien, game.Joueur2);
+            game.Plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris, game.Joueur2);
+            game.Plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant, game.Joueur2);
+            game.Plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup, game.Joueur2);
+            game.Plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat, game.Joueur2);
+            game.Plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard, game.Joueur2);
+            game.Plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre, game.Joueur2);
+            game.Plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion, game.Joueur2);
+            return game;
         }
-        public Plateau initPlateau()
+        public void initPlateau(Game game)
         {
-            Plateau plateau = new Plateau();
-            for (int i = 0; i < plateau.echequier.GetLength(0); i++)
+            game.Plateau = new Plateau();
+            for (int i = 0; i < game.Plateau.echequier.GetLength(0); i++)
             {
-                for (int j = 0; j < plateau.echequier.GetLength(1); j++)
+                for (int j = 0; j < game.Plateau.echequier.GetLength(1); j++)
                 {
                     if (j == 3 && ( i == 0 || i == 8))
                     {
-                        plateau.echequier[i, j] = new Case(i, j, CaseType.Taniere);
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Taniere);
                     }
                     else if (((j== 2 || j == 4) && (i == 0 || i == 8)) || ((i== 1 || i==7) &&  j==3))
                     {
-                        plateau.echequier[i, j] = new Case(i, j, CaseType.Piege);
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Piege);
                     }
                     else if (((j==4 || j == 5) && (i==3 || i == 4 || i == 5)) || ((j==1 || j==2) && (i==3 || i==4 || i==5)))
                     {
-                        plateau.echequier[i, j] = new Case(i, j, CaseType.Eau);
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Eau);
                     }
                     else
                     {
-                        plateau.echequier[i, j] = new Case(i, j, CaseType.Terre);
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Terre);
                     }
                 }
             }
-            plateau = PlacementAnimaux(plateau);
-            return plateau;
+            game = PlacementAnimaux(game);
         }
         public bool Manger(PieceType meurtrier, PieceType victime)
 
@@ -113,48 +113,55 @@ namespace DouShouQiLib
 
     public class regleVariente : IRegles
     {
-        private Plateau PlacementAnimaux(Plateau plateau)
+        private Game PlacementAnimaux(Game game)
         {
-            plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris);
-            plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant);
-            plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien);
-            plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre);
-            plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion);
-            plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat);
-            plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard);
-            plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup);
-            plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien);
-            plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris);
-            plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant);
-            plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup);
-            plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat);
-            plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard);
-            plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre);
-            plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion);
-            return plateau;
+            game.Plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris, game.Joueur1);
+            game.Plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant, game.Joueur1);
+            game.Plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien, game.Joueur1);
+            game.Plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre, game.Joueur1);
+            game.Plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion, game.Joueur1);
+            game.Plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat, game.Joueur1);
+            game.Plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard, game.Joueur1);
+            game.Plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup, game.Joueur1);
+
+            game.Plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien, game.Joueur2);
+            game.Plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris, game.Joueur2);
+            game.Plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant, game.Joueur2);
+            game.Plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup, game.Joueur2);
+            game.Plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat, game.Joueur2);
+            game.Plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard, game.Joueur2);
+            game.Plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre, game.Joueur2);
+            game.Plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion, game.Joueur2);
+            return game;
         }
 
-        public Plateau initPlateau()
+        public Game initPlateau(Game game)
         {
             Plateau plateau = new Plateau();
-            for (int i = 0; i < plateau.echequier.GetLength(0); i++)
+            for (int i = 0; i < game.Plateau.echequier.GetLength(0); i++)
             {
-                for (int j = 0; j < plateau.echequier.GetLength(1); j++)
+                for (int j = 0; j < game.Plateau.echequier.GetLength(1); j++)
                 {
-                    if (j == plateau.echequier.GetLength(0) / 2 - 1 && (i == 0 || i == plateau.echequier.GetLength(0) - 1))
+                    if (j == 3 && (i == 0 || i == 8))
                     {
-                        plateau.echequier[i, j] = new Case(i, j, CaseType.Taniere);
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Taniere);
                     }
-                    else if ((j == plateau.echequier.GetLength(0) / 2 - 2 || j == plateau.echequier.GetLength(0) / 2) && (i == 0 || i == plateau.echequier.GetLength(0) - 1))
+                    else if (((j == 2 || j == 4) && (i == 0 || i == 8)) || ((i == 1 || i == 7) && j == 3))
                     {
-                        plateau.echequier[i, j] = new Case(i, j, CaseType.Piege);
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Piege);
+                    }
+                    else if (((j == 4 || j == 5) && (i == 3 || i == 4 || i == 5)) || ((j == 1 || j == 2) && (i == 3 || i == 4 || i == 5)))
+                    {
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Eau);
                     }
                     else
-                        plateau.echequier[i, j] = new Case(i, j, CaseType.Terre);
+                    {
+                        game.Plateau.echequier[i, j] = new Case(i, j, CaseType.Terre);
+                    }
                 }
             }
-            plateau = PlacementAnimaux(plateau);
-            return plateau;
+            game = PlacementAnimaux(game);
+            return game;
         }
         public bool Manger(PieceType meurtrier, PieceType victime)
         {
