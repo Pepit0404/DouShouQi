@@ -78,7 +78,6 @@ namespace DouShouQiLib
                     return false;
                 }
 
-
             }
             return true;
         }
@@ -149,6 +148,7 @@ namespace DouShouQiLib
             }
             return true;
         }
+        //public Plateau Bouger(Plateau plateau, Joueur joueur, Piece piece) { }
     }
 }
 

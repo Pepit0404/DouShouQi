@@ -1,5 +1,6 @@
 using DouShouQiLib;
 using System;
+using System.Text.RegularExpressions;
 
 namespace TestDouShouQi
 {
@@ -37,7 +38,7 @@ namespace TestDouShouQi
             Piece souris = new Piece(PieceType.souris);
             Piece elephant = new Piece(PieceType.elephant);
             Piece chien = new Piece(PieceType.chien);
-            Case eau = new Case(0, 0, CaseType.Eau);
+            Case eau = new Case(0, 1, CaseType.Eau);
             Case eauvide = new Case(0, 0, CaseType.Eau);
             Case terre = new Case(0, 0, CaseType.Terre);
             Case terrevide = new Case(0, 0, CaseType.Terre);
@@ -93,7 +94,9 @@ namespace TestDouShouQi
         }
         Piece souris = new Piece(PieceType.souris);
         Piece elephant = new Piece(PieceType.elephant);
+
        
+
     }
 
 

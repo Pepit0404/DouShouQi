@@ -34,7 +34,7 @@ void testReglesBouger()
     Case terre = new Case(0, 0, CaseType.Terre);
     Case terrevide = new Case(0, 0, CaseType.Terre);
     Case terre2 = new Case(0, 0, CaseType.Terre);
-    Case terre3 = new Case(0, 0, CaseType.Terre);
+    Case terre3 = new Case(0, 0, CaseType.Terre);   
     Case eau2 = new Case(0, 0, CaseType.Eau);
     eau.Onthis = souris;
     terre.Onthis = elephant;
