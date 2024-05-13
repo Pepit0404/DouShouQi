@@ -27,6 +27,7 @@ namespace DouShouQiLib
             plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat);
             plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard);
             plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup);
+
             plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien);
             plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris);
             plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant);
