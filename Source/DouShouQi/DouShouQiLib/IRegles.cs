@@ -32,7 +32,7 @@ namespace DouShouQiLib
             plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant);
             plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup);
             plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat);
-            plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard);
+            plateau.echequier[6, 4].Onthis = new Piece(PieceType.leopard);
             plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre);
             plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion);
             return plateau;
@@ -127,7 +127,7 @@ namespace DouShouQiLib
             plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant);
             plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup);
             plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat);
-            plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard);
+            plateau.echequier[6, 4].Onthis = new Piece(PieceType.leopard);
             plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre);
             plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion);
             return plateau;
