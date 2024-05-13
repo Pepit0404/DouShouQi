@@ -5,13 +5,13 @@
         public PieceType Type { get; init; }
 
 
-        //public Joueur proprietaire *joueur => _joueur;
-        //private Joueur proprietaire *_joueur; // juste id
+        private Joueur Proprietaire { get; init; } 
 
 
-        public Piece(PieceType type)
+        public Piece(PieceType type, Joueur proprietaire)
         {
             Type = type;
+            Proprietaire = proprietaire;
         }
 
         public override string ToString()

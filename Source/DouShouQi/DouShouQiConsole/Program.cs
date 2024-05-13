@@ -40,12 +40,12 @@ void testPlateau()
     Console.WriteLine(tutu);
 
     Plateau plateau = new Plateau();
-    plateau.regle.initPlateau(plateau);
+    plateau.regle.initPlateau();
     Console.WriteLine(plateau);
     Console.WriteLine();
 
     Plateau plateau2 = new Plateau(6, 6, 1);
-    plateau2.regle.initPlateau(plateau2);
+    plateau2.regle.initPlateau();
     Console.WriteLine(plateau2);
     Console.WriteLine();
 
@@ -65,7 +65,7 @@ void testPlateau()
 void testPlateau2()
 {
     Plateau plateau = new Plateau();
-    plateau.regle.initPlateau(plateau);
+    plateau.regle.initPlateau();
     Case[,] echequier = plateau.echequier;
     echequier[0, 0].Onthis = new Piece(PieceType.chien);
     for (int i = 0; i < echequier.GetLength(0); i++)
