@@ -13,7 +13,7 @@ namespace DouShouQiLib
         bool Manger(PieceType meurtrier, PieceType victime);
         bool PouvoirBouger(Case caseActu, Case caseAdja);
 
-
+        bool EstFini(Game game);
     }
 
     public class regleOrigin : IRegles
@@ -34,7 +34,7 @@ namespace DouShouQiLib
             game.Plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant, game.Joueur2);
             game.Plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup, game.Joueur2);
             game.Plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat, game.Joueur2);
-            game.Plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard, game.Joueur2);
+            game.Plateau.echequier[6, 4].Onthis = new Piece(PieceType.leopard, game.Joueur2);
             game.Plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre, game.Joueur2);
             game.Plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion, game.Joueur2);
             return game;
@@ -107,6 +107,28 @@ namespace DouShouQiLib
             return true;
         }
 
+        public bool EstFini(Game game)
+        {
+            if (game.Plateau.echequier[0, 3].Onthis.HasValue)
+            {
+                Joueur joueur = game.Plateau.echequier[0, 3].Onthis.Value.Proprietaire;
+                if (joueur == game.Joueur1)
+                {
+                    return true;
+                }
+            }
+
+            if (game.Plateau.echequier[8, 3].Onthis.HasValue)
+            {
+                Joueur joueur = game.Plateau.echequier[8, 3].Onthis.Value.Proprietaire;
+                if (joueur == game.Joueur2)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
     }
 
@@ -199,6 +221,28 @@ namespace DouShouQiLib
 
             }
             return true;
+        }
+        public bool EstFini(Game game)
+        {
+            Joueur? joueur = game.Plateau.echequier[0, 3].Onthis.Value.Proprietaire;
+            if (joueur != null)
+            {
+                if (joueur == game.Joueur1)
+                {
+                    return true;
+                }
+            }
+
+            joueur = game.Plateau.echequier[8, 3].Onthis.Value.Proprietaire;
+            if (joueur != null)
+            {
+                if (joueur == game.Joueur2)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

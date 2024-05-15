@@ -8,11 +8,25 @@ namespace DouShouQiLib
 {
     public class Joueur
     {
+        public bool appartient(Piece piece)
+        {
+            if (piece.Proprietaire == this)
+            {
+                return true;
+            }
+            return false;
+        }
         private string Identifiant { get; init; }
         public Joueur(string identifiant)
         {
             Identifiant = identifiant;
         }
-        
+
+        public override string ToString()
+        {
+            return $"{Identifiant}";
+        }
+
+
     }
 }

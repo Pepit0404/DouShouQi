@@ -30,13 +30,13 @@ namespace DouShouQiLib
         public IRegles regle { get; init; }
 
 
-        public Case this[int i, int j]
+        public Case this[int ligne, int collone]
         {
             get
             {
-                if (i < 0 || i >= echequier.GetLength(0) ) throw new MyOutOfRangeException($"la valeur: {i} dépasse les limites du tableau" );
-                if (j < 0 || j >= echequier.GetLength(1) ) throw new MyOutOfRangeException($"la valeur: {j} dépasse les limites du tableau");
-                return echequier[i,j];
+                if (ligne < 0 || ligne >= echequier.GetLength(0) ) throw new MyOutOfRangeException($"la valeur: {ligne} dépasse les limites du tableau" );
+                if (collone < 0 || collone >= echequier.GetLength(1) ) throw new MyOutOfRangeException($"la valeur: {collone} dépasse les limites du tableau");
+                return echequier[ligne,collone];
             }
         }
 

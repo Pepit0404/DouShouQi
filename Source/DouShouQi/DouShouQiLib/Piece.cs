@@ -5,13 +5,13 @@
         public PieceType Type { get; init; }
 
 
-        private Joueur Proprietaire { get; init; } 
+        public Joueur Proprietaire { get; init; } 
 
 
         public Piece(PieceType type, Joueur proprietaire)
         {
             Type = type;
-            Proprietaire = proprietaire;
+            this.Proprietaire = proprietaire;
         }
 
         public override string ToString()
