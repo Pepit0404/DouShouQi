@@ -13,6 +13,10 @@ namespace DouShouQiLib
         {
             Identifiant = identifiant;
         }
-        
+
+        public override string ToString()
+        {          
+            return $"{Identifiant}";
+        }
     }
 }

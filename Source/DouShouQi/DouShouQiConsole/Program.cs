@@ -104,7 +104,7 @@ void affichePlateau(Case[,] echequier)
 
 void testPlateau2()
 {
-    Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi") );
+    Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi"));
 
     affichePlateau(game.Plateau.echequier);
     Console.Write(game.MovePiece(game.Plateau.echequier[2, 0], game.Plateau.echequier[3, 0]));
@@ -116,9 +116,22 @@ void testPlateau2()
     //    Console.WriteLine("\n");
     //    Console.Write(game.Piece[i]);
     //}
-    
+    game.PlayerChanged += Game_OnPlayerChanged;
+    game.ChangePlayer();
+    game.ChangePlayer();
+    game.ChangePlayer();
+    game.ChangePlayer();
+    void Game_OnPlayerChanged(object sender, PlayerChangedEventArgs e)
+    {
+        Console.WriteLine("\n");
+        Console.Write("Au tour de : " + e.NouveauJoueur);
+    }
+
 
 }
+
+
+
 
 //testPlateau();
 testPlateau2();
