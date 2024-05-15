@@ -57,6 +57,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Resources\Images\capybara-mexican.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\capybara-mexican.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\capybara-mexican.jpg" />
+	  <None Remove="Resources\Images\elephantsouris.jpg" />
+	  <None Remove="Resources\Images\erwan.jpg" />
+	  <None Remove="Resources\Images\fond.png" />
+	  <None Remove="Resources\Images\iut.png" />
+	  <None Remove="Resources\Images\mae.jpg" />
+	  <None Remove="Resources\Images\uca.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Resources\Images\capybara-mexican.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\dark_mode_icon.png" />
 	  <None Remove="Resources\Images\light_mode_icon.png" />
 	  <None Remove="Resources\Images\music_off_icon.png" />
@@ -65,10 +87,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
+
 
 	<ItemGroup>
 	  <Compile Update="Views\ButtonHomePage.xaml.cs">
@@ -90,6 +113,39 @@
 
 	<ItemGroup>
 	  <Folder Include="Pages\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="Pages\CreditsPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\ProfilCredit.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\ReturnButtonView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\ScoreBoardPage.xaml.cs">
+	    <DependentUpon>ScoreBoardPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\VictoireScoreBoardView.xaml.cs">
+	    <DependentUpon>VictoireScoreBoardView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\ScoreBoardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\JoueurScoreBoardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\VictoireScoreBoardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

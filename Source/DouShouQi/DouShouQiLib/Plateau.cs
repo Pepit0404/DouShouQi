@@ -25,7 +25,7 @@ namespace DouShouQiLib
             }
         }
 
-        public Case[,] echequier;
+        public Case[,] echequier { get; private set; }
 
         public IRegles regle { get; init; }
 

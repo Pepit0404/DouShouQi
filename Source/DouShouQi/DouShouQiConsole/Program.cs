@@ -30,6 +30,7 @@ using System.Text;
 //}
 //void testPlateau()
 //{
+//    Joueur joueur1("toto");
 //    Piece toto = new Piece(PieceType.chien);
 //    Case tutu = new Case(0, 0, CaseType.Eau);
 
@@ -63,11 +64,9 @@ using System.Text;
 //    Console.WriteLine(plateau);
 //}
 
-void testPlateau2()
+void affichePlateau(Case[,] echequier)
 {
-    IRegles regle = new regleOrigin();
-    Plateau plateau = regle.initPlateau();
-    Case[,] echequier = plateau.echequier;
+    Console.WriteLine("\n");
     for (int i = 0; i < echequier.GetLength(0); i++)
     {
         for (int j = 0; j < echequier.GetLength(1); j++)
@@ -90,7 +89,7 @@ void testPlateau2()
             }
             if (echequier[i, j].Onthis == null)
             {
-                Console.Write("       ");
+                Console.Write("    ");
             }
             else
             {
@@ -100,16 +99,41 @@ void testPlateau2()
             Console.Write(" | ");
         }
         Console.Write("\n--------------------------------------------------------------\n");
-       
-    } 
-    bool a =regle.PouvoirBouger(plateau.echequier[2, 0], plateau.echequier[4,0], plateau);
-    Console.Write(a);
-    bool b = regle.PouvoirBouger(plateau.echequier[3, 0], plateau.echequier[3, 3], plateau);
-    Console.Write(b);
-    bool d= regle.PouvoirBouger(plateau.echequier[2, 0], plateau.echequier[3, 0], plateau);
-    Console.Write(d);
-}
 
-//testPlateau();
-testPlateau2();
-//testRegle();
+    }
+
+    void testPlateau2()
+    {
+        Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi"));
+        
+        affichePlateau(game.Plateau.echequier);
+        Console.Write(game.MovePiece(game.Plateau.echequier[2, 0], game.Plateau.echequier[3, 0],game.Plateau));
+        Console.Write(game.MovePiece(game.Plateau.echequier[2, 2], game.Plateau.echequier[3, 2],game.Plateau));
+        affichePlateau(game.Plateau.echequier);
+        //Console.Write(game.Piece[0]);
+        //for(int i=0; i < game.Piece.GetLength(0); i++)
+        //{
+        //    Console.WriteLine("\n");
+        //    Console.Write(game.Piece[i]);
+        //}
+        game.PlayerChanged += Game_OnPlayerChanged;
+        game.ChangePlayer();
+        game.ChangePlayer();
+        game.ChangePlayer();
+        game.ChangePlayer();
+        void Game_OnPlayerChanged(object sender, PlayerChangedEventArgs e)
+        {
+            Console.WriteLine("\n");
+            Console.Write("Au tour de : " + e.NouveauJoueur);
+        }
+
+    }
+
+
+
+
+
+    //testPlateau();
+    testPlateau2();
+    //testRegle();
+}

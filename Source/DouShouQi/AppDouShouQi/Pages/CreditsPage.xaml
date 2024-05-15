@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDouShouQi.Pages.CreditsPage"
+             Title="Page des crédits"
+             xmlns:Views="clr-namespace:AppDouShouQi.Views">
+                
+    <ScrollView>
+    <VerticalStackLayout>
+            <Grid ColumnDefinitions="auto,*"  >
+                <Views:ReturnButtonView />
+                <Label Text="Crédits"
+                       FontSize="40"
+                       Grid.Column="1"
+                       HorizontalOptions="Center"
+                       Padding="0,0,80,0"/>
+            </Grid>
+            <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="Center">
+                <HorizontalStackLayout>
+                    <Frame Margin="10"
+                       BorderColor="Black"
+                       CornerRadius="90"
+                       IsClippedToBounds="True"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+
+                        <Image Source="erwan.jpg"
+                             Aspect="AspectFill"
+                             Margin="-20"
+                             HeightRequest="80"
+                             WidthRequest="80" />  
+                    </Frame>
+
+                    <Label Grid.Column="1" 
+                           Text="Erwan MECHOUD"  
+                           FontSize="25" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center" 
+                           Margin="20" />
+                    <Label Grid.Column="2" Text="Le roux et la mascotte du groupe" 
+                           FontSize="15" VerticalOptions="Center" 
+                           HorizontalOptions="Center" 
+                           TextColor="Gray" />
+
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Frame Margin="10"
+                           BorderColor="Black"
+                           CornerRadius="90"
+                           IsClippedToBounds="True"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+
+                        <Image Source="pinto.png"
+                             Aspect="AspectFill"
+                             Margin="-20"
+                             HeightRequest="80"
+                             WidthRequest="80" />   
+                    </Frame>    
+                    <Label  Text="Samuel PINTO" 
+                            FontSize="25" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            Margin="20"/>
+                    <Label  Text="Rale beaucoup et est très têtu"  
+                            FontSize="15" VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            TextColor="Gray"/>
+
+                </HorizontalStackLayout>
+                <Views:ProfilCredit />
+            </VerticalStackLayout>
+            <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="End" >
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End" >
+                    <Image Source="iut.png"
+                    Aspect="AspectFill"
+                    HeightRequest="120" />
+                    <Image Grid.Column="1" 
+                        Source="uca.png" 
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" 
+                        HeightRequest="80" />
+                </HorizontalStackLayout>
+                <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." FontSize="10"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
