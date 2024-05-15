@@ -1,0 +1,27 @@
+kind: pipeline
+type: docker
+name: myFirstPipeline
+
+trigger:
+    branch:
+        include:
+            - master
+            - DouShouQiLib
+    event:
+        - push
+
+steps:
+    - name: build
+      image: mcr.microsoft.com/dotnet/sdk:8.0
+      commands:
+        - cd Source
+        - dotnet restore DouShouQi_Fit.sln
+        - dotnet build DouShouQi_Fit.sln -c Release --no-restore
+        - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release 
+    - name: test
+      image: mcr.microsoft.com/dotnet/sdk:7.0
+      commands:
+        - cd Source
+        - dotnet restore DouShouQi_Fit.sln
+        - dotnet test DouShouQi_Fit.sln --no-restore
+      depends_on: [build]
