@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DouShouQiLib;
+using System.Drawing;
 using System.Text;
 
 
@@ -15,29 +16,8 @@ using System.Text;
 //    if (plt.regle is regleVariente) Console.WriteLine("ok");
 //    else Console.WriteLine("pas bon");
 
-    Console.WriteLine(nregles.Manger(elephant.Type, souris.Type)); // oui
-    Console.WriteLine(nregles.Manger(souris.Type, elephant.Type)); // oui
-    Console.WriteLine(nregles.Manger(elephant.Type, chien.Type)); // oui
-    Console.WriteLine(nregles.Manger(souris.Type, chien.Type)); // non
-    Console.WriteLine(nregles.Manger(chien.Type, souris.Type)); // oui
-}
-void testReglesBouger()
-{
-    Piece souris = new Piece(PieceType.souris);
-    Piece elephant = new Piece(PieceType.elephant);
-    Piece chien = new Piece(PieceType.chien);
-    Case eau = new Case(0, 0, CaseType.Eau);
-    Case eauvide = new Case(0, 0, CaseType.Eau);
-    Case terre = new Case(0, 0, CaseType.Terre);
-    Case terrevide = new Case(0, 0, CaseType.Terre);
-    Case terre2 = new Case(0, 0, CaseType.Terre);
-    Case terre3 = new Case(0, 0, CaseType.Terre);
-    Case eau2 = new Case(0, 0, CaseType.Eau);
-    eau.Onthis = souris;
-    terre.Onthis = elephant;
-    terre2.Onthis = chien;
-    terre3.Onthis = souris;
-    eau2.Onthis = chien;
+//    if (plt.regle is regleOrigin) Console.WriteLine("ok");
+//    else Console.WriteLine("pas bon");
 
 //    try
 //    {
@@ -120,7 +100,14 @@ void testPlateau2()
             Console.Write(" | ");
         }
         Console.Write("\n--------------------------------------------------------------\n");
-    }
+       
+    } 
+    bool a =regle.PouvoirBouger(plateau.echequier[2, 0], plateau.echequier[4,0], plateau);
+    Console.Write(a);
+    bool b = regle.PouvoirBouger(plateau.echequier[3, 0], plateau.echequier[3, 3], plateau);
+    Console.Write(b);
+    bool d= regle.PouvoirBouger(plateau.echequier[2, 0], plateau.echequier[3, 0], plateau);
+    Console.Write(d);
 }
 
 //testPlateau();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace DouShouQiLib
 
         Plateau initPlateau();
         bool Manger(PieceType meurtrier, PieceType victime);
-        bool PouvoirBouger(Case caseActu, Case caseAdja);
+        bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau);
 
     }
 
@@ -82,7 +83,7 @@ namespace DouShouQiLib
             }
             return false;
         }
-        public bool PouvoirBouger(Case caseActu, Case caseAdja)
+        public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
             if (!caseActu.Onthis.HasValue)
             {
@@ -103,7 +104,38 @@ namespace DouShouQiLib
                 }
 
             }
+            if (caseAdja.X != caseActu.X - 1 && caseAdja.Y != caseActu.Y + 1 && caseAdja.X != caseActu.X + 1 && caseAdja.Y != caseActu.Y - 1)
+            {
+                if ((caseActu.Onthis.Value.Type==PieceType.tigre || caseActu.Onthis.Value.Type == PieceType.lion))
+                {
+                    if (caseAdja.X==caseActu.X)
+                    {
+                        int diff = caseAdja.X - caseActu.X;
+                        diff = Math.Abs(diff);
+                        for (int i = caseActu.X; i < caseAdja.X; i+=diff) 
+                        {
+                            if(plateau.echequier[i, caseAdja.Y].Type != CaseType.Eau)
+                                return false;
+                        }
+                        return true;
+                    }
+                    if (caseAdja.Y == caseActu.Y)
+                    {
+                        int diff = caseAdja.Y - caseActu.Y;
+                        diff = Math.Abs(diff);
+                        for (int i = caseActu.Y; i < caseAdja.Y; i += diff)
+                        {
+                            if (plateau.echequier[caseAdja.X, i].Type != CaseType.Eau)
+                                return false;
+                        }
+                        return true;
+                    }
+
+                }
+                return false;
+            }
             return true;
+            
         }
 
 
@@ -166,7 +198,7 @@ namespace DouShouQiLib
             }
             return false;
         }
-        public bool PouvoirBouger(Case caseActu, Case caseAdja)
+        public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
             if (!caseActu.Onthis.HasValue)
             {
