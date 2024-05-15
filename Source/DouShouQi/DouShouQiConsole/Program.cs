@@ -1,9 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DouShouQiLib;
-using System.Linq.Expressions;
-using System.Text;
-
-
 
 //void testRegle()
 //{
@@ -103,11 +99,11 @@ void affichePlateau(Case[,] echequier)
                 }
                 if (echequier[i, j].Onthis.Value.Proprietaire == j1)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.Black;
                 }
                 Console.Write((echequier[i, j].Onthis)?.ToString().PadLeft(4).PadRight(8));
                 Console.ForegroundColor = ConsoleColor.White;
@@ -118,7 +114,6 @@ void affichePlateau(Case[,] echequier)
         Console.Write($"{i}");
         Console.Write("\n    ------------------------------------------------------------------------------\n");
     }
-    Console.WriteLine("\n");
 }
 
 int askPos(int max)
@@ -143,39 +138,6 @@ int askPos(int max)
         Console.ForegroundColor= ConsoleColor.White;
         return -1;
     }
-}
-
-void testPlateau2()
-{
-    Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi") );
-
-    affichePlateau(game.Plateau.echequier);
-    Console.Write(game.MovePiece(game.Plateau.echequier[2, 0], game.Plateau.echequier[3, 0]));
-    Console.Write(game.MovePiece(game.Plateau.echequier[2, 2], game.Plateau.echequier[3, 2]));
-    affichePlateau(game.Plateau.echequier);
-    //Console.Write(game.Piece[0]);
-    //for(int i=0; i < game.Piece.GetLength(0); i++)
-    //{
-    //    Console.WriteLine("\n");
-    //    Console.Write(game.Piece[i]);
-    //}
-    
-
-}
-
-void testEvent()
-{
-    Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi"));
-
-    game.BoardChanged += Game_OnBoardChanged;
-
-    void Game_OnBoardChanged(object? sender, BoardChangedEventArgs e)
-    {
-        Console.WriteLine($"Part de {e.Depart} pour arrivée à {e.Arrivee}");
-        affichePlateau(e.NewBoard.echequier);
-    }
-
-    game.MovePiece(game.Plateau.echequier[2, 0], game.Plateau.echequier[3, 0]);
 }
 
 void testBoucle()
@@ -207,13 +169,29 @@ void testBoucle()
         Console.ForegroundColor = ConsoleColor.White;
         Console.Write($" à ");
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"{e.Arrivee.Onthis.Value.Proprietaire}\n");
+        Console.WriteLine($"{e.Arrivee}\n");
         Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    void Game_OnPlayerChanged(object? sender, PlayerChangedEventArgs e)
+    {
+        Console.WriteLine($"\nJoueur {e.NouveauJoueur} à votre tour !\n");
+    }
+
+    void Game_OnGameOver(object? sender, GameOverEventArgs e)
+    {
+        if (e.End)
+        {
+            Console.Clear();
+            Console.WriteLine($"Félicitation {e.Winer} tu as gagner !");
+        }
     }
 
     Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi"));
     game.BoardChanged += Game_OnBoardChanged;
     game.PieceMoved += Game_OnPieceMoved;
+    game.PlayerChanged += Game_OnPlayerChanged;
+    game.GameOver += Game_OnGameOver;
 
     affichePlateau(game.Plateau.echequier);
     while (!game.isFini())
@@ -225,7 +203,7 @@ void testBoucle()
         int aCollone;
         do
         {
-            Console.WriteLine("Qu'elle piece voulez-vous prendre ?");
+            Console.WriteLine("Qu'elle piece voulez-vous bouger ?");
             do
             {
                 Console.Write("  Ligne: ");
@@ -266,13 +244,12 @@ void testBoucle()
                     aCollone = askPos(6);
                 }
             } while (aLigne == -1 || aCollone == -1);
-        } while (!game.MovePiece(game.Plateau[dLigne, dCollone], game.Plateau[aLigne, aCollone]));
+        } while (!game.MovePiece(game.Plateau[dLigne, dCollone], game.Plateau[aLigne, aCollone], game.Plateau));
         
     }
 }
 
+
 //testPlateau();
-//testPlateau2();
-//testEvent();
 testBoucle();
-//testRegle();
+
