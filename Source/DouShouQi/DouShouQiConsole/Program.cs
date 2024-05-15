@@ -110,6 +110,12 @@ void testPlateau2()
     Console.Write(game.MovePiece(game.Plateau.echequier[2, 0], game.Plateau.echequier[3, 0]));
     Console.Write(game.MovePiece(game.Plateau.echequier[2, 2], game.Plateau.echequier[3, 2]));
     affichePlateau(game.Plateau.echequier);
+    //Console.Write(game.Piece[0]);
+    //for(int i=0; i < game.Piece.GetLength(0); i++)
+    //{
+    //    Console.WriteLine("\n");
+    //    Console.Write(game.Piece[i]);
+    //}
     
 
 }

@@ -52,6 +52,5 @@ namespace DouShouQiLib
                 JoueurCourant = Joueur2;
             }
         }
-
     }
 }

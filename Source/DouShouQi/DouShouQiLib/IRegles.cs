@@ -9,7 +9,7 @@ namespace DouShouQiLib
     public interface IRegles
     {
 
-        Game initPlateau(Game game);
+        void initPlateau(Game game);
         bool Manger(PieceType meurtrier, PieceType victime);
         bool PouvoirBouger(Case caseActu, Case caseAdja);
 
@@ -41,7 +41,6 @@ namespace DouShouQiLib
         }
         public void initPlateau(Game game)
         {
-            game.Plateau = new Plateau();
             for (int i = 0; i < game.Plateau.echequier.GetLength(0); i++)
             {
                 for (int j = 0; j < game.Plateau.echequier.GetLength(1); j++)
@@ -135,9 +134,8 @@ namespace DouShouQiLib
             return game;
         }
 
-        public Game initPlateau(Game game)
+        public void initPlateau(Game game)
         {
-            Plateau plateau = new Plateau();
             for (int i = 0; i < game.Plateau.echequier.GetLength(0); i++)
             {
                 for (int j = 0; j < game.Plateau.echequier.GetLength(1); j++)
@@ -161,7 +159,6 @@ namespace DouShouQiLib
                 }
             }
             game = PlacementAnimaux(game);
-            return game;
         }
         public bool Manger(PieceType meurtrier, PieceType victime)
         {

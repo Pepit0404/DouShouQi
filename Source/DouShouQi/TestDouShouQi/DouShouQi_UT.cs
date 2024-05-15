@@ -8,9 +8,10 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesMange_UT()
         {
-            Piece souris = new Piece(PieceType.souris);
-            Piece elephant = new Piece(PieceType.elephant);
-            Piece chien = new Piece(PieceType.chien);
+            Joueur j1 = new Joueur("toto");
+            Piece souris = new Piece(PieceType.souris, j1);
+            Piece elephant = new Piece(PieceType.elephant , j1);
+            Piece chien = new Piece(PieceType.chien , j1);
 
             IRegles regles = new regleOrigin();
 
@@ -34,9 +35,10 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesPouvoirBouger_UT()
         {
-            Piece souris = new Piece(PieceType.souris);
-            Piece elephant = new Piece(PieceType.elephant);
-            Piece chien = new Piece(PieceType.chien);
+            Joueur j1 = new Joueur("toto");
+            Piece souris = new Piece(PieceType.souris, j1);
+            Piece elephant = new Piece(PieceType.elephant , j1);
+            Piece chien = new Piece(PieceType.chien, j1);
             Case eau = new Case(0, 0, CaseType.Eau);
             Case eauvide = new Case(0, 0, CaseType.Eau);
             Case terre = new Case(0, 0, CaseType.Terre);
@@ -88,11 +90,13 @@ namespace TestDouShouQi
        
         public void MemePiece_UT(PieceType expectedPieceType, PieceType givenPieceType)
         {
-            Piece piece = new Piece(PieceType.chien);
+            Joueur j1 = new Joueur("toto");
+            Piece piece = new Piece(PieceType.chien, j1);
             Assert.Equal(expectedPieceType, givenPieceType);
         }
-        Piece souris = new Piece(PieceType.souris);
-        Piece elephant = new Piece(PieceType.elephant);
+        //Joueur j1 = new Joueur("toto");
+        //Piece souris = new Piece(PieceType.souris, j1);
+        //Piece elephant = new Piece(PieceType.elephant, j1);
        
     }
 
