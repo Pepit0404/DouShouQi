@@ -26,7 +26,7 @@ steps:
   - name: code-inspection
     image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet8
     secrets: [ SECRET_SONAR_LOGIN ]
-    settings:
+    environment:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
       sonar_token:
         from_secret: SECRET_SONAR_LOGIN
