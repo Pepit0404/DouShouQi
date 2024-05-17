@@ -1,27 +1,58 @@
 kind: pipeline
 type: docker
-name: myFirstPipeline
-
+name: DouShouQi
+ 
 trigger:
-    branch:
-        include:
-            - master
-            - DouShouQiLib
-    event:
-        - push
+  event:
+    - push
 
 steps:
-    - name: build
-      image: mcr.microsoft.com/dotnet/sdk:8.0
-      commands:
-        - cd Source
-        - dotnet restore DouShouQi_Fit.sln
-        - dotnet build DouShouQi_Fit.sln -c Release --no-restore
-        - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release 
-    - name: test
-      image: mcr.microsoft.com/dotnet/sdk:7.0
-      commands:
-        - cd Source
-        - dotnet restore DouShouQi_Fit.sln
-        - dotnet test DouShouQi_Fit.sln --no-restore
-      depends_on: [build]
+  - name: build
+    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet8
+    secrets: [SECRET_SONAR_LOGIN]
+    settings:
+      sonar_host: https://codefirst.iut.uca.fr/sonar/
+      sonar_token:
+        from_secret: SECRET_SONAR_LOGIN
+    commands:
+      - cd Source/DouShouQi
+      - dotnet restore DouShouQi_Fit.sln
+      - dotnet sonarscanner begin /k:DouShouQi /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.login=$${PLUGIN_SONAR_TOKEN}      
+      - dotnet build DouShouQi_Fit.sln -c Release --no-restore
+      - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
+      - dotnet sonarscanner end /d:sonar.login=$${PLUGIN_SONAR_TOKEN}    
+
+
+  - name: tests
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    commands:
+      - cd Source/DouShouQi
+      - dotnet restore DouShouQi_Fit.sln
+      - dotnet test DouShouQi_Fit.sln --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
+    depends_on: [build]
+
+  - name: code-inspection
+    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet8
+    secrets: [ SECRET_SONAR_LOGIN ]
+    settings:
+      sonar_host: https://codefirst.iut.uca.fr/sonar/
+      sonar_token:
+        from_secret: SECRET_SONAR_LOGIN
+    commands:
+      - cd Source/DouShouQi
+      - dotnet restore DouShouQi_Fit.sln
+      - dotnet sonarscanner begin /k:DouShouQi /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions="TestDouShouQi/**" /d:sonar.login=$${PLUGIN_SONAR_TOKEN} 
+      - dotnet build DouShouQi_Fit.sln -c Release --no-restore
+      - dotnet test DouShouQi_Fit.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
+      - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
+      - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
+      - dotnet sonarscanner end /d:sonar.login=$${PLUGIN_SONAR_TOKEN}
+
+  - name: generate-and-deploy-docs
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-docdeployer
+    failure: ignore
+    volumes:
+      - name: docs
+        path: /docs
+    commands:
+      - /entrypoint.sh
