@@ -25,6 +25,9 @@ namespace DouShouQiLib
         public event EventHandler<PlayerChangedEventArgs>? PlayerChanged;
         public event EventHandler<GameOverEventArgs>? GameOver;
         public event EventHandler<AppartientEventArgs>? LuiAppartient;
+        public event EventHandler<TalkToPlayerEventArgs>? TalkToPlayer;
+        public delegate Case[] AskMooveDelegate(int maxX, int maxY, Game game);
+        public event AskMooveDelegate AskMoove;
 
         protected virtual void OnAppartient(bool ok, Joueur proprietaire)
         {
@@ -53,6 +56,10 @@ namespace DouShouQiLib
                 return;
             }
             GameOver?.Invoke(this, new GameOverEventArgs(false, null, null));
+        }
+        protected virtual void OnTalkToPlayer(string message)
+        {
+            TalkToPlayer?.Invoke(this, new TalkToPlayerEventArgs(message));
         }
 
         public Game(IRegles regles, Joueur joueur1, Joueur joueur2)
@@ -127,7 +134,9 @@ namespace DouShouQiLib
             {
                 ChangePlayer();
 
-                Case[] coup = JoueurCourant.ChoisirCoup(this);
+                OnTalkToPlayer("Qu'elle piece bouger ?");
+
+                Case[] coup = AskMoove(this.Plateau.width, this.Plateau.height, this);
                 MovePiece(coup[0], coup[1], this.Plateau);
             }
         }
