@@ -10,14 +10,14 @@ namespace DouShouQiLib
 {
     public class Plateau
     {
-        private int height
+        public int height
         {
             get
             {
                 return echequier.GetLength(1);
             }
         }
-        private int width
+        public int width
         {
             get
             {

@@ -18,6 +18,10 @@
         {
             return $"{Type}";
         }
+
+        public static bool operator ==(Piece p1, Piece p2) => p1.Type == p2.Type && p1.Proprietaire == p2.Proprietaire;
+
+        public static bool operator !=(Piece p1, Piece p2) => !(p1 == p2);
     }
 
     public enum PieceType

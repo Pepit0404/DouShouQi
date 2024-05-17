@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DouShouQiLib;
+using static DouShouQiLib.Joueur;
 
 //void testRegle()
 //{
@@ -140,6 +141,24 @@ int askPos(int max)
     }
 }
 
+void testRandom()
+{
+    void Game_OnBoardChanged(object? sender, BoardChangedEventArgs e)
+    {
+        Console.Clear();
+        affichePlateau(e.NewBoard.echequier);
+    }
+
+    Game game = new Game(new regleOrigin(), new RandomJoueur("toto"), new RandomJoueur("titi"));
+    game.BoardChanged += Game_OnBoardChanged;
+
+    Case [] cout = game.JoueurCourant.ChoisirCoup(game);
+
+    game.MovePiece(cout[0], cout[1], game.Plateau);
+}
+
+// testRandom();
+
 void testBoucle()
 {
     void Game_OnBoardChanged(object? sender, BoardChangedEventArgs e)
@@ -196,7 +215,7 @@ void testBoucle()
         }
     }
 
-    Game game = new Game(new regleOrigin(), new Joueur("toto"), new Joueur("titi"));
+    Game game = new Game(new regleOrigin(), new HumainJoueur("toto"), new HumainJoueur("titi"));
     game.BoardChanged += Game_OnBoardChanged;
     game.PieceMoved += Game_OnPieceMoved;
     game.PlayerChanged += Game_OnPlayerChanged;
@@ -259,6 +278,72 @@ void testBoucle()
     }
 }
 
-//testPlateau();
-testBoucle();
+void testBoucle2()
+{
+    void Game_OnBoardChanged(object? sender, BoardChangedEventArgs e)
+    {
+        Console.Clear();
+        affichePlateau(e.NewBoard.echequier);
+    }
+    void Game_OnAppartient(object? sender, AppartientEventArgs e)
+    {
+        if (!e.Ok)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Veillez selectionnez une case avec une piece qui vous appartient, (celle ci appartient à {e.Proprietaire}) ");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+    }
 
+    void Game_OnPieceMoved(object? sender, PieceMovedEventArgs e)
+    {
+        if (!e.Ok)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"Impossible de bouger le pion de la case  à ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"{e.Depart}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($" à ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{e.Arrivee}\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            return;
+        }
+        Console.Write($"Piece {e.Arrivee.Onthis} bouger de ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"{e.Depart}");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($" à ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"{e.Arrivee}\n");
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    void Game_OnPlayerChanged(object? sender, PlayerChangedEventArgs e)
+    {
+        Console.WriteLine($"\nJoueur {e.NouveauJoueur} à votre tour !\n");
+    }
+
+    void Game_OnGameOver(object? sender, GameOverEventArgs e)
+    {
+        if (e.End)
+        {
+            Console.Clear();
+            Console.WriteLine($"Félicitation {e.Winer} tu as gagner !");
+        }
+    }
+
+    Game game = new Game(new regleOrigin(), new RandomJoueur("toto"), new RandomJoueur("titi"));
+    game.BoardChanged += Game_OnBoardChanged;
+    game.PieceMoved += Game_OnPieceMoved;
+    game.PlayerChanged += Game_OnPlayerChanged;
+    game.GameOver += Game_OnGameOver;
+    game.LuiAppartient += Game_OnAppartient;
+
+    game.Start();
+}
+
+//testPlateau();
+//testBoucle();
+testBoucle2();

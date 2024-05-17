@@ -1,6 +1,7 @@
 using DouShouQiLib;
 using System;
 using System.Text.RegularExpressions;
+using static DouShouQiLib.Joueur;
 
 namespace TestDouShouQi
 {
@@ -9,7 +10,7 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesMange_UT()
         {
-            Joueur j1 = new Joueur("toto");
+            Joueur j1 = new HumainJoueur("toto");
             Piece souris = new Piece(PieceType.souris, j1);
             Piece elephant = new Piece(PieceType.elephant , j1);
             Piece chien = new Piece(PieceType.chien , j1);
@@ -91,7 +92,7 @@ namespace TestDouShouQi
        
         public void MemePiece_UT(PieceType expectedPieceType, PieceType givenPieceType)
         {
-            Joueur j1 = new Joueur("toto");
+            Joueur j1 = new HumainJoueur("toto");
             Piece piece = new Piece(PieceType.chien, j1);
             Assert.Equal(expectedPieceType, givenPieceType);
         }
