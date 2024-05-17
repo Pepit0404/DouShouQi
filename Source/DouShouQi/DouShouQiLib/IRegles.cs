@@ -50,14 +50,14 @@ namespace DouShouQiLib
             game.Plateau.echequier[2, 6].Onthis = game.Liste_Piece_J1[7];
 
 
-            game.Plateau.echequier[7, 5].Onthis = game.Liste_Piece_J2[0];
-            game.Plateau.echequier[6, 6].Onthis = game.Liste_Piece_J2[1];
-            game.Plateau.echequier[6, 0].Onthis = game.Liste_Piece_J2[2];
+            game.Plateau.echequier[6, 6].Onthis = game.Liste_Piece_J2[0];
+            game.Plateau.echequier[7, 1].Onthis = game.Liste_Piece_J2[1];
+            game.Plateau.echequier[7, 5].Onthis = game.Liste_Piece_J2[2];
             game.Plateau.echequier[6, 2].Onthis = game.Liste_Piece_J2[3];
-            game.Plateau.echequier[7, 1].Onthis = game.Liste_Piece_J2[4];
-            game.Plateau.echequier[6, 4].Onthis = game.Liste_Piece_J2[5];
-            game.Plateau.echequier[8, 0].Onthis = game.Liste_Piece_J2[6];
-            game.Plateau.echequier[8, 6].Onthis = game.Liste_Piece_J2[7];
+            game.Plateau.echequier[6, 4].Onthis = game.Liste_Piece_J2[4];
+            game.Plateau.echequier[8, 0].Onthis = game.Liste_Piece_J2[5];
+            game.Plateau.echequier[8, 6].Onthis = game.Liste_Piece_J2[6];
+            game.Plateau.echequier[6, 0].Onthis = game.Liste_Piece_J2[7];
             return game;
         }
         public void initPlateau(Game game)
@@ -228,14 +228,14 @@ namespace DouShouQiLib
             game.Plateau.echequier[2, 6].Onthis = game.Liste_Piece_J1[7];
 
 
-            game.Plateau.echequier[7, 5].Onthis = game.Liste_Piece_J2[0];
-            game.Plateau.echequier[6, 6].Onthis = game.Liste_Piece_J2[1];
-            game.Plateau.echequier[6, 0].Onthis = game.Liste_Piece_J2[2];
+            game.Plateau.echequier[6, 7].Onthis = game.Liste_Piece_J2[0];
+            game.Plateau.echequier[7, 1].Onthis = game.Liste_Piece_J2[1];
+            game.Plateau.echequier[7, 6].Onthis = game.Liste_Piece_J2[2];
             game.Plateau.echequier[6, 2].Onthis = game.Liste_Piece_J2[3];
-            game.Plateau.echequier[7, 1].Onthis = game.Liste_Piece_J2[4];
-            game.Plateau.echequier[6, 4].Onthis = game.Liste_Piece_J2[5];
-            game.Plateau.echequier[8, 0].Onthis = game.Liste_Piece_J2[6];
-            game.Plateau.echequier[8, 6].Onthis = game.Liste_Piece_J2[7];
+            game.Plateau.echequier[6, 4].Onthis = game.Liste_Piece_J2[4];
+            game.Plateau.echequier[8, 0].Onthis = game.Liste_Piece_J2[5];
+            game.Plateau.echequier[8, 7].Onthis = game.Liste_Piece_J2[6];
+            game.Plateau.echequier[6, 0].Onthis = game.Liste_Piece_J2[7];
             return game;
         }
 
