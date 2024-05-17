@@ -27,8 +27,6 @@ namespace DouShouQiLib
 
         public Case[,] echequier { get; private set; }
 
-        public IRegles regle { get; init; }
-
 
         public Case this[int ligne, int collone]
         {
@@ -40,25 +38,11 @@ namespace DouShouQiLib
             }
         }
 
-        private IRegles SetRegles(int regle)
-        {
-            if (regle == 0)
-            {
-                return new regleOrigin();
-            }
-            if (regle == 1)
-            {
-                return new regleVariente();
-            }
-            throw new NumberRulesException($"La valeur {regle} n'existe pas");
-        }
-
-        public Plateau() : this(9,7,0)
+        public Plateau() : this(9,7)
         { }
 
-        public Plateau(int height, int width, int regle)
+        public Plateau(int height, int width)
         {
-            this.regle = SetRegles(regle);
             echequier = new Case[height, width];
         }
 
