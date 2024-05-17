@@ -21,23 +21,43 @@ namespace DouShouQiLib
     {
         private Game PlacementAnimaux(Game game)
         {
-            game.Plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris, game.Joueur1);
-            game.Plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant, game.Joueur1);
-            game.Plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien, game.Joueur1);
-            game.Plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre, game.Joueur1);
-            game.Plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion, game.Joueur1);
-            game.Plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat, game.Joueur1);
-            game.Plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard, game.Joueur1);
-            game.Plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup, game.Joueur1);
 
-            game.Plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien, game.Joueur2);
-            game.Plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris, game.Joueur2);
-            game.Plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant, game.Joueur2);
-            game.Plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup, game.Joueur2);
-            game.Plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat, game.Joueur2);
-            game.Plateau.echequier[6, 4].Onthis = new Piece(PieceType.leopard, game.Joueur2);
-            game.Plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre, game.Joueur2);
-            game.Plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion, game.Joueur2);
+            game.Liste_Piece_J1.Add(new Piece(PieceType.souris, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.chat, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.chien, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.loup, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.leopard, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.tigre, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.lion, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.elephant, game.Joueur1));
+
+            game.Liste_Piece_J2.Add(new Piece(PieceType.souris, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.chat, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.chien, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.loup, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.leopard, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.tigre, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.lion, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.elephant, game.Joueur2));
+
+            game.Plateau.echequier[2, 0].Onthis = game.Liste_Piece_J1[0];
+            game.Plateau.echequier[1, 5].Onthis = game.Liste_Piece_J1[1];
+            game.Plateau.echequier[1, 1].Onthis = game.Liste_Piece_J1[2];
+            game.Plateau.echequier[2, 4].Onthis = game.Liste_Piece_J1[3];
+            game.Plateau.echequier[2, 2].Onthis = game.Liste_Piece_J1[4];
+            game.Plateau.echequier[0, 6].Onthis = game.Liste_Piece_J1[5];
+            game.Plateau.echequier[0, 0].Onthis = game.Liste_Piece_J1[6];
+            game.Plateau.echequier[2, 6].Onthis = game.Liste_Piece_J1[7];
+
+
+            game.Plateau.echequier[7, 5].Onthis = game.Liste_Piece_J2[0];
+            game.Plateau.echequier[6, 6].Onthis = game.Liste_Piece_J2[1];
+            game.Plateau.echequier[6, 0].Onthis = game.Liste_Piece_J2[2];
+            game.Plateau.echequier[6, 2].Onthis = game.Liste_Piece_J2[3];
+            game.Plateau.echequier[7, 1].Onthis = game.Liste_Piece_J2[4];
+            game.Plateau.echequier[6, 4].Onthis = game.Liste_Piece_J2[5];
+            game.Plateau.echequier[8, 0].Onthis = game.Liste_Piece_J2[6];
+            game.Plateau.echequier[8, 6].Onthis = game.Liste_Piece_J2[7];
             return game;
         }
         public void initPlateau(Game game)
@@ -158,6 +178,11 @@ namespace DouShouQiLib
                 }
             }
 
+            if(game.Liste_Piece_J1.Count == 0 || game.Liste_Piece_J2.Count== 0)
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -167,23 +192,43 @@ namespace DouShouQiLib
     {
         private Game PlacementAnimaux(Game game)
         {
-            game.Plateau.echequier[2, 0].Onthis = new Piece(PieceType.souris, game.Joueur1);
-            game.Plateau.echequier[2, 6].Onthis = new Piece(PieceType.elephant, game.Joueur1);
-            game.Plateau.echequier[1, 1].Onthis = new Piece(PieceType.chien, game.Joueur1);
-            game.Plateau.echequier[0, 6].Onthis = new Piece(PieceType.tigre, game.Joueur1);
-            game.Plateau.echequier[0, 0].Onthis = new Piece(PieceType.lion, game.Joueur1);
-            game.Plateau.echequier[1, 5].Onthis = new Piece(PieceType.chat, game.Joueur1);
-            game.Plateau.echequier[2, 2].Onthis = new Piece(PieceType.leopard, game.Joueur1);
-            game.Plateau.echequier[2, 4].Onthis = new Piece(PieceType.loup, game.Joueur1);
 
-            game.Plateau.echequier[7, 5].Onthis = new Piece(PieceType.chien, game.Joueur2);
-            game.Plateau.echequier[6, 6].Onthis = new Piece(PieceType.souris, game.Joueur2);
-            game.Plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant, game.Joueur2);
-            game.Plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup, game.Joueur2);
-            game.Plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat, game.Joueur2);
-            game.Plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard, game.Joueur2);
-            game.Plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre, game.Joueur2);
-            game.Plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion, game.Joueur2);
+            game.Liste_Piece_J1.Add(new Piece(PieceType.souris, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.chat, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.chien, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.loup, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.leopard, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.tigre, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.lion, game.Joueur1));
+            game.Liste_Piece_J1.Add(new Piece(PieceType.elephant, game.Joueur1));
+
+            game.Liste_Piece_J2.Add(new Piece(PieceType.souris, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.chat, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.chien, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.loup, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.leopard, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.tigre, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.lion, game.Joueur2));
+            game.Liste_Piece_J2.Add(new Piece(PieceType.elephant, game.Joueur2));
+
+            game.Plateau.echequier[2, 0].Onthis = game.Liste_Piece_J1[0];
+            game.Plateau.echequier[1, 5].Onthis = game.Liste_Piece_J1[1];
+            game.Plateau.echequier[1, 1].Onthis = game.Liste_Piece_J1[2];
+            game.Plateau.echequier[2, 4].Onthis = game.Liste_Piece_J1[3];
+            game.Plateau.echequier[2, 2].Onthis = game.Liste_Piece_J1[4];
+            game.Plateau.echequier[0, 6].Onthis = game.Liste_Piece_J1[5];
+            game.Plateau.echequier[0, 0].Onthis = game.Liste_Piece_J1[6];
+            game.Plateau.echequier[2, 6].Onthis = game.Liste_Piece_J1[7];
+
+
+            game.Plateau.echequier[7, 5].Onthis = game.Liste_Piece_J2[0];
+            game.Plateau.echequier[6, 6].Onthis = game.Liste_Piece_J2[1];
+            game.Plateau.echequier[6, 0].Onthis = game.Liste_Piece_J2[2];
+            game.Plateau.echequier[6, 2].Onthis = game.Liste_Piece_J2[3];
+            game.Plateau.echequier[7, 1].Onthis = game.Liste_Piece_J2[4];
+            game.Plateau.echequier[6, 4].Onthis = game.Liste_Piece_J2[5];
+            game.Plateau.echequier[8, 0].Onthis = game.Liste_Piece_J2[6];
+            game.Plateau.echequier[8, 6].Onthis = game.Liste_Piece_J2[7];
             return game;
         }
 
@@ -256,26 +301,32 @@ namespace DouShouQiLib
 
         public bool EstFini(Game game)
         {
-            Joueur? joueur = game.Plateau.echequier[0, 3].Onthis.Value.Proprietaire;
-            if (joueur != null)
+            if (game.Plateau.echequier[0, 3].Onthis.HasValue)
             {
+                Joueur joueur = game.Plateau.echequier[0, 3].Onthis.Value.Proprietaire;
                 if (joueur == game.Joueur2)
                 {
                     return true;
                 }
             }
 
-            joueur = game.Plateau.echequier[8, 3].Onthis.Value.Proprietaire;
-            if (joueur != null)
+            if (game.Plateau.echequier[8, 3].Onthis.HasValue)
             {
+                Joueur joueur = game.Plateau.echequier[8, 3].Onthis.Value.Proprietaire;
                 if (joueur == game.Joueur1)
                 {
                     return true;
                 }
             }
 
+            if (game.Liste_Piece_J1.Count == 0 || game.Liste_Piece_J2.Count == 0)
+            {
+                return true;
+            }
+
             return false;
         }
+
     }
 }
 

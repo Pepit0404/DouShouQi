@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,9 @@ namespace DouShouQiLib
 
         public Joueur JoueurCourant { get; private set; }
 
-        public Piece[] Piece { get; private set; }
+        public List<Piece> Liste_Piece_J1 { get; private set; }
+
+        public List<Piece> Liste_Piece_J2 { get; private set; }
 
         public event EventHandler<BoardChangedEventArgs>? BoardChanged;
         public event EventHandler<OnPieceMovedEventArgs>? PieceMoved;
@@ -59,6 +62,29 @@ namespace DouShouQiLib
             Joueur1 = joueur1;
             Joueur2 = joueur2;
             JoueurCourant = Joueur1;
+
+            Liste_Piece_J1 = new List<Piece>();
+            Liste_Piece_J2 = new List<Piece>();
+
+
+            //Liste_Piece_J1[0] = new Piece(PieceType.souris, Joueur1);
+            //Liste_Piece_J1[1] = new Piece(PieceType.chat, Joueur1);
+            //Liste_Piece_J1[2] = new Piece(PieceType.chien, Joueur1);
+            //Liste_Piece_J1[3] = new Piece(PieceType.loup, Joueur1);
+            //Liste_Piece_J1[4] = new Piece(PieceType.leopard, Joueur1);
+            //Liste_Piece_J1[5] = new Piece(PieceType.tigre, Joueur1);
+            //Liste_Piece_J1[6] = new Piece(PieceType.lion, Joueur1);
+            //Liste_Piece_J1[7] = new Piece(PieceType.elephant, Joueur1);
+
+            //Liste_Piece_J2[0] = new Piece(PieceType.souris, Joueur2);
+            //Liste_Piece_J2[1] = new Piece(PieceType.chat, Joueur2);
+            //Liste_Piece_J2[2] = new Piece(PieceType.chien, Joueur2);
+            //Liste_Piece_J2[3] = new Piece(PieceType.loup, Joueur2);
+            //Liste_Piece_J2[4] = new Piece(PieceType.leopard, Joueur2);
+            //Liste_Piece_J2[5] = new Piece(PieceType.tigre, Joueur2);
+            //Liste_Piece_J2[6] = new Piece(PieceType.lion, Joueur2);
+            //Liste_Piece_J2[7] = new Piece(PieceType.elephant, Joueur2);
+
             Regle.initPlateau(this);
         }
 
@@ -68,6 +94,11 @@ namespace DouShouQiLib
             {
                 OnPieceMoved(false, caseD, caseA);
                 return false;
+            }
+            if (caseA.Onthis.HasValue)
+            {
+                Liste_Piece_J1.Remove(caseA.Onthis.Value);
+                Liste_Piece_J2.Remove(caseA.Onthis.Value);
             }
             caseA.Onthis = caseD.Onthis;
             caseD.Onthis = null;

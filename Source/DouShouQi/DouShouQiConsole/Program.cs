@@ -249,7 +249,6 @@ void testBoucle()
     }
 }
 
-
 //testPlateau();
 testBoucle();
 
