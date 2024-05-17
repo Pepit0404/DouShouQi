@@ -31,7 +31,7 @@ namespace DouShouQiLib
             }
             else
             {
-                return $"[{X},{Y}];{Type};     ";
+                return $"[{X},{Y}];{Type}";
             }
             
         }

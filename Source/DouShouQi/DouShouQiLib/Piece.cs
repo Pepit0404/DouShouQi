@@ -11,7 +11,7 @@
         public Piece(PieceType type, Joueur proprietaire)
         {
             Type = type;
-            Proprietaire = proprietaire;
+            this.Proprietaire = proprietaire;
         }
 
         public override string ToString()

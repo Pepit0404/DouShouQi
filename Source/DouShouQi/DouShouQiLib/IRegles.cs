@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +12,9 @@ namespace DouShouQiLib
 
         void initPlateau(Game game);
         bool Manger(PieceType meurtrier, PieceType victime);
-        bool PouvoirBouger(Case caseActu, Case caseAdja);
+        bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau);
 
-
+        bool EstFini(Game game);
     }
 
     public class regleOrigin : IRegles
@@ -34,7 +35,7 @@ namespace DouShouQiLib
             game.Plateau.echequier[6, 0].Onthis = new Piece(PieceType.elephant, game.Joueur2);
             game.Plateau.echequier[6, 2].Onthis = new Piece(PieceType.loup, game.Joueur2);
             game.Plateau.echequier[7, 1].Onthis = new Piece(PieceType.chat, game.Joueur2);
-            game.Plateau.echequier[6, 5].Onthis = new Piece(PieceType.leopard, game.Joueur2);
+            game.Plateau.echequier[6, 4].Onthis = new Piece(PieceType.leopard, game.Joueur2);
             game.Plateau.echequier[8, 0].Onthis = new Piece(PieceType.tigre, game.Joueur2);
             game.Plateau.echequier[8, 6].Onthis = new Piece(PieceType.lion, game.Joueur2);
             return game;
@@ -82,7 +83,7 @@ namespace DouShouQiLib
             }
             return false;
         }
-        public bool PouvoirBouger(Case caseActu, Case caseAdja)
+        public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
             if (!caseActu.Onthis.HasValue)
             {
@@ -102,11 +103,63 @@ namespace DouShouQiLib
                     return false;
                 }
 
+            }
+            if (caseAdja.X != caseActu.X - 1 && caseAdja.Y != caseActu.Y + 1 && caseAdja.X != caseActu.X + 1 && caseAdja.Y != caseActu.Y - 1)
+            {
+                if ((caseActu.Onthis.Value.Type==PieceType.tigre || caseActu.Onthis.Value.Type == PieceType.lion))
+                {
+                    if (caseAdja.X==caseActu.X)
+                    {
+                        int diff = caseAdja.X - caseActu.X;
+                        diff = Math.Abs(diff);
+                        for (int i = caseActu.X; i < caseAdja.X; i+=diff) 
+                        {
+                            if(plateau.echequier[i, caseAdja.Y].Type != CaseType.Eau)
+                                return false;
+                        }
+                        return true;
+                    }
+                    if (caseAdja.Y == caseActu.Y)
+                    {
+                        int diff = caseAdja.Y - caseActu.Y;
+                        diff = Math.Abs(diff);
+                        for (int i = caseActu.Y; i < caseAdja.Y; i += diff)
+                        {
+                            if (plateau.echequier[caseAdja.X, i].Type != CaseType.Eau)
+                                return false;
+                        }
+                        return true;
+                    }
 
+                }
+                return false;
             }
             return true;
+            
         }
 
+        public bool EstFini(Game game)
+        {
+            if (game.Plateau.echequier[0, 3].Onthis.HasValue)
+            {
+                Joueur joueur = game.Plateau.echequier[0, 3].Onthis.Value.Proprietaire;
+                if (joueur == game.Joueur2)
+                {
+                    return true;
+                }
+            }
+
+            if (game.Plateau.echequier[8, 3].Onthis.HasValue)
+            {
+                Joueur joueur = game.Plateau.echequier[8, 3].Onthis.Value.Proprietaire;
+                if (joueur == game.Joueur1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
     }
 
@@ -172,7 +225,7 @@ namespace DouShouQiLib
             }
             return false;
         }
-        public bool PouvoirBouger(Case caseActu, Case caseAdja)
+        public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
             if (!caseActu.Onthis.HasValue)
             {
@@ -199,6 +252,29 @@ namespace DouShouQiLib
 
             }
             return true;
+        }
+
+        public bool EstFini(Game game)
+        {
+            Joueur? joueur = game.Plateau.echequier[0, 3].Onthis.Value.Proprietaire;
+            if (joueur != null)
+            {
+                if (joueur == game.Joueur2)
+                {
+                    return true;
+                }
+            }
+
+            joueur = game.Plateau.echequier[8, 3].Onthis.Value.Proprietaire;
+            if (joueur != null)
+            {
+                if (joueur == game.Joueur1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
