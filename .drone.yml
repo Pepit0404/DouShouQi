@@ -35,7 +35,7 @@ steps:
     commands:
       - cd Source/DouShouQi/
       - dotnet restore DouShouQi_Fit.sln
-      - dotnet sonarscanner begin /k:$${project_key} /d:sonar.host.url=$${sonnar_host} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions=$${coverage_exclusions} /d:sonar.login=$${sonar_token} 
+      - dotnet sonarscanner begin /k:$${project_key} /d:sonar.host.url=$${sonar_host} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions=$${coverage_exclusions} /d:sonar.login=$${sonar_token} 
       - dotnet build DouShouQi_Fit.sln -c Release --no-restore
       - dotnet test DouShouQi_Fit.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
       - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
