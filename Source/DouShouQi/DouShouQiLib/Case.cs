@@ -45,14 +45,4 @@ namespace DouShouQiLib
         Piege,
         Taniere
     }
-
-    public enum Direction
-    {
-        Unknown,
-        Up,
-        Down,
-        Left,
-        Right,
-
-    }
 }
