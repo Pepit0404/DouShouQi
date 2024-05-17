@@ -8,45 +8,39 @@ trigger:
 
 steps:
   - name: build
-    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet8
-    secrets: [SECRET_SONAR_LOGIN]
-    settings:
-      sonar_host: https://codefirst.iut.uca.fr/sonar/
-      sonar_token:
-        from_secret: SECRET_SONAR_LOGIN
-    commands:
-      - cd Source/DouShouQi
-      - dotnet restore DouShouQi_Fit.sln
-      - dotnet sonarscanner begin /k:DouShouQi /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.login=$${PLUGIN_SONAR_TOKEN}      
-      - dotnet build DouShouQi_Fit.sln -c Release --no-restore
-      - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
-      - dotnet sonarscanner end /d:sonar.login=$${PLUGIN_SONAR_TOKEN}    
-
-
-  - name: tests
     image: mcr.microsoft.com/dotnet/sdk:8.0
     commands:
       - cd Source/DouShouQi
       - dotnet restore DouShouQi_Fit.sln
-      - dotnet test DouShouQi_Fit.sln --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
+      - dotnet build DouShouQi_Fit.sln -c Release --no-restore
+      - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
+
+  - name: tests
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    commands:
+      - cd Source/DouShouQi/
+      - dotnet restore DouShouQi_Fit.sln
+      - dotnet test DouShouQi_Fit.sln --no-restore
     depends_on: [build]
 
   - name: code-inspection
     image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet8
     secrets: [ SECRET_SONAR_LOGIN ]
-    settings:
+    environment:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
       sonar_token:
         from_secret: SECRET_SONAR_LOGIN
+      project_key: DouShouKi_
+      coverage_exclusions: "Source/TestDouShouQi/**"
     commands:
-      - cd Source/DouShouQi
+      - cd Source/DouShouQi/
       - dotnet restore DouShouQi_Fit.sln
-      - dotnet sonarscanner begin /k:DouShouKi_ /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions="TestDouShouQi/**" /d:sonar.login=$${PLUGIN_SONAR_TOKEN} 
+      - dotnet sonarscanner begin /k:$${project_key} /d:sonar.host.url=$${sonar_host} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions=$${coverage_exclusions} /d:sonar.login=$${sonar_token} 
       - dotnet build DouShouQi_Fit.sln -c Release --no-restore
       - dotnet test DouShouQi_Fit.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
       - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
-      - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
-      - dotnet sonarscanner end /d:sonar.login=$${PLUGIN_SONAR_TOKEN}
+      - dotnet publish DouShouQi_Fit.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
+      - dotnet sonarscanner end /d:sonar.login=$${sonar_token}
     depends_on: [tests]
 
   - name: generate-and-deploy-docs
