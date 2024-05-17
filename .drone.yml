@@ -26,7 +26,7 @@ steps:
   - name: tests
     image: mcr.microsoft.com/dotnet/sdk:8.0
     commands:
-      - cd DIRECTORY
+      - cd Source/DouShouQi
       - dotnet restore DouShouQi_Fit.sln
       - dotnet test DouShouQi_Fit.sln --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
     depends_on: [build]
@@ -39,7 +39,7 @@ steps:
       sonar_token:
         from_secret: SECRET_SONAR_LOGIN
     commands:
-      - cd DIRECTORY
+      - cd Source/DouShouQi
       - dotnet restore DouShouQi_Fit.sln
       - dotnet sonarscanner begin /k:NAME /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions="Qawale_UT/**" /d:sonar.login=$${PLUGIN_SONAR_TOKEN} 
       - dotnet build DouShouQi_Fit.sln -c Release --no-restore
