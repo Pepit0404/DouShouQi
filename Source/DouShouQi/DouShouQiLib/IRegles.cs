@@ -85,6 +85,12 @@ namespace DouShouQiLib
         }
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
+            // Vérifie si ce n'est pas en diagonale
+            if (caseAdja.X != caseActu.X && caseAdja.Y != caseActu.Y)
+            {
+                return false;
+            }
+            // Vérfie si il y a bien une piece sur la case d'origine
             if (!caseActu.Onthis.HasValue)
             {
                 return false;
@@ -102,10 +108,11 @@ namespace DouShouQiLib
                 {
                     return false;
                 }
-
             }
+            // vérifie si la case visé n'est pas celle adjacente
             if (caseAdja.X != caseActu.X - 1 && caseAdja.Y != caseActu.Y + 1 && caseAdja.X != caseActu.X + 1 && caseAdja.Y != caseActu.Y - 1)
             {
+                // cas où l'animal peut sauté par dessus la riviére
                 if ((caseActu.Onthis.Value.Type==PieceType.tigre || caseActu.Onthis.Value.Type == PieceType.lion))
                 {
                     if (caseAdja.X==caseActu.X)
@@ -227,6 +234,11 @@ namespace DouShouQiLib
         }
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
+            // Vérifie si ce n'est pas en diagonale
+            if (caseAdja.X != caseActu.X && caseAdja.Y != caseActu.Y)
+            {
+                return false;
+            }
             if (!caseActu.Onthis.HasValue)
             {
                 return false;
