@@ -86,15 +86,18 @@ namespace TestDouShouQi
         //    Assert.False(nregles.PouvoirBouger(terre, eau2)); //non elephant qui mange chien dans leau 
         //    Assert.True(nregles.PouvoirBouger(terre2, eau2));//oui un chien qui mange un chien
         //}
-        [Theory] 
-        [InlineData(PieceType.souris, PieceType.elephant)]
-        [InlineData(PieceType.souris, PieceType.souris)]
-       
-        public void MemePiece_UT(PieceType expectedPieceType, PieceType givenPieceType)
+        [Fact] 
+        public void MemePiece_UT()
         {
             Joueur j1 = new HumainJoueur("toto");
-            Piece piece = new Piece(PieceType.chien, j1);
-            Assert.Equal(expectedPieceType, givenPieceType);
+            Joueur j2 = new HumainJoueur("tutu");
+            Piece piece1 = new Piece(PieceType.chien, j1);
+            Piece piece2 = new Piece(PieceType.chat, j1);
+            Piece piece3 = new Piece(PieceType.chien, j2);
+            Piece piece4 = new Piece(PieceType.chien, j1);
+            Assert.NotEqual(piece1, piece3);
+            Assert.NotEqual(piece1, piece2);
+            Assert.Equal(piece1, piece4);
         }
        
     }
