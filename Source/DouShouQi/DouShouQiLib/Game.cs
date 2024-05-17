@@ -22,18 +22,22 @@ namespace DouShouQiLib
         public Piece[] Piece { get; private set; }
 
         public event EventHandler<BoardChangedEventArgs>? BoardChanged;
-        public event EventHandler<OnPieceMovedEventArgs>? PieceMoved;
+        public event EventHandler<PieceMovedEventArgs>? PieceMoved;
         public event EventHandler<PlayerChangedEventArgs>? PlayerChanged;
         public event EventHandler<GameOverEventArgs>? GameOver;
+        public event EventHandler<AppartientEventArgs>? LuiAppartient;
 
-
+        protected virtual void OnAppartient(bool ok, Joueur proprietaire)
+        {
+            LuiAppartient?.Invoke(this, new AppartientEventArgs(ok, proprietaire));
+        }
         protected virtual void OnBoardChanged(Plateau newBoard, Case depart, Case arrivee)
         {
             BoardChanged?.Invoke(this, new BoardChangedEventArgs(newBoard, depart, arrivee));
         }
         protected virtual void OnPieceMoved(bool ok, Case depart, Case arrive)
         {
-            PieceMoved?.Invoke(this, new OnPieceMovedEventArgs(ok, depart, arrive));
+            PieceMoved?.Invoke(this, new PieceMovedEventArgs(ok, depart, arrive));
         }
         protected virtual void OnPlayerChanged(Joueur nouveauJoueur)
         {
@@ -99,6 +103,16 @@ namespace DouShouQiLib
                 return true;
             }
             OnGameOver(false, null, null);
+            return false;
+        }
+
+        public bool AppartientJC(Piece piece)
+        {
+            if (JoueurCourant.appartient(piece)){
+                OnAppartient(true, piece.Proprietaire);
+                return true;
+            }
+            OnAppartient(false, piece.Proprietaire);
             return false;
         }
     }

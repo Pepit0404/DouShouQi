@@ -147,8 +147,17 @@ void testBoucle()
         Console.Clear();
         affichePlateau(e.NewBoard.echequier);
     }
+    void Game_OnAppartient(object? sender, AppartientEventArgs e)
+    {
+        if (!e.Ok)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Veillez selectionnez une case avec une piece qui vous appartient, (celle ci appartient à {e.Proprietaire}) ");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+    }
 
-    void Game_OnPieceMoved(object? sender, OnPieceMovedEventArgs e)
+    void Game_OnPieceMoved(object? sender, PieceMovedEventArgs e)
     {
         if (!e.Ok)
         {
@@ -192,6 +201,7 @@ void testBoucle()
     game.PieceMoved += Game_OnPieceMoved;
     game.PlayerChanged += Game_OnPlayerChanged;
     game.GameOver += Game_OnGameOver;
+    game.LuiAppartient += Game_OnAppartient;
 
     affichePlateau(game.Plateau.echequier);
     while (!game.isFini())
@@ -213,22 +223,22 @@ void testBoucle()
                 {
                     Console.Write("  Collone: ");
                     dCollone = askPos(6);
-                    if (game.Plateau[dLigne, dCollone].Onthis.HasValue)
+                    if (dCollone != -1)
                     {
-                        if (!game.JoueurCourant.appartient(game.Plateau[dLigne, dCollone].Onthis.Value))
+                        if (game.Plateau[dLigne, dCollone].Onthis.HasValue)
+                        {
+                            if (!game.AppartientJC(game.Plateau[dLigne, dCollone].Onthis.Value))
+                            {
+                                dLigne = -1;
+                            }
+                        }
+                        else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Veillez selectionnez une case avec une piece qui vous appartient");
+                            Console.WriteLine("Veillez selectionnez une case avec une piece");
                             Console.ForegroundColor = ConsoleColor.White;
                             dLigne = -1;
                         }
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Veillez selectionnez une case avec une piece");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        dLigne = -1;
                     }
                 }
             } while (dLigne == -1 || dCollone == -1);

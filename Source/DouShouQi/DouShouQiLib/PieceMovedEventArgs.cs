@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    public class OnPieceMovedEventArgs : EventArgs
+    public class PieceMovedEventArgs : EventArgs
     {
         public bool Ok { get; set; }
 
@@ -14,7 +14,7 @@ namespace DouShouQiLib
 
         public Case Arrivee { get; set; }
 
-        public OnPieceMovedEventArgs(bool ok, Case depart, Case arrivee)
+        public PieceMovedEventArgs(bool ok, Case depart, Case arrivee)
         {
             Ok = ok;
             Depart = depart;

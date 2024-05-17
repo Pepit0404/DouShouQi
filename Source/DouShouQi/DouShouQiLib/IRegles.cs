@@ -84,7 +84,7 @@ namespace DouShouQiLib
             return false;
         }
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
-        {
+        { 
             // Vérifie si ce n'est pas en diagonale
             if (caseAdja.X != caseActu.X && caseAdja.Y != caseActu.Y)
             {
@@ -104,7 +104,7 @@ namespace DouShouQiLib
             }
             else
             {
-                if (!Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type) || (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre))
+                if ((!Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type) || (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre))||caseAdja.Type!=CaseType.Piege)
                 {
                     return false;
                 }
