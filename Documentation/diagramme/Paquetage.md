@@ -3,13 +3,15 @@
 
 namespace DouShouQi{
   package DouShouQiLib{
-     package Class{}
-     package Event{}
-     package Interface{}
+    package Class{}
+    package Event{}
+    package Interface{}
   }
   package DouShouQiTest{
+
   }
   package AppDouShouQi{
+  
   }
 }
 
