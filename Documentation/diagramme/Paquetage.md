@@ -1,18 +1,1 @@
-``` plantuml
-@startuml
-
-namespace DouShouQi{
-  package DouShouQiLib{
-  }
-  package DouShouQiTest{
-
-  }
-  package AppDouShouQi{
-  
-  }
-}
-
-DouShouQiLib --> AppDouShouQi
-DouShouQiTest --> DouShouQiLib
-@enduml
-```
+<img src="https://codefirst.iut.uca.fr/git/samuel.pinto/entrepot/raw/branch/master/diagramme/paquetage.png.png">
