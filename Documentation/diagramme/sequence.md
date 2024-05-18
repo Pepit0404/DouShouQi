@@ -1,4 +1,5 @@
 ``` plantuml
+@startuml
 title Daigramme de séquence simplifier
 
 participant Game
@@ -55,4 +56,5 @@ deactivate Joueur2
 
 Start() -> Game :
 deactivate Start()
+@enduml
 ```
