@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static DouShouQiLib.Joueur;
 
 namespace DouShouQiLib
 {
@@ -27,7 +29,7 @@ namespace DouShouQiLib
         public event EventHandler<AppartientEventArgs>? LuiAppartient;
         public event EventHandler<TalkToPlayerEventArgs>? TalkToPlayer;
         public delegate Case[] AskMooveDelegate(int maxX, int maxY, Game game);
-        public event AskMooveDelegate AskMoove;
+        public event AskMooveDelegate? AskMoove;
 
         protected virtual void OnAppartient(bool ok, Joueur proprietaire)
         {
@@ -130,14 +132,22 @@ namespace DouShouQiLib
 
         public void Start()
         {
+            bool coupOk = true;
             while (!isFini())
             {
-                ChangePlayer();
-
+                if (coupOk)
+                {
+                    ChangePlayer();
+                }
                 OnTalkToPlayer("Qu'elle piece bouger ?");
 
-                Case[] coup = AskMoove(this.Plateau.width, this.Plateau.height, this);
-                MovePiece(coup[0], coup[1], this.Plateau);
+                Case[] coup;
+                do
+                {
+                    coup = AskMoove(this.Plateau.width - 1, this.Plateau.height - 1, this);
+
+                } while (coup==null);
+                coupOk = MovePiece(coup[0], coup[1], this.Plateau);
             }
         }
     }

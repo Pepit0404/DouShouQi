@@ -59,7 +59,7 @@ void affichePlateau(Case[,] echequier)
     }
 }
 
-static int askPos(int max)
+static int AskPos(int max)
 {
     int pos;
     try
@@ -82,7 +82,6 @@ static int askPos(int max)
         return -1;
     }
 }
-
 
 // Les deux 
 void Game_OnBoardChanged(object? sender, BoardChangedEventArgs e)
@@ -114,7 +113,7 @@ void Game_OnPieceMoved(object? sender, PieceMovedEventArgs e)
         Console.ForegroundColor = ConsoleColor.White;
         return;
     }
-    Console.Write($"Piece {e.Arrivee.Onthis} bouger de ");
+    Console.Write($"La piece {e.Arrivee.Onthis} à bougé de la case ");
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.Write($"{e.Depart}");
     Console.ForegroundColor = ConsoleColor.White;
@@ -140,77 +139,107 @@ static Case[] Game_OnAskMooveAI(int maxX, int maxY, Game game)
     Case[] couts = game.JoueurCourant.ChoisirCoup(game);
     return couts;
 }
-static Case[] Game_OnAskMooveHuman(int maxX, int maxY, Game game)
+static Case AskCase(int maxX, int maxY, Game game)
 {
-    int dLigne;
-    int dCollone;
-    int aLigne;
-    int aCollone;
+    int line;
+    int column;
     do
     {
-        Console.WriteLine("Qu'elle piece voulez-vous bouger ?");
-        do
+        Console.Write("  Ligne: ");
+        line = AskPos(maxX);
+        column = -1;
+        if (line != -1)
         {
-            Console.Write("  Ligne: ");
-            dLigne = askPos(maxY);
-            dCollone = -1;
-            if (dLigne != -1)
+            Console.Write("  Colonne: ");
+            column = AskPos(maxY);
+        }
+    } while (line == -1 || column == -1);
+
+    return game.Plateau[line, column];
+}
+static Case AskCaseWithPiece(int maxX, int maxY, Game game)
+{
+    int line;
+    int column;
+    do
+    {
+        Console.Write("  Ligne: ");
+        line = AskPos(maxX);
+        column = -1;
+        if (line != -1)
+        {
+            Console.Write("  Colonne: ");
+            column = AskPos(maxY);
+            if (column != -1)
             {
-                Console.Write("  Collone: ");
-                dCollone = askPos(maxX);
-                if (dCollone != -1)
+                if (game.Plateau[line, column].Onthis.HasValue)
                 {
-                    if (game.Plateau[dLigne, dCollone].Onthis.HasValue)
+                    if (game.Plateau[line, column].Onthis.Value.Proprietaire != game.JoueurCourant)
                     {
-                        if (!game.AppartientJC(game.Plateau[dLigne, dCollone].Onthis.Value))
-                        {
-                            dLigne = -1;
-                        }
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Veillez selectionnez une case avec une piece");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        dLigne = -1;
+                        line = -1;
                     }
                 }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Veuillez sélectionner une case avec une pièce.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    line = -1;
+                }
             }
-        } while (dLigne == -1 || dCollone == -1);
-        Console.WriteLine("Pour mettre la piece où ?");
-        do
-        {
-            Console.Write("  Ligne: ");
-            aLigne = askPos(maxY);
-            aCollone = -1;
-            if (aLigne != -1)
-            {
-                Console.Write("  Collone: ");
-                aCollone = askPos(maxX);
-            }
-        } while (aLigne == -1 || aCollone == -1);
-    } while (!game.MovePiece(game.Plateau[dLigne, dCollone], game.Plateau[aLigne, aCollone], game.Plateau));
-    Case[] couts = new Case[2];
-    couts[0] = game.Plateau[dLigne, dCollone];
-    couts[1] = game.Plateau[aLigne, aCollone];
-    return couts;
+        }
+    } while (line == -1 || column == -1);
+
+    return game.Plateau[line, column];
+}
+static Case[] MovePiece(int maxX, int maxY, Game game)
+{
+    Console.WriteLine("Quelle pièce voulez-vous bouger ?");
+    Case startingCase = AskCaseWithPiece(maxX, maxY, game);
+    if (startingCase == null)
+    {
+        Console.WriteLine("Veuillez sélectionner une case avec une pièce.");
+        return null;
+    }
+
+    Console.WriteLine("Où voulez-vous mettre la pièce ?");
+    Case endingCase = AskCase(maxX, maxY, game);
+    if (endingCase == null)
+    {
+        Console.WriteLine("Veuillez sélectionner une case.");
+        return null;
+    }
+
+    Case[] cases = [startingCase, endingCase];
+    return cases;
+}
+static Case[] Game_OnAskMooveHuman(int maxX, int maxY, Game game)
+{
+    return MovePiece(maxX, maxY, game);
 }
 
 Game ChooseGame()
 {
-    Console.WriteLine("1 Humain; 2 IA");
-    int answer = int.Parse(Console.ReadLine());
-    if (answer == 1)
+    Console.WriteLine("Quelle partie voulez vous faire?\n   0: Joueur Vs Joueur\n   1: Random Vs Random");
+    while (true)
     {
-        Game game = new Game(new regleOrigin(), new HumainJoueur("Joueur 1"), new HumainJoueur("Joueur 2"));
-        game.AskMoove += Game_OnAskMooveHuman;
-        return game;
-    }
-    else
-    {
-        Game game = new Game(new regleOrigin(), new RandomJoueur("Robot 1"), new RandomJoueur("Robot 2"));
-        game.AskMoove += Game_OnAskMooveAI;
-        return game;
+        int answer = AskPos(1);
+        if (answer == 0)
+        {
+            Console.Clear();
+            Console.Write("Nom du joueur 1: ");
+            string j1 = Console.ReadLine();
+            Console.Write("Nom du joueur 2: ");
+            Game game = new Game(new regleOrigin(), new HumainJoueur(j1), new HumainJoueur(Console.ReadLine()));
+            game.AskMoove += Game_OnAskMooveHuman;
+            return game;
+        }
+        else if (answer == 1)
+        {
+            Game game = new Game(new regleOrigin(), new RandomJoueur("Robot 1"), new RandomJoueur("Robot 2"));
+            game.AskMoove += Game_OnAskMooveAI;
+            return game;
+        }
     }
 }
 
