@@ -154,7 +154,7 @@ namespace DouShouQiLib{
             + string Message
             + TalkToPlayerEventArgs(string message)
         }
-}
+
 
 Piece --> "+ Case onThis" Case
 PieceType -> "+ PieceType type" Piece
@@ -182,6 +182,8 @@ GameOverEventArgs--|> EventArgs
 PieceMovedEventArgs--|> EventArgs
 PlayerChangedEventArgs--|> EventArgs
 TalkToPlayerEventArgs--|> EventArgs
+
+}
 
 @enduml
 ```
