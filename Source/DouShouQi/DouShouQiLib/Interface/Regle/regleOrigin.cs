@@ -93,6 +93,16 @@ namespace DouShouQiLib
             }
             return false;
         }
+
+        private bool IsPiege(Case caseAdja)
+        {
+            if (caseAdja.Type == CaseType.Piege)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
             // Si la case actuelle est vide, retournez false
@@ -106,6 +116,15 @@ namespace DouShouQiLib
             {
                 // Si la case adjacente est occupée, vérifier si l'on peut la manger
                 if (caseAdja.Onthis.HasValue && !Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type))
+                {
+                    if (!IsPiege(caseAdja))
+                    {
+                        return false;
+                    }
+                }
+
+                // Vérifier si l'animal dans l'eau n'essaye pas de manger un qui n'est pas dans l'eau
+                if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre && caseAdja.Onthis.HasValue)
                 {
                     return false;
                 }
@@ -127,21 +146,26 @@ namespace DouShouQiLib
                 {
                     return false;
                 }
+                if (caseActu.Type == CaseType.Terre && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
+                {
+                    return false;
+                }
                 return true;
             }
-
-            // Vérifier si l'animal peut aller sur l'eau
-            if (caseAdja.Type == CaseType.Eau && !CanGoWater(caseActu, caseAdja))
-            {
-                return false;
-            }
-
             return false;
         }
 
         private bool CanGoWater(Case caseActu, Case caseAdja)
         {
-            return caseActu.Onthis.Value.Type == PieceType.souris;
+            if (caseActu.Onthis.Value.Type == PieceType.souris)
+            {
+                if (caseActu.Type!=caseAdja.Type && caseAdja.Onthis.HasValue)
+                {
+                    return false;
+                }
+                return true;
+            }
+            return false;
         }
 
         private bool IsAdja(Case caseActu, Case caseAdja)

@@ -19,48 +19,47 @@ namespace TestDouShouQi
             IRegles regles = new regleOrigin();
 
 
-            Assert.False(regles.Manger(elephant.Type, souris.Type));
-            Assert.True(regles.Manger(souris.Type, elephant.Type));
-            Assert.True(regles.Manger(elephant.Type, chien.Type));
-            Assert.False(regles.Manger(souris.Type, chien.Type));
-            Assert.True(regles.Manger(chien.Type, souris.Type));
-            Assert.True(regles.Manger(chien.Type, chien.Type));
+            Assert.False(regles.Manger(elephant.Type, souris.Type)); // false, un éléphant ne peux  pas manger une souris
+            Assert.True(regles.Manger(souris.Type, elephant.Type)); // true, une souris peux manger un elephant
+            Assert.True(regles.Manger(elephant.Type, chien.Type)); // true, un elephant peux manger un animal plus petit
+            Assert.False(regles.Manger(souris.Type, chien.Type)); // false, une souris ne peux manger un animal plus grand
+            Assert.True(regles.Manger(chien.Type, souris.Type)); // true, un chien peut manger un animal plus petit
+            Assert.True(regles.Manger(chien.Type, chien.Type)); // true, un animal peut manger un autre de meme valeur
         }
 
         [Fact]
         public void ReglesOriginePouvoirBouger_UT()
         {
             Joueur j1 = new HumainJoueur("toto");
-            Piece souris = new (PieceType.souris, j1);
-            Piece elephant = new (PieceType.elephant, j1);
-            Piece chien = new (PieceType.chien, j1);
-            Case eau = new (0, 0, CaseType.Eau);
-            Case eauvide = new (0, 0, CaseType.Eau);
-            Case terre = new (0, 0, CaseType.Terre);
-            Case terrevide = new (0, 0, CaseType.Terre);
-            Case terre2 = new (0, 0, CaseType.Terre);
-            Case terre3 = new (0, 0, CaseType.Terre);
-            Case eau2 = new (0, 0, CaseType.Eau);
-            eau.Onthis = souris;
-            terre.Onthis = elephant;
-            terre2.Onthis = chien;
-            terre3.Onthis = souris;
-            eau2.Onthis = chien;
-
-            Game game = new Game(new regleOrigin(), j1, new HumainJoueur("titi"));
+            Joueur j2 = new HumainJoueur("titi");
+            Game game = new Game(new regleOrigin(), j1, j2);
             IRegles regles = game.Regle;
             Plateau plateau = game.Plateau;
- 
-            Assert.False(regles.PouvoirBouger(terre, eauvide, plateau)); //non, elephant qui va dans leau
-            Assert.False(regles.PouvoirBouger(eau, terre, plateau));//non, souris qui sort de leau pour manger un elephant
-            Assert.True(regles.PouvoirBouger(eau, eauvide, plateau));//oui, une souris qui marche dans leau
-            Assert.False(regles.PouvoirBouger(terre2, eauvide, plateau)); //non, chien qui va dansleau
-            Assert.True(regles.PouvoirBouger(terre, terre2, plateau)); //oui, un elephant qui mange un chien
-            Assert.False(regles.PouvoirBouger(terre, terre3, plateau)); //non, un elephant qui mange une souris
-            Assert.True(regles.PouvoirBouger(terre3, terre, plateau)); //oui, une souris qui mange un elephant
-            Assert.True(regles.PouvoirBouger(eau, eau, plateau)); //oui, une souris qui mange une autre souris toute 2 dans leau
-            Assert.False(regles.PouvoirBouger(eau, terre3, plateau));//non, souris qui sort de leau pour manger une souris
-            Assert.False(regles.PouvoirBouger(terre, eau, plateau)); //non elephant qui mange chien dans leau
+
+            Case origine = new Case(1, 1, CaseType.Terre);
+            origine.Onthis = new Piece(PieceType.tigre, j1);
+            Case origineEau = new Case(1, 1, CaseType.Eau);
+            origineEau.Onthis = new Piece(PieceType.souris, j1);
+            Case arrive = new Case(1, 2, CaseType.Terre);
+            arrive.Onthis = new Piece(PieceType.souris, j2);
+            Case arriveEau = new Case(1, 2, CaseType.Eau);
+            arriveEau.Onthis = new Piece(PieceType.souris, j2);
+            Case arrivePiege = new Case(1, 2, CaseType.Piege);
+            arrivePiege.Onthis = new Piece(PieceType.lion, j2);
+
+
+            Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Terre), plateau)); // true, simple changement de case
+            Assert.False(regles.PouvoirBouger(origine, new Case(0, 0, CaseType.Terre), plateau)); // false, impossible en diagonale
+            Assert.False(regles.PouvoirBouger(origine, new Case(1, 3, CaseType.Terre), plateau)); // false, impossible de sauté des cases
+            Assert.False(regles.PouvoirBouger(origine, new Case(1,2, CaseType.Eau), plateau)); // false, pas possible d'aller dans l'eau
+            origine.Onthis = new Piece(PieceType.souris, j1); // met une souris sur la case
+            Assert.True(regles.PouvoirBouger(origine, new Case(1,2, CaseType.Eau), plateau)); // true, possible d'aller dans l'eau pour une souris
+            Assert.True(regles.PouvoirBouger(origineEau, new Case(1, 2, CaseType.Terre), plateau)); // true, possible pour une souris de sortir de l'eau
+            Assert.True(regles.PouvoirBouger(origineEau, arriveEau, plateau)); // true, une souris peut manger une autre qui est dans l'eau
+            Assert.False(regles.PouvoirBouger(origine, arriveEau, plateau)); // false, une souris ne peut pas manger une autre en entrant dans l'eau
+            Assert.False(regles.PouvoirBouger(origineEau, arrive, plateau)); // false, une souris ne peut pas manger en sortant de l'eau
+            origine.Onthis = new Piece(PieceType.souris, j1); // met une souris sur la case
+            Assert.True(regles.PouvoirBouger(origine, arrivePiege, plateau)); // true, une souris peut manger un animal plus gros qui est sur un piege
         }
 
         [Fact]
@@ -114,46 +113,42 @@ namespace TestDouShouQi
         }
 
         [Fact]
-        public void ReglesPouvoirBouger_UT()
+        public void ReglesVarientePouvoirBouger_UT()
         {
             Joueur j1 = new HumainJoueur("toto");
-            Piece souris = new (PieceType.souris, j1);
-            Piece elephant = new (PieceType.elephant, j1);
-            Piece chien = new (PieceType.chien, j1);
-            Case eau = new (0, 0, CaseType.Eau);
-            Case eauvide = new (0, 0, CaseType.Eau);
-            Case terre = new (0, 0, CaseType.Terre);
-            Case terrevide = new (1, 1, CaseType.Terre);
-            Case terre2 = new (0, 0, CaseType.Terre);
-            Case terre3 = new (0, 0, CaseType.Terre);
-            Case eau2 = new (0, 0, CaseType.Eau);
-            eau.Onthis = souris;
-            terre.Onthis = elephant;
-            terre2.Onthis = chien;
-            terre3.Onthis = souris;
-            eau2.Onthis = chien;
-
-            Game game = new (new regleOrigin(), j1, new HumainJoueur("titi"));
+            Joueur j2 = new HumainJoueur("titi");
+            Game game = new Game(new regleVariente(), j1, j2);
             IRegles regles = game.Regle;
             Plateau plateau = game.Plateau;
 
-            Assert.False(regles.PouvoirBouger(terre, eauvide, plateau)); //non, elephant qui va dans leau
-            Assert.False(regles.PouvoirBouger(eau, terre, plateau));//non, souris qui sort de leau pour manger un elephant
-            Assert.True(regles.PouvoirBouger(eau, eauvide, plateau));//oui, une souris qui marche dans leau
-            Assert.True(regles.PouvoirBouger(terre2, eauvide, plateau)); //oui, chien qui va dans leau
-            Assert.True(regles.PouvoirBouger(terre, terre2, plateau)); //oui, un elephant qui mange un chien
-            Assert.True(regles.PouvoirBouger(terre, terre3, plateau)); //oui, un elephant qui mange une souris
-            Assert.True(regles.PouvoirBouger(terre3, terre, plateau)); //oui, une souris qui mange un elephant
-            Assert.True(regles.PouvoirBouger(eau, eau, plateau)); //oui, une souris qui mange une autre souris toute 2 dans leau
-            Assert.False(regles.PouvoirBouger(eau, terre3, plateau));//non, souris qui sort de leau pour manger une souris
-            Assert.True(regles.PouvoirBouger(eau2, eau, plateau));//oui un chien dans leau qui mange une souris dans leau 
-            Assert.True(regles.PouvoirBouger(eau2, eau2, plateau));//oui un chien dans leau qui mange un chien dans leau
-            Assert.True(regles.PouvoirBouger(terre2, terre2, plateau));//oui un chien qui mange un chien
-            Assert.True(regles.PouvoirBouger(terre, terre2, plateau));//oui un elephant qui mange un chien
-            Assert.False(regles.PouvoirBouger(eau, eau2, plateau));//non, souris qui mange chien
-            Assert.False(regles.PouvoirBouger(terre, eau2, plateau)); //non elephant qui mange chien dans leau 
-            Assert.True(regles.PouvoirBouger(terre2, eau2, plateau));//oui un chien qui mange un chien
-            Assert.False(regles.PouvoirBouger(terre, terrevide, plateau)); //non, car impossible d'aller en diagonal
+            Case origine = new Case(1, 1, CaseType.Terre);
+            origine.Onthis = new Piece(PieceType.tigre, j1);
+            Case origineEau = new Case(1, 1, CaseType.Eau);
+            origineEau.Onthis = new Piece(PieceType.souris, j1);
+            Case arrive = new Case(1, 2, CaseType.Terre);
+            arrive.Onthis = new Piece(PieceType.souris, j2);
+            Case arriveEau = new Case(1, 2, CaseType.Eau);
+            arriveEau.Onthis = new Piece(PieceType.souris, j2);
+            Case arrivePiege = new Case(1, 2, CaseType.Piege);
+            arrivePiege.Onthis = new Piece(PieceType.lion, j2);
+
+
+
+            Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Terre), plateau)); // true, simple changement de case
+            Assert.False(regles.PouvoirBouger(origine, new Case(0, 0, CaseType.Terre), plateau)); // false, impossible en diagonale
+            Assert.False(regles.PouvoirBouger(origine, new Case(1, 3, CaseType.Terre), plateau)); // false, impossible de sauté des cases
+            Assert.False(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Eau), plateau)); // false, pas possible d'aller dans l'eau
+            origine.Onthis = new Piece(PieceType.souris, j1); // met une souris sur la case
+            Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Eau), plateau)); // true, possible d'aller dans l'eau pour une souris
+            Assert.True(regles.PouvoirBouger(origineEau, new Case(1, 2, CaseType.Terre), plateau)); // true, possible pour une souris de sortir de l'eau
+            Assert.False(regles.PouvoirBouger(origineEau, arrive, plateau)); // false, une souris ne peut pas manger en sortant de l'eau
+            Assert.True(regles.PouvoirBouger(origineEau, arriveEau, plateau)); // true, une souris peut manger une autre qui est dans l'eau
+            origine.Onthis = new Piece(PieceType.chien, j1); // met une souris sur la case
+            Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Eau), plateau)); // true, possible d'aller dans l'eau pour un chien
+            Assert.True(regles.PouvoirBouger(origineEau, new Case(1, 2, CaseType.Terre), plateau)); // true, possible pour un chien de sortir de l'eau
+            Assert.True(regles.PouvoirBouger(origineEau, arriveEau, plateau)); // true, un chien peut manger un autre animal egale ou inférieur qui est dans l'eau
+            origine.Onthis = new Piece(PieceType.souris, j1); // met une souris sur la case
+            Assert.True(regles.PouvoirBouger(origine, arrivePiege, plateau)); // true, une souris peut manger un animal plus gros qui est sur un piege
         }
 
         [Fact]

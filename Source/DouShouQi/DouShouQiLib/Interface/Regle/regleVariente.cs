@@ -88,6 +88,16 @@ namespace DouShouQiLib
             }
             return false;
         }
+
+        private bool IsPiege(Case caseAdja)
+        {
+            if (caseAdja.Type == CaseType.Piege)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
             // Si la case actuelle est vide, retournez false
@@ -101,6 +111,15 @@ namespace DouShouQiLib
             {
                 // Si la case adjacente est occupée, vérifier si l'on peut la manger
                 if (caseAdja.Onthis.HasValue && !Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type))
+                {
+                    if (!IsPiege(caseAdja))
+                    {
+                        return false;
+                    }
+                }
+
+                // Vérifier si l'animal dans l'eau n'essaye pas de manger un qui n'est pas dans l'eau
+                if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre && caseAdja.Onthis.HasValue)
                 {
                     return false;
                 }
@@ -136,8 +155,12 @@ namespace DouShouQiLib
 
         private bool CanGoWater(Case caseActu, Case caseAdja)
         {
-            if (caseActu.Onthis.Value.Type==PieceType.souris || caseAdja.Onthis.Value.Type==PieceType.chien)
+            if (caseActu.Onthis.Value.Type==PieceType.souris || caseActu.Onthis.Value.Type==PieceType.chien)
             {
+                if (caseActu.Type != caseAdja.Type && caseAdja.Onthis.HasValue)
+                {
+                    return false;
+                }
                 return true;
             }
             return false;
