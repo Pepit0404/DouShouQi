@@ -3,9 +3,9 @@
 
 namespace DouShouQi{
   package DouShouQiLib{
-    package Class{}
-    package Event{}
-    package Interface{}
+    class Class
+    class Event
+    class Interface
   }
   package DouShouQiTest{
 
