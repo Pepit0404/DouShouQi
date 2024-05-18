@@ -58,16 +58,19 @@ void affichePlateau(Case[,] echequier)
 
 void displayTitre()
 {
-    Console.Write("\n    ------------------------------------------------------------------------------\n");
+    Console.Clear();
+    Console.ForegroundColor= ConsoleColor.Green;
+    Console.Write("\n==============================================================================\n");
     Console.Write("\n");
-    Console.Write("______            _____ _                 _____ _ ");
-    Console.Write("|  _  \\          /  ___| |               |  _  (_)");
-    Console.Write("| | | |___  _   _\\ `--.| |__   ___  _   _| | | |_ ");
-    Console.Write("| | | / _ \\| | | |`--. \\ '_ \\ / _ \\| | | | | | | |");
-    Console.Write("| |/ / (_) | |_| /\\__/ / | | | (_) | |_| \\ \\/' / |");
-    Console.Write("|___/ \\___/ \\__,_\\____/|_| |_|\\___/ \\__,_|\\_/\\_\\_|");
-    Console.Write("\n");
-    Console.Write("\n------------------------------------------------------------------------------\n");
+    Console.WriteLine("         ______            _____ _                 _____ _ ");
+    Console.WriteLine("         |  _  \\          /  ___| |               |  _  (_)");
+    Console.WriteLine("         | | | |___  _   _\\ `--.| |__   ___  _   _| | | |_ ");
+    Console.WriteLine("         | | | / _ \\| | | |`--. \\ '_ \\ / _ \\| | | | | | | |");
+    Console.WriteLine("         | |/ / (_) | |_| /\\__/ / | | | (_) | |_| \\ \\/' / |");
+    Console.WriteLine("         |___/ \\___/ \\__,_\\____/|_| |_|\\___/ \\__,_|\\_/\\_\\_|");
+    Console.WriteLine("");
+    Console.Write("\n==============================================================================\n");
+    Console.ForegroundColor= ConsoleColor.White;
 }
 
 static int AskPos(int max)
@@ -229,6 +232,24 @@ static Case[] Game_OnAskMooveHuman(int maxX, int maxY, Game game)
     return MovePiece(maxX, maxY, game);
 }
 
+IRegles ChooseRegle()
+{
+    while (true)
+    {
+        displayTitre();
+        Console.WriteLine("Quelle régles voulez-vous prendre pour votre partie ?\n   0: Original\n   1: Variente");
+        int answer = AskPos(1);
+        if (answer == 0)
+        {
+            return new regleOrigin();
+        }
+        else if (answer == 1)
+        {
+            return new regleVariente();
+        }
+    }
+}
+
 Game ChooseGame()
 {
     displayTitre();
@@ -239,10 +260,12 @@ Game ChooseGame()
         if (answer == 0)
         {
             Console.Clear();
+            IRegles regle = ChooseRegle();
+            displayTitre();
             Console.Write("Nom du joueur 1: ");
             string j1 = Console.ReadLine();
             Console.Write("Nom du joueur 2: ");
-            Game game = new Game(new regleOrigin(), new HumainJoueur(j1), new HumainJoueur(Console.ReadLine()));
+            Game game = new Game(regle, new HumainJoueur(j1), new HumainJoueur(Console.ReadLine()));
             game.AskMoove += Game_OnAskMooveHuman;
             return game;
         }
