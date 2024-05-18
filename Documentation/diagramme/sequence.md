@@ -1,0 +1,1 @@
+<img src="https://codefirst.iut.uca.fr/git/samuel.pinto/entrepot/raw/branch/master/diagramme/SequenceDiagramDouShouQi.png">
