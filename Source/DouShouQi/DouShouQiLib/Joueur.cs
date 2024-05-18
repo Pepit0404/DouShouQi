@@ -10,9 +10,9 @@ namespace DouShouQiLib
     {
 
         /**
-         *\ brief Vérifie si une pièce appartient à ce joueur
-         *\ param piece la pièce dont on veut vérifier l'appartenence
-         *\ return vrai si la pièce lui appartient, faux dans le cas contraire
+         * \brief Vérifie si une pièce appartient à ce joueur
+         * \param piece la pièce dont on veut vérifier l'appartenence
+         * \return vrai si la pièce lui appartient, faux dans le cas contraire
          */
         public bool Appartient(Piece piece)
         {
@@ -29,8 +29,8 @@ namespace DouShouQiLib
         private string Identifiant { get; init; }
 
         /**
-         *\ brief Constructeur de Joueur
-         *\ param identifiant nom du joueur
+         * \brief Constructeur de Joueur
+         * \param identifiant nom du joueur
          */
         public Joueur(string identifiant)
         {
@@ -40,8 +40,8 @@ namespace DouShouQiLib
 
 
         /**
-         *\ brief Affichage des joueur
-         *\ return l'affichage des joueurs
+         * \brief Affichage des joueur
+         * \return l'affichage des joueurs
          */
         public override string ToString()
         {
@@ -52,8 +52,8 @@ namespace DouShouQiLib
         {
 
             /**
-             *\ brief Constructeur de case
-             *\ param x coordonnée en abscisse
+             * \brief Constructeur de case
+             * \param x coordonnée en abscisse
              */
             public override Case[] ChoisirCoup(Game game)
             {
