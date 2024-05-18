@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DouShouQiLib;
+using System;
 using static DouShouQiLib.Joueur;
 
 // nécéssaire
@@ -53,6 +54,20 @@ void affichePlateau(Case[,] echequier)
         Console.Write($"{i}");
         Console.Write("\n    ------------------------------------------------------------------------------\n");
     }
+}
+
+void displayTitre()
+{
+    Console.Write("\n    ------------------------------------------------------------------------------\n");
+    Console.Write("\n");
+    Console.Write("______            _____ _                 _____ _ ");
+    Console.Write("|  _  \\          /  ___| |               |  _  (_)");
+    Console.Write("| | | |___  _   _\\ `--.| |__   ___  _   _| | | |_ ");
+    Console.Write("| | | / _ \\| | | |`--. \\ '_ \\ / _ \\| | | | | | | |");
+    Console.Write("| |/ / (_) | |_| /\\__/ / | | | (_) | |_| \\ \\/' / |");
+    Console.Write("|___/ \\___/ \\__,_\\____/|_| |_|\\___/ \\__,_|\\_/\\_\\_|");
+    Console.Write("\n");
+    Console.Write("\n------------------------------------------------------------------------------\n");
 }
 
 static int AskPos(int max)
@@ -216,6 +231,7 @@ static Case[] Game_OnAskMooveHuman(int maxX, int maxY, Game game)
 
 Game ChooseGame()
 {
+    displayTitre();
     Console.WriteLine("Quelle partie voulez vous faire?\n   0: Joueur Vs Joueur\n   1: Random Vs Random");
     while (true)
     {
