@@ -198,7 +198,7 @@ TalkToPlayerEventArgs--|> EventArgs
 @enduml
 ```
 
-Game est la classe principal, elle va servir à lancer et à jouer une partie 
+Game est la classe principal, elle va servir à lancer et à jouer une partie </br>
 Paramètres: 
 Plateau : le plateau sur lequel va se jouer la partie 
 Regle : La définition des règles utilisées pour la partie J
