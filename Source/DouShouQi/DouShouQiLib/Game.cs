@@ -12,14 +12,29 @@ namespace DouShouQiLib
 {
     public class Game
     {
+        /// <summary>
+        ///    Plateau utilisé lors de la partie
+        /// </summary>
         public Plateau Plateau {  get; init; }
 
+        /// <summary>
+        ///    Règle utilisé pour la partie
+        /// </summary>
         public IRegles Regle {  get; init; }
 
+        /// <summary>
+        ///    Premier joueur
+        /// </summary>
         public Joueur Joueur1 {  get; init; }
 
+        /// <summary>
+        ///    Deuxième joueur
+        /// </summary>
         public Joueur Joueur2 { get; init; }
 
+        /// <summary>
+        ///    Le joueur qui doit jouer
+        /// </summary>
         public Joueur JoueurCourant { get; private set; }
 
         public event EventHandler<BoardChangedEventArgs>? BoardChanged;
@@ -64,6 +79,12 @@ namespace DouShouQiLib
             TalkToPlayer?.Invoke(this, new TalkToPlayerEventArgs(message));
         }
 
+        /// <summary>
+        ///    Constructeur d'une partie
+        /// </summary>
+        /// <param name="regles"></param>
+        /// <param name="joueur1"></param>
+        /// <param name="joueur2"></param>
         public Game(IRegles regles, Joueur joueur1, Joueur joueur2)
         {
             Plateau = new Plateau();
@@ -75,6 +96,12 @@ namespace DouShouQiLib
             Regle.initPlateau(this);
         }
 
+        /// <summary>
+        ///    Permet de bouger une pièce sue le <paramref name="plateau"/>
+        /// </summary>
+        /// <param name="caseD"></param>
+        /// <param name="caseA"></param>
+        /// <param name="plateau"></param>
         public bool MovePiece(Case caseD, Case caseA, Plateau plateau)
         {
             if ( ! Regle.PouvoirBouger(caseD, caseA, plateau))
@@ -96,6 +123,9 @@ namespace DouShouQiLib
             return true;
         }
 
+        /// <summary>
+        ///    Permet de changer le joueur qui doit jouer
+        /// </summary>
         public void ChangePlayer()
         {
             if (JoueurCourant == Joueur1)
@@ -109,6 +139,9 @@ namespace DouShouQiLib
             OnPlayerChanged(JoueurCourant);          
         }
 
+        /// <summary>
+        ///    Vérifie si la partie est terminer
+        /// </summary>
         public bool IsFini()
         {
             if (Regle.EstFini(this))
@@ -120,6 +153,10 @@ namespace DouShouQiLib
             return false;
         }
 
+        /// <summary>
+        ///    Vérifie si une <paramref name="piece"/> appartient au bon joueur
+        /// </summary>
+        /// <param name="piece"></param>
         public bool AppartientJC(Piece piece)
         {
             if (JoueurCourant.Appartient(piece)){
@@ -130,6 +167,9 @@ namespace DouShouQiLib
             return false;
         }
 
+        /// <summary>
+        ///    Fonction qui permet de lancer une partie et de lancer la boucle de jeu
+        /// </summary>
         public void Start()
         {
             bool coupOk = true;

@@ -10,6 +10,9 @@ namespace DouShouQiLib
 {
     public class Plateau
     {
+        /// <summary>
+        ///    Hauteur du plateau
+        /// </summary>
         public int height
         {
             get
@@ -17,6 +20,10 @@ namespace DouShouQiLib
                 return echequier.GetLength(1);
             }
         }
+
+        /// <summary>
+        ///    Largeur du plateau
+        /// </summary>
         public int width
         {
             get
@@ -25,9 +32,18 @@ namespace DouShouQiLib
             }
         }
 
+        /// <summary>
+        ///    Tableau contenant toutes les cases du plateau
+        /// </summary>
         public Case[,] echequier { get; private set; }
 
-
+        /// <summary>
+        ///     Permet a Plateau d'avoir accés aux case de l'achéquier directement
+        /// </summary>
+        /// <param name="ligne"></param>
+        /// <param name="collone"></param>
+        /// <returns>Case</returns>
+        /// <exception cref="MyOutOfRangeException"></exception>
         public Case this[int ligne, int collone]
         {
             get
@@ -38,14 +54,26 @@ namespace DouShouQiLib
             }
         }
 
+        /// <summary>
+        ///    Constructeur d'un plateau de base
+        /// </summary>
         public Plateau() : this(9,7)
         { }
 
+        /// <summary>
+        ///    Constructeur d'un plateau en entrant une hauteur et une largeur
+        /// </summary>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
         public Plateau(int height, int width)
         {
             echequier = new Case[height, width];
         }
 
+        /// <summary>
+        ///    Affichage d'un plateau
+        /// </summary>
+        /// <returns>L'affichage</returns>
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();

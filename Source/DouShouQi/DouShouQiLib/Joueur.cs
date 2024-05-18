@@ -9,11 +9,11 @@ namespace DouShouQiLib
     abstract public class Joueur
     {
 
-        /**
-         * \brief Vérifie si une pièce appartient à ce joueur
-         * \param piece la pièce dont on veut vérifier l'appartenence
-         * \return vrai si la pièce lui appartient, faux dans le cas contraire
-         */
+        /// <summary>
+        ///     Vérifie si une pièce appartient à joueur
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <returns>bool</returns>
         public bool Appartient(Piece piece)
         {
             if (piece.Proprietaire == this)
@@ -24,14 +24,21 @@ namespace DouShouQiLib
         }
 
         abstract public Case[] ChoisirCoup(Game game);
+
+        /// <summary>
+        ///    Liste des pièces que possède le joueur
+        /// </summary>
         public List<Piece> Liste_Piece { get; private set; }
 
+        /// <summary>
+        ///    Nom du joueur
+        /// </summary>
         private string Identifiant { get; init; }
 
-        /**
-         * \brief Constructeur de Joueur
-         * \param identifiant nom du joueur
-         */
+        /// <summary>
+        ///     Constructeur de Joueur
+        /// </summary>
+        /// <param name="identifiant"></param>
         public Joueur(string identifiant)
         {
             Identifiant = identifiant;
@@ -39,10 +46,10 @@ namespace DouShouQiLib
         }
 
 
-        /**
-         * \brief Affichage des joueur
-         * \return l'affichage des joueurs
-         */
+        /// <summary>
+        ///     Affichage des Joueur
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Identifiant}";
@@ -51,10 +58,11 @@ namespace DouShouQiLib
         public class RandomJoueur : Joueur
         {
 
-            /**
-             * \brief Constructeur de case
-             * \param x coordonnée en abscisse
-             */
+            /// <summary>
+            ///     Choisit un coup aléatoirement parmit une liste de tous les coups possible
+            /// </summary>
+            /// <param name="game"></param>
+            /// <returns>Un coup possible</returns>
             public override Case[] ChoisirCoup(Game game)
             {
                 System.Threading.Thread.Sleep(1000);
@@ -84,17 +92,32 @@ namespace DouShouQiLib
 
                 return cout;
             }
+
+            /// <summary>
+            ///    Constructeur d'un joueur ordinateur
+            /// </summary>
+            /// <param name="identifiant"></param>
             public RandomJoueur(string identifiant) : base(identifiant)
             { }
         }
 
         public class HumainJoueur : Joueur
         {
+            /// <summary>
+            ///    Ne sert pas, car le joueur humain choisira lui même son coup
+            /// </summary>
+            /// <param name="game"></param>
+            /// <returns>Rien</returns>
             public override Case[] ChoisirCoup(Game game)
             {
                 Case[] cout = new Case[2];
                 return cout;
             }
+
+            /// <summary>
+            ///    Constructeur d'un joueur humain
+            /// </summary>
+            /// <param name="identifiant"></param>
             public HumainJoueur(string identifiant) : base(identifiant)
             { }
         }
