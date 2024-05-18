@@ -115,47 +115,6 @@ namespace DouShouQiLib{
             + Start()
         }
 
-        class EventArgs{
-        }
-        class AppartientEventArgs{
-            + bool Ok
-            + Joueur Proprietaire
-            + AppartientEventArgs(bool ok, Joueur proprietaire)
-        }
-        class AskMooveEventArgs{
-            + int MaxX 
-            + int MaxY
-            + Game Game
-            + AskMooveEventArgs(int maxX, int maxY, Game game)
-        }
-        class BoardChangedEventArgs{
-            + Plateau NewBoard
-            + Case Depart
-            + Case Arrivee
-            + BoardChangedEventArgs(Plateau newBoard, Case depart, Case arrivee)
-        }
-        class GameOverEventArgs{
-            + bool End
-            + Joueur Winer
-            + Case Where
-            + GameOverEventArgs(bool end, Joueur? winer, Case? where) 
-        }
-        class PieceMovedEventArgs{
-            + bool Ok
-            + Case Depart
-            + Case Arrivee
-            + PieceMovedEventArgs(bool ok, Case depart, Case arrivee)
-        }
-        class PlayerChangedEventArgs{
-            + Joueur NouveauJoueur
-            + PlayerChangedEventArgs(Joueur nouveauJoueur)
-        }
-        class TalkToPlayerEventArgs{
-            + string Message
-            + TalkToPlayerEventArgs(string message)
-        }
-
-
 Piece --> "+ Case onThis" Case
 PieceType -> "+ PieceType type" Piece
 CaseType --> "+ CaseType type" Case
