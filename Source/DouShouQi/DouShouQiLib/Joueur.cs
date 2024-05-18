@@ -8,6 +8,12 @@ namespace DouShouQiLib
 {
     abstract public class Joueur
     {
+
+        /**
+         *\ brief Vérifie si une pièce appartient à ce joueur
+         *\ param piece la pièce dont on veut vérifier l'appartenence
+         *\ return vrai si la pièce lui appartient, faux dans le cas contraire
+         */
         public bool appartient(Piece piece)
         {
             if (piece.Proprietaire == this)
@@ -21,14 +27,22 @@ namespace DouShouQiLib
         public List<Piece> Liste_Piece { get; private set; }
 
         private string Identifiant { get; init; }
+
+        /**
+         *\ brief Constructeur de Joueur
+         *\ param identifiant nom du joueur
+         */
         public Joueur(string identifiant)
         {
             Identifiant = identifiant;
             Liste_Piece = new List<Piece>();
         }
 
-        
 
+        /**
+         *\ brief Affichage des joueur
+         *\ return l'affichage des joueurs
+         */
         public override string ToString()
         {
             return $"{Identifiant}";
@@ -36,6 +50,11 @@ namespace DouShouQiLib
 
         public class RandomJoueur : Joueur
         {
+
+            /**
+             *\ brief Constructeur de case
+             *\ param x coordonnée en abscisse
+             */
             public override Case[] ChoisirCoup(Game game)
             {
                 System.Threading.Thread.Sleep(1000);
