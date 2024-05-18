@@ -90,37 +90,104 @@ namespace DouShouQiLib
         }
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
-            // Vérifie si ce n'est pas en diagonale
-            if (caseAdja.X != caseActu.X && caseAdja.Y != caseActu.Y)
-            {
-                return false;
-            }
-            // Vérifie si il posséde une valeur
+            // Si la case actuelle est vide, retournez false
             if (!caseActu.Onthis.HasValue)
             {
                 return false;
             }
-            if (!caseAdja.Onthis.HasValue)
+
+            // Vérifier si les cases sont adjacentes
+            if (IsAdja(caseActu, caseAdja))
             {
-                if ((caseActu.Onthis.Value.Type != PieceType.souris && caseActu.Onthis.Value.Type != PieceType.chien) && caseAdja.Type == CaseType.Eau)
+                // Si la case adjacente est occupée, vérifier si l'on peut la manger
+                if (caseAdja.Onthis.HasValue && !Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type))
                 {
                     return false;
                 }
 
-            }
-            else
-            {
-                if ((caseActu.Onthis.Value.Type != PieceType.souris && caseActu.Onthis.Value.Type != PieceType.chien) && caseAdja.Type == CaseType.Eau)
-                {
-                    return false;
-                }
-                if (!Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type) || (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre))
+                // Vérifier si l'animal peut aller sur l'eau
+                if (caseAdja.Type == CaseType.Eau && !CanGoWater(caseActu, caseAdja))
                 {
                     return false;
                 }
 
+                return true;
             }
-            return true;
+
+            // Vérifier si l'on peut sauter
+            if (CanJump(caseActu, caseAdja, plateau))
+            {
+                // Empêcher la souris de manger en sortant de l'eau
+                if (caseActu.Type == CaseType.Eau && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
+                {
+                    return false;
+                }
+                return true;
+            }
+
+            // Vérifier si l'animal peut aller sur l'eau
+            if (caseAdja.Type == CaseType.Eau && !CanGoWater(caseActu, caseAdja))
+            {
+                return false;
+            }
+
+            return false;
+        }
+
+        private bool CanGoWater(Case caseActu, Case caseAdja)
+        {
+            if (caseActu.Onthis.Value.Type==PieceType.souris || caseAdja.Onthis.Value.Type==PieceType.chien)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsAdja(Case caseActu, Case caseAdja)
+        {
+            if (caseActu.X == caseAdja.X && Math.Abs(caseActu.Y - caseAdja.Y) == 1)
+            {
+                return true;
+            }
+            if (caseActu.Y == caseAdja.Y && Math.Abs(caseActu.X - caseAdja.X) == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool CanJump(Case caseActu, Case caseAdja, Plateau plateau)
+        {
+            if (caseActu.Onthis.Value.Type == PieceType.tigre || caseActu.Onthis.Value.Type == PieceType.lion)
+            {
+                if (caseActu.X == caseAdja.X)
+                {
+                    int minY = Math.Min(caseActu.Y, caseAdja.Y);
+                    int maxY = Math.Max(caseActu.Y, caseAdja.Y);
+                    for (int y = minY + 1; y < maxY; y++)
+                    {
+                        if (plateau.echequier[caseActu.X, y].Type != CaseType.Eau)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                if (caseActu.Y == caseAdja.Y)
+                {
+                    int minX = Math.Min(caseActu.X, caseAdja.X);
+                    int maxX = Math.Max(caseActu.X, caseAdja.X);
+                    for (int x = minX + 1; x < maxX; x++)
+                    {
+                        if (plateau.echequier[x, caseActu.Y].Type != CaseType.Eau)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool EstFini(Game game)
