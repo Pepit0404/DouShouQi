@@ -109,7 +109,7 @@ namespace DouShouQiLib
             OnPlayerChanged(JoueurCourant);          
         }
 
-        public bool isFini()
+        public bool IsFini()
         {
             if (Regle.EstFini(this))
             {
@@ -122,7 +122,7 @@ namespace DouShouQiLib
 
         public bool AppartientJC(Piece piece)
         {
-            if (JoueurCourant.appartient(piece)){
+            if (JoueurCourant.Appartient(piece)){
                 OnAppartient(true, piece.Proprietaire);
                 return true;
             }
@@ -133,7 +133,7 @@ namespace DouShouQiLib
         public void Start()
         {
             bool coupOk = true;
-            while (!isFini())
+            while (!IsFini())
             {
                 if (coupOk)
                 {

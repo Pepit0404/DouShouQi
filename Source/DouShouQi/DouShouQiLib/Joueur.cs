@@ -14,7 +14,7 @@ namespace DouShouQiLib
          *\ param piece la pièce dont on veut vérifier l'appartenence
          *\ return vrai si la pièce lui appartient, faux dans le cas contraire
          */
-        public bool appartient(Piece piece)
+        public bool Appartient(Piece piece)
         {
             if (piece.Proprietaire == this)
             {
