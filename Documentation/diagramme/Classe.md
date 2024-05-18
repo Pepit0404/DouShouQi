@@ -199,88 +199,88 @@ TalkToPlayerEventArgs--|> EventArgs
 ```
 
 Game est la classe principal, elle va servir à lancer et à jouer une partie </br>
-Paramètres: 
-Plateau : le plateau sur lequel va se jouer la partie 
-Regle : La définition des règles utilisées pour la partie J
-oueur1 : le premier joueur 
-Joueur2 : le deuxième joueur 
-JoueurCourant : Le joueur qui doit jouer
-Méthodes: 
-MovePiece : Permet de bouger un pièce sur le plateau 
-ChangePlayer : Permet de passer le tour d'un joueur à l'autre 
-Isfinish : vérifie si la partie est terminé 
-Appartient : vérifie si une pièce appartient à un joueur 
-Start : Permet de lancer un partie 
+Paramètres: </br>
+Plateau : le plateau sur lequel va se jouer la partie </br>
+Regle : La définition des règles utilisées pour la partie J</br>
+oueur1 : le premier joueur </br>
+Joueur2 : le deuxième joueur </br>
+JoueurCourant : Le joueur qui doit jouer</br>
+Méthodes: </br>
+MovePiece : Permet de bouger un pièce sur le plateau </br>
+ChangePlayer : Permet de passer le tour d'un joueur à l'autre </br>
+Isfinish : vérifie si la partie est terminé </br>
+Appartient : vérifie si une pièce appartient à un joueur </br>
+Start : Permet de lancer un partie </br>
 
-IRegles est une interface qui va contenir des méthodes qui servent à vérifier le bon respect des règles durant une partie. 
-Elle possède seulement des méthodes abstraites. 
-Méthodes: 
-CoupPossible : renvoie une liste de tous les coups possibles pour un joueur 
-initPlateau : met en place le plateau de jeu 
-PouvoirBouge : vérifie si un coup est valide 
-Manger : vérifie si une pièce peut en manger une autre 
-EstFini : défini les règles de quand se termine une partie 
+IRegles est une interface qui va contenir des méthodes qui servent à vérifier le bon respect des règles durant une partie. </br>
+Elle possède seulement des méthodes abstraites.</br> 
+Méthodes: </br>
+CoupPossible : renvoie une liste de tous les coups possibles pour un joueur </br>
+initPlateau : met en place le plateau de jeu </br>
+PouvoirBouge : vérifie si un coup est valide </br>
+Manger : vérifie si une pièce peut en manger une autre </br>
+EstFini : défini les règles de quand se termine une partie </br>
 
-regleOrigin est une classe contenant l'implémentation de l'interface IRegles. 
-Elle contient les vraies règles du jeu. 
-CoupPossible : renvoie une liste de tous les coups possibles pour un joueur 
-initPlateau : met en place le plateau de jeu 
-PouvoirBouge : vérifie si un coup est valide Manger : vérifie si une pièce peut en manger une autre 
-EstFini : défini les règles de quand se termine une partie 
-PlacementAnimaux : permet de placer les différents animaux sur le plateau 
+regleOrigin est une classe contenant l'implémentation de l'interface IRegles. </br>
+Elle contient les vraies règles du jeu. </br>
+CoupPossible : renvoie une liste de tous les coups possibles pour un joueur </br>
+initPlateau : met en place le plateau de jeu </br>
+PouvoirBouge : vérifie si un coup est valide Manger : vérifie si une pièce peut en manger une autre </br>
+EstFini : défini les règles de quand se termine une partie </br>
+PlacementAnimaux : permet de placer les différents animaux sur le plateau </br>
 
-regleVariente est une classe contenant l'implémentation de l'interface IRegles. 
-Elle contient des règles modifiées du jeu. 
-CoupPossible : renvoie une liste de tous les coups possibles pour un joueur 
-initPlateau : met en place le plateau de jeu 
-PouvoirBouge : vérifie si un coup est valide Manger : vérifie si une pièce peut en manger une autre 
-EstFini : défini les règles de quand se termine une partie 
-PlacementAnimaux : permet de placer les différents animaux sur le plateau
+regleVariente est une classe contenant l'implémentation de l'interface IRegles. </br>
+Elle contient des règles modifiées du jeu. </br>
+CoupPossible : renvoie une liste de tous les coups possibles pour un joueur </br>
+initPlateau : met en place le plateau de jeu </br>
+PouvoirBouge : vérifie si un coup est valide Manger : vérifie si une pièce peut en manger une autre </br>
+EstFini : défini les règles de quand se termine une partie </br>
+PlacementAnimaux : permet de placer les différents animaux sur le plateau</br>
 
-Joueur est une classe abstraite.
-Paramètres:
-Identifiant : le nom d’un joueur
-Liste_Piece : la liste de pièce que possède ce joueur
-Méthodes:
-appartient : vérifie si une pièce appartient à ce joueur
-ChoisirCoup : choisit aléatoirement un coup à jouer parmis tous ceux possibles
+Joueur est une classe abstraite.</br>
+Paramètres:</br>
+Identifiant : le nom d’un joueur</br>
+Liste_Piece : la liste de pièce que possède ce joueur</br>
+Méthodes:</br>
+appartient : vérifie si une pièce appartient à ce joueur</br>
+ChoisirCoup : choisit aléatoirement un coup à jouer parmis tous ceux possibles</br>
 
-RandomJoueur est une classe fille de Joueur.
-Méthodes:
-appartient : vérifie si une pièce appartient à ce joueur
-ChoisirCoup : choisit aléatoirement un coup à jouer parmis tous ceux possibles
+RandomJoueur est une classe fille de Joueur.</br>
+Méthodes:</br>
+appartient : vérifie si une pièce appartient à ce joueur</br>
+ChoisirCoup : choisit aléatoirement un coup à jouer parmis tous ceux possibles</br>
 
-HumainJoueur est une classe fille de Joueur.
-Méthodes:
-appartient : vérifie si une pièce appartient à ce joueur
-ChoisirCoup : ne sert pas à grand chose, car le joueur humain choisira lui même ses coups
+HumainJoueur est une classe fille de Joueur.</br>
+Méthodes:</br>
+appartient : vérifie si une pièce appartient à ce joueur</br>
+ChoisirCoup : ne sert pas à grand chose, car le joueur humain choisira lui même ses coups</br>
 
-Plateau est une classe permettant de définir un plateau sur lequel une partie se jouera
-Paramètres :
-height : contient la hauteur du plateau
-width : contient la largeur du plateau
-echequier : tableau à double entré contenant toutes les cases du plateau
+Plateau est une classe permettant de définir un plateau sur lequel une partie se jouera</br>
+Paramètres :</br>
+height : contient la hauteur du plateau</br>
+width : contient la largeur du plateau</br>
+echequier : tableau à double entré contenant toutes les cases du plateau</br>
 
-Piece est une classe contenant les informations sur les différentes pièces du jeu.
-Paramètres :
-Proprietaire : le joueur qui possède la pièce
-Type : le type de piece que c’est parmi l’énumération de PieceType
-Méthodes : 
-operator== : surcharge de l’opérateur == pour comparer deux pièces
-operator!= : surcharge de l’opérateur =! pour comparer deux pièces
+Piece est une classe contenant les informations sur les différentes pièces du jeu.</br>
+Paramètres :</br>
+Proprietaire : le joueur qui possède la pièce</br>
+Type : le type de piece que c’est parmi l’énumération de PieceType</br>
+Méthodes : </br>
+operator== : surcharge de l’opérateur == pour comparer deux pièces</br>
+operator!= : surcharge de l’opérateur =! pour comparer deux pièces</br>
 
-PieceType énumération de tous les animaux qu’une pièce peut être.
+PieceType énumération de tous les animaux qu’une pièce peut être.</br>
 
-Case est une classe contenant les informations sur les cases composant le plateau
-Paramètres : 
-x  : coordonné en abscisse d’une case sur le plateau
-y : coordonné en ordonné d’une case sur le plateau
-Type : type d’une case parmi la liste de CaseType
+Case est une classe contenant les informations sur les cases composant le plateau</br>
+Paramètres : </br>
+x  : coordonné en abscisse d’une case sur le plateau</br>
+y : coordonné en ordonné d’une case sur le plateau</br>
+Type : type d’une case parmi la liste de CaseType</br>
 
-CaseType énumération des différents types qu’une case peut avoir.
+CaseType énumération des différents types qu’une case peut avoir.</br>
 
-RandomJoueur et HumainJoueur sont tous les deux reliés à Joueur par un lien d'héritage. Joueur va être une classe abstraite qui va juste servir à définir des choses communes à ses deux enfants comme l’identifiant et les pièces que le joueur possède.
+RandomJoueur et HumainJoueur sont tous les deux reliés à Joueur par un lien d'héritage. Joueur va être une classe abstraite qui va juste servir à définir des choses communes à ses deux enfants comme l’identifiant et les pièces que le joueur possède.</br>
 
-On retrouvera les mêmes associations entre les différents évènements et la classe mère EventArgs.
+On retrouvera les mêmes associations entre les différents évènements et la classe mère EventArgs.</br>
 
-IRegle va être une interface qui va mettre des méthodes communes entre les différents types de règles que l’on voudra mettre en place. RegleOrigin et Reglevariante vont donc implémenter les méthodes de IRegles tout en les modifiant pour avoir deux expérience de jeu différentes.
+IRegle va être une interface qui va mettre des méthodes communes entre les différents types de règles que l’on voudra mettre en place. RegleOrigin et Reglevariante vont donc implémenter les méthodes de IRegles tout en les modifiant pour avoir deux expérience de jeu différentes.</br>
