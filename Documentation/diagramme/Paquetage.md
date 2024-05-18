@@ -3,9 +3,6 @@
 
 namespace DouShouQi{
   package DouShouQiLib{
-    class Class
-    class Event
-    class Interface
   }
   package DouShouQiTest{
 
