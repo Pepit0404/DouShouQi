@@ -175,6 +175,58 @@ Joueur ---> "+ Joueur Joueur2" Game
 Joueur ---> "+ Joueur JoueurCourant" Game
 IRegles ---> "+ IRegles Regle" Game
 
+
+
+}
+
+@enduml
+```
+``` plantuml
+@startuml
+skinparam classAttributeIconSize 0
+
+namespace Event{
+
+        class EventArgs{
+        }
+        class AppartientEventArgs{
+            + bool Ok
+            + Joueur Proprietaire
+            + AppartientEventArgs(bool ok, Joueur proprietaire)
+        }
+        class AskMooveEventArgs{
+            + int MaxX 
+            + int MaxY
+            + Game Game
+            + AskMooveEventArgs(int maxX, int maxY, Game game)
+        }
+        class BoardChangedEventArgs{
+            + Plateau NewBoard
+            + Case Depart
+            + Case Arrivee
+            + BoardChangedEventArgs(Plateau newBoard, Case depart, Case arrivee)
+        }
+        class GameOverEventArgs{
+            + bool End
+            + Joueur Winer
+            + Case Where
+            + GameOverEventArgs(bool end, Joueur? winer, Case? where) 
+        }
+        class PieceMovedEventArgs{
+            + bool Ok
+            + Case Depart
+            + Case Arrivee
+            + PieceMovedEventArgs(bool ok, Case depart, Case arrivee)
+        }
+        class PlayerChangedEventArgs{
+            + Joueur NouveauJoueur
+            + PlayerChangedEventArgs(Joueur nouveauJoueur)
+        }
+        class TalkToPlayerEventArgs{
+            + string Message
+            + TalkToPlayerEventArgs(string message)
+        }
+
 AppartientEventArgs --|> EventArgs
 AskMooveEventArgs--|> EventArgs
 BoardChangedEventArgs--|> EventArgs
@@ -184,10 +236,8 @@ PlayerChangedEventArgs--|> EventArgs
 TalkToPlayerEventArgs--|> EventArgs
 
 }
-
 @enduml
 ```
-
 
 Game est la classe principal, elle va servir à lancer et à jouer une partie 
 Paramètres: 
