@@ -14,21 +14,23 @@ void affichePlateau(Case[,] echequier)
         Console.Write($"{i} | ");
         for (int j = 0; j < echequier.GetLength(1); j++)
         {
-            if (echequier[i, j].Type == CaseType.Terre)
+            switch (echequier[i, j].Type)
             {
-                Console.BackgroundColor = ConsoleColor.DarkYellow;
-            }
-            else if (echequier[i, j].Type == CaseType.Eau)
-            {
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
-            }
-            else if (echequier[i, j].Type == CaseType.Piege)
-            {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-            }
-            else if (echequier[i, j].Type == CaseType.Taniere)
-            {
-                Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                case CaseType.Terre:
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case CaseType.Eau:
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    break;
+                case CaseType.Piege:
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    break;
+                case CaseType.Taniere:
+                    Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    break;
             }
             if (echequier[i, j].Onthis == null)
             {
@@ -40,15 +42,9 @@ void affichePlateau(Case[,] echequier)
                 {
                     j1 = echequier[i, j].Onthis.Value.Proprietaire;
                 }
-                if (echequier[i, j].Onthis.Value.Proprietaire == j1)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                }
-                Console.Write((echequier[i, j].Onthis)?.ToString().PadLeft(4).PadRight(8));
+                Console.ForegroundColor = (echequier[i, j].Onthis.Value.Proprietaire == j1) ? ConsoleColor.White : ConsoleColor.Black;
+
+                Console.Write((echequier[i, j].Onthis)?.ToString().PadRight(8));
                 Console.ForegroundColor = ConsoleColor.White;
             }
             Console.BackgroundColor = ConsoleColor.Black;
@@ -252,6 +248,7 @@ void main()
     game.GameOver += Game_OnGameOver;
     game.LuiAppartient += Game_OnAppartient;
 
+    Console.Clear();
     affichePlateau(game.Plateau.echequier);
     game.Start();
 }
