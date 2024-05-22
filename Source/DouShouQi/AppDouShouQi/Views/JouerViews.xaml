@@ -8,28 +8,34 @@
         <HorizontalStackLayout Margin="10,20"
                                HorizontalOptions="Center">
             <Label Text="Joueur 1:"
+                   TextColor="White"
                    VerticalOptions="Center"/>
             <Entry VerticalOptions="Center"
-                   Placeholder="Nom Joueur" 
+                   Placeholder="Entrez le nom du 1er joueur..." 
+                   PlaceholderColor="Gray"
                    WidthRequest="200"
-                   Margin="20,0" />
+                   Margin="20,0"
+                   TextColor="White"/>
             <Button Text="Charger" />
         </HorizontalStackLayout>
         <HorizontalStackLayout Margin="10,20"
                                HorizontalOptions="Center">
-            <Label Text="Joueur 1:"
-           VerticalOptions="Center"/>
+            <Label Text="Joueur 2:"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
             <Entry VerticalOptions="Center"
-                   Placeholder="Nom Joueur"
+                   Placeholder="Entrez le nom du 2e joueur..."
+                   PlaceholderColor="Gray"
                    WidthRequest="200"
                    HeightRequest="10"
-                   Margin="20,0" />
+                   Margin="20,0"
+                   TextColor="White"/>
             <Button Text="Charger" />
         </HorizontalStackLayout>
         <HorizontalStackLayout Margin="10,20"
                                HorizontalOptions="Center">
-            <RadioButton Content="Version classique" IsChecked="True" />
-            <RadioButton Content="Version modifiée" />
+            <RadioButton Content="Version classique" IsChecked="True" TextColor="White"/>
+            <RadioButton Content="Version modifiée" TextColor="White" />
         </HorizontalStackLayout>
         <Button Text="Jouer" 
                 Margin="20,20"/>
