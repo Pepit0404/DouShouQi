@@ -20,6 +20,10 @@
         Title="CreditsPage"
         ContentTemplate="{DataTemplate pages:CreditsPage}"
         Route="CreditsPage" />
+    <ShellContent
+        Title="GamePage"
+        ContentTemplate="{DataTemplate pages:GamePage}"
+        Route="GamePage" />
 
 </Shell>
 

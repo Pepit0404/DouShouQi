@@ -70,6 +70,27 @@ namespace DouShouQiLib
             echequier = new Case[height, width];
         }
 
+        public IEnumerable<Case> FlatBoard2d
+        {
+            get
+            {
+                List<Case> flatBoard = new List<Case>();
+
+                if (echequier == null)
+                {
+                    return flatBoard;
+                }
+                for(int row=0; row < height; row++)
+                {
+                    for(int col=0; col < width; col++)
+                    {
+                        flatBoard.Add(echequier[row,col]);
+                    }
+                }
+                return flatBoard;
+            }
+        }
+
         /// <summary>
         ///    Affichage d'un plateau
         /// </summary>
@@ -103,4 +124,5 @@ namespace DouShouQiLib
             : base(message)
         { }
     }
+
 }
