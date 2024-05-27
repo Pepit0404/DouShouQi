@@ -159,6 +159,7 @@ static Case AskCase(int maxX, int maxY, Game game)
     int column;
     do
     {
+        Console.WriteLine("Qu'elle piece bouger ?");
         Console.Write("  Ligne: ");
         line = AskPos(maxX);
         column = -1;
@@ -290,6 +291,19 @@ void main()
     Console.Clear();
     affichePlateau(game.Plateau.echequier);
     game.Start();
+}
+
+void main2()
+{
+    Game game = ChooseGame();
+    game.BoardChanged += Game_OnBoardChanged;
+    game.PieceMoved += Game_OnPieceMoved;
+    game.PlayerChanged += Game_OnPlayerChanged;
+    game.GameOver += Game_OnGameOver;
+    game.LuiAppartient += Game_OnAppartient;
+
+    Console.Clear();
+    affichePlateau(game.Plateau.echequier);
 }
 
 main();
