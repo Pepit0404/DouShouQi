@@ -4,6 +4,7 @@
     {
         public App()
         {
+            public Manager
             InitializeComponent();
 
             MainPage = new AppShell();
