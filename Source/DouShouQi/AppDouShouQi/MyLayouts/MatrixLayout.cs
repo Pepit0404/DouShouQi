@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maui.Layouts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,11 @@ namespace AppDouShouQi.MyLayouts
         {
             get { return (double)GetValue(VerticalSpacingProperty); }
             set { SetValue(VerticalSpacingProperty, value); }
+        }
+
+        protected override ILayoutManager CreateLayoutManager()
+        {
+            return new MatrixLayoutManager(this);
         }
     }
 }

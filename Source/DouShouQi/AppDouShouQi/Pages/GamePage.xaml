@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mylayouts="clr-namespace:DouShouQiLib;assembly=DouShouQiLib"
+             xmlns:mylayouts="clr-namespace:AppDouShouQi.MyLayouts"
+             xmlns:converters="clr-namespace:AppDouShouQi.Resources.Converters"
              x:Class="AppDouShouQi.Pages.GamePage"
              Title="GamePage">
-    <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Plateau.flatBoard2d}"
-                BackgroundColor="Azure"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border WidthRequest="30" HeightRequest="30"
-                    BackgroundColor="DarkSalmon"
-                    Margin="4">
-                        <Label Text="{Binding}"
-                        TextColor="Black"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"/>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+    <ContentPage.Resources>
+        <converters:CaseColorConverter x:Key="CasesConverter"/>
+        <ResourceDictionary>
+            <x:Double x:Key="VerticalSpacing">2</x:Double>
+            <x:Double x:Key="HorizontalSpacing">2</x:Double>
+            <DataTemplate x:Key="cellTemplate">
+                <Grid BackgroundColor="DarkSalmon">
+                    <Label Text="{Binding Onthis}"
+                TextColor="Black"
+                BackgroundColor="{Binding Type, Converter={StaticResource CasesConverter}}"
+                FontSize="Small"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <mylayouts:MatrixLayout 
+        BindableLayout.ItemsSource="{Binding GM.Plateau.FlatBoard2d}" 
+        BindableLayout.ItemTemplate="{StaticResource cellTemplate}" 
+        NbColumns="{Binding GM.Plateau.height}"
+        NbRows="{Binding GM.Plateau.width}"
+        HorizontalSpacing="{StaticResource HorizontalSpacing}"
+        VerticalSpacing="{StaticResource VerticalSpacing}"
+        BackgroundColor="DarkGrey"
+        HorizontalOptions="Center" VerticalOptions="Center"
+        Padding="10" Margin="100"/>
+    
 </ContentPage>

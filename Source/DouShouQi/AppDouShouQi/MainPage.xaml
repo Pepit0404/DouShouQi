@@ -38,6 +38,12 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Fill"
                     MinimumWidthRequest="200">
+                    <!--<Button
+                        Text="Charger Partie"
+                        FontSize="25"
+                        
+                        Style="{StaticResource MainPage}"
+                        Clicked="RunPlay" />-->
                     <Views:ButtonHomePage />
 
                     <Button
@@ -83,72 +89,3 @@
         </AbsoluteLayout>
     </ScrollView>
 </ContentPage>
-<!--<Grid ColumnDefinitions="*,*"
-      RowDefinitions="*">
-    <VerticalStackLayout Grid.Row="0" Grid.Column="0"
-                         VerticalOptions="Center" >
-        <Image
-            Source="dotnet_bot.png"
-            HeightRequest="185"
-            Aspect="AspectFit"
-            SemanticProperties.Description="dot net bot in a race car number eight" />
-
-        <Label
-            Text="DouShouQi"
-            TextColor="{StaticResource PointBonus}"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" />
-
-        <Label
-            Text="Welcome to &#10;.NET Multi-platform App UI"
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-    </VerticalStackLayout>
-    <VerticalStackLayout Grid.Column="1"
-        VerticalOptions="Center" 
-        HorizontalOptions="Fill">
-        <Views:ButtonHomePage />
-
-        <Button
-            Text="Charger Partie"
-            Clicked="RunPlay"
-            WidthRequest="350" HeightRequest="50"
-            HorizontalOptions="Center"
-            FontSize="24"
-            Margin="5,5" />
-
-        <Button
-            Text="Tableau des scores"
-            WidthRequest="350" HeightRequest="50"
-            HorizontalOptions="Center"
-            FontSize="24"
-            Margin="5,5" />
-
-        <Button
-            Text="Credit"
-            WidthRequest="350" HeightRequest="50"
-            HorizontalOptions="Center"
-            FontSize="24"
-            Margin="5,5" />
-    </VerticalStackLayout>
-    <AbsoluteLayout>
-        <ImageButton Grid.Row="1"
-             Source="dark_mode_icon.png"
-             Padding="18,18"
-             WidthRequest="65" HeightRequest="65"
-             CornerRadius="50"
-             BackgroundColor="{StaticResource PointBonus}"
-             AbsoluteLayout.LayoutFlags="PositionProportional"
-             AbsoluteLayout.LayoutBounds="2.1,.99,80,80" />
-        <Views:FloatButtonHomePage AbsoluteLayout.LayoutFlags="PositionProportional"
-            AbsoluteLayout.LayoutBounds="1.97,.99,80,80" />
-    </AbsoluteLayout>
-    <AbsoluteLayout HorizontalOptions="Center" VerticalOptions="Fill">
-        <Views:JouerViews HorizontalOptions="Center"
-                          VerticalOptions="Center"
-                          x:Name="PlayStart"
-                          IsVisible="False" />
-    </AbsoluteLayout>
-
-</Grid>-->

@@ -80,9 +80,9 @@ namespace DouShouQiLib
                 {
                     return flatBoard;
                 }
-                for(int row=0; row < height; row++)
+                for(int row=0; row < width; row++)
                 {
-                    for(int col=0; col < width; col++)
+                    for(int col=0; col < height ; col++)
                     {
                         flatBoard.Add(echequier[row,col]);
                     }

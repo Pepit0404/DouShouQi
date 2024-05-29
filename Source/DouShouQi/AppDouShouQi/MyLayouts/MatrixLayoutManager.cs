@@ -45,7 +45,32 @@ namespace AppDouShouQi.MyLayouts
             return new Size(LayoutWidth, LayoutHeight);
         }
 
+        public Size ArrangeChildren(Rect bounds)
+        {
+            if (MatrixLayout == null)
+                return new Size(LayoutWidth, LayoutHeight);
 
+            var padding = MatrixLayout.Padding;
+            var horizontalSpacing = MatrixLayout.HorizontalSpacing;
+            var verticalSpacing = MatrixLayout.VerticalSpacing;
+            int nbColumns = MatrixLayout.NbColumns;
+            double top = padding.Top + bounds.Top;
+            double left = padding.Left + bounds.Left;
+
+            for (int cellId = 0; cellId < MatrixLayout.Count; cellId++)
+            {
+                var cell = MatrixLayout[cellId];
+                int numRow = cellId / nbColumns;
+                int numColumn = cellId - numRow * nbColumns;
+
+                double leftSide = left + numColumn * (MaxCellWidth + horizontalSpacing);
+                double topSide = top + numRow * (MaxCellHeight + verticalSpacing);
+
+                var destination = new Rect(leftSide, topSide, MaxCellWidth, MaxCellHeight);
+                cell.Arrange(destination);
+            }
+            return new Size(LayoutWidth, LayoutHeight);
+        }
 
         // Ajouter arrange child
     }
