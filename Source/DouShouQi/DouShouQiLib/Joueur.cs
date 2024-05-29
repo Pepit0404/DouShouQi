@@ -9,7 +9,7 @@ namespace DouShouQiLib
 {
     abstract public class Joueur : INotifyPropertyChanged
     {
-        
+
 
         /// <summary>
         ///     Vérifie si une pièce appartient à joueur
@@ -17,7 +17,7 @@ namespace DouShouQiLib
         /// <param name="piece"></param>
         /// <returns>bool</returns>
         /// 
-        
+
 
         public bool Appartient(Piece piece)
         {
@@ -42,16 +42,31 @@ namespace DouShouQiLib
         /// <summary>
         ///    Nom du joueur
         /// </summary>
-        private string Identifiant { get; init; }
+        public string? Name
+        {
+            get => name;
+            set
+            {
+                if (name == value) return;
+                name = value;
+                OnPropertyChanged("Name");
+
+            }
+        }
+        private string name;
+        public int Id {  get; set; }
+
+
 
         /// <summary>
         ///     Constructeur de Joueur
         /// </summary>
         /// <param name="identifiant"></param>
-        public Joueur(string identifiant)
+        public Joueur(string identifiant, int id)
         {
-            Identifiant = identifiant;
+            Name = identifiant;
             Liste_Piece = new List<Piece>();
+            Id = id;
         }
 
 
@@ -61,74 +76,74 @@ namespace DouShouQiLib
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{Identifiant}";
+            return $"{Name}";
         }
+    }
+    public class RandomJoueur : Joueur
+    {
 
-        public class RandomJoueur : Joueur
+        /// <summary>
+        ///     Choisit un coup aléatoirement parmit une liste de tous les coups possible
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns>Un coup possible</returns>
+        public override Case[] ChoisirCoup(Game game)
         {
-
-            /// <summary>
-            ///     Choisit un coup aléatoirement parmit une liste de tous les coups possible
-            /// </summary>
-            /// <param name="game"></param>
-            /// <returns>Un coup possible</returns>
-            public override Case[] ChoisirCoup(Game game)
+            System.Threading.Thread.Sleep(1000);
+            Case[] cout = new Case[2];
+            Piece choisit = this.Liste_Piece[new Random().Next(0, this.Liste_Piece.Count)];
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < game.Plateau.width; i++)
             {
-                System.Threading.Thread.Sleep(1000);
-                Case[] cout = new Case[2];
-                Piece choisit = this.Liste_Piece[new Random().Next(0, this.Liste_Piece.Count)];
-                int x = 0;
-                int y = 0;
-                for (int i = 0; i < game.Plateau.width; i++)
+                for (int j = 0; j < game.Plateau.height; j++)
                 {
-                    for (int j = 0; j < game.Plateau.height; j++)
+                    if (game.Plateau[i, j].Onthis.HasValue)
                     {
-                        if (game.Plateau[i, j].Onthis.HasValue)
+                        if (game.Plateau[i, j].Onthis.Value == choisit)
                         {
-                            if (game.Plateau[i, j].Onthis.Value == choisit)
-                            {
-                                x=i; y=j;
-                                i = game.Plateau.width;
-                                j = game.Plateau.height;
-                            }
+                            x=i; y=j;
+                            i = game.Plateau.width;
+                            j = game.Plateau.height;
                         }
                     }
                 }
-                List<Case> possibilite = game.Regle.CoupPossible(game.Plateau[x, y], game);
-
-                cout[0] = game.Plateau[x, y];
-                cout[1] = possibilite[new Random().Next(0, possibilite.Count)];
-
-                return cout;
             }
+            List<Case> possibilite = game.Regle.CoupPossible(game.Plateau[x, y], game);
 
-            /// <summary>
-            ///    Constructeur d'un joueur ordinateur
-            /// </summary>
-            /// <param name="identifiant"></param>
-            public RandomJoueur(string identifiant) : base(identifiant)
-            { }
+            cout[0] = game.Plateau[x, y];
+            cout[1] = possibilite[new Random().Next(0, possibilite.Count)];
+
+            return cout;
         }
 
-        public class HumainJoueur : Joueur
+        /// <summary>
+        ///    Constructeur d'un joueur ordinateur
+        /// </summary>
+        /// <param name="identifiant"></param>
+        public RandomJoueur(string identifiant, int id) : base(identifiant,id)
+        { }
+    }
+
+    public class HumainJoueur : Joueur
+    {
+        /// <summary>
+        ///    Ne sert pas, car le joueur humain choisira lui même son coup
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns>Rien</returns>
+        public override Case[] ChoisirCoup(Game game)
         {
-            /// <summary>
-            ///    Ne sert pas, car le joueur humain choisira lui même son coup
-            /// </summary>
-            /// <param name="game"></param>
-            /// <returns>Rien</returns>
-            public override Case[] ChoisirCoup(Game game)
-            {
-                Case[] cout = new Case[2];
-                return cout;
-            }
-
-            /// <summary>
-            ///    Constructeur d'un joueur humain
-            /// </summary>
-            /// <param name="identifiant"></param>
-            public HumainJoueur(string identifiant) : base(identifiant)
-            { }
+            Case[] cout = new Case[2];
+            return cout;
         }
+
+        /// <summary>
+        ///    Constructeur d'un joueur humain
+        /// </summary>
+        /// <param name="identifiant"></param>
+        public HumainJoueur(string identifiant, int id) : base(identifiant, id)
+        { }
     }
 }
+

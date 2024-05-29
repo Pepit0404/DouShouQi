@@ -1,4 +1,5 @@
-﻿namespace AppDouShouQi
+﻿using DouShouQiLib;
+namespace AppDouShouQi
 {
     
     public partial class App : Application

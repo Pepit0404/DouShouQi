@@ -80,7 +80,15 @@
                               IsVisible="False" 
                               AbsoluteLayout.LayoutFlags="All"
                               AbsoluteLayout.LayoutBounds=".5,.5,.75,.75"/>
+            
+            <Grid ColumnDefinitions="auto,auto">
+            <Label Text="{Binding Joueurs[0].Name}" Grid.Column="0"/>
+                <Label Text="{Binding Joueurs[1].Name}" Grid.Column="1" Padding="0,0,80,0"/>
+                
+
+            </Grid>
         </AbsoluteLayout>
+        
     </ScrollView>
 </ContentPage>
 <!--<Grid ColumnDefinitions="*,*"
