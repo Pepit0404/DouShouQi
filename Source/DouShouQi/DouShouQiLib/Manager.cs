@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    internal class Manager
+    public class Manager
     {
         public Game Game { get; set; }
         public Plateau Plateau { get; set; }    

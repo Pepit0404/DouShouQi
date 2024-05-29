@@ -2,7 +2,8 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Views.JouerViews"
-             BackgroundColor="Black" >
+             BackgroundColor="Black">
+             
     <VerticalStackLayout HeightRequest="500" WidthRequest="750"
                          VerticalOptions="Center" >
         <HorizontalStackLayout Margin="10,20"
@@ -30,7 +31,8 @@
                    HeightRequest="10"
                    Margin="20,0"
                    TextColor="White"/>
-            <Button Text="Charger" />
+            <Button Text="Charger"
+                    Clicked="CreatePlayers_Clicked"/>
         </HorizontalStackLayout>
         <HorizontalStackLayout Margin="10,20"
                                HorizontalOptions="Center">

@@ -1,19 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    abstract public class Joueur
+    abstract public class Joueur : INotifyPropertyChanged
     {
+        
 
         /// <summary>
         ///     Vérifie si une pièce appartient à joueur
         /// </summary>
         /// <param name="piece"></param>
         /// <returns>bool</returns>
+        /// 
+        
+
         public bool Appartient(Piece piece)
         {
             if (piece.Proprietaire == this)
@@ -22,6 +27,10 @@ namespace DouShouQiLib
             }
             return false;
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        void OnPropertyChanged(string propertyName)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         abstract public Case[] ChoisirCoup(Game game);
 
