@@ -264,9 +264,9 @@ Game ChooseGame()
             IRegles regle = ChooseRegle();
             displayTitre();
             Console.Write("Nom du joueur 1: ");
-            string j1 = Console.ReadLine();
+            string j1 = Console.ReadLine()!;
             Console.Write("Nom du joueur 2: ");
-            Game game = new Game(regle, new HumainJoueur(j1,1), new HumainJoueur(Console.ReadLine(),2));
+            Game game = new Game(regle, new HumainJoueur(j1,1), new HumainJoueur(Console.ReadLine()!,2));
             game.AskMoove += Game_OnAskMooveHuman;
             return game;
         }

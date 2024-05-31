@@ -1,6 +1,7 @@
 ﻿using DouShouQiLib.Event;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -50,7 +51,7 @@ namespace DouShouQiLib
 
         protected virtual void OnAppartient(bool ok, Joueur proprietaire) 
             => LuiAppartient?.Invoke(this, new AppartientEventArgs(ok, proprietaire));
-        protected virtual void OnBoardChanged(Plateau newBoard, Case depart, Case arrivee) 
+        protected virtual void OnBoardChanged(Plateau? newBoard, Case? depart, Case? arrivee) 
             => BoardChanged?.Invoke(this, new BoardChangedEventArgs(newBoard, depart, arrivee));
         protected virtual void OnPieceMoved(bool ok, Case depart, Case arrive) 
             => PieceMoved?.Invoke(this, new PieceMovedEventArgs(ok, depart, arrive));
@@ -71,9 +72,9 @@ namespace DouShouQiLib
         protected virtual void OnTalkToPlayer(string message) 
             => TalkToPlayer?.Invoke(this, new TalkToPlayerEventArgs(message));
 
-        protected virtual void OnCoutPossible(Case case)
+        protected virtual void OnCoutPossible(Case inCase)
         {
-            CoutPossible?.Invoke(this, new CoutPossibleEventArgs(Regle.CoupPossible(case, this));
+            CoutPossible?.Invoke(this, new CoutPossibleEventArgs(Regle.CoupPossible(inCase, this) ) );
         }
 
         /// <summary>
@@ -91,6 +92,7 @@ namespace DouShouQiLib
             JoueurCourant = Joueur1;
 
             Regle.initPlateau(this);
+            OnBoardChanged(null, null, null);
         }
 
         /// <summary>

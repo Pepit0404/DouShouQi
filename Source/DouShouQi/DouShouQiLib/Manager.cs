@@ -12,8 +12,8 @@ namespace DouShouQiLib
 {
     public class Manager: INotifyPropertyChanged
     {
-        public Game Game { get; set; }
-        public Plateau? Plateau { get; set; }    
+        public Game game { get; set; }
+        public Plateau? Plateau => game.Plateau;    
       
         public IRegles? Regles { get; set; }
         public Joueur[] Joueurs { get; set; } = new Joueur[2];
@@ -23,7 +23,9 @@ namespace DouShouQiLib
         public void CreateGame()
         {
             if (Regles == null) return ;
-            Game = new Game(Regles, Joueurs[0], Joueurs[1]);
+            game = new Game(Regles, Joueurs[0], Joueurs[1]);
+            game.BoardChanged += Manger_OnBoardChanged;
+            OnPropertyChanged("Plateau");
         }
 
         public void setRegles(string regle)
@@ -45,5 +47,9 @@ namespace DouShouQiLib
             OnPropertyChanged("Joueurs");
         }
 
+        void Manger_OnBoardChanged(object? sender, BoardChangedEventArgs e)
+        {
+            OnPropertyChanged("Plateau");
+        }
     }
 }

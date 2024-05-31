@@ -5,9 +5,7 @@ namespace AppDouShouQi
     public partial class MainPage : ContentPage
     {
         public Manager Mgr
-        => (Application.Current as App).TheMgr;
-
-        
+        => (Application.Current as App)!.TheMgr;
 
         public MainPage()
         {

@@ -1,4 +1,5 @@
 ﻿using DouShouQiLib;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace AppDouShouQi.Resources.Converters;
@@ -37,6 +38,25 @@ public class CaseImageConverter : IValueConverter
             CaseType.Piege => "piege.jpg",
             CaseType.Taniere => "taniere.jpg",
             _ => null,
+        };
+    }
+    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class PieceColorConverter : IValueConverter
+{
+    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        if (value == null) return null;
+        Piece p = (Piece)value!;
+        return p.Proprietaire.Id switch
+        {
+            1 => "Blue",
+            2 => "Red",
+            _ => "DarkSalmon",
         };
     }
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

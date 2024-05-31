@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    public class Plateau : INotifyPropertyChanged
+    public class Plateau 
     {
         /// <summary>
         ///    Hauteur du plateau
@@ -58,7 +58,6 @@ namespace DouShouQiLib
                 if (ligne < 0 || ligne >= echequier.GetLength(0)) throw new MyOutOfRangeException($"la valeur: {ligne} dépasse les limites du tableau");
                 if (collone < 0 || collone >= echequier.GetLength(1)) throw new MyOutOfRangeException($"la valeur: {collone} dépasse les limites du tableau");
                 echequier[ligne, collone] = value;
-                OnPropertyChanged("Plateau");
             }
         }
 
@@ -119,8 +118,6 @@ namespace DouShouQiLib
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        void OnPropertyChanged(string propertyName)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     public class MyOutOfRangeException : Exception
