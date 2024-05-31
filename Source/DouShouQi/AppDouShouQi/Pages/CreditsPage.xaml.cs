@@ -9,6 +9,6 @@ public partial class CreditsPage : ContentPage
 
 	private void OnClickedReturn(object _, EventArgs __)
 	{
-        Shell.Current.GoToAsync("//MainPage");
+		Shell.Current.GoToAsync("//MainPage");
     }
 }
