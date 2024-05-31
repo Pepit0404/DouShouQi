@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
+    [DataContract]
     abstract public class Joueur : INotifyPropertyChanged
     {
 
@@ -17,7 +19,7 @@ namespace DouShouQiLib
         /// <param name="piece"></param>
         /// <returns>bool</returns>
         /// 
-
+        
 
         public bool Appartient(Piece piece)
         {
@@ -42,6 +44,7 @@ namespace DouShouQiLib
         /// <summary>
         ///    Nom du joueur
         /// </summary>
+        [DataMember]
         public string? Name
         {
             get => name;
@@ -79,6 +82,7 @@ namespace DouShouQiLib
             return $"{Name}";
         }
     }
+    [DataContract]
     public class RandomJoueur : Joueur
     {
 
@@ -124,7 +128,7 @@ namespace DouShouQiLib
         public RandomJoueur(string identifiant, int id) : base(identifiant,id)
         { }
     }
-
+    [DataContract]
     public class HumainJoueur : Joueur
     {
         /// <summary>

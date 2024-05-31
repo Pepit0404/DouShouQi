@@ -24,16 +24,21 @@
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <mylayouts:MatrixLayout 
-        BindableLayout.ItemsSource="{Binding GM.Game.Plateau.FlatBoard2d}" 
-        BindableLayout.ItemTemplate="{StaticResource cellTemplate}" 
-        NbColumns="{Binding GM.Game.Plateau.height}"
-        NbRows="{Binding GM.Game.Plateau.width}"
-        HorizontalSpacing="{StaticResource HorizontalSpacing}"
-        VerticalSpacing="{StaticResource VerticalSpacing}"
-        BackgroundColor="DarkGrey"
-        HorizontalOptions="Center" VerticalOptions="Center"
-        Padding="10" Margin="100"/>
+    <Grid RowDefinitions="50,50,*">
+        <Label Text="{Binding Joueurs[0].Name}" />
+        <Label Text="{Binding Joueurs[1].Name}" Grid.Row="1" Padding="0,0,80,0"/>
+        <mylayouts:MatrixLayout 
+            BindableLayout.ItemsSource="{Binding GM.Game.Plateau.FlatBoard2d}" 
+            BindableLayout.ItemTemplate="{StaticResource cellTemplate}" 
+            NbColumns="{Binding GM.Game.Plateau.height}"
+            NbRows="{Binding GM.Game.Plateau.width}"
+            HorizontalSpacing="{StaticResource HorizontalSpacing}"
+            VerticalSpacing="{StaticResource VerticalSpacing}"
+            BackgroundColor="DarkGrey"
+            HorizontalOptions="Center" VerticalOptions="Center"
+            Padding="10" Margin="100"
+            Grid.Row="2"/>
+    </Grid>
+    
     
 </ContentPage>

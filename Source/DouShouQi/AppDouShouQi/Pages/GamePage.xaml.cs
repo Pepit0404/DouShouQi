@@ -21,6 +21,7 @@ public partial class GamePage : ContentPage
     public GamePage()
 	{
 		InitializeComponent();
+        //BindingContext = GM;
         BindingContext = this;
     }
 }
