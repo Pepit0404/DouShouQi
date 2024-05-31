@@ -7,8 +7,8 @@ public partial class CreditsPage : ContentPage
 		InitializeComponent();
 	}
 
-	async void OnClickedReturn(object sender, EventArgs e)
+	private void OnClickedReturn(object _, EventArgs __)
 	{
-
-	}
+        Shell.Current.GoToAsync("//MainPage");
+    }
 }

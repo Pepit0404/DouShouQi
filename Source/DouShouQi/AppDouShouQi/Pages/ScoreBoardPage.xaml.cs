@@ -6,9 +6,9 @@ public partial class ScoreBoardPage : ContentPage
 	{
 		InitializeComponent();
 	}
-	
-	async void OnClickedReturn(object sender, EventArgs e)
-	{
 
+	private void OnClickedReturn(object _, EventArgs __)
+	{
+		Shell.Current.GoToAsync("//MainPage");
 	}
 }
