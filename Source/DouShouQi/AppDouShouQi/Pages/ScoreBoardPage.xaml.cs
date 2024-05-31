@@ -6,4 +6,9 @@ public partial class ScoreBoardPage : ContentPage
 	{
 		InitializeComponent();
 	}
+	
+	async void OnClickedReturn(object sender, EventArgs e)
+	{
+
+	}
 }

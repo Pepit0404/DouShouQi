@@ -3,17 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Pages.CreditsPage"
              Title="Page des crédits"
-             xmlns:Views="clr-namespace:AppDouShouQi.Views">
-                
+             xmlns:Views="clr-namespace:AppDouShouQi.Views"
+             BackgroundImageSource="fond.png">
+
     <ScrollView>
     <VerticalStackLayout>
             <Grid ColumnDefinitions="auto,*"  >
-                <Views:ReturnButtonView />
+                <!--<Views:ReturnButtonView />-->
+                <Button Style="{StaticResource return}"
+                        Clicked="OnClickedReturn" />
                 <Label Text="Crédits"
-                       FontSize="40"
                        Grid.Column="1"
-                       HorizontalOptions="Center"
-                       Padding="0,0,80,0"/>
+                       Style="{StaticResource Titre}"/>
             </Grid>
             <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="Center">
                 <HorizontalStackLayout>

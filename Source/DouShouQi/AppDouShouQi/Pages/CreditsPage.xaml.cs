@@ -6,4 +6,9 @@ public partial class CreditsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	async void OnClickedReturn(object sender, EventArgs e)
+	{
+
+	}
 }
