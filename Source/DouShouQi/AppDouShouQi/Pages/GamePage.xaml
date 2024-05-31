@@ -26,10 +26,10 @@
     </ContentPage.Resources>
 
     <mylayouts:MatrixLayout 
-        BindableLayout.ItemsSource="{Binding GM.Plateau.FlatBoard2d}" 
+        BindableLayout.ItemsSource="{Binding GM.Game.Plateau.FlatBoard2d}" 
         BindableLayout.ItemTemplate="{StaticResource cellTemplate}" 
-        NbColumns="{Binding GM.Plateau.height}"
-        NbRows="{Binding GM.Plateau.width}"
+        NbColumns="{Binding GM.Game.Plateau.height}"
+        NbRows="{Binding GM.Game.Plateau.width}"
         HorizontalSpacing="{StaticResource HorizontalSpacing}"
         VerticalSpacing="{StaticResource VerticalSpacing}"
         BackgroundColor="DarkGrey"

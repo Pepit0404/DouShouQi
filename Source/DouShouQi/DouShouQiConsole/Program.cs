@@ -271,7 +271,7 @@ Game ChooseGame()
         }
         else if (answer == 1)
         {
-            Game game = new Game(new regleOrigin(), new RandomJoueur("Robot 1", 1), new RandomJoueur("Robot 2", 2);
+            Game game = new Game(new regleOrigin(), new RandomJoueur("Robot 1", 1), new RandomJoueur("Robot 2", 2));
             game.AskMoove += Game_OnAskMooveAI;
             return game;
         }

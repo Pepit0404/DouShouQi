@@ -37,9 +37,16 @@
                     />
         </HorizontalStackLayout>
         <HorizontalStackLayout Margin="10,20"
-                               HorizontalOptions="Center">
-            <RadioButton Content="Version classique" IsChecked="True" TextColor="White"/>
-            <RadioButton Content="Version modifiée" TextColor="White" />
+                               HorizontalOptions="Center"
+                               RadioButtonGroup.GroupName="Rules"
+                               RadioButtonGroup.SelectedValue="{Binding regles}">
+            <RadioButton Content="Version classique"
+                         Value="classic"
+                         IsChecked="True"
+                         TextColor="White"/>
+            <RadioButton Content="Version modifiée"
+                         Value="remix"
+                         TextColor="White" />
         </HorizontalStackLayout>
         <Button Text="Jouer" 
                 Margin="20,20"

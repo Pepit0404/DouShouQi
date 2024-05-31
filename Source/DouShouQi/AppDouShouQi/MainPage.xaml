@@ -38,12 +38,6 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Fill"
                     MinimumWidthRequest="200">
-                    <!--<Button
-                        Text="Charger Partie"
-                        FontSize="25"
-                        
-                        Style="{StaticResource MainPage}"
-                        Clicked="RunPlay" />-->
                     <Views:ButtonHomePage />
 
                     <Button

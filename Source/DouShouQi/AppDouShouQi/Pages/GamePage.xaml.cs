@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 public partial class GamePage : ContentPage
 {
-    public Manager GM => (Application.Current as App)!.GM;
+    public Manager GM => (Application.Current as App)!.TheMgr;
 
     void OnTapCase(object sender, EventArgs e)
     {

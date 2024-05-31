@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    public class Plateau
+    public class Plateau : INotifyPropertyChanged
     {
         /// <summary>
         ///    Hauteur du plateau
@@ -51,6 +52,13 @@ namespace DouShouQiLib
                 if (ligne < 0 || ligne >= echequier.GetLength(0) ) throw new MyOutOfRangeException($"la valeur: {ligne} dépasse les limites du tableau" );
                 if (collone < 0 || collone >= echequier.GetLength(1) ) throw new MyOutOfRangeException($"la valeur: {collone} dépasse les limites du tableau");
                 return echequier[ligne,collone];
+            }
+            set
+            {
+                if (ligne < 0 || ligne >= echequier.GetLength(0)) throw new MyOutOfRangeException($"la valeur: {ligne} dépasse les limites du tableau");
+                if (collone < 0 || collone >= echequier.GetLength(1)) throw new MyOutOfRangeException($"la valeur: {collone} dépasse les limites du tableau");
+                echequier[ligne, collone] = value;
+                OnPropertyChanged("Plateau");
             }
         }
 
@@ -109,6 +117,10 @@ namespace DouShouQiLib
             }
             return str.ToString();
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        void OnPropertyChanged(string propertyName)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     public class MyOutOfRangeException : Exception

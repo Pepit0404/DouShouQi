@@ -87,10 +87,6 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\DouShouQiLib\DouShouQiLib.csproj" />
-	</ItemGroup>
-
 
 	<ItemGroup>
 	  <Compile Update="Pages\GamePage.xaml.cs">
