@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DouShouQiLib.Event;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -45,38 +46,34 @@ namespace DouShouQiLib
         public event EventHandler<TalkToPlayerEventArgs>? TalkToPlayer;
         public delegate Case[] AskMooveDelegate(int maxX, int maxY, Game game);
         public event AskMooveDelegate? AskMoove;
+        public event EventHandler<CoutPossibleEventArgs>? CoutPossible;
 
-        protected virtual void OnAppartient(bool ok, Joueur proprietaire)
-        {
-            LuiAppartient?.Invoke(this, new AppartientEventArgs(ok, proprietaire));
-        }
-        protected virtual void OnBoardChanged(Plateau newBoard, Case depart, Case arrivee)
-        {
-            BoardChanged?.Invoke(this, new BoardChangedEventArgs(newBoard, depart, arrivee));
-        }
-        protected virtual void OnPieceMoved(bool ok, Case depart, Case arrive)
-        {
-            PieceMoved?.Invoke(this, new PieceMovedEventArgs(ok, depart, arrive));
-        }
+        protected virtual void OnAppartient(bool ok, Joueur proprietaire) 
+            => LuiAppartient?.Invoke(this, new AppartientEventArgs(ok, proprietaire));
+        protected virtual void OnBoardChanged(Plateau newBoard, Case depart, Case arrivee) 
+            => BoardChanged?.Invoke(this, new BoardChangedEventArgs(newBoard, depart, arrivee));
+        protected virtual void OnPieceMoved(bool ok, Case depart, Case arrive) 
+            => PieceMoved?.Invoke(this, new PieceMovedEventArgs(ok, depart, arrive));
         protected virtual void OnPlayerChanged(Joueur nouveauJoueur)
         {
-            if (PlayerChanged != null)
-            {
+            if (PlayerChanged != null) 
                 PlayerChanged?.Invoke(this, new PlayerChangedEventArgs(nouveauJoueur));
-            }
         }
-        protected virtual void OnGameOver(bool end, Joueur? winer, Case? where)
+        protected virtual void OnGameOver(bool end, Joueur? winer)
         {
             if (end)
             {
-                GameOver?.Invoke(this, new GameOverEventArgs(true, winer, where));
+                GameOver?.Invoke(this, new GameOverEventArgs(true, winer));
                 return;
             }
-            GameOver?.Invoke(this, new GameOverEventArgs(false, null, null));
+            GameOver?.Invoke(this, new GameOverEventArgs(false, null));
         }
-        protected virtual void OnTalkToPlayer(string message)
+        protected virtual void OnTalkToPlayer(string message) 
+            => TalkToPlayer?.Invoke(this, new TalkToPlayerEventArgs(message));
+
+        protected virtual void OnCoutPossible(Case case)
         {
-            TalkToPlayer?.Invoke(this, new TalkToPlayerEventArgs(message));
+            CoutPossible?.Invoke(this, new CoutPossibleEventArgs(Regle.CoupPossible(case, this));
         }
 
         /// <summary>
@@ -128,14 +125,7 @@ namespace DouShouQiLib
         /// </summary>
         public void ChangePlayer()
         {
-            if (JoueurCourant == Joueur1)
-            {
-                JoueurCourant = Joueur2;
-            }
-            else
-            {
-                JoueurCourant = Joueur1;
-            }
+            JoueurCourant = JoueurCourant == Joueur1 ? Joueur2 : Joueur1;
             OnPlayerChanged(JoueurCourant);          
         }
 
@@ -146,10 +136,10 @@ namespace DouShouQiLib
         {
             if (Regle.EstFini(this))
             {
-                OnGameOver(true, JoueurCourant, null); // a changer ça
+                OnGameOver(true, JoueurCourant); // a changer ça
                 return true;
             }
-            OnGameOver(false, null, null);
+            OnGameOver(false, null);
             return false;
         }
 
@@ -179,8 +169,6 @@ namespace DouShouQiLib
                 {
                     ChangePlayer();
                 }
-                OnTalkToPlayer("Qu'elle piece bouger ?");
-
                 Case[] coup;
                 do
                 {
@@ -189,6 +177,21 @@ namespace DouShouQiLib
                 } while (coup==null);
                 coupOk = MovePiece(coup[0], coup[1], this.Plateau);
             }
+        }
+
+        public void Start2()
+        {
+            Case[] coup = AskMoove(this.Plateau.width - 1, this.Plateau.height - 1, this);
+
+            if (coup==null)
+            {
+                return;
+            }
+
+            MovePiece(coup[0], coup[1], this.Plateau);
+            IsFini();
+            ChangePlayer();
+            return;
         }
     }
 }

@@ -12,13 +12,10 @@ namespace DouShouQiLib
 
         public Joueur? Winer { get; set; }
 
-        public Case? Where { get; set; }
-
-        public GameOverEventArgs(bool end, Joueur? winer, Case? where) 
+        public GameOverEventArgs(bool end, Joueur? winer) 
         {
             End = end;
             Winer = winer;
-            Where = where;
         }
     }
 }
