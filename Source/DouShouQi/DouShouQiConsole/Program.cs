@@ -265,13 +265,13 @@ Game ChooseGame()
             Console.Write("Nom du joueur 1: ");
             string j1 = Console.ReadLine();
             Console.Write("Nom du joueur 2: ");
-            Game game = new Game(regle, new HumainJoueur(j1), new HumainJoueur(Console.ReadLine()));
+            Game game = new Game(regle, new HumainJoueur(j1,1), new HumainJoueur(Console.ReadLine(),2));
             game.AskMoove += Game_OnAskMooveHuman;
             return game;
         }
         else if (answer == 1)
         {
-            Game game = new Game(new regleOrigin(), new RandomJoueur("Robot 1"), new RandomJoueur("Robot 2"));
+            Game game = new Game(new regleOrigin(), new RandomJoueur("Robot 1", 1), new RandomJoueur("Robot 2", 2);
             game.AskMoove += Game_OnAskMooveAI;
             return game;
         }

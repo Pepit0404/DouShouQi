@@ -10,11 +10,11 @@ public partial class GamePage : ContentPage
 
     void OnTapCase(object sender, EventArgs e)
     {
-        var button = (sender as ImageButton)!;
+        var button = (sender as Button)!;
         //int x = int.Parse(button[0]);
         //int y = int.Parse(button[1]);
         Case thisCase = (button.BindingContext as Case)!;
-        Debug.WriteLine(thisCase.X);
+        Debug.WriteLine(thisCase);
         return;
     }
 

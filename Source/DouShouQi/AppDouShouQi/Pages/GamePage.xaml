@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mylayouts="clr-namespace:AppDouShouQi.MyLayouts"
              xmlns:converters="clr-namespace:AppDouShouQi.Resources.Converters"
-             xmlns:Case="clr-namespace:DouShouQiLib;assembly=DouShouQiLib"
+             xmlns:doushouqi="clr-namespace:DouShouQiLib;assembly=DouShouQiLib"
              x:Class="AppDouShouQi.Pages.GamePage"
              Title="GamePage">
     <ContentPage.Resources>
@@ -13,23 +13,13 @@
             <x:Double x:Key="VerticalSpacing">2</x:Double>
             <x:Double x:Key="HorizontalSpacing">2</x:Double>
             <DataTemplate x:Key="cellTemplate">
-                <Grid BackgroundColor="DarkSalmon" x:DataType="Case:Case">
+                <Grid BackgroundColor="DarkSalmon" x:DataType="doushouqi:Case">
                     <!--<Image Source="terre.jfif" Aspect="AspectFit" HeightRequest="100" WidthRequest="100"/>-->
-                    <!--<Image Source="{Binding Type, Converter={StaticResource CasesIConverter}}" Aspect="AspectFit" />-->
-                    <ImageButton Source="{Binding Type, Converter={StaticResource CasesIConverter}}"
-                                 Clicked="OnTapCase"/>
-                    <!--<Label Text="{Binding Onthis}"
-                        TextColor="Black"          
-                        BackgroundColor="{Binding Type, Converter={StaticResource CasesConverter}}"
-                        FontSize="Small"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapCase" Buttons="Primary" />
-                        </Label.GestureRecognizers>
-                    </Label>-->
+                    <Image Source="{Binding Type, Converter={StaticResource CasesIConverter}}" />
+                    <Button Text="{Binding Onthis}"
+                            Clicked="OnTapCase"
+                            FontSize="Micro"
+                            BackgroundColor="Transparent"/>
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>

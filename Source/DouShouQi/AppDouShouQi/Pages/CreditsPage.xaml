@@ -84,6 +84,7 @@
                 </HorizontalStackLayout>
                 <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." FontSize="10"/>
             </VerticalStackLayout>
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
