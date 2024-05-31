@@ -18,6 +18,9 @@ namespace DouShouQiLib
         /// </summary>
         public int Y { get; init; }
 
+        public int[] pos 
+            => new int[]{ X, Y };
+
         /// <summary>
         ///    La pièce, s'il y en a une, qui est sur cette case
         /// </summary>

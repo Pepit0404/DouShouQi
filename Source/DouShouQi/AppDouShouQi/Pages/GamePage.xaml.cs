@@ -1,6 +1,7 @@
 namespace AppDouShouQi.Pages;
 
 using DouShouQiLib;
+using Microsoft.Maui.Graphics.Text;
 using System.Diagnostics;
 
 public partial class GamePage : ContentPage
@@ -9,7 +10,11 @@ public partial class GamePage : ContentPage
 
     void OnTapCase(object sender, EventArgs e)
     {
-        Debug.Print("Hello");
+        var button = (sender as ImageButton)!;
+        //int x = int.Parse(button[0]);
+        //int y = int.Parse(button[1]);
+        Case thisCase = (button.BindingContext as Case)!;
+        Debug.WriteLine(thisCase.X);
         return;
     }
 
