@@ -8,7 +8,7 @@
 
         }
 
-        public void RunPlay(object sender, EventArgs e)
+        public void RunPlay(object _, EventArgs __)
         {
             if (PlayStart.IsVisible)
             {
@@ -17,6 +17,15 @@
             }
             PlayStart.IsVisible = true;
             return;
+        }
+
+        private void OnScoreBoard(object _, EventArgs __)
+        {
+            Shell.Current.GoToAsync("//ScoreBoardPage");
+        }
+        private void OnCreditPage(object _, EventArgs __)
+        {
+            Shell.Current.GoToAsync("//CreditsPage");
         }
     }
 

@@ -116,6 +116,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\DouShouQiLib\DouShouQiLib.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<MauiXaml Update="Pages\CreditsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
