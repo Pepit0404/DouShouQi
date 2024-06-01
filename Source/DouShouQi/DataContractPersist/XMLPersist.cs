@@ -6,13 +6,13 @@ using System;
 using System.Runtime.Serialization;
 using System.IO;
 using static System.Console;
+
 namespace DataContractPersist
 {
-    public class XMLPersist : DouShouQiLib.Interface.IPersistanceManager
+    public class XMLPersist : IPersistanceManager
     {
         DataContractSerializer Serializer = new DataContractSerializer(typeof(Joueur));
 
-       
         public void LoadData()
         {
             
@@ -34,11 +34,6 @@ namespace DataContractPersist
                 Serializer.WriteObject(s, joueur1);
             }
 
-        }
-         
-
-        
-
-        
+        } 
     }
 }

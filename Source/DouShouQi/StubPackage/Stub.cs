@@ -1,9 +1,8 @@
 ﻿using DouShouQiLib;
-using DouShouQiLib.Interface;
 using System.Runtime.Serialization;
 namespace StubPackage
 {
-     public class  Stub :IPersistanceManager
+    public class  Stub :IPersistanceManager
     {
         public Stub()
         {

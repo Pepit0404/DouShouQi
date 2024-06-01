@@ -111,6 +111,12 @@ namespace DouShouQiLib
                 return false;
             }
 
+            if (caseActu == caseAdja) 
+            {
+
+                return false;
+            }
+
             // Vérifier si les cases sont adjacentes
             if (IsAdja(caseActu, caseAdja))
             {
