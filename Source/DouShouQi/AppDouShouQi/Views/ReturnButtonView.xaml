@@ -8,5 +8,5 @@
             Margin="10,10,10,30" 
             BackgroundColor="Orange"
             TextColor="#512b0b"
-            HorizontalOptions="Start"/>
+            HorizontalOptions="Start" />
 </ContentView>

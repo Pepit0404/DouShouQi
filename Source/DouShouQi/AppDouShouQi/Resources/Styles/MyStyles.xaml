@@ -24,13 +24,25 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Button" x:Key="MainPage">
-        <Setter Property="WidthRequest" Value="350"/>
+    <Style TargetType="Button" x:Key="return">
+        <Setter Property="WidthRequest" Value="100"/>
+        <Setter Property="BorderWidth" Value="2"/>
+        <Setter Property="Margin" Value="10,10,10,30"/>
+        <Setter Property="BackgroundColor" Value="Orange"/>
+        <Setter Property="TextColor" Value="#512b0b"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Text" Value="Retour"/>
         <Setter Property="HeightRequest" Value="50"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="FontSize" Value="34" />
-        <Setter Property="Margin" Value="5,5"/>
+        <Setter Property="VerticalOptions" Value="Start"/>
     </Style>
 
-
+    <Style TargetType="Label" x:Key="Titre">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PointBonus}, Dark={StaticResource PrimaryDarkText}}"/>
+        <Setter Property="Margin" Value="0,0,0,100"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="FontSize" Value="80"/>
+        <Setter Property="SemanticProperties.HeadingLevel" Value="Level1"/>
+        <Setter Property="Padding" Value="0,0,100,0"/>
+    </Style>
 </ResourceDictionary>
