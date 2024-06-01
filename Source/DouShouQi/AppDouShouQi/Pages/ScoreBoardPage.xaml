@@ -3,27 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Pages.ScoreBoardPage"
              xmlns:Views="clr-namespace:AppDouShouQi.Views"
-             BackgroundImageSource="back.jpg">
+             BackgroundImageSource="fond.png">
     <ScrollView>
         <VerticalStackLayout>
             <Grid ColumnDefinitions="Auto,*">
-                <Label 
+                <!--<Views:ReturnButtonView />-->
+                <Button Style="{StaticResource return}" 
+                    Clicked="OnClickedReturn" />
+                <Label
                     Grid.Column="1"
-                    Margin="0,0,0,100"
                     Text="Tableau des scores"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center"
-                    Style="{StaticResource Headline}"
-                    FontSize="80"
-                    SemanticProperties.HeadingLevel="Level1" 
-                    TextColor="MediumPurple" 
-                    Padding="0,0,100,0"/>
-                <Button
-                    Text="Retour"
-                    HeightRequest="50"
-                    WidthRequest="100"
-                    VerticalOptions="Start"
-                    BackgroundColor="MediumPurple"/>
+                    Style="{StaticResource Titre}"/>
             </Grid>
 
                 <Grid

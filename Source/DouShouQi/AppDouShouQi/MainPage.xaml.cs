@@ -1,4 +1,4 @@
-﻿using DouShouQiLib;
+using DouShouQiLib;
 
 namespace AppDouShouQi
 {
@@ -22,6 +22,15 @@ namespace AppDouShouQi
             }
             PlayStart.IsVisible = true;
             return;
+        }
+
+        private void OnScoreBoard(object _, EventArgs __)
+        {
+            Shell.Current.GoToAsync("//ScoreBoardPage");
+        }
+        private void OnCreditPage(object _, EventArgs __)
+        {
+            Shell.Current.GoToAsync("//CreditsPage");
         }
     }
 
