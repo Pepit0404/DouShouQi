@@ -73,9 +73,7 @@ namespace DouShouQiLib
             => TalkToPlayer?.Invoke(this, new TalkToPlayerEventArgs(message));
 
         protected virtual void OnCoutPossible(Case inCase)
-        {
-            CoutPossible?.Invoke(this, new CoutPossibleEventArgs(Regle.CoupPossible(inCase, this) ) );
-        }
+            => CoutPossible?.Invoke(this, new CoutPossibleEventArgs(Regle.CoupPossible(inCase, this) ) );
 
         /// <summary>
         ///    Constructeur d'une partie
@@ -93,6 +91,7 @@ namespace DouShouQiLib
 
             Regle.initPlateau(this);
             OnBoardChanged(null, null, null);
+            OnPlayerChanged(joueur1);
         }
 
         /// <summary>

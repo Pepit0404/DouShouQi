@@ -15,7 +15,6 @@
             <x:Double x:Key="HorizontalSpacing">2</x:Double>
             <DataTemplate x:Key="cellTemplate">
                 <Grid BackgroundColor="DarkSalmon" x:DataType="doushouqi:Case">
-                    <!--<Image Source="terre.jfif" Aspect="AspectFit" HeightRequest="100" WidthRequest="100"/>-->
                     <Image Source="{Binding Type, Converter={StaticResource CasesIConverter}}" />
                     <Button Text="{Binding Onthis}"
                             TextColor="{Binding Onthis, Converter={StaticResource PieceCConverter}}"
@@ -28,7 +27,7 @@
     </ContentPage.Resources>
 
     <Grid ColumnDefinitions="*">
-        <Label Text="{Binding tourJ}" 
+        <Label Text="{Binding GM.CurrentPlayer}" 
                FontSize="Large"
                HorizontalOptions="Center"/>
         <mylayouts:MatrixLayout BindableLayout.ItemsSource="{Binding GM.Plateau.FlatBoard2d}" 

@@ -12,7 +12,7 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesOriginMange_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
+            Joueur j1 = new HumainJoueur("toto", 1);
             Piece souris = new (PieceType.souris, j1);
             Piece elephant = new (PieceType.elephant, j1);
             Piece chien = new (PieceType.chien, j1);
@@ -30,8 +30,8 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesOriginePouvoirBouger_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
-            Joueur j2 = new HumainJoueur("titi");
+            Joueur j1 = new HumainJoueur("toto", 1);
+            Joueur j2 = new HumainJoueur("titi", 2);
             Game game = new Game(new regleOrigin(), j1, j2);
             IRegles regles = game.Regle;
             Plateau plateau = game.Plateau;
@@ -65,8 +65,8 @@ namespace TestDouShouQi
         [Fact]
         public void RegleOriginEstFini()
         {
-            Joueur j1 = new HumainJoueur("Toto");
-            Joueur j2 = new HumainJoueur("Tutu");
+            Joueur j1 = new HumainJoueur("Toto", 1);
+            Joueur j2 = new HumainJoueur("Tutu", 2);
             Piece j1Piece = new (PieceType.chien, j1);
             Piece j2Piece = new (PieceType.chien, j2);
             Game game = new (new regleOrigin(), j1, j2);
@@ -99,7 +99,7 @@ namespace TestDouShouQi
         {
             IRegles regles = new regleVariente();
 
-            Joueur j1 = new HumainJoueur("toto");
+            Joueur j1 = new HumainJoueur("toto", 1);
             Piece souris = new (PieceType.souris, j1);
             Piece elephant = new (PieceType.elephant, j1);
             Piece chien = new (PieceType.chien, j1);
@@ -115,8 +115,8 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesVarientePouvoirBouger_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
-            Joueur j2 = new HumainJoueur("titi");
+            Joueur j1 = new HumainJoueur("toto", 1);
+            Joueur j2 = new HumainJoueur("titi", 2);
             Game game = new Game(new regleVariente(), j1, j2);
             IRegles regles = game.Regle;
             Plateau plateau = game.Plateau;
@@ -154,8 +154,8 @@ namespace TestDouShouQi
         [Fact]
         public void RegleVarienteEstFini()
         {
-            Joueur j1 = new HumainJoueur("Toto");
-            Joueur j2 = new HumainJoueur("Tutu");
+            Joueur j1 = new HumainJoueur("Toto", 1);
+            Joueur j2 = new HumainJoueur("Tutu", 2);
             Piece j1Piece = new (PieceType.chien, j1);
             Piece j2Piece = new (PieceType.chien, j2);
             Game game = new (new regleVariente(), j1, j2);
@@ -185,8 +185,8 @@ namespace TestDouShouQi
         [Fact]
         public void MemePiece_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
-            Joueur j2 = new HumainJoueur("tutu");
+            Joueur j1 = new HumainJoueur("toto", 1);
+            Joueur j2 = new HumainJoueur("tutu", 2);
             Piece piece1 = new (PieceType.chien, j1);
             Piece piece2 = new (PieceType.chat, j1);
             Piece piece3 = new (PieceType.chien, j2);
@@ -202,8 +202,8 @@ namespace TestDouShouQi
         [Fact]
         public void Appartient_UT() 
         {
-            Joueur j1 = new HumainJoueur("Toto");
-            Joueur j2 = new HumainJoueur("Tutu");
+            Joueur j1 = new HumainJoueur("Toto", 1);
+            Joueur j2 = new HumainJoueur("Tutu", 2);
             Piece j1Piece = new (PieceType.chien, j1);
             Assert.True(j1.Appartient(j1Piece)); // true, la piece lui appartient
             Assert.False(j2.Appartient(j1Piece)); // false, la piece appartient à j1

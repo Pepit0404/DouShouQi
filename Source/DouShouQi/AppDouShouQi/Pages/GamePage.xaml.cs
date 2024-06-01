@@ -8,8 +8,6 @@ public partial class GamePage : ContentPage
 {
     public Manager GM => (Application.Current as App)!.TheMgr;
 
-    public string tourJ => "Au tour de " + GM.game.JoueurCourant;
-
     public Case? placeStart { get; set; }
 
     void OnTapCase(object sender, EventArgs e)
@@ -43,11 +41,6 @@ public partial class GamePage : ContentPage
         Shell.Current.GoToAsync("//MainPage");
     }
 
-    void GamePage_OnPlayerChanged(object? sender, PlayerChangedEventArgs e)
-    {
-        OnPropertyChanged(nameof(tourJ));
-    }
-
     void GamePage_OnGameOver(object? sender, GameOverEventArgs e)
     {
         if (!e.End) return;
@@ -60,7 +53,6 @@ public partial class GamePage : ContentPage
 	{
 		InitializeComponent();
         BindingContext = this;
-        GM.game.PlayerChanged += GamePage_OnPlayerChanged;
         GM.game.GameOver += GamePage_OnGameOver;
     }
 

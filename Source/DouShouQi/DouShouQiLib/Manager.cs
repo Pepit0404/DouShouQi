@@ -17,6 +17,7 @@ namespace DouShouQiLib
       
         public IRegles? Regles { get; set; }
         public Joueur[] Joueurs { get; set; } = new Joueur[2];
+        public string CurrentPlayer => "Au tour de " + game.JoueurCourant;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -24,8 +25,11 @@ namespace DouShouQiLib
         {
             if (Regles == null) return ;
             game = new Game(Regles, Joueurs[0], Joueurs[1]);
-            game.BoardChanged += Manger_OnBoardChanged;
+            game.BoardChanged += Manager_OnBoardChanged;
+            game.PlayerChanged += Manager_OnPlayerChanged;
             OnPropertyChanged(nameof(Plateau) );
+            OnPropertyChanged(nameof(CurrentPlayer) );
+
         }
 
         public void setRegles(string regle)
@@ -47,9 +51,13 @@ namespace DouShouQiLib
             OnPropertyChanged(nameof(Joueurs) );
         }
 
-        void Manger_OnBoardChanged(object? sender, BoardChangedEventArgs e)
+        void Manager_OnBoardChanged(object? sender, BoardChangedEventArgs e)
         {
             OnPropertyChanged(nameof(Plateau) );
+        }
+        void Manager_OnPlayerChanged(object? sender, PlayerChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(CurrentPlayer));
         }
     }
 }
