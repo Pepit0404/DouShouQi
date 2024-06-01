@@ -38,11 +38,17 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Fill"
                     MinimumWidthRequest="200">
-                    <Views:ButtonHomePage />
 
                     <Button
+                        Text="Jouer"
+                        WidthRequest="350" HeightRequest="50"
+                        HorizontalOptions="Center"
+                        FontSize="24"
+                        Margin="5,5" 
+                        Clicked="RunPlay"/>
+                    
+                    <Button
                         Text="Charger Partie"
-                        Clicked="RunPlay"
                         WidthRequest="350" HeightRequest="50"
                         HorizontalOptions="Center"
                         FontSize="24"

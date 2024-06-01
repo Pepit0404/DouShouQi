@@ -30,6 +30,8 @@ public partial class JouerViews : ContentView
 		Mgr.setRegles(regles);
 		Mgr.CreateGame();
 		this.IsVisible = false;
+
+		Shell.Current.GoToAsync("//GamePage");
     }
 
 }

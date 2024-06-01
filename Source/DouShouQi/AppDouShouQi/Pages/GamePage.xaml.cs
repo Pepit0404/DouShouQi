@@ -40,6 +40,7 @@ public partial class GamePage : ContentPage
     void HomeButton(object sender, EventArgs e)
     {
         winBoard.IsVisible = false;
+        Shell.Current.GoToAsync("//MainPage");
     }
 
     void GamePage_OnPlayerChanged(object? sender, PlayerChangedEventArgs e)
@@ -62,4 +63,5 @@ public partial class GamePage : ContentPage
         GM.game.PlayerChanged += GamePage_OnPlayerChanged;
         GM.game.GameOver += GamePage_OnGameOver;
     }
+
 }
