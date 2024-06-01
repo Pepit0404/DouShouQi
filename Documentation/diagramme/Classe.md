@@ -115,6 +115,20 @@ namespace DouShouQiLib{
             + Start()
         }
 
+        class Manager{
+            + Game Game
+            + Plateau Plateau
+            + IRegles Regles
+            + Joueur Joueurs
+            + CreateGame()
+            + setRegles(string regle)
+        }
+
+        class Settings{
+            + int VolumeMusic
+            + string Theme
+        }
+
 Piece --> "+ Case onThis" Case
 PieceType -> "+ PieceType type" Piece
 CaseType --> "+ CaseType type" Case
@@ -133,6 +147,7 @@ Joueur ---> "+ Joueur Joueur1" Game
 Joueur ---> "+ Joueur Joueur2" Game
 Joueur ---> "+ Joueur JoueurCourant" Game
 IRegles ---> "+ IRegles Regle" Game
+Settings ---> "+ Settings setting" Manager
 
 
 
