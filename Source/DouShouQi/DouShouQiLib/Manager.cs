@@ -25,7 +25,7 @@ namespace DouShouQiLib
             if (Regles == null) return ;
             game = new Game(Regles, Joueurs[0], Joueurs[1]);
             game.BoardChanged += Manger_OnBoardChanged;
-            OnPropertyChanged("Plateau");
+            OnPropertyChanged(nameof(Plateau) );
         }
 
         public void setRegles(string regle)
@@ -44,12 +44,12 @@ namespace DouShouQiLib
         public void CreatePlayer(string name, int id)
         {
             Joueurs[id - 1] = new HumainJoueur(name,id) ;
-            OnPropertyChanged("Joueurs");
+            OnPropertyChanged(nameof(Joueurs) );
         }
 
         void Manger_OnBoardChanged(object? sender, BoardChangedEventArgs e)
         {
-            OnPropertyChanged("Plateau");
+            OnPropertyChanged(nameof(Plateau) );
         }
     }
 }

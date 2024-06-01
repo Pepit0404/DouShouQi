@@ -29,6 +29,7 @@ public partial class JouerViews : ContentView
 		Mgr.CreatePlayer(Joueur2.Name, Joueur2.Id);
 		Mgr.setRegles(regles);
 		Mgr.CreateGame();
-	}
-	
+		this.IsVisible = false;
+    }
+
 }

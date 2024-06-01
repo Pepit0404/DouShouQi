@@ -27,15 +27,50 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <mylayouts:MatrixLayout 
-        BindableLayout.ItemsSource="{Binding GM.Plateau.FlatBoard2d}" 
-        BindableLayout.ItemTemplate="{StaticResource cellTemplate}" 
-        NbColumns="{Binding GM.Plateau.height}"
-        NbRows="{Binding GM.Plateau.width}"
-        HorizontalSpacing="{StaticResource HorizontalSpacing}"
-        VerticalSpacing="{StaticResource VerticalSpacing}"
-        BackgroundColor="DarkGrey"
-        HorizontalOptions="Center" VerticalOptions="Center"
-        Padding="10" Margin="100"/>
+    <Grid ColumnDefinitions="*">
+        <Label Text="{Binding tourJ}" 
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+        <mylayouts:MatrixLayout BindableLayout.ItemsSource="{Binding GM.Plateau.FlatBoard2d}" 
+                                BindableLayout.ItemTemplate="{StaticResource cellTemplate}" 
+                                NbColumns="{Binding GM.Plateau.height}"
+                                NbRows="{Binding GM.Plateau.width}"
+                                HorizontalSpacing="{StaticResource HorizontalSpacing}"
+                                VerticalSpacing="{StaticResource VerticalSpacing}"
+                                BackgroundColor="DarkGrey"
+                                HorizontalOptions="Center" VerticalOptions="Center"
+                                Padding="10" Margin="100"
+                                Grid.Row="1"/>
+
+        <Grid ColumnDefinitions="*" RowDefinitions="2*, *"
+                  HeightRequest="600" WidthRequest="600"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds=".5,.5,.75,.75"
+                  Background="Black"
+                  IsVisible="False"
+                  x:Name="winBoard">
+            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Félicitation Pepito !" 
+                       x:Name="labelNameVictory"
+                       FontSize="Header"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"/>
+                <Label Text="Tu as gagner !" 
+                       FontSize="Header"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"/>
+            </VerticalStackLayout>
+
+            <Button Text="Page d'acceuil" 
+                        FontSize="Large"
+                        HeightRequest="65"
+                        WidthRequest="300"
+                        Grid.Row="1"
+                    Clicked="HomeButton"/> <!--Quand clické mettre la gride en isVisible False-->
+        </Grid>
+    </Grid>
+    
     
 </ContentPage>
