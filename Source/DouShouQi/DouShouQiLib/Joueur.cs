@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace DouShouQiLib
 {
     [DataContract]
+    [KnownType(typeof(HumainJoueur))]
     abstract public class Joueur : INotifyPropertyChanged
     {
 
@@ -56,7 +57,9 @@ namespace DouShouQiLib
 
             }
         }
+        [DataMember]
         private string name;
+        [DataMember]
         public int Id {  get; set; }
 
 
@@ -71,8 +74,28 @@ namespace DouShouQiLib
             Liste_Piece = new List<Piece>();
             Id = id;
         }
+        public List<Joueur> Joueurs { get; set; }
+        public Joueur()
+        {
+            Joueurs = new List<Joueur>();
 
+        }
 
+        public override int GetHashCode()
+            => Name.GetHashCode();
+
+        public override bool Equals(object right)
+        {
+            if (object.ReferenceEquals(right, null)) return false;
+            if (object.ReferenceEquals(this, right)) return true;
+            if (this.GetType() != right.GetType()) return false;
+            return this.Equals(right as Joueur);
+        }
+
+        public bool Equals(Joueur other)
+            => (this.Name.Equals(other.Name) && this.Id == other.Id);
+
+        
         /// <summary>
         ///     Affichage des Joueur
         /// </summary>
