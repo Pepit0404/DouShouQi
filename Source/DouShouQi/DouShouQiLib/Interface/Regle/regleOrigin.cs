@@ -103,25 +103,33 @@ namespace DouShouQiLib
             return false;
         }
 
+        
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
-            // Si la case actuelle est vide, retournez false
-            if (!caseActu.Onthis.HasValue)
+            if (!CaseActuV(caseActu, caseAdja))
             {
                 return false;
             }
 
+
             // Vérifier si les cases sont adjacentes
             if (IsAdja(caseActu, caseAdja))
             {
+                if (!AppartientPiece(caseActu, caseAdja))
+                {
+                    return false;
+                }
+
                 // Si la case adjacente est occupée, vérifier si l'on peut la manger
                 if (caseAdja.Onthis.HasValue && !Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type))
                 {
+
                     if (!IsPiege(caseAdja))
                     {
                         return false;
                     }
                 }
+
 
                 // Vérifier si l'animal dans l'eau n'essaye pas de manger un qui n'est pas dans l'eau
                 if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre && caseAdja.Onthis.HasValue)
@@ -141,25 +149,37 @@ namespace DouShouQiLib
             // Vérifier si l'on peut sauter
             if (CanJump(caseActu, caseAdja, plateau))
             {
-                // Empêcher la souris de manger en sortant de l'eau
-                if (caseActu.Type == CaseType.Eau && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
-                {
-                    return false;
-                }
-                if (caseActu.Type == CaseType.Terre && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
-                {
-                    return false;
-                }
+
                 return true;
             }
             return false;
         }
 
+        private bool AppartientPiece(Case caseActu, Case caseAdja)
+        {
+            if (caseAdja.Onthis.HasValue)
+            {
+                if (caseActu.Onthis.Value.Proprietaire == caseAdja.Onthis.Value.Proprietaire)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private bool CaseActuV(Case caseActu, Case caseAdja)
+        {
+            // Si la case actuelle est vide, retournez false
+            if (!caseActu.Onthis.HasValue)
+            {
+                return false;
+            }
+            return true;
+        }
         private bool CanGoWater(Case caseActu, Case caseAdja)
         {
             if (caseActu.Onthis.Value.Type == PieceType.souris)
             {
-                if (caseActu.Type!=caseAdja.Type && caseAdja.Onthis.HasValue)
+                if (caseActu.Type != caseAdja.Type && caseAdja.Onthis.HasValue)
                 {
                     return false;
                 }
@@ -187,32 +207,45 @@ namespace DouShouQiLib
             {
                 if (caseActu.X == caseAdja.X)
                 {
-                    int minY = Math.Min(caseActu.Y, caseAdja.Y);
-                    int maxY = Math.Max(caseActu.Y, caseAdja.Y);
-                    for (int y = minY + 1; y < maxY; y++)
-                    {
-                        if (plateau.echequier[caseActu.X, y].Type != CaseType.Eau)
-                        {
-                            return false;
-                        }
-                    }
-                    return true;
+                    if (CanJumpX(caseActu, caseAdja, plateau))
+                    { return true; }
                 }
                 if (caseActu.Y == caseAdja.Y)
                 {
-                    int minX = Math.Min(caseActu.X, caseAdja.X);
-                    int maxX = Math.Max(caseActu.X, caseAdja.X);
-                    for (int x = minX + 1; x < maxX; x++)
-                    {
-                        if (plateau.echequier[x, caseActu.Y].Type != CaseType.Eau)
-                        {
-                            return false;
-                        }
-                    }
-                    return true;
+                    if (CanJumpY(caseActu, caseAdja, plateau))
+                    { return true; }
                 }
             }
             return false;
+        }
+
+        private bool CanJumpX(Case caseActu, Case caseAdja, Plateau plateau)
+        {
+
+            int minY = Math.Min(caseActu.Y, caseAdja.Y);
+            int maxY = Math.Max(caseActu.Y, caseAdja.Y);
+            for (int y = minY + 1; y < maxY; y++)
+            {
+                if (plateau.echequier[caseActu.X, y].Type != CaseType.Eau)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+        }
+        private bool CanJumpY(Case caseActu, Case caseAdja, Plateau plateau)
+        {
+            int minX = Math.Min(caseActu.X, caseAdja.X);
+            int maxX = Math.Max(caseActu.X, caseAdja.X);
+            for (int x = minX + 1; x < maxX; x++)
+            {
+                if (plateau.echequier[x, caseActu.Y].Type != CaseType.Eau)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public bool EstFini(Game game)
