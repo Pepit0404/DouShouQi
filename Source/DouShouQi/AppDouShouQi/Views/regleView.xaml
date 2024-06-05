@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDouShouQi.Views.regleView">
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="250,250"
+              RowDefinitions="600"
+              BackgroundColor="Black">
+            <Grid RowDefinitions="*,*,*,*,*,*,*,*">
+                <Image Source="souris.png"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Row="0"/>
+                <Label Text="souris"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="0"/>
+                <Image Source="souris.png"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Row="1"/>
+                <Label Text="souris"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="1"/>
+                <Image Source="souris.png"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Row="2"/>
+                <Label Text="souris"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="2"/>
+                <Image Source="souris.png"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Row="3"/>
+                <Label Text="souris"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="3"/>
+            </Grid>
+        <Label 
+                Text="Le Dou Shou qi (échiquier du combat des animaux) 
+                est un jeu de stratégie d’origine chinoise. 
+                Deux joueurs se font face dans cette bataille, 
+                le joueur du Sud et le joueur du Nord. 
+                Chaque joueur possède des animaux avec une valeur qui représente leur force."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="White"
+                Grid.Column="2"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentView>

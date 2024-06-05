@@ -126,6 +126,9 @@
 		<MauiXaml Update="Views\ProfilCredit.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\regleView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\ReturnButtonView.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

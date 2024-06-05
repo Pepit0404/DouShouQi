@@ -5,6 +5,8 @@
              xmlns:converters="clr-namespace:AppDouShouQi.Resources.Converters"
              xmlns:doushouqi="clr-namespace:DouShouQiLib;assembly=DouShouQiLib"
              x:Class="AppDouShouQi.Pages.GamePage"
+             xmlns:Views="clr-namespace:AppDouShouQi.Views"
+             BackgroundImageSource="fond.png"
              Title="GamePage">
     <ContentPage.Resources>
         <converters:CaseColorConverter x:Key="CasesConverter"/>
@@ -25,8 +27,14 @@
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <Grid ColumnDefinitions="*">
+    <Grid ColumnDefinitions="*,auto">
+        <ImageButton Source="regle.png"
+               WidthRequest="50"
+               HeightRequest="50"
+               Grid.Column="1"
+               Clicked="OnRegle"
+               VerticalOptions="Start"
+               BackgroundColor="Transparent"/>
         <Label Text="{Binding GM.CurrentPlayer}" 
                FontSize="Large"
                HorizontalOptions="Center"/>
@@ -40,6 +48,12 @@
                                 HorizontalOptions="Center" VerticalOptions="Center"
                                 Padding="10" Margin="100"
                                 Grid.Row="1"/>
+        <Views:regleView HorizontalOptions="Center"
+              VerticalOptions="Center"
+              x:Name="regle"
+              IsVisible="False" 
+              AbsoluteLayout.LayoutFlags="All"
+              AbsoluteLayout.LayoutBounds=".5,.5,.75,.75"/>
 
         <Grid x:Name="winBoard" 
               ColumnDefinitions="*" RowDefinitions="2*, *"
