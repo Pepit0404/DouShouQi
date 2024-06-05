@@ -100,8 +100,7 @@ namespace DouShouQiLib
 
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
-            // Si la case actuelle est vide, retournez false
-            if (!caseActu.Onthis.HasValue)
+            if (!CaseActuV(caseActu, caseAdja))
             {
                 return false;
             }
@@ -109,6 +108,10 @@ namespace DouShouQiLib
             // Vérifier si les cases sont adjacentes
             if (IsAdja(caseActu, caseAdja))
             {
+                if (!AppartientPiece(caseActu, caseAdja))
+                {
+                    return false;
+                }
                 // Si la case adjacente est occupée, vérifier si l'on peut la manger
                 if (caseAdja.Onthis.HasValue && !Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type))
                 {
@@ -144,15 +147,31 @@ namespace DouShouQiLib
                 return true;
             }
 
-            // Vérifier si l'animal peut aller sur l'eau
-            if (caseAdja.Type == CaseType.Eau && !CanGoWater(caseActu, caseAdja))
+            
+            
+            
+            return false;
+        }
+        private bool AppartientPiece(Case caseActu, Case caseAdja)
+        {
+            if (caseAdja.Onthis.HasValue)
+            {
+                if (caseActu.Onthis.Value.Proprietaire == caseAdja.Onthis.Value.Proprietaire)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private bool CaseActuV(Case caseActu, Case caseAdja)
+        {
+            // Si la case actuelle est vide, retournez false
+            if (!caseActu.Onthis.HasValue)
             {
                 return false;
             }
-
-            return false;
+            return true;
         }
-
         private bool CanGoWater(Case caseActu, Case caseAdja)
         {
             if (caseActu.Onthis.Value.Type==PieceType.souris || caseActu.Onthis.Value.Type==PieceType.chien)

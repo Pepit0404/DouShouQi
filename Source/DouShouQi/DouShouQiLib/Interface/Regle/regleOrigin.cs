@@ -103,32 +103,40 @@ namespace DouShouQiLib
             return false;
         }
 
+        
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
-            // Si la case actuelle est vide, retournez false
-            if (!caseActu.Onthis.HasValue)
+           if (!CaseActuV(caseActu,caseAdja))
             {
                 return false;
             }
-
+            
+           
             // Vérifier si les cases sont adjacentes
             if (IsAdja(caseActu, caseAdja))
             {
+                if (!AppartientPiece(caseActu, caseAdja))
+                {
+                    return false;
+                }
+
                 // Si la case adjacente est occupée, vérifier si l'on peut la manger
                 if (caseAdja.Onthis.HasValue && !Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type))
                 {
-                    if (!IsPiege(caseAdja))
+
+                  if (!IsPiege(caseAdja))
                     {
                         return false;
                     }
                 }
+                
 
                 // Vérifier si l'animal dans l'eau n'essaye pas de manger un qui n'est pas dans l'eau
                 if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre && caseAdja.Onthis.HasValue)
                 {
                     return false;
                 }
-
+            
                 // Vérifier si l'animal peut aller sur l'eau
                 if (caseAdja.Type == CaseType.Eau && !CanGoWater(caseActu, caseAdja))
                 {
@@ -141,20 +149,32 @@ namespace DouShouQiLib
             // Vérifier si l'on peut sauter
             if (CanJump(caseActu, caseAdja, plateau))
             {
-                // Empêcher la souris de manger en sortant de l'eau
-                if (caseActu.Type == CaseType.Eau && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
-                {
-                    return false;
-                }
-                if (caseActu.Type == CaseType.Terre && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
-                {
-                    return false;
-                }
+              
                 return true;
             }
             return false;
         }
 
+        private bool AppartientPiece(Case caseActu, Case caseAdja)
+        {
+            if (caseAdja.Onthis.HasValue)
+            {
+                if (caseActu.Onthis.Value.Proprietaire == caseAdja.Onthis.Value.Proprietaire)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private bool CaseActuV(Case caseActu, Case caseAdja)
+        {
+            // Si la case actuelle est vide, retournez false
+            if (!caseActu.Onthis.HasValue)
+            {
+                return false;
+            }
+            return true;
+        }
         private bool CanGoWater(Case caseActu, Case caseAdja)
         {
             if (caseActu.Onthis.Value.Type == PieceType.souris)
