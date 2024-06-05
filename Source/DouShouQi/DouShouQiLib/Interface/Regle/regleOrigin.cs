@@ -207,32 +207,45 @@ namespace DouShouQiLib
             {
                 if (caseActu.X == caseAdja.X)
                 {
-                    int minY = Math.Min(caseActu.Y, caseAdja.Y);
-                    int maxY = Math.Max(caseActu.Y, caseAdja.Y);
-                    for (int y = minY + 1; y < maxY; y++)
-                    {
-                        if (plateau.echequier[caseActu.X, y].Type != CaseType.Eau)
-                        {
-                            return false;
-                        }
-                    }
-                    return true;
+                    if (CanJumpX(caseActu, caseAdja, plateau))
+                    { return true; }
                 }
                 if (caseActu.Y == caseAdja.Y)
                 {
-                    int minX = Math.Min(caseActu.X, caseAdja.X);
-                    int maxX = Math.Max(caseActu.X, caseAdja.X);
-                    for (int x = minX + 1; x < maxX; x++)
-                    {
-                        if (plateau.echequier[x, caseActu.Y].Type != CaseType.Eau)
-                        {
-                            return false;
-                        }
-                    }
-                    return true;
+                    if (CanJumpY(caseActu, caseAdja, plateau))
+                    { return true; }
                 }
             }
             return false;
+        }
+
+        private bool CanJumpX(Case caseActu, Case caseAdja, Plateau plateau)
+        {
+
+            int minY = Math.Min(caseActu.Y, caseAdja.Y);
+            int maxY = Math.Max(caseActu.Y, caseAdja.Y);
+            for (int y = minY + 1; y < maxY; y++)
+            {
+                if (plateau.echequier[caseActu.X, y].Type != CaseType.Eau)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+        }
+        private bool CanJumpY(Case caseActu, Case caseAdja, Plateau plateau)
+        {
+            int minX = Math.Min(caseActu.X, caseAdja.X);
+            int maxX = Math.Max(caseActu.X, caseAdja.X);
+            for (int x = minX + 1; x < maxX; x++)
+            {
+                if (plateau.echequier[x, caseActu.Y].Type != CaseType.Eau)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public bool EstFini(Game game)
