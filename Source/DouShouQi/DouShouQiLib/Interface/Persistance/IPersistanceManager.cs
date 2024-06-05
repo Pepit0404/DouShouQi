@@ -8,7 +8,29 @@ namespace DouShouQiLib
 {
     public interface IPersistanceManager
     {
-        void SaveData(Joueur joueur1);
-        void LoadData();
+        /// <summary>
+        ///     Save a game
+        /// </summary>
+        /// <param name="games"></param>
+        bool SaveAGame(Game game);
+        bool DeleteAGame(string startDate);
+        
+        
+        /// <summary>
+        ///     Load a list of game
+        /// </summary>
+        /// <returns></returns>
+        List<Game> LoadGame();
+
+        void SaveGame(IEnumerable<Game> games);
+
+        bool SaveAPlayer(Joueur j);
+        bool DeleteAPlayer(string name);
+        
+        /// <summary>
+        ///     Load a list of player
+        /// </summary>
+        /// <returns></returns>
+        List<Joueur> LoadPlayer();
     }
 }

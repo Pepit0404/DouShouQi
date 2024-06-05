@@ -9,6 +9,7 @@ namespace DouShouQiLib
 {
     public class regleOrigin : IRegles
     {
+        public string name { get; init; } = "origin";
         private Game PlacementAnimaux(Game game)
         {
 

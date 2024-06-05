@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    public class Manager: INotifyPropertyChanged
+    public class Manager : INotifyPropertyChanged
     {
         public Game Game { get; set; }
-        public Plateau? Plateau { get; set; }    
+
+        public Plateau? Plateau
+            => this.Game.Plateau;
       
         public IRegles? Regles { get; set; }
         public Joueur[] Joueurs { get; set; } = new Joueur[2];
@@ -42,7 +44,7 @@ namespace DouShouQiLib
         public void CreatePlayer(string name, int id)
         {
             Joueurs[id - 1] = new HumainJoueur(name,id) ;
-            OnPropertyChanged("Joueurs");
+            OnPropertyChanged(nameof(Joueur) );
         }
 
     }

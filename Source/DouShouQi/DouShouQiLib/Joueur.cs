@@ -8,20 +8,17 @@ using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    [DataContract]
-    [KnownType(typeof(HumainJoueur))]
+    [DataContract, KnownType(typeof(HumainJoueur) ), KnownType(typeof(RandomJoueur) )]
     abstract public class Joueur : INotifyPropertyChanged
     {
 
 
         /// <summary>
-        ///     Vérifie si une pièce appartient à joueur
+        ///     Vï¿½rifie si une piï¿½ce appartient ï¿½ joueur
         /// </summary>
         /// <param name="piece"></param>
         /// <returns>bool</returns>
         /// 
-        
-
         public bool Appartient(Piece piece)
         {
             if (piece.Proprietaire == this)
@@ -38,8 +35,9 @@ namespace DouShouQiLib
         abstract public Case[] ChoisirCoup(Game game);
 
         /// <summary>
-        ///    Liste des pièces que possède le joueur
+        ///    Liste des piï¿½ces que possï¿½de le joueur
         /// </summary>
+        [DataMember]
         public List<Piece> Liste_Piece { get; private set; }
 
         /// <summary>
@@ -57,12 +55,13 @@ namespace DouShouQiLib
 
             }
         }
-        [DataMember]
         private string name;
+        
         [DataMember]
         public int Id {  get; set; }
 
-
+        [DataMember]
+        public int nbVictory { get; private set; }
 
         /// <summary>
         ///     Constructeur de Joueur
@@ -73,12 +72,13 @@ namespace DouShouQiLib
             Name = identifiant;
             Liste_Piece = new List<Piece>();
             Id = id;
+            nbVictory = 0;
         }
         public List<Joueur> Joueurs { get; set; }
         public Joueur()
         {
             Joueurs = new List<Joueur>();
-
+            
         }
 
         public override int GetHashCode()
@@ -110,7 +110,7 @@ namespace DouShouQiLib
     {
 
         /// <summary>
-        ///     Choisit un coup aléatoirement parmit une liste de tous les coups possible
+        ///     Choisit un coup alï¿½atoirement parmit une liste de tous les coups possible
         /// </summary>
         /// <param name="game"></param>
         /// <returns>Un coup possible</returns>
@@ -151,11 +151,12 @@ namespace DouShouQiLib
         public RandomJoueur(string identifiant, int id) : base(identifiant,id)
         { }
     }
+    
     [DataContract]
     public class HumainJoueur : Joueur
     {
         /// <summary>
-        ///    Ne sert pas, car le joueur humain choisira lui même son coup
+        ///    Ne sert pas, car le joueur humain choisira lui mï¿½me son coup
         /// </summary>
         /// <param name="game"></param>
         /// <returns>Rien</returns>

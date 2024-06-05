@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,32 +11,82 @@ using static DouShouQiLib.Joueur;
 
 namespace DouShouQiLib
 {
+    [DataContract]
     public class Game
     {
         /// <summary>
         ///    Plateau utilisé lors de la partie
         /// </summary>
+        [DataMember]
         public Plateau Plateau {  get; init; }
 
         /// <summary>
         ///    Règle utilisé pour la partie
         /// </summary>
-        public IRegles Regle {  get; init; }
+        public IRegles Regle {  get; private set; }
+
+        [DataMember]
+        private string regle
+        {
+            get
+            {
+                return Regle.name;
+            }
+            set
+            {
+                switch (value)
+                {
+                    case "origin":
+                        Regle = new regleOrigin();
+                        break;
+                    case "variente":
+                        Regle = new regleVariente();
+                        break;
+                    default:
+                        Regle = new regleOrigin();
+                        break;
+                }
+            }
+        }
 
         /// <summary>
         ///    Premier joueur
         /// </summary>
+        [DataMember]
         public Joueur Joueur1 {  get; init; }
 
         /// <summary>
         ///    Deuxième joueur
         /// </summary>
+        [DataMember]
         public Joueur Joueur2 { get; init; }
 
         /// <summary>
         ///    Le joueur qui doit jouer
         /// </summary>
+        [DataMember]
         public Joueur JoueurCourant { get; private set; }
+        
+        [DataMember]
+        public string startDate { get; private set; }
+        
+        /// <summary>
+        ///    Constructeur d'une partie
+        /// </summary>
+        /// <param name="regles"></param>
+        /// <param name="joueur1"></param>
+        /// <param name="joueur2"></param>
+        public Game(IRegles regles, Joueur joueur1, Joueur joueur2)
+        {
+            Plateau = new Plateau();
+            Regle = regles;
+            Joueur1 = joueur1;
+            Joueur2 = joueur2;
+            JoueurCourant = Joueur1;
+            startDate = DateTime.Now.ToString("dd/MM/yy HH:mm");
+
+            Regle.initPlateau(this);
+        }
 
         public event EventHandler<BoardChangedEventArgs>? BoardChanged;
         public event EventHandler<PieceMovedEventArgs>? PieceMoved;
@@ -77,23 +128,6 @@ namespace DouShouQiLib
         protected virtual void OnTalkToPlayer(string message)
         {
             TalkToPlayer?.Invoke(this, new TalkToPlayerEventArgs(message));
-        }
-
-        /// <summary>
-        ///    Constructeur d'une partie
-        /// </summary>
-        /// <param name="regles"></param>
-        /// <param name="joueur1"></param>
-        /// <param name="joueur2"></param>
-        public Game(IRegles regles, Joueur joueur1, Joueur joueur2)
-        {
-            Plateau = new Plateau();
-            Regle = regles;
-            Joueur1 = joueur1;
-            Joueur2 = joueur2;
-            JoueurCourant = Joueur1;
-
-            Regle.initPlateau(this);
         }
 
         /// <summary>

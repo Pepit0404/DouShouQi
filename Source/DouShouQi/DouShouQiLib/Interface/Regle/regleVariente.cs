@@ -8,6 +8,7 @@ namespace DouShouQiLib
 {
     public class regleVariente : IRegles
     {
+        public string name { get; init; } = "variente";
         private Game PlacementAnimaux(Game game)
         {
 

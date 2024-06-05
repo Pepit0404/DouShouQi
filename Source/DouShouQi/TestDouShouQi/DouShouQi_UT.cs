@@ -12,14 +12,14 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesOriginMange_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
+            Joueur j1 = new HumainJoueur("toto", 1);
             Piece souris = new (PieceType.souris, j1);
             Piece elephant = new (PieceType.elephant, j1);
             Piece chien = new (PieceType.chien, j1);
             IRegles regles = new regleOrigin();
 
 
-            Assert.False(regles.Manger(elephant.Type, souris.Type)); // false, un éléphant ne peux  pas manger une souris
+            Assert.False(regles.Manger(elephant.Type, souris.Type)); // false, un ï¿½lï¿½phant ne peux  pas manger une souris
             Assert.True(regles.Manger(souris.Type, elephant.Type)); // true, une souris peux manger un elephant
             Assert.True(regles.Manger(elephant.Type, chien.Type)); // true, un elephant peux manger un animal plus petit
             Assert.False(regles.Manger(souris.Type, chien.Type)); // false, une souris ne peux manger un animal plus grand
@@ -30,8 +30,8 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesOriginePouvoirBouger_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
-            Joueur j2 = new HumainJoueur("titi");
+            Joueur j1 = new HumainJoueur("toto",1);
+            Joueur j2 = new HumainJoueur("titi",2);
             Game game = new Game(new regleOrigin(), j1, j2);
             IRegles regles = game.Regle;
             Plateau plateau = game.Plateau;
@@ -50,7 +50,7 @@ namespace TestDouShouQi
 
             Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Terre), plateau)); // true, simple changement de case
             Assert.False(regles.PouvoirBouger(origine, new Case(0, 0, CaseType.Terre), plateau)); // false, impossible en diagonale
-            Assert.False(regles.PouvoirBouger(origine, new Case(1, 3, CaseType.Terre), plateau)); // false, impossible de sauté des cases
+            Assert.False(regles.PouvoirBouger(origine, new Case(1, 3, CaseType.Terre), plateau)); // false, impossible de sautï¿½ des cases
             Assert.False(regles.PouvoirBouger(origine, new Case(1,2, CaseType.Eau), plateau)); // false, pas possible d'aller dans l'eau
             origine.Onthis = new Piece(PieceType.souris, j1); // met une souris sur la case
             Assert.True(regles.PouvoirBouger(origine, new Case(1,2, CaseType.Eau), plateau)); // true, possible d'aller dans l'eau pour une souris
@@ -65,29 +65,29 @@ namespace TestDouShouQi
         [Fact]
         public void RegleOriginEstFini()
         {
-            Joueur j1 = new HumainJoueur("Toto");
-            Joueur j2 = new HumainJoueur("Tutu");
+            Joueur j1 = new HumainJoueur("Toto", 1);
+            Joueur j2 = new HumainJoueur("Tutu", 2);
             Piece j1Piece = new (PieceType.chien, j1);
             Piece j2Piece = new (PieceType.chien, j2);
             Game game = new (new regleOrigin(), j1, j2);
 
-            Assert.False(game.Regle.EstFini(game)); // faux car situation de départ
-            game.Plateau[0, 3].Onthis = j1Piece; // mise d'une piece de j1 sur sa tanière 
-            Assert.False(game.Regle.EstFini(game)); //faux, car j1 sur sa tanière et non sur celle de j2
-            game.Plateau[8, 3].Onthis = j2Piece; // mise d'une piece de j1 sur sa tanière
-            Assert.False(game.Regle.EstFini(game)); //faux, car j2 sur sa tanière et non sur celle de j1
-            game.Plateau[0, 3].Onthis = null; // supression de la piece de j1 de tanière 
-            game.Plateau[8, 3].Onthis = j1Piece; // mise d'une piece de j1 sur la tanière de j2
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 sur la tanière de j2
-            game.Plateau[8, 3].Onthis = null; // supression de la piece de j2 de tanière 
-            game.Plateau[0, 3].Onthis = j2Piece; // mise d'une piece de j2 sur la tanière de j1
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 sur la tanière de j1
-            game.Plateau[0, 3].Onthis = null; // supression de la piece de j2 de tanière 
+            Assert.False(game.Regle.EstFini(game)); // faux car situation de dï¿½part
+            game.Plateau[0, 3].Onthis = j1Piece; // mise d'une piece de j1 sur sa taniï¿½re 
+            Assert.False(game.Regle.EstFini(game)); //faux, car j1 sur sa taniï¿½re et non sur celle de j2
+            game.Plateau[8, 3].Onthis = j2Piece; // mise d'une piece de j1 sur sa taniï¿½re
+            Assert.False(game.Regle.EstFini(game)); //faux, car j2 sur sa taniï¿½re et non sur celle de j1
+            game.Plateau[0, 3].Onthis = null; // supression de la piece de j1 de taniï¿½re 
+            game.Plateau[8, 3].Onthis = j1Piece; // mise d'une piece de j1 sur la taniï¿½re de j2
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 sur la taniï¿½re de j2
+            game.Plateau[8, 3].Onthis = null; // supression de la piece de j2 de taniï¿½re 
+            game.Plateau[0, 3].Onthis = j2Piece; // mise d'une piece de j2 sur la taniï¿½re de j1
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 sur la taniï¿½re de j1
+            game.Plateau[0, 3].Onthis = null; // supression de la piece de j2 de taniï¿½re 
             game.Joueur1.Liste_Piece.Clear(); // supprime toute les pieces de j1
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 ne possède plus de pieces
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 ne possï¿½de plus de pieces
             game.Regle.initPlateau(game); // reset du plateau
             game.Joueur2.Liste_Piece.Clear(); // supprime toute les pieces de j1
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 ne possède plus de pieces
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 ne possï¿½de plus de pieces
         }
     }
 
@@ -99,7 +99,7 @@ namespace TestDouShouQi
         {
             IRegles regles = new regleVariente();
 
-            Joueur j1 = new HumainJoueur("toto");
+            Joueur j1 = new HumainJoueur("toto", 1);
             Piece souris = new (PieceType.souris, j1);
             Piece elephant = new (PieceType.elephant, j1);
             Piece chien = new (PieceType.chien, j1);
@@ -115,8 +115,8 @@ namespace TestDouShouQi
         [Fact]
         public void ReglesVarientePouvoirBouger_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
-            Joueur j2 = new HumainJoueur("titi");
+            Joueur j1 = new HumainJoueur("toto", 1);
+            Joueur j2 = new HumainJoueur("titi", 2);
             Game game = new Game(new regleVariente(), j1, j2);
             IRegles regles = game.Regle;
             Plateau plateau = game.Plateau;
@@ -136,7 +136,7 @@ namespace TestDouShouQi
 
             Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Terre), plateau)); // true, simple changement de case
             Assert.False(regles.PouvoirBouger(origine, new Case(0, 0, CaseType.Terre), plateau)); // false, impossible en diagonale
-            Assert.False(regles.PouvoirBouger(origine, new Case(1, 3, CaseType.Terre), plateau)); // false, impossible de sauté des cases
+            Assert.False(regles.PouvoirBouger(origine, new Case(1, 3, CaseType.Terre), plateau)); // false, impossible de sautï¿½ des cases
             Assert.False(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Eau), plateau)); // false, pas possible d'aller dans l'eau
             origine.Onthis = new Piece(PieceType.souris, j1); // met une souris sur la case
             Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Eau), plateau)); // true, possible d'aller dans l'eau pour une souris
@@ -146,7 +146,7 @@ namespace TestDouShouQi
             origine.Onthis = new Piece(PieceType.chien, j1); // met une souris sur la case
             Assert.True(regles.PouvoirBouger(origine, new Case(1, 2, CaseType.Eau), plateau)); // true, possible d'aller dans l'eau pour un chien
             Assert.True(regles.PouvoirBouger(origineEau, new Case(1, 2, CaseType.Terre), plateau)); // true, possible pour un chien de sortir de l'eau
-            Assert.True(regles.PouvoirBouger(origineEau, arriveEau, plateau)); // true, un chien peut manger un autre animal egale ou inférieur qui est dans l'eau
+            Assert.True(regles.PouvoirBouger(origineEau, arriveEau, plateau)); // true, un chien peut manger un autre animal egale ou infï¿½rieur qui est dans l'eau
             origine.Onthis = new Piece(PieceType.souris, j1); // met une souris sur la case
             Assert.True(regles.PouvoirBouger(origine, arrivePiege, plateau)); // true, une souris peut manger un animal plus gros qui est sur un piege
         }
@@ -154,29 +154,29 @@ namespace TestDouShouQi
         [Fact]
         public void RegleVarienteEstFini()
         {
-            Joueur j1 = new HumainJoueur("Toto");
-            Joueur j2 = new HumainJoueur("Tutu");
+            Joueur j1 = new HumainJoueur("Toto", 1);
+            Joueur j2 = new HumainJoueur("Tutu", 2);
             Piece j1Piece = new (PieceType.chien, j1);
             Piece j2Piece = new (PieceType.chien, j2);
             Game game = new (new regleVariente(), j1, j2);
 
-            Assert.False(game.Regle.EstFini(game)); // faux car situation de départ
-            game.Plateau[0, 3].Onthis = j1Piece; // mise d'une piece de j1 sur sa tanière 
-            Assert.False(game.Regle.EstFini(game)); //faux, car j1 sur sa tanière et non sur celle de j2
-            game.Plateau[8, 3].Onthis = j2Piece; // mise d'une piece de j1 sur sa tanière
-            Assert.False(game.Regle.EstFini(game)); //faux, car j2 sur sa tanière et non sur celle de j1
-            game.Plateau[0, 3].Onthis = null; // supression de la piece de j1 de tanière 
-            game.Plateau[8, 3].Onthis = j1Piece; // mise d'une piece de j1 sur la tanière de j2
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 sur la tanière de j2
-            game.Plateau[8, 3].Onthis = null; // supression de la piece de j2 de tanière 
-            game.Plateau[0, 3].Onthis = j2Piece; // mise d'une piece de j2 sur la tanière de j1
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 sur la tanière de j1
-            game.Plateau[0, 3].Onthis = null; // supression de la piece de j2 de tanière 
+            Assert.False(game.Regle.EstFini(game)); // faux car situation de dï¿½part
+            game.Plateau[0, 3].Onthis = j1Piece; // mise d'une piece de j1 sur sa taniï¿½re 
+            Assert.False(game.Regle.EstFini(game)); //faux, car j1 sur sa taniï¿½re et non sur celle de j2
+            game.Plateau[8, 3].Onthis = j2Piece; // mise d'une piece de j1 sur sa taniï¿½re
+            Assert.False(game.Regle.EstFini(game)); //faux, car j2 sur sa taniï¿½re et non sur celle de j1
+            game.Plateau[0, 3].Onthis = null; // supression de la piece de j1 de taniï¿½re 
+            game.Plateau[8, 3].Onthis = j1Piece; // mise d'une piece de j1 sur la taniï¿½re de j2
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 sur la taniï¿½re de j2
+            game.Plateau[8, 3].Onthis = null; // supression de la piece de j2 de taniï¿½re 
+            game.Plateau[0, 3].Onthis = j2Piece; // mise d'une piece de j2 sur la taniï¿½re de j1
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 sur la taniï¿½re de j1
+            game.Plateau[0, 3].Onthis = null; // supression de la piece de j2 de taniï¿½re 
             game.Joueur1.Liste_Piece.Clear(); // supprime toute les pieces de j1
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 ne possède plus de pieces
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j1 ne possï¿½de plus de pieces
             game.Regle.initPlateau(game); // reset du plateau
             game.Joueur2.Liste_Piece.Clear(); // supprime toute les pieces de j1
-            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 ne possède plus de pieces
+            Assert.True(game.Regle.EstFini(game)); //vrai, car j2 ne possï¿½de plus de pieces
         }
     }
 
@@ -185,8 +185,8 @@ namespace TestDouShouQi
         [Fact]
         public void MemePiece_UT()
         {
-            Joueur j1 = new HumainJoueur("toto");
-            Joueur j2 = new HumainJoueur("tutu");
+            Joueur j1 = new HumainJoueur("toto", 1);
+            Joueur j2 = new HumainJoueur("tutu", 2);
             Piece piece1 = new (PieceType.chien, j1);
             Piece piece2 = new (PieceType.chat, j1);
             Piece piece3 = new (PieceType.chien, j2);
@@ -202,11 +202,11 @@ namespace TestDouShouQi
         [Fact]
         public void Appartient_UT() 
         {
-            Joueur j1 = new HumainJoueur("Toto");
-            Joueur j2 = new HumainJoueur("Tutu");
+            Joueur j1 = new HumainJoueur("Toto", 1);
+            Joueur j2 = new HumainJoueur("Tutu", 2);
             Piece j1Piece = new (PieceType.chien, j1);
             Assert.True(j1.Appartient(j1Piece)); // true, la piece lui appartient
-            Assert.False(j2.Appartient(j1Piece)); // false, la piece appartient à j1
+            Assert.False(j2.Appartient(j1Piece)); // false, la piece appartient ï¿½ j1
         }
     }
 }
