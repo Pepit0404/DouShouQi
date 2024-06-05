@@ -12,17 +12,25 @@
         <converters:CaseColorConverter x:Key="CasesConverter"/>
         <converters:CaseImageConverter x:Key="CasesIConverter"/>
         <converters:PieceColorConverter x:Key="PieceCConverter"/>
+        <converters:PieceImageConverter x:Key="PieceIConverter"/>
         <ResourceDictionary>
             <x:Double x:Key="VerticalSpacing">2</x:Double>
             <x:Double x:Key="HorizontalSpacing">2</x:Double>
             <DataTemplate x:Key="cellTemplate">
-                <Grid BackgroundColor="DarkSalmon" x:DataType="doushouqi:Case">
+                <Grid BackgroundColor="Green" x:DataType="doushouqi:Case">
                     <Image Source="{Binding Type, Converter={StaticResource CasesIConverter}}" />
-                    <Button Text="{Binding Onthis}"
+                    <Ellipse BackgroundColor="{Binding Onthis, Converter={StaticResource PieceCConverter}}"
+                             HeightRequest="50"
+                             WidthRequest="50"/>
+                    <Image Source="{Binding Onthis, Converter={StaticResource PieceIConverter}}"/>
+                    <!--<Button Text="{Binding Onthis}"
                             TextColor="{Binding Onthis, Converter={StaticResource PieceCConverter}}"
                             Clicked="OnTapCase"
                             FontSize="Micro"
+                            BackgroundColor="Transparent"/>-->
+                    <Button Clicked="OnTapCase"
                             BackgroundColor="Transparent"/>
+                    
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>

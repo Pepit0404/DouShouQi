@@ -5,59 +5,74 @@
     <VerticalStackLayout>
         <Grid ColumnDefinitions="250,250"
               RowDefinitions="600"
-              BackgroundColor="Black">
-            <Grid RowDefinitions="*,*,*,*,*,*,*,*">
-                <Image Source="souris.png"
-                       WidthRequest="30"
-                       HeightRequest="30"
-                       VerticalOptions="Start"
-                       HorizontalOptions="Start"
-                       Grid.Row="0"/>
-                <Label Text="souris"
+              BackgroundColor="DarkSalmon">
+            <Grid RowDefinitions="40,70,70,70,70,70,70,70,70"
+                  ColumnDefinitions="40,*">
+                <Label Text="VALEUR"
                        TextColor="White"
-                       Grid.Column="1"
-                       Grid.Row="0"/>
+                       Grid.Column="1"/>
                 <Image Source="souris.png"
-                       WidthRequest="30"
-                       HeightRequest="30"
-                       VerticalOptions="Start"
-                       HorizontalOptions="Start"
                        Grid.Row="1"/>
-                <Label Text="souris"
+                <Label Text="souris : 1"
                        TextColor="White"
                        Grid.Column="1"
                        Grid.Row="1"/>
-                <Image Source="souris.png"
-                       WidthRequest="30"
-                       HeightRequest="30"
-                       VerticalOptions="Start"
-                       HorizontalOptions="Start"
+                <Image Source="chat.png"
                        Grid.Row="2"/>
-                <Label Text="souris"
+                <Label Text="chat : 2"
                        TextColor="White"
                        Grid.Column="1"
                        Grid.Row="2"/>
-                <Image Source="souris.png"
-                       WidthRequest="30"
-                       HeightRequest="30"
-                       VerticalOptions="Start"
-                       HorizontalOptions="Start"
+                <Image Source="chien.png"
                        Grid.Row="3"/>
-                <Label Text="souris"
+                <Label Text="chien : 3"
                        TextColor="White"
                        Grid.Column="1"
                        Grid.Row="3"/>
+                <Image Source="loup.png"
+                       Grid.Row="4"/>
+                <Label Text="loup : 4"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="4"/>
+                <Image Source="leopard.png"
+                       Grid.Row="5"/>
+                <Label Text="leopard : 5"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="5"/>
+                <Image Source="tigre.png"
+                       Grid.Row="6"/>
+                <Label Text="tigre : 6"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="6"/>
+                <Image Source="lion.png"
+                       Grid.Row="7"/>
+                <Label Text="lion : 7"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="7"/>
+                <Image Source="elephant.png"
+                       Grid.Row="8"/>
+                <Label Text="elephant : 8"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.Row="8"/>
             </Grid>
-        <Label 
-                Text="Le Dou Shou qi (échiquier du combat des animaux) 
-                est un jeu de stratégie d’origine chinoise. 
-                Deux joueurs se font face dans cette bataille, 
-                le joueur du Sud et le joueur du Nord. 
-                Chaque joueur possède des animaux avec une valeur qui représente leur force."
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                TextColor="White"
-                Grid.Column="2"/>
+            <Grid ColumnDefinitions="250"
+                  RowDefinitions="600"
+                  Grid.Column="1">
+                <Label 
+                    Text="Chaque pièce se déplace de 1 case horizontal ou vertical.      
+                    Une pièce ne peu en manger une autre que si elle a une valeur supérieur ou égal.            
+                    Seul les souris peuvent se déplacer sur les cases. Les lions et les tigres peuvent quand à eux sauter par dessus l'eau.                       
+                    Des qu'une pièce se retrouve dans un piège adverse elle prend tant qu'elle reste sur le piège la valeur de 0.
+                    Pour gagner une partie un joueur doit manger toutes les pièces de son adversaire ou mettre une de ses pièce dans la tanière adverse."
+                    TextColor="White"
+                    Grid.Column="1"/>
+            </Grid>
+
         </Grid>
     </VerticalStackLayout>
 </ContentView>

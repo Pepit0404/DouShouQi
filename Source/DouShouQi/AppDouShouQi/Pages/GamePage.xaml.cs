@@ -12,6 +12,10 @@ public partial class GamePage : ContentPage
 
     void OnTapCase(object sender, EventArgs e)
     {
+        if(regle.IsVisible == true)
+        {
+            return;
+        }
         var button = (sender as Button)!;
         Case thisCase = (button.BindingContext as Case)!;
         if (PlaceStart == null)
@@ -68,8 +72,15 @@ public partial class GamePage : ContentPage
 
     public void OnRegle(object sender, EventArgs e)
     {
-        if(regle.IsVisible ==  false)
+        if (regle.IsVisible == false)
+        {
             regle.IsVisible = true;
-        else regle.IsVisible = false;
+        }
+
+
+        else 
+        {
+            regle.IsVisible = false;
+        } 
     }
 }
