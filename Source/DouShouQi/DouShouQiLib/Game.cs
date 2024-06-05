@@ -179,20 +179,5 @@ namespace DouShouQiLib
                 coupOk = MovePiece(coup[0], coup[1], this.Plateau);
             }
         }
-
-        public void Start2()
-        {
-            Case[] coup = AskMoove(this.Plateau.width - 1, this.Plateau.height - 1, this);
-
-            if (coup==null)
-            {
-                return;
-            }
-
-            MovePiece(coup[0], coup[1], this.Plateau);
-            IsFini();
-            ChangePlayer();
-            return;
-        }
     }
 }

@@ -8,7 +8,7 @@
         <VerticalStackLayout>
             <Grid ColumnDefinitions="Auto,*">
                 <!--<Views:ReturnButtonView />-->
-                <Button Style="{StaticResource return}" 
+                <Button Style="{StaticResource Return}" 
                     Clicked="OnClickedReturn" />
                 <Label
                     Grid.Column="1"

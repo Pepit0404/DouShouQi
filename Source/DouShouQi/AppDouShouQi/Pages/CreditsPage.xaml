@@ -10,7 +10,7 @@
     <VerticalStackLayout>
             <Grid ColumnDefinitions="auto,*"  >
                 <!--<Views:ReturnButtonView />-->
-                <Button Style="{StaticResource return}"
+                <Button Style="{StaticResource Return}"
                         Clicked="OnClickedReturn" />
                 <Label Text="Crédits"
                        Grid.Column="1"

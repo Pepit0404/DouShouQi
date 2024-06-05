@@ -12,6 +12,7 @@ namespace DouShouQiLib
 {
     public class Manager: INotifyPropertyChanged
     {
+        public event EventHandler<StartingGameEventArgs>? StartingGame;
         public Game game { get; set; }
         public Plateau? Plateau => game.Plateau;    
       
@@ -27,6 +28,7 @@ namespace DouShouQiLib
             game = new Game(Regles, Joueurs[0], Joueurs[1]);
             game.BoardChanged += Manager_OnBoardChanged;
             game.PlayerChanged += Manager_OnPlayerChanged;
+            OnStartingGame(Joueurs[0], Joueurs[1]);
             OnPropertyChanged(nameof(Plateau) );
             OnPropertyChanged(nameof(CurrentPlayer) );
 
@@ -44,6 +46,9 @@ namespace DouShouQiLib
 
         void OnPropertyChanged(string propertyName)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        
+        protected virtual void OnStartingGame(Joueur j1, Joueur j2)
+            => StartingGame?.Invoke(this, new StartingGameEventArgs(j1, j2));
 
         public void CreatePlayer(string name, int id)
         {
