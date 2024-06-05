@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Views.regleView">
     <VerticalStackLayout>
-        <Grid ColumnDefinitions="250,250"
+        <Grid ColumnDefinitions="150,250"
               RowDefinitions="600"
               BackgroundColor="DarkSalmon">
             <Grid RowDefinitions="40,70,70,70,70,70,70,70,70"

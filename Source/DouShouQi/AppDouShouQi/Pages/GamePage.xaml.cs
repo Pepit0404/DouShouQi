@@ -12,7 +12,7 @@ public partial class GamePage : ContentPage
 
     void OnTapCase(object sender, EventArgs e)
     {
-        if(regle.IsVisible == true)
+        if (pause.IsVisible)
         {
             return;
         }
@@ -76,11 +76,20 @@ public partial class GamePage : ContentPage
         {
             regle.IsVisible = true;
         }
-
-
         else 
         {
             regle.IsVisible = false;
         } 
+    }
+    public void OnPause(object sender, EventArgs e)
+    {
+        if (pause.IsVisible == false)
+        {
+            pause.IsVisible = true;
+        }
+        else
+        {
+            pause.IsVisible = false;
+        }
     }
 }

@@ -89,3 +89,22 @@ public class PieceImageConverter : IValueConverter
         throw new NotImplementedException();
     }
 }
+
+public class JoueurColorConverter : IValueConverter
+{
+    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        if (value == null) return null;
+        Joueur j = (Joueur)value!;
+        return j.Id switch
+        {
+            1 => "Blue",
+            2 => "Red",
+            _ => "DarkSalmon",
+        };
+    }
+    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
