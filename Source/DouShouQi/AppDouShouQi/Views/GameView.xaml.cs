@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,6 @@ public partial class GameView : ContentView
         InitializeComponent();
         BindingContext = this;
 
-        listGame.ItemsSource = Stub.Games;
+        listGame.ItemsSource = LoadedGames;
     }
 }

@@ -5,7 +5,7 @@
              x:Class="AppDouShouQi.Views.GameView"
              xmlns:doushouqi="clr-namespace:DouShouQiLib;assembly=DouShouQiLib"
              BackgroundColor="DarkSalmon"
-             HeightRequest="350" Width="200">
+             Width="200">
     <VerticalStackLayout>
         <Label Text="Partie savegardé" 
                HorizontalOptions="Center"
