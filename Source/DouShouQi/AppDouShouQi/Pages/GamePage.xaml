@@ -103,24 +103,29 @@
               AbsoluteLayout.LayoutFlags="All"
               AbsoluteLayout.LayoutBounds=".5,.5,.75,.75"
               Background="Black"
-              IsVisible="False" >
+              IsVisible="False" 
+              Grid.Column="1">
             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
                 <Label x:Name="labelNameVictory"
                        Text="Félicitation Pepito !" 
                        FontSize="Header"
                        HorizontalTextAlignment="Center"
-                       Grid.Row="0"/>
+                       Grid.Row="0"
+                       TextColor="White"/>
                 <Label Text="Tu as gagné !" 
                        FontSize="Header"
                        HorizontalTextAlignment="Center"
-                       Grid.Row="0"/>
+                       Grid.Row="0"                       
+                       TextColor="White"/>
             </VerticalStackLayout>
 
             <Button Text="Page d'accueil" 
                         FontSize="Large"
                         HeightRequest="65"
                         WidthRequest="300"
+                    HorizontalOptions="Center"
                         Grid.Row="1"
+                    Style="{StaticResource Return}"
                     Clicked="HomeButton"/> <!--Quand clické mettre la gride en isVisible False-->
         </Grid>
     </Grid>

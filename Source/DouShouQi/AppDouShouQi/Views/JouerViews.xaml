@@ -6,8 +6,16 @@
              
     <VerticalStackLayout HeightRequest="500" WidthRequest="750"
                          VerticalOptions="Center" >
+        <Button HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="20"
+                WidthRequest="100"
+                Text="retour"
+                Clicked="OnMenu"/>
         <HorizontalStackLayout Margin="10,20"
                                HorizontalOptions="Center">
+            
+            
             <Label Text="Joueur 1:"
                    TextColor="White"
                    VerticalOptions="Center"/>
@@ -19,6 +27,7 @@
                    TextColor="White"
                    Text="{Binding Joueur1.Name}"/>
             <Button Text="Charger" />
+            
         </HorizontalStackLayout>
         <HorizontalStackLayout Margin="10,20"
                                HorizontalOptions="Center">
