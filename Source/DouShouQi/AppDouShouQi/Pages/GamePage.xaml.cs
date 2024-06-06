@@ -45,7 +45,6 @@ public partial class GamePage : ContentPage
         if (!e.End) return;
         labelNameVictory.Text = "Félicitation " + e.Winer + " !";
         winBoard.IsVisible = true;
-        Debug.WriteLine("[DEBUG] => END");
     }
 
     void GamePage_StartingGame(object? sender, StartingGameEventArgs e)

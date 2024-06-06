@@ -116,6 +116,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\DataContractPersist\DataContractPersist.csproj" />
 	  <ProjectReference Include="..\DouShouQiLib\DouShouQiLib.csproj" />
 	</ItemGroup>
 

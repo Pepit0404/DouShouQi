@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDouShouQi.Views.GameView"
+             BackgroundColor="DarkSalmon"
+             HeightRequest="300" Width="200">
+    <VerticalStackLayout>
+        <Label Text="Partie savegardé" 
+               HorizontalOptions="Center"
+               FontSize="Header"/>
+        
+        <ScrollView VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+            <ListView ItemsSource="{Binding LoadedGames}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="50, 10" BackgroundColor="Red" ColumnDefinitions="*,*,*">
+                                <Label Text="Hello" />
+                                <Label Text="{Binding Joueurs[0]}" />
+                                <Label Text="{Binding startDate}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        
+    </VerticalStackLayout>
+</ContentView>
