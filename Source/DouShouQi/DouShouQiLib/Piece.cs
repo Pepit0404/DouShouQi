@@ -1,15 +1,20 @@
-﻿namespace DouShouQiLib
+﻿using System.Runtime.Serialization;
+
+namespace DouShouQiLib
 {
+    [DataContract]
     public struct Piece
     {
         /// <summary>
         ///    Animal qui représente la pièce parmit PieceType
         /// </summary>
+        [DataMember]
         public PieceType Type { get; init; }
 
         /// <summary>
         ///    le joueur qui possède cette pièce
         /// </summary>
+        [DataMember]
         public Joueur Proprietaire { get; init; }
 
         /// <summary>
@@ -52,16 +57,26 @@
     /// <summary>
     ///    Enumération qui définit les types que peut prendre une pièce
     /// </summary>
+    [DataContract]
     public enum PieceType
     {
+        [EnumMember]
         inconnue,
+        [EnumMember]
         souris,
+        [EnumMember]
         chat,
+        [EnumMember]
         chien,
+        [EnumMember]
         loup,
+        [EnumMember]
         leopard,
+        [EnumMember]
         tigre,
+        [EnumMember]
         lion,
+        [EnumMember]
         elephant
     }
 

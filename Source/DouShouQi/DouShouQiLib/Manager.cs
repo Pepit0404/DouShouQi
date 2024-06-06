@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    public class Manager: INotifyPropertyChanged
+    public class Manager : INotifyPropertyChanged
     {
         public event EventHandler<StartingGameEventArgs>? StartingGame;
         public Game game { get; set; }
-        public Plateau? Plateau => game.Plateau;    
+
+        public Plateau? Plateau
+            => this.game.Plateau;
       
         public IRegles? Regles { get; set; }
         public Joueur[] Joueurs { get; set; } = new Joueur[2];

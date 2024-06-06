@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
+    [DataContract]
     public class Case
     {
         /// <summary>
         ///    Abscisse de la case
         /// </summary>
-        public int X {  get; init; }
+        [DataMember]
+        public int X {  get; private set; }
 
         /// <summary>
         ///    Ordonné de la case
         /// </summary>
-        public int Y { get; init; }
+        [DataMember]
+        public int Y { get; private set; }
 
         public int[] pos 
             => new int[]{ X, Y };
@@ -24,12 +28,26 @@ namespace DouShouQiLib
         /// <summary>
         ///    La pièce, s'il y en a une, qui est sur cette case
         /// </summary>
+        [DataMember]
         public Piece? Onthis { get; set; }
 
         /// <summary>
         ///    Type de la case parmit CaseType
         /// </summary>
-        public CaseType Type { get; init; }
+        public CaseType Type { get; private set; }
+
+        [DataMember]
+        private int type
+        {
+            get
+            {
+                return (int)Type;
+            }
+            set
+            {
+                Type = (CaseType)value;
+            }
+        }
 
         /// <summary>
         ///    Constructeur de Case
@@ -65,12 +83,18 @@ namespace DouShouQiLib
     /// <summary>
     ///    Enumération qui définit les types que peut prendre une case
     /// </summary>
+    [DataContract]
     public enum CaseType
     {
+        [EnumMember]
         Inconnue,
+        [EnumMember]
         Terre,
+        [EnumMember]
         Eau,
+        [EnumMember]
         Piege,
+        [EnumMember]
         Taniere
     }
 }

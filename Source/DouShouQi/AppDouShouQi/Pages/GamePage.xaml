@@ -70,6 +70,4 @@
                     Clicked="HomeButton"/> <!--Quand clické mettre la gride en isVisible False-->
         </Grid>
     </Grid>
-    
-    
 </ContentPage>

@@ -9,6 +9,7 @@ namespace DouShouQiLib
 {
     public class regleOrigin : IRegles
     {
+        public string name { get; init; } = "origin";
         private Game PlacementAnimaux(Game game)
         {
 
@@ -108,6 +109,12 @@ namespace DouShouQiLib
             // Si la case actuelle est vide, retournez false
             if (!caseActu.Onthis.HasValue)
             {
+                return false;
+            }
+
+            if (caseActu == caseAdja) 
+            {
+
                 return false;
             }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace DouShouQiLib
     public interface IRegles
     {
 
+        string name { get; init; }
         void initPlateau(Game game);
         bool Manger(PieceType meurtrier, PieceType victime);
         bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau);

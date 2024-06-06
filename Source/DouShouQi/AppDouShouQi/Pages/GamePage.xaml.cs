@@ -56,6 +56,7 @@ public partial class GamePage : ContentPage
     public GamePage()
 	{
 		InitializeComponent();
+        //BindingContext = GM;
         BindingContext = this;
         GM.StartingGame += GamePage_StartingGame;
         GM.game.GameOver += GamePage_OnGameOver;
