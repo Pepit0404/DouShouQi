@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDouShouQi.Views.pauseView">
+    <VerticalStackLayout>
+        <Label Text="Pause"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+               FontSize="Header"/>
+
+        <Border StrokeThickness="5">
+            <Grid RowDefinitions="120,100,100"
+                  ColumnDefinitions="400"
+                  BackgroundColor="DarkSalmon">
+                <Button Text="Sauvegarder et Quitter"
+                        Style="{StaticResource Return}"
+                        Clicked="sauvegarde"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HeightRequest="70"
+                        WidthRequest="300"/>
+                <Button Text="Quitter"
+                        Grid.Row="1"
+                        Style="{StaticResource Return}"
+                        Clicked="quitter"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HeightRequest="70"
+                        WidthRequest="300"/>
+                <Button Text="Reprendre"
+                        Grid.Row="2"
+                        Style="{StaticResource Return}"
+                        Clicked="reprendre"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HeightRequest="70"
+                        WidthRequest="300"/>
+            </Grid>
+        </Border>
+        <!--<Image Source="pause.png"
+       HorizontalOptions="Center"
+       VerticalOptions="Center"
+       WidthRequest="300"
+       HeightRequest="300"/>-->
+    </VerticalStackLayout>
+</ContentView>

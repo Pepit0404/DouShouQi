@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:AppDouShouQi"
     Shell.FlyoutBehavior="Flyout"
     Title="AppDouShouQi"
-    xmlns:pages="clr-namespace:AppDouShouQi.Pages">
+    xmlns:pages="clr-namespace:AppDouShouQi.Pages"
+    Shell.NavBarIsVisible="False">
 
     <ShellContent
         Title="Home"

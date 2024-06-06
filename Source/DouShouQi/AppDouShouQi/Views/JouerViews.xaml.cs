@@ -34,4 +34,9 @@ public partial class JouerViews : ContentView
 		Shell.Current.GoToAsync("//GamePage");
     }
 
+	public void OnMenu(object sender, EventArgs e)
+	{
+        this.IsVisible = false;
+    }
+
 }

@@ -75,15 +75,22 @@
             <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="End" >
                 <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End" >
                     <Image Source="iut.png"
-                    Aspect="AspectFill"
-                    HeightRequest="120" />
+                        Aspect="AspectFill"
+                        HeightRequest="120" />
                     <Image Grid.Column="1" 
                         Source="uca.png" 
                         VerticalOptions="Center" 
                         HorizontalOptions="Center" 
                         HeightRequest="80" />
+                    <Image Grid.Column="2"
+                           Source="logo.png"
+                           HeightRequest="120"/>
                 </HorizontalStackLayout>
-                <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." FontSize="10"/>
+                <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." 
+                       FontSize="10"
+                       Grid.Column="1"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
             </VerticalStackLayout>
             
         </VerticalStackLayout>

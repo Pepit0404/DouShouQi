@@ -12,18 +12,27 @@ public partial class GamePage : ContentPage
 
     void OnTapCase(object sender, EventArgs e)
     {
+        if (pause.IsVisible)
+        {
+            return;
+        }
         var button = (sender as Button)!;
         Case thisCase = (button.BindingContext as Case)!;
         if (PlaceStart == null)
         {
             if (thisCase.Onthis.HasValue)
             {
-                if (!GM.game.AppartientJC(thisCase.Onthis.Value) ) return;
+                if (!GM.game.AppartientJC(thisCase.Onthis.Value)) return;
                 PlaceStart = thisCase;
             }
         }
         else
         {
+            if (thisCase == PlaceStart) 
+            {
+                PlaceStart = null;
+                return;
+            }
             bool ok = GM.game.MovePiece(PlaceStart, thisCase, GM.game.Plateau);
             PlaceStart = null;
             if (!ok) return;
@@ -56,9 +65,31 @@ public partial class GamePage : ContentPage
     public GamePage()
 	{
 		InitializeComponent();
-        //BindingContext = GM;
         BindingContext = this;
         GM.StartingGame += GamePage_StartingGame;
         GM.game.GameOver += GamePage_OnGameOver;
+    }
+
+    public void OnRegle(object sender, EventArgs e)
+    {
+        if (regle.IsVisible == false)
+        {
+            regle.IsVisible = true;
+        }
+        else 
+        {
+            regle.IsVisible = false;
+        } 
+    }
+    public void OnPause(object sender, EventArgs e)
+    {
+        if (pause.IsVisible == false)
+        {
+            pause.IsVisible = true;
+        }
+        else
+        {
+            pause.IsVisible = false;
+        }
     }
 }
