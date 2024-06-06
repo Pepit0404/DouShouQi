@@ -24,16 +24,20 @@ namespace DouShouQiLib
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public void CreateGame()
+        public void InitGame()
         {
-            if (Regles == null) return ;
-            game = new Game(Regles, Joueurs[0], Joueurs[1]);
             game.BoardChanged += Manager_OnBoardChanged;
             game.PlayerChanged += Manager_OnPlayerChanged;
             OnStartingGame(Joueurs[0], Joueurs[1]);
             OnPropertyChanged(nameof(Plateau) );
             OnPropertyChanged(nameof(CurrentPlayer) );
-
+        }
+        
+        public void CreateGame()
+        {
+            if (Regles == null) return ;
+            game = new Game(Regles, Joueurs[0], Joueurs[1]);
+            InitGame();
         }
 
         public void setRegles(string regle)

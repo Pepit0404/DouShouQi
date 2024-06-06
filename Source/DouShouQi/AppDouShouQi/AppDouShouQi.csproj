@@ -118,6 +118,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\DataContractPersist\DataContractPersist.csproj" />
 	  <ProjectReference Include="..\DouShouQiLib\DouShouQiLib.csproj" />
+	  <ProjectReference Include="..\StubPackage\StubPackage.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

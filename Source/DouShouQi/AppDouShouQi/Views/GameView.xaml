@@ -3,28 +3,36 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Views.GameView"
+             xmlns:doushouqi="clr-namespace:DouShouQiLib;assembly=DouShouQiLib"
              BackgroundColor="DarkSalmon"
-             HeightRequest="300" Width="200">
+             HeightRequest="350" Width="200">
     <VerticalStackLayout>
         <Label Text="Partie savegardé" 
                HorizontalOptions="Center"
-               FontSize="Header"/>
+               FontSize="Header"
+               Padding="10, 15"/>
         
-        <ScrollView VerticalOptions="EndAndExpand" HorizontalOptions="Center">
-            <ListView ItemsSource="{Binding LoadedGames}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Margin="50, 10" BackgroundColor="Red" ColumnDefinitions="*,*,*">
-                                <Label Text="Hello" />
-                                <Label Text="{Binding Joueurs[0]}" />
-                                <Label Text="{Binding startDate}"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
+        <ListView x:Name="listGame"
+                  VerticalScrollBarVisibility="Always"
+                  MaximumHeightRequest="300">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="50, 10" ColumnDefinitions="*,*,*" x:DataType="doushouqi:Game"
+                              BackgroundColor="Red"
+                              HeightRequest="50">
+                            <Label Text="{Binding Joueur1}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Joueur2}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Text="{Binding startDate}" Grid.Column = "2" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Button Clicked="StartGame" 
+                                    BackgroundColor="Transparent"
+                                    Grid.ColumnSpan="3"/>
+                        </Grid>
+                    
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         
     </VerticalStackLayout>
 </ContentView>
