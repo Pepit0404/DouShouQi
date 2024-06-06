@@ -22,8 +22,6 @@ namespace DouShouQiLib
         /// <returns></returns>
         List<Game> LoadGame();
 
-        void SaveGame(IEnumerable<Game> games);
-
         bool SaveAPlayer(Joueur j);
         bool DeleteAPlayer(string name);
         

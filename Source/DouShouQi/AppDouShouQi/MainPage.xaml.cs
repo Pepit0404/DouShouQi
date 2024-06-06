@@ -1,3 +1,5 @@
+using System.Collections;
+using DataContractPersist;
 using DouShouQiLib;
 
 namespace AppDouShouQi
@@ -22,6 +24,16 @@ namespace AppDouShouQi
             }
             PlayStart.IsVisible = true;
             return;
+        }
+
+        public void showGames(object sendern, EventArgs e)
+        {
+            if (GameList.IsVisible)
+            {
+                GameList.IsVisible = false;
+                return;
+            }
+            GameList.IsVisible = true;
         }
 
         private void OnScoreBoard(object _, EventArgs __)

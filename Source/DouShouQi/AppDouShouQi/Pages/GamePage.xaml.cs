@@ -18,6 +18,7 @@ public partial class GamePage : ContentPage
         }
         var button = (sender as Button)!;
         Case thisCase = (button.BindingContext as Case)!;
+        Debug.WriteLine($"[DEBUG] => {thisCase}");
         if (PlaceStart == null)
         {
             if (thisCase.Onthis.HasValue)
@@ -50,11 +51,9 @@ public partial class GamePage : ContentPage
 
     void GamePage_OnGameOver(object? sender, GameOverEventArgs e)
     {
-        Debug.WriteLine(e.End);
         if (!e.End) return;
         labelNameVictory.Text = "Félicitation " + e.Winer + " !";
         winBoard.IsVisible = true;
-        Debug.WriteLine("[DEBUG] => END");
     }
 
     void GamePage_StartingGame(object? sender, StartingGameEventArgs e)

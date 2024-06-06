@@ -11,12 +11,20 @@ namespace DataContractPersist
 {
     public class XMLPersist : IPersistanceManager
     {
-        private string path = "../../../SAVE/";
+        private string path = "./";
         private string nameFileGame = "games.xml";
         private string nameFilePLayer = "player.xml";
 
         public bool SaveAGame(Game game)
         {
+            if (!File.Exists($"{path}{nameFileGame}"))
+            {
+                List<Game> games = new List<Game>();
+                games.Add(game);
+                SaveGame(games);
+                return true;
+            }
+            
             List<Game> allReadySaved = LoadGame();
             allReadySaved.Add(game);
             SaveGame(allReadySaved);
@@ -41,6 +49,11 @@ namespace DataContractPersist
 
         public List<Game> LoadGame()
         {
+            if (!File.Exists($"{path}{nameFileGame}"))
+            {
+                SaveGame(new List<Game>());
+            }
+            
             List<Game> games = new List<Game>();
 
             var serializer = new DataContractSerializer(typeof(List<Game>));
@@ -51,9 +64,8 @@ namespace DataContractPersist
             return games;
         }
 
-        public void SaveGame(IEnumerable<Game> games)
+        private void SaveGame(IEnumerable<Game> games)
         {
-            if (games == null) return;
             DataContractSerializer Serializer = 
                 new DataContractSerializer(typeof(IEnumerable<Game>), 
                     new DataContractSerializerSettings(){PreserveObjectReferences = true});
@@ -66,6 +78,14 @@ namespace DataContractPersist
 
         public bool SaveAPlayer(Joueur joueur)
         {
+            if (!File.Exists($"{path}{nameFilePLayer}"))
+            {
+                List<Joueur> players = new List<Joueur>();
+                players.Add(joueur);
+                SavePlayer(players);
+                return true;
+            }
+            
             List<Joueur> allReadySaved = LoadPlayer();
             foreach (Joueur j in allReadySaved)
             {
@@ -94,6 +114,11 @@ namespace DataContractPersist
 
         public List<Joueur> LoadPlayer()
         {
+            if (!File.Exists($"{path}{nameFileGame}"))
+            {
+                SavePlayer(new List<Joueur>());
+            }
+            
             List<Joueur> players = new List<Joueur>();
 
             var serializer = new DataContractSerializer(typeof(List<Joueur>) );

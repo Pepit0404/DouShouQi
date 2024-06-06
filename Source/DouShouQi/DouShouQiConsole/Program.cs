@@ -325,8 +325,7 @@ void testPersistance()
     IPersistanceManager XMLPersist = new XMLPersist();
     List<Game> games = new List<Game>();
     Game g1 = new Game(new regleOrigin(), new HumainJoueur("Unknow", 1), new HumainJoueur("Toto", 2));
-    games.Add(g1);
-    XMLPersist.SaveGame(games);
+    XMLPersist.SaveAGame(g1);
     Console.WriteLine("[DEBUG] => END");
 }
 
