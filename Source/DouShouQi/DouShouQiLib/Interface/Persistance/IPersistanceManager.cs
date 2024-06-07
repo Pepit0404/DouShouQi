@@ -13,7 +13,7 @@ namespace DouShouQiLib
         /// </summary>
         /// <param name="games"></param>
         bool SaveAGame(Game game);
-        bool DeleteAGame(string startDate);
+        bool DeleteAGame(Game game);
         
         
         /// <summary>

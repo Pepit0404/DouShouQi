@@ -28,9 +28,12 @@ namespace DouShouQiLib
         {
             game.BoardChanged += Manager_OnBoardChanged;
             game.PlayerChanged += Manager_OnPlayerChanged;
+            Joueurs[0] = game.Joueur1;
+            Joueurs[1] = game.Joueur2;
             OnStartingGame(Joueurs[0], Joueurs[1]);
             OnPropertyChanged(nameof(Plateau) );
             OnPropertyChanged(nameof(CurrentPlayer) );
+            OnPropertyChanged(nameof(Joueurs) );
         }
         
         public void CreateGame()

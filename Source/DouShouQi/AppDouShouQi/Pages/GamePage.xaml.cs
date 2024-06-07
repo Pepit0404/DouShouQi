@@ -8,6 +8,8 @@ public partial class GamePage : ContentPage
 {
     public Manager GM => (Application.Current as App)!.TheMgr;
 
+    public IPersistanceManager SaveManager => (Application.Current as App)!.SaveManager;
+
     public Case? PlaceStart { get; set; }
 
     void OnTapCase(object sender, EventArgs e)
@@ -18,7 +20,6 @@ public partial class GamePage : ContentPage
         }
         var button = (sender as Button)!;
         Case thisCase = (button.BindingContext as Case)!;
-        Debug.WriteLine($"[DEBUG] => {thisCase}");
         if (PlaceStart == null)
         {
             if (thisCase.Onthis.HasValue)
@@ -52,6 +53,7 @@ public partial class GamePage : ContentPage
     void GamePage_OnGameOver(object? sender, GameOverEventArgs e)
     {
         if (!e.End) return;
+        Debug.WriteLine(SaveManager.DeleteAGame(GM.game));
         labelNameVictory.Text = "Félicitation " + e.Winer + " !";
         winBoard.IsVisible = true;
     }

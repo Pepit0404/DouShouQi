@@ -13,10 +13,11 @@ namespace AppDouShouQi.Views;
 
 public partial class GameView : ContentView
 {
-    public Manager Gm
-        => (Application.Current as App)!.TheMgr;
-    public IEnumerable<Game> LoadedGames 
-        => (Application.Current as App)!.SaveManager.LoadGame();
+    // public Manager Gm
+    //     => (Application.Current as App)!.TheMgr;
+
+    public App app
+        => (Application.Current as App)!;
 
     public Stub Stub = new Stub();
 
@@ -24,8 +25,8 @@ public partial class GameView : ContentView
     {
         var button = (sender as Button)!;
         Game thisGame = (button.BindingContext as Game)!;
-        Gm.game = thisGame;
-        Gm.InitGame();
+        app.TheMgr.game = thisGame;
+        app.TheMgr.InitGame();
         this.IsVisible = false;
         Shell.Current.GoToAsync("//GamePage");
     }
@@ -35,6 +36,6 @@ public partial class GameView : ContentView
         InitializeComponent();
         BindingContext = this;
 
-        listGame.ItemsSource = LoadedGames;
+        listGame.ItemsSource = app.LoadedGames;
     }
 }

@@ -28,7 +28,7 @@
                                     BackgroundColor="Transparent"
                                     Grid.ColumnSpan="3"/>
                         </Grid>
-                    
+                
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

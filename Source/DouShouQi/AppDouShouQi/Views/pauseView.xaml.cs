@@ -27,6 +27,7 @@ public partial class pauseView : ContentView
     {
         this.IsVisible = false;
         SaveManager.SaveAGame(Gm.game);
+        (Application.Current as App)!.LoadGames();
         Shell.Current.GoToAsync("//MainPage");
     }
     private void reprendre(object _, EventArgs __)
