@@ -414,6 +414,3 @@ FodyWeavers.xsd
 
 # Intelinj file
 .idea
-
-# Save folder
-*.SAVE/*
