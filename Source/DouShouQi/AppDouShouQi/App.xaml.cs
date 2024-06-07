@@ -1,37 +1,48 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using DouShouQiLib;
 using DataContractPersist;
 
 namespace AppDouShouQi
 {
     
-    public partial class App : Application, INotifyPropertyChanged
+    public partial class App : Application
     {
         public Manager TheMgr { get; set; } = new Manager();
 
         public IPersistanceManager SaveManager = new XMLPersist(); 
         
-        public List<Game> LoadedGames { get; private set; }
+        public ReadOnlyObservableCollection<Game> Games { get; private set; }
+        private readonly ObservableCollection<Game> games = [];
+
+        public bool Delete_Game(Game game)
+        {
+            bool ok = SaveManager.DeleteAGame(game);
+            if (!ok) return false;
+            return games.Remove(game);
+        }
+
+        public bool Add_Game(Game game)
+        {
+            games.Add(game);
+            SaveManager.SaveAGame(game);
+            return true;
+        }
 
         public void LoadGames()
         {
-            LoadedGames = SaveManager.LoadGame();
-            OnPropertyChanged(nameof(LoadedGames));
+            foreach (Game game in SaveManager.LoadGame())
+            {
+                games.Add(game);
+            }
         }
         
         public App()
         { 
             InitializeComponent();
             MainPage = new AppShell();
-            LoadedGames = SaveManager.LoadGame();
-        }
-        
-        public new event PropertyChangedEventHandler? PropertyChanged;
-
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            if (propertyName == null) throw new ArgumentNullException(nameof(propertyName));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Games = new ReadOnlyObservableCollection<Game>(games);
+            LoadGames();
         }
     }
 }

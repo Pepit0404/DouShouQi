@@ -33,7 +33,8 @@
                     </Frame>
 
                     <Label Grid.Column="1" 
-                           Text="Erwan MECHOUD"  
+                           Text="Erwan MECHOUD"
+                           TextColor="Black"
                            FontSize="25" 
                            VerticalOptions="Center" 
                            HorizontalOptions="Center" 
@@ -60,6 +61,7 @@
                              WidthRequest="80" />   
                     </Frame>    
                     <Label  Text="Samuel PINTO" 
+                            TextColor="Black"
                             FontSize="25" 
                             VerticalOptions="Center" 
                             HorizontalOptions="Center" 
@@ -87,6 +89,7 @@
                            HeightRequest="120"/>
                 </HorizontalStackLayout>
                 <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." 
+                       TextColor="Black"
                        FontSize="10"
                        Grid.Column="1"
                        VerticalOptions="Center" 

@@ -19,15 +19,14 @@
             <x:Double x:Key="VerticalSpacing">2</x:Double>
             <x:Double x:Key="HorizontalSpacing">2</x:Double>
             <DataTemplate x:Key="cellTemplate">
-                <Grid BackgroundColor="Green" x:DataType="doushouqi:Case">
+                <Grid BackgroundColor="Green" x:DataType="doushouqi:Case" >
                     <Image Source="{Binding Type, Converter={StaticResource CasesIConverter}}" />
-                    <Ellipse BackgroundColor="{Binding Onthis, Converter={StaticResource PieceCConverter}}"
-                             HeightRequest="50"
-                             WidthRequest="50"/>
-                    <Image Source="{Binding Onthis, Converter={StaticResource PieceIConverter}}" Aspect="AspectFit"/>
+                    <Ellipse BackgroundColor="{Binding Onthis, Converter={StaticResource PieceCConverter}}" Margin="3"/>
+                    <Image Source="{Binding Onthis, Converter={StaticResource PieceIConverter}}" />
                     <Button Clicked="OnTapCase"
-                            BackgroundColor="Transparent"/>
-                    
+                            BackgroundColor="Transparent"
+                            BorderWidth="4"
+                            HorizontalOptions="Fill"/>
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
@@ -50,6 +49,7 @@
                HorizontalOptions="End"
                BackgroundColor="Transparent"/>
         <Label Text="{Binding GM.CurrentPlayer}" 
+               TextColor="Black"
                FontSize="Large"
                HorizontalOptions="Center"
                Grid.Column="1"/>

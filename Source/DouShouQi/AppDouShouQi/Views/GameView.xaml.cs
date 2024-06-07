@@ -31,11 +31,16 @@ public partial class GameView : ContentView
         Shell.Current.GoToAsync("//GamePage");
     }
     
+    public void OnMenu(object sender, EventArgs e)
+    {
+        this.IsVisible = false;
+    }
+    
     public GameView()
     {
         InitializeComponent();
         BindingContext = this;
 
-        listGame.ItemsSource = app.LoadedGames;
+        listGame.ItemsSource = app.Games;
     }
 }

@@ -1,64 +1,66 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppDouShouQi.Views.JouerViews"
-             BackgroundColor="Black">
-             
-    <VerticalStackLayout HeightRequest="500" WidthRequest="750"
-                         VerticalOptions="Center" >
-        <Button HorizontalOptions="Start"
-                     VerticalOptions="Start"
-                     Margin="20"
-                WidthRequest="100"
-                Text="retour"
-                Clicked="OnMenu"/>
-        <HorizontalStackLayout Margin="10,20"
-                               HorizontalOptions="Center">
-            
-            
-            <Label Text="Joueur 1:"
-                   TextColor="White"
-                   VerticalOptions="Center"/>
-            <Entry VerticalOptions="Center"
-                   Placeholder="Entrez le nom du 1er joueur..." 
-                   PlaceholderColor="Gray"
-                   WidthRequest="200"
-                   Margin="20,0"
-                   TextColor="White"
-                   Text="{Binding Joueur1.Name}"/>
-            <Button Text="Charger" />
-            
-        </HorizontalStackLayout>
-        <HorizontalStackLayout Margin="10,20"
-                               HorizontalOptions="Center">
-            <Label Text="Joueur 2:"
-                   TextColor="White"
-                   VerticalOptions="Center"/>
-            <Entry VerticalOptions="Center"
-                   Placeholder="Entrez le nom du 2e joueur..."
-                   PlaceholderColor="Gray"
-                   WidthRequest="200"
-                   HeightRequest="10"
-                   Margin="20,0"
-                   TextColor="White"
-                   Text="{Binding Joueur2.Name}"/>
-            <Button Text="Charger"
-                    />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout Margin="10,20"
-                               HorizontalOptions="Center"
-                               RadioButtonGroup.GroupName="Rules"
-                               RadioButtonGroup.SelectedValue="{Binding regles}">
-            <RadioButton Content="Version classique"
-                         Value="classic"
-                         IsChecked="True"
-                         TextColor="White"/>
-            <RadioButton Content="Version modifiée"
-                         Value="remix"
-                         TextColor="White" />
-        </HorizontalStackLayout>
-        <Button Text="Jouer" 
-                Margin="20,20"
-                Clicked="CreatePlayers_Clicked"/>
-    </VerticalStackLayout>
+             x:Class="AppDouShouQi.Views.JouerViews">
+       <Border BackgroundColor="Black"
+               WidthRequest="750">
+              <Border.StrokeShape>
+                     <RoundRectangle CornerRadius="10" />
+              </Border.StrokeShape>
+              <VerticalStackLayout >
+                      <Button HorizontalOptions="Start"
+                                   VerticalOptions="Start"
+                                   Margin="20"
+                              WidthRequest="100"
+                              Text="retour"
+                              Clicked="OnMenu"/>
+                      <HorizontalStackLayout Margin="10,20"
+                                             HorizontalOptions="Center">
+                          <Label Text="Joueur 1:"
+                                 TextColor="White"
+                                 VerticalOptions="Center"/>
+                          <Entry VerticalOptions="Center"
+                                 Placeholder="Entrez le nom du 1er joueur..." 
+                                 PlaceholderColor="Gray"
+                                 WidthRequest="200"
+                                 Margin="20,0"
+                                 TextColor="White"
+                                 Text="{Binding Joueur1.Name}"/>
+                          <Button Text="Charger" />
+                          
+                      </HorizontalStackLayout>
+                      <HorizontalStackLayout Margin="10,20"
+                                             HorizontalOptions="Center">
+                          <Label Text="Joueur 2:"
+                                 TextColor="White"
+                                 VerticalOptions="Center"/>
+                          <Entry VerticalOptions="Center"
+                                 Placeholder="Entrez le nom du 2e joueur..."
+                                 PlaceholderColor="Gray"
+                                 WidthRequest="200"
+                                 HeightRequest="10"
+                                 Margin="20,0"
+                                 TextColor="White"
+                                 Text="{Binding Joueur2.Name}"/>
+                          <Button Text="Charger"
+                                  />
+                      </HorizontalStackLayout>
+                      <HorizontalStackLayout Margin="10,20"
+                                             HorizontalOptions="Center"
+                                             RadioButtonGroup.GroupName="Rules"
+                                             RadioButtonGroup.SelectedValue="{Binding regles}">
+                          <RadioButton Content="Version classique"
+                                       Value="classic"
+                                       IsChecked="True"
+                                       TextColor="White"/>
+                          <RadioButton Content="Version modifiée"
+                                       Value="remix"
+                                       TextColor="White" />
+                      </HorizontalStackLayout>
+                      <Button Text="Jouer" 
+                              Margin="20,20"
+                              Clicked="CreatePlayers_Clicked"/>
+              </VerticalStackLayout>
+       </Border>
+       
 </ContentView>

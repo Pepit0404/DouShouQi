@@ -18,9 +18,9 @@
                      VerticalOptions="Center"
                      MinimumWidthRequest="300">
                     <Image Source="logo.png"
-                           HeightRequest="200"
-                           WidthRequest="200"
-                        SemanticProperties.Description="dot net bot in a race car number eight" />
+                           HeightRequest="400"
+                           WidthRequest="400"
+                           SemanticProperties.Description="logo of project" />
 
                     <Label
                         Text="DouShouQi"

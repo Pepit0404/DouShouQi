@@ -18,7 +18,7 @@
             WidthRequest="80" />
         </Frame>
 
-        <Label Text="Maeva COLLE" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20"/>
+        <Label Text="Maeva COLLE" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="20" TextColor="Black"/>
         <Label  Text="Très émotive et part souvent en déprime"  FontSize="15" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray"/>
     </HorizontalStackLayout>
 </ContentView>

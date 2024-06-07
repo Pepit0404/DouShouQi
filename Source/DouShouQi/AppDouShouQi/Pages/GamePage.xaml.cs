@@ -9,8 +9,9 @@ public partial class GamePage : ContentPage
     public Manager GM => (Application.Current as App)!.TheMgr;
 
     public IPersistanceManager SaveManager => (Application.Current as App)!.SaveManager;
-
+    
     public Case? PlaceStart { get; set; }
+    private Button selected { get; set; }
 
     void OnTapCase(object sender, EventArgs e)
     {
@@ -18,6 +19,7 @@ public partial class GamePage : ContentPage
         {
             return;
         }
+        Debug.WriteLine(sender.ToString());
         var button = (sender as Button)!;
         Case thisCase = (button.BindingContext as Case)!;
         if (PlaceStart == null)
@@ -26,10 +28,13 @@ public partial class GamePage : ContentPage
             {
                 if (!GM.game.AppartientJC(thisCase.Onthis.Value)) return;
                 PlaceStart = thisCase;
+                selected = button;
+                selected.BorderColor = Color.FromArgb("#FFFFFF");
             }
         }
         else
         {
+            selected.BorderColor = Color.Parse("Transparent");
             if (thisCase == PlaceStart) 
             {
                 PlaceStart = null;
@@ -53,7 +58,8 @@ public partial class GamePage : ContentPage
     void GamePage_OnGameOver(object? sender, GameOverEventArgs e)
     {
         if (!e.End) return;
-        Debug.WriteLine(SaveManager.DeleteAGame(GM.game));
+        //Debug.WriteLine(SaveManager.DeleteAGame(GM.game));
+        (Application.Current as App)!.Delete_Game(GM.game);
         labelNameVictory.Text = "Félicitation " + e.Winer + " !";
         winBoard.IsVisible = true;
     }

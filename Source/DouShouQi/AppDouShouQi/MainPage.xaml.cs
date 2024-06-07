@@ -17,6 +17,7 @@ namespace AppDouShouQi
 
         public void RunPlay(object sender, EventArgs e)
         {
+            if (GameList.IsVisible) return;
             if (PlayStart.IsVisible)
             {
                 PlayStart.IsVisible = false;
@@ -28,6 +29,7 @@ namespace AppDouShouQi
 
         public void showGames(object sendern, EventArgs e)
         {
+            if (PlayStart.IsVisible) return;
             if (GameList.IsVisible)
             {
                 GameList.IsVisible = false;
