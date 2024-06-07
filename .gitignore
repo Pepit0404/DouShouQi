@@ -413,4 +413,4 @@ FodyWeavers.xsd
 *.vsix
 
 # Save folder
-.SAVE
+.SAVE/*
