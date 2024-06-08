@@ -97,8 +97,14 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\regleVarienteView.xaml.cs">
+	    <DependentUpon>regleVarienteView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\pauseView.xaml.cs">
 	    <DependentUpon>pauseView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\regleOriginView.xaml.cs">
+	    <DependentUpon>regleOriginView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -128,13 +134,16 @@
 		<MauiXaml Update="Pages\CreditsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\regleVarienteView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\pauseView.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Views\ProfilCredit.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\regleView.xaml">
+		<MauiXaml Update="Views\regleOriginView.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Views\ReturnButtonView.xaml">

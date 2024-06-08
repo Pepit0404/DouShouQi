@@ -79,14 +79,28 @@ public partial class GamePage : ContentPage
 
     public void OnRegle(object sender, EventArgs e)
     {
-        if (regle.IsVisible == false)
+        if (GM.Regles is regleOrigin)
         {
-            regle.IsVisible = true;
+            if (regleOrigin.IsVisible == false)
+            {
+                regleOrigin.IsVisible = true;
+            }
+            else
+            {
+                regleOrigin.IsVisible = false;
+            }
         }
-        else 
+        if(GM.Regles is regleVariente)
         {
-            regle.IsVisible = false;
-        } 
+            if (regleVariente.IsVisible == false)
+            {
+                regleVariente.IsVisible = true;
+            }
+            else
+            {
+                regleVariente.IsVisible = false;
+            }
+        }
     }
     public void OnPause(object sender, EventArgs e)
     {
