@@ -24,6 +24,9 @@ namespace DouShouQiLib
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// <summary>
+        ///     Initialisation de la partie en créant le plateau et les joueurs
+        /// </summary>
         public void InitGame()
         {
             game.BoardChanged += Manager_OnBoardChanged;
@@ -35,7 +38,10 @@ namespace DouShouQiLib
             OnPropertyChanged(nameof(CurrentPlayer) );
             OnPropertyChanged(nameof(Joueurs) );
         }
-        
+
+        /// <summary>
+        ///     Crée la partie avec les bonnes règles et les bons joueurs
+        /// </summary>
         public void CreateGame()
         {
             if (Regles == null) return ;
@@ -43,6 +49,10 @@ namespace DouShouQiLib
             InitGame();
         }
 
+        /// <summary>
+        ///     Met en place les bonnes règles choisit par le joueur
+        /// </summary>
+        /// <param string="regle"></param>
         public void setRegles(string regle)
         {
             Regles = regle switch
@@ -53,22 +63,46 @@ namespace DouShouQiLib
             };
         }
 
+        /// <summary>
+        ///     Evènement qui renvoie un changement dans la partie
+        /// </summary>
+        /// /// <param string="propertyName"></param>
         void OnPropertyChanged(string propertyName)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        
+
+
+        /// <summary>
+        ///     Evènement qui avertie quand la partie commence
+        /// </summary>
+        /// /// <param Joueur="j1"></param>
+        /// 
         protected virtual void OnStartingGame(Joueur j1, Joueur j2)
             => StartingGame?.Invoke(this, new StartingGameEventArgs(j1, j2));
 
+        /// <summary>
+        ///     crée un joueur humain avec un nom et un id
+        /// </summary>
+        /// <param string="name"></param>
+        /// /// <param int="id"></param>
         public void CreatePlayer(string name, int id)
         {
             Joueurs[id - 1] = new HumainJoueur(name,id) ;
             OnPropertyChanged(nameof(Joueurs) );
         }
 
+        /// <summary>
+        ///     Evènement qui renvoie un changement dans la partie
+        /// </summary>
+        /// /// <param string="propertyName"></param>
         void Manager_OnBoardChanged(object? sender, BoardChangedEventArgs e)
         {
             OnPropertyChanged(nameof(Plateau) );
         }
+
+        /// <summary>
+        ///     Evènement qui renvoie un changement dans la partie
+        /// </summary>
+        /// /// <param string="propertyName"></param>
         void Manager_OnPlayerChanged(object? sender, PlayerChangedEventArgs e)
         {
             OnPropertyChanged(nameof(CurrentPlayer));
