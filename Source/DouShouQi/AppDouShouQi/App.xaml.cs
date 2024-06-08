@@ -36,6 +36,7 @@ namespace AppDouShouQi
 
         public bool AddPlayer(Joueur player)
         {
+            if (players.Contains(player)) return false;
             SaveManager.SaveAPlayer(player);
             players.Add(player);
             return true;
@@ -51,6 +52,7 @@ namespace AppDouShouQi
         
         public void LoadPlayers()
         {
+            players.Clear();
             foreach (Joueur player in SaveManager.LoadPlayer())
             {
                 players.Add(player);
@@ -61,12 +63,13 @@ namespace AppDouShouQi
         {
             player.AddVictory();
             SaveManager.SaveAPlayer(player);
+            LoadPlayers();
         }
         
         public App()
         {
             InitializeComponent();
-            Application.Current!.UserAppTheme = Application.Current.RequestedTheme;
+            Application.Current!.UserAppTheme = AppTheme.Light;
             MainPage = new AppShell();
             Games = new ReadOnlyObservableCollection<Game>(games);
             Players = new ReadOnlyObservableCollection<Joueur>(players);

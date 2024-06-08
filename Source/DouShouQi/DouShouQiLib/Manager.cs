@@ -72,9 +72,13 @@ namespace DouShouQiLib
         protected virtual void OnStartingGame(Joueur j1, Joueur j2)
             => StartingGame?.Invoke(this, new StartingGameEventArgs(j1, j2));
 
-        public void CreatePlayer(string name, int id)
+        public void CreatePlayer(string name, int id, int nbVictory = 0)
         {
             Joueurs[id - 1] = new HumainJoueur(name,id) ;
+            for (int i = 0; i <= nbVictory; i++)
+            {
+                Joueurs[id - 1].AddVictory();
+            }
             OnPropertyChanged(nameof(Joueurs) );
         }
 

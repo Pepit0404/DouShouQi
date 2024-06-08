@@ -10,7 +10,7 @@
                   ColumnDefinitions="400"
                   BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
                 <Label Text="Pause"
-                        TextColor="Black"
+                        TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                         HorizontalOptions="Center"
                         FontSize="Header"/>      
 
