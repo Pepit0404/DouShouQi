@@ -82,4 +82,121 @@
     <Name z:Id="13">Samuel</Name>
     <nbVictory>2</nbVictory>
   </Joueur>
+  <Joueur z:Id="14" i:type="HumainJoueur">
+    <Id>2</Id>
+    <Liste_Piece z:Id="15" z:Size="8">
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>souris</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>chat</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>chien</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>loup</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>leopard</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>tigre</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>lion</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="14" i:nil="true" />
+        <Type>elephant</Type>
+      </Piece>
+    </Liste_Piece>
+    <Name z:Id="16">Okwaze</Name>
+    <nbVictory>2</nbVictory>
+  </Joueur>
+  <Joueur z:Id="17" i:type="HumainJoueur">
+    <Id>1</Id>
+    <Liste_Piece z:Id="18" z:Size="8">
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>souris</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>chat</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>chien</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>loup</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>leopard</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>tigre</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>lion</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="17" i:nil="true" />
+        <Type>elephant</Type>
+      </Piece>
+    </Liste_Piece>
+    <Name z:Id="19">s</Name>
+    <nbVictory>0</nbVictory>
+  </Joueur>
+  <Joueur z:Id="20" i:type="HumainJoueur">
+    <Id>2</Id>
+    <Liste_Piece z:Id="21" z:Size="8">
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>souris</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>chat</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>chien</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>loup</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>leopard</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>tigre</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>lion</Type>
+      </Piece>
+      <Piece>
+        <Proprietaire z:Ref="20" i:nil="true" />
+        <Type>elephant</Type>
+      </Piece>
+    </Liste_Piece>
+    <Name z:Id="22">d</Name>
+    <nbVictory>0</nbVictory>
+  </Joueur>
 </ArrayOfJoueur>

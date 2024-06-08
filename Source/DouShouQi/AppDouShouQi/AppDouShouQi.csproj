@@ -150,9 +150,6 @@
 	  <Compile Update="Pages\ScoreBoardPage.xaml.cs">
 	    <DependentUpon>ScoreBoardPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\VictoireScoreBoardView.xaml.cs">
-	    <DependentUpon>VictoireScoreBoardView.xaml</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>

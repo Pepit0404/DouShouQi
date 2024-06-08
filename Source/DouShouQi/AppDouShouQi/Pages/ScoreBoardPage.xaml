@@ -15,7 +15,8 @@
                 <Label
                     Grid.Column="1"
                     Text="Tableau des scores"
-                    Style="{StaticResource Titre}" />
+                    Style="{StaticResource Titre}"
+                    TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
             </Grid>
 
             <Grid
@@ -32,26 +33,26 @@
                     Text="{Binding Second.Name}"
                     VerticalOptions="Start"
                     HorizontalOptions="Center"
-                    TextColor="MediumPurple"
+                    TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                     FontSize="40" />
                 <HorizontalStackLayout Grid.Row="1"
                                        Grid.RowSpan="2">
                     <Label Text="{Binding Second.nbVictory}"
                            VerticalOptions="End"
                            HorizontalOptions="Center"
-                           TextColor="MediumPurple"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="15" />
                     <Label Text="   victoire(s)"
                            VerticalOptions="End"
                            HorizontalOptions="End"
-                           TextColor="MediumPurple"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="15" />
                 </HorizontalStackLayout>
                 <Label Grid.Column="1"
                        Text="{Binding First.Name}"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       TextColor="MediumPurple"
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                        FontSize="70" />
                 <HorizontalStackLayout Grid.Column="1"
                                        Grid.Row="0"
@@ -59,12 +60,12 @@
                     <Label Text="{Binding First.nbVictory}"
                            VerticalOptions="End"
                            HorizontalOptions="End"
-                           TextColor="MediumPurple"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="15" />
                     <Label Text="   victoire(s)"
                            VerticalOptions="End"
                            HorizontalOptions="End"
-                           TextColor="MediumPurple"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="15" />
                 </HorizontalStackLayout>
 
@@ -74,7 +75,7 @@
                        Text="{Binding Third.Name}"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       TextColor="MediumPurple"
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                        FontSize="30" />
 
                 <HorizontalStackLayout Grid.Column="2"
@@ -83,12 +84,12 @@
                     <Label Text="{Binding Third.nbVictory}"
                            VerticalOptions="End"
                            HorizontalOptions="Center"
-                           TextColor="MediumPurple"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="15" />
                     <Label Text="victoire(s)"
                            VerticalOptions="End"
                            HorizontalOptions="Center"
-                           TextColor="MediumPurple"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="15" />
                 </HorizontalStackLayout>
             </Grid>
@@ -100,10 +101,13 @@
                             <Grid x:DataType="doushouqi:Joueur"
                                   RowDefinitions="*,*"
                                   ColumnDefinitions="*,*">
-                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding Name}"
+                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
                                 <HorizontalStackLayout Grid.ColumnSpan="2">
-                                    <Label Text="{Binding nbVictory}" />
-                                    <Label Text="victoire(s)" />
+                                    <Label Text="{Binding nbVictory}" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
+                                    <Label Text="victoire(s)" 
+                                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
                                 </HorizontalStackLayout>
                             </Grid>
                         </ViewCell>
