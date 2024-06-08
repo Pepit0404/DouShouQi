@@ -69,9 +69,8 @@
                              Padding="18,18"
                              WidthRequest="65" HeightRequest="65"
                              CornerRadius="50"
-                             BackgroundColor="{StaticResource PointBonus}" 
+                             BackgroundColor="{AppThemeBinding Dark={StaticResource BouttonDark}, Light={StaticResource BouttonLight} }" 
                              Clicked="ChangeTheme"/>
-                <Views:FloatButtonHomePage />
             </HorizontalStackLayout>
             <Views:JouerViews HorizontalOptions="Center"
                               VerticalOptions="Center"

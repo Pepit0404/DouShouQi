@@ -6,6 +6,8 @@
 
     <Color x:Key="BouttonLight">#DEB268</Color>
     <Color x:Key="LightBackground">#3F86CD</Color>
-    <Color x:Key="BouttonDark">#8D6788</Color>
-    <Color x:Key="DarkBackground">#AD3D24</Color>
+    <Color x:Key="DarkBackground">#cd411a</Color>
+    <Color x:Key="BouttonDark">#D298CA</Color>
+    <!-- <Color x:Key="BouttonDark">#8D6788</Color> -->
+    <!-- <Color x:Key="DarkBackground">#AD3D24</Color> -->
 </ResourceDictionary>

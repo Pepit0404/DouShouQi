@@ -20,14 +20,14 @@
                       <HorizontalStackLayout Margin="10,20"
                                              HorizontalOptions="Center">
                           <Label Text="Joueur 1:"
-                                 TextColor="White"
+                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                                  VerticalOptions="Center"/>
                           <Entry VerticalOptions="Center"
                                  Placeholder="Entrez le nom du 1er joueur..." 
-                                 PlaceholderColor="Gray"
+                                 PlaceholderColor="{AppThemeBinding Dark={StaticResource Gray300}, Light={StaticResource Gray500} }"
                                  WidthRequest="200"
                                  Margin="20,0"
-                                 TextColor="White"
+                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                                  Text="{Binding Joueur1.Name}"
                                  MaxLength="16"/>
                           
@@ -38,15 +38,15 @@
                       <HorizontalStackLayout Margin="10,20"
                                              HorizontalOptions="Center">
                           <Label Text="Joueur 2:"
-                                 TextColor="White"
+                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                                  VerticalOptions="Center"/>
                           <Entry VerticalOptions="Center"
                                  Placeholder="Entrez le nom du 2e joueur..."
-                                 PlaceholderColor="Gray"
+                                 PlaceholderColor="{AppThemeBinding Dark={StaticResource Gray300}, Light={StaticResource Gray500} }"
                                  WidthRequest="200"
                                  HeightRequest="10"
                                  Margin="20,0"
-                                 TextColor="White"
+                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                                  Text="{Binding Joueur2.Name}"
                                  MaxLength="16"/>
                           <Button Text="Charger" x:Name="LoadPlayer2"
@@ -59,10 +59,10 @@
                           <RadioButton Content="Version classique"
                                        Value="classic"
                                        IsChecked="True"
-                                       TextColor="White"/>
+                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
                           <RadioButton Content="Version modifiée"
                                        Value="remix"
-                                       TextColor="White" />
+                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
                       </HorizontalStackLayout>
                       <Button Text="Jouer" 
                               Margin="20,20"

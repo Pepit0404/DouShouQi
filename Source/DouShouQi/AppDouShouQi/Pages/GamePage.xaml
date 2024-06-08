@@ -34,20 +34,23 @@
     
     <Grid ColumnDefinitions="auto,*,auto" RowDefinitions="*">
         <ImageButton Source="pause.png"
-                WidthRequest="70"
-                HeightRequest="70"
-                Clicked="OnPause"
-                VerticalOptions="Start"
-                HorizontalOptions="Start"
-                BackgroundColor="Transparent"/>
+                     CornerRadius="50"
+                     BackgroundColor="{AppThemeBinding Dark={StaticResource BouttonDark}, Light={StaticResource BouttonLight} }" 
+                     WidthRequest="50"
+                     HeightRequest="50"
+                     Clicked="OnPause"
+                     Margin="10"
+                     VerticalOptions="Start"
+                     HorizontalOptions="Start"/>
         <ImageButton Source="regle.png"
                WidthRequest="50"
                HeightRequest="50"
+               CornerRadius="50"
+               BackgroundColor="{AppThemeBinding Dark={StaticResource BouttonDark}, Light={StaticResource BouttonLight} }" 
                Grid.Column="2"
                Clicked="OnRegle"
                VerticalOptions="Start"
-               HorizontalOptions="End"
-               BackgroundColor="Transparent"/>
+               HorizontalOptions="End"/>
         <Label Text="{Binding GM.CurrentPlayer}" 
                TextColor="Black"
                FontSize="Large"

@@ -30,8 +30,8 @@ public partial class JouerViews : ContentView
 	{
 		if (Joueur1.Name == "" || Joueur2.Name == "") return;
 		
-		Mgr.CreatePlayer(Joueur1.Name, Joueur1.Id);
-		Mgr.CreatePlayer(Joueur2.Name, Joueur2.Id);
+		Mgr.CreatePlayer(Joueur1.Name, Joueur1.Id, Joueur1.nbVictory);
+		Mgr.CreatePlayer(Joueur2.Name, Joueur2.Id, Joueur2.nbVictory);
 		Mgr.setRegles(regles);
 		Mgr.CreateGame();
 		this.IsVisible = false;

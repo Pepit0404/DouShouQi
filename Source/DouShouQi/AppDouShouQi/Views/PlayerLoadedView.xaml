@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Views.PlayerLoadedView"
              xmlns:doushouqi="clr-namespace:DouShouQiLib;assembly=DouShouQiLib">
-    <Border BackgroundColor="DarkSalmon">
+    <Border BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="10" />
         </Border.StrokeShape>
@@ -32,7 +32,7 @@
                                     <RoundRectangle CornerRadius="10" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="*,*" x:DataType="doushouqi:Joueur"
-                                      BackgroundColor="Red"
+                                      BackgroundColor="{AppThemeBinding Light={StaticResource BouttonLight}, Dark={StaticResource BouttonDark}}"
                                       HeightRequest="50">
                                     <Label Text="{Binding Name}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
                                     <Label Text="{Binding nbVictory}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>

@@ -110,9 +110,6 @@
 	  <MauiXaml Update="Pages\GamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\FloatButtonHomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\JouerViews.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
