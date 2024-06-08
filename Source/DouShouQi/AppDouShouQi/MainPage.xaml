@@ -53,7 +53,7 @@
                         Clicked="OnScoreBoard"/>
 
                     <Button
-                        Text="Credit"
+                        Text="Credits"
                         WidthRequest="350" HeightRequest="50"
                         HorizontalOptions="Center"
                         FontSize="24"
