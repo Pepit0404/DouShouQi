@@ -3,17 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Views.pauseView">
     <VerticalStackLayout>
-        <Label Text="Pause"
-                   TextColor="Black"
-                   HorizontalOptions="Center"
-               FontSize="Header"/>
+        
 
-        <Border StrokeThickness="5">
-            <Grid RowDefinitions="120,100,100"
+        <Border StrokeThickness="2">
+            <Grid RowDefinitions="80,100,100,100"
                   ColumnDefinitions="400"
-                  BackgroundColor="DarkSalmon">
+                  BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+                <Label Text="Pause"
+                        TextColor="Black"
+                        HorizontalOptions="Center"
+                        FontSize="Header"/>      
+
                 <Button Text="Reprendre"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Style="{StaticResource Return}"
                         Clicked="reprendre"
                         HorizontalOptions="Center"
@@ -21,7 +23,7 @@
                         HeightRequest="70"
                         WidthRequest="300"/>
                 <Button Text="Sauvegarder et Quitter"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Style="{StaticResource Return}"
                         Clicked="sauvegarde"
                         HorizontalOptions="Center"
@@ -29,7 +31,7 @@
                         HeightRequest="70"
                         WidthRequest="300"/>
                 <Button Text="Quitter"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Style="{StaticResource Return}"
                         Clicked="quitter"
                         HorizontalOptions="Center"
