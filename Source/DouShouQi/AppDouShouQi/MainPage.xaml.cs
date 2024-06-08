@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using DataContractPersist;
 using DouShouQiLib;
 
@@ -36,6 +37,16 @@ namespace AppDouShouQi
                 return;
             }
             GameList.IsVisible = true;
+        }
+
+        public void ChangeTheme(object sender, EventArgs e)
+        {
+            if (Application.Current!.UserAppTheme == AppTheme.Dark)
+            {
+                Application.Current!.UserAppTheme = AppTheme.Light;
+                return;
+            }
+            Application.Current!.UserAppTheme = AppTheme.Dark;
         }
 
         private void OnScoreBoard(object _, EventArgs __)

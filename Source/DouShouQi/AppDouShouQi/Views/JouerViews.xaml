@@ -25,7 +25,8 @@
                                  WidthRequest="200"
                                  Margin="20,0"
                                  TextColor="White"
-                                 Text="{Binding Joueur1.Name}"/>
+                                 Text="{Binding Joueur1.Name}"
+                                 MaxLength="16"/>
                           <Button Text="Charger" />
                           
                       </HorizontalStackLayout>
@@ -41,7 +42,8 @@
                                  HeightRequest="10"
                                  Margin="20,0"
                                  TextColor="White"
-                                 Text="{Binding Joueur2.Name}"/>
+                                 Text="{Binding Joueur2.Name}"
+                                 MaxLength="16"/>
                           <Button Text="Charger"
                                   />
                       </HorizontalStackLayout>

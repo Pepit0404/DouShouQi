@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.MainPage"
              xmlns:Views="clr-namespace:AppDouShouQi.Views"
-             BackgroundImageSource="fond.png">
+             BackgroundImageSource="{AppThemeBinding Dark=dark_fond.png, Light=light_fond.png}">
 
     <ScrollView>
         <AbsoluteLayout>
@@ -21,14 +21,8 @@
                            HeightRequest="400"
                            WidthRequest="400"
                            SemanticProperties.Description="logo of project" />
-
-                    <Label
-                        Text="DouShouQi"
-                        TextColor="{StaticResource PointBonus}"
-                        Style="{StaticResource Headline}"
-                        SemanticProperties.HeadingLevel="Level1" />
-                    
                 </VerticalStackLayout>
+                
                 <VerticalStackLayout 
                     VerticalOptions="Center" 
                     HorizontalOptions="Fill"
@@ -71,11 +65,12 @@
             <HorizontalStackLayout AbsoluteLayout.LayoutFlags="PositionProportional"
                                    AbsoluteLayout.LayoutBounds="1,1"
                                    Padding="10,10">
-                <ImageButton Source="dark_mode_icon.png"
+                <ImageButton Source="{AppThemeBinding Dark=dark_mode_icon.png, Light=light_mode_icon.png}"
                              Padding="18,18"
                              WidthRequest="65" HeightRequest="65"
                              CornerRadius="50"
-                             BackgroundColor="{StaticResource PointBonus}" />
+                             BackgroundColor="{StaticResource PointBonus}" 
+                             Clicked="ChangeTheme"/>
                 <Views:FloatButtonHomePage />
             </HorizontalStackLayout>
             <Views:JouerViews HorizontalOptions="Center"

@@ -16,7 +16,7 @@
                     WidthRequest="100"
                     Text="retour"
                     Clicked="OnMenu"/>
-            <Label Text="Partie savegardé" 
+            <Label Text="Parties sauvegardées" 
                    HorizontalOptions="Center"
                    FontSize="Header"
                    Padding="10, 15"/>
@@ -27,17 +27,21 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="50, 10" ColumnDefinitions="*,*,*" x:DataType="doushouqi:Game"
-                                  BackgroundColor="Red"
-                                  HeightRequest="50">
-                                <Label Text="{Binding Joueur1}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                <Label Text="{Binding Joueur2}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                <Label Text="{Binding startDate}" Grid.Column = "2" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                <Button Clicked="StartGame" 
-                                        BackgroundColor="Transparent"
-                                        Grid.ColumnSpan="3"/>
-                            </Grid>
-                
+                            <Border Margin="50, 10">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*,*,*" x:DataType="doushouqi:Game"
+                                      BackgroundColor="Red"
+                                      HeightRequest="50">
+                                    <Label Text="{Binding Joueur1}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Joueur2}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding startDate}" Grid.Column = "2" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Button Clicked="StartGame" 
+                                            BackgroundColor="Transparent"
+                                            Grid.ColumnSpan="3"/>
+                                </Grid>
+                            </Border>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Pages.ScoreBoardPage"
              xmlns:Views="clr-namespace:AppDouShouQi.Views"
-             BackgroundImageSource="fond.png">
+             BackgroundImageSource="{AppThemeBinding Dark=dark_fond.png, Light=light_fond.png}">
     <ScrollView>
         <VerticalStackLayout>
             <Grid ColumnDefinitions="Auto,*">

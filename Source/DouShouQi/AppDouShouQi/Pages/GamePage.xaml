@@ -6,7 +6,7 @@
              xmlns:doushouqi="clr-namespace:DouShouQiLib;assembly=DouShouQiLib"
              x:Class="AppDouShouQi.Pages.GamePage"
              xmlns:Views="clr-namespace:AppDouShouQi.Views"
-             BackgroundImageSource="fond.png"
+             BackgroundImageSource="{AppThemeBinding Dark=dark_fond.png, Light=light_fond.png}"
              Title="GamePage">
     
     <ContentPage.Resources>

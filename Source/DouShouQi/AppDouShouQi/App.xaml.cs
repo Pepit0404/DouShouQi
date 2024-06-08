@@ -24,7 +24,7 @@ namespace AppDouShouQi
 
         public bool Add_Game(Game game)
         {
-            games.Add(game);
+            games.Insert(0, game);
             SaveManager.SaveAGame(game);
             return true;
         }
@@ -33,13 +33,14 @@ namespace AppDouShouQi
         {
             foreach (Game game in SaveManager.LoadGame())
             {
-                games.Add(game);
+                games.Insert(0, game);
             }
         }
         
         public App()
-        { 
+        {
             InitializeComponent();
+            Application.Current!.UserAppTheme = Application.Current.RequestedTheme;
             MainPage = new AppShell();
             Games = new ReadOnlyObservableCollection<Game>(games);
             LoadGames();
