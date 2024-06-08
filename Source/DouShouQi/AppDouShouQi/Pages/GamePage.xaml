@@ -52,7 +52,7 @@
                VerticalOptions="Start"
                HorizontalOptions="End"/>
         <Label Text="{Binding GM.CurrentPlayer}" 
-               TextColor="Black"
+               TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                FontSize="Large"
                HorizontalOptions="Center"
                Grid.Column="1"/>
@@ -96,39 +96,48 @@
               IsVisible="False"
               Padding="20"
               Grid.Column="1"/>
-
-        <Grid x:Name="winBoard" 
+        <Border BackgroundColor="Black"
+                Grid.Column="1"
+                HeightRequest="600" WidthRequest="600"
+                IsVisible="False" 
+                x:Name="winBoard">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+            </Border.StrokeShape>
+            <Grid
+              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
               ColumnDefinitions="*" RowDefinitions="2*, *"
               HeightRequest="600" WidthRequest="600"
               HorizontalOptions="Center"
               VerticalOptions="Center"
               AbsoluteLayout.LayoutFlags="All"
               AbsoluteLayout.LayoutBounds=".5,.5,.75,.75"
-              Background="Black"
-              IsVisible="False" 
               Grid.Column="1">
-            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <Label x:Name="labelNameVictory"
+                <VerticalStackLayout VerticalOptions="Center" 
+                HorizontalOptions="Center">
+                    <Label x:Name="labelNameVictory"
                        Text="Félicitation Pepito !" 
                        FontSize="Header"
                        HorizontalTextAlignment="Center"
                        Grid.Row="0"
-                       TextColor="White"/>
-                <Label Text="Tu as gagné !" 
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"/>
+                    <Label Text="Tu as gagné !" 
                        FontSize="Header"
                        HorizontalTextAlignment="Center"
                        Grid.Row="0"                       
-                       TextColor="White"/>
-            </VerticalStackLayout>
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
+                </VerticalStackLayout>
 
-            <Button Text="Page d'accueil" 
+                <Button Text="Page d'accueil" 
                     FontSize="Large"
                     HeightRequest="65"
                     WidthRequest="300"
                     HorizontalOptions="Center"
                     Grid.Row="1"
                     Style="{StaticResource Return}"
-                    Clicked="HomeButton"/> <!--Quand clické mettre la gride en isVisible False-->
-        </Grid>
+                    Clicked="HomeButton"/>
+                <!--Quand clické mettre la gride en isVisible False-->
+            </Grid>
+        </Border>
     </Grid>
 </ContentPage>

@@ -15,7 +15,8 @@
                         Clicked="OnClickedReturn" />
                 <Label Text="Crédits"
                        Grid.Column="1"
-                       Style="{StaticResource Titre}" />
+                       Style="{StaticResource Titre}" 
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
             </Grid>
             <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="Center">
                 <HorizontalStackLayout>
@@ -35,7 +36,7 @@
 
                     <Label Grid.Column="1"
                            Text="Erwan MECHOUD"
-                           TextColor="Black"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="25"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
@@ -43,7 +44,7 @@
                     <Label Grid.Column="2" Text="Le roux et la mascotte du groupe"
                            FontSize="15" VerticalOptions="Center"
                            HorizontalOptions="Center"
-                           TextColor="Gray" />
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
 
                 </HorizontalStackLayout>
 
@@ -62,7 +63,7 @@
                                WidthRequest="80" />
                     </Frame>
                     <Label Text="Samuel PINTO"
-                           TextColor="Black"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                            FontSize="25"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
@@ -70,7 +71,7 @@
                     <Label Text="Rale beaucoup et est très têtu"
                            FontSize="15" VerticalOptions="Center"
                            HorizontalOptions="Center"
-                           TextColor="Gray" />
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
 
                 </HorizontalStackLayout>
                 <Views:ProfilCredit />
@@ -89,7 +90,7 @@
                            HeightRequest="120" />
                 </HorizontalStackLayout>
                 <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés."
-                       TextColor="Black"
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                        FontSize="10"
                        Grid.Column="1"
                        VerticalOptions="Center"

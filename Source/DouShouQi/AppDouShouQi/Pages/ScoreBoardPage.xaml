@@ -13,7 +13,8 @@
                 <Label
                     Grid.Column="1"
                     Text="Tableau des scores"
-                    Style="{StaticResource Titre}"/>
+                    Style="{StaticResource Titre}"
+                    TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
             </Grid>
 
                 <Grid
@@ -30,7 +31,7 @@
                         Text="Pinto"
                         VerticalOptions="Start" 
                         HorizontalOptions="Center"
-                        TextColor="MediumPurple"
+                        TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                         FontSize="40" />
                 <Label
                         Grid.Row="1"
@@ -38,19 +39,19 @@
                         Text="1 victoire(s)"
                         VerticalOptions="End" 
                         HorizontalOptions="Center"
-                        TextColor="MediumPurple"
+                        TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                         FontSize="15" />
                 <Label  Grid.Column="1"
                         Text="R1"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
-                        TextColor="MediumPurple" 
+                        TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                         FontSize="70" />
                 <Label  Grid.Column="1"
                         Text="2 victoire(s)"
                         VerticalOptions="End"
                         HorizontalOptions="Center"
-                        TextColor="MediumPurple" 
+                        TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                         FontSize="15" />
                 <Label  Grid.Column="2"
                         Grid.Row="1"
@@ -58,7 +59,7 @@
                         Text="Maeva"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
-                        TextColor="MediumPurple" 
+                        TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                         FontSize="30" />
                 <Label
                         Grid.Column="2"
@@ -67,7 +68,7 @@
                         Text="0 victoire(s)"
                         VerticalOptions="End" 
                         HorizontalOptions="Center"
-                        TextColor="MediumPurple"
+                        TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                         FontSize="15" />
                 <Views:JoueurScoreBoardView 
                     Grid.Row="6"
