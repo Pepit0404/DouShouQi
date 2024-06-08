@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Diagnostics;
+using AppDouShouQi.Pages;
 using DataContractPersist;
 using DouShouQiLib;
 
@@ -51,7 +52,7 @@ namespace AppDouShouQi
 
         private void OnScoreBoard(object _, EventArgs __)
         {
-            Shell.Current.GoToAsync("//ScoreBoardPage");
+            Navigation.PushAsync(new ScoreBoardPage());
         }
         private void OnCreditPage(object _, EventArgs __)
         {
