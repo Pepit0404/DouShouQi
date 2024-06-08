@@ -59,8 +59,9 @@ public partial class GamePage : ContentPage
     {
         if (!e.End) return;
         //Debug.WriteLine(SaveManager.DeleteAGame(GM.game));
-        (Application.Current as App)!.Delete_Game(GM.game);
+        (Application.Current as App)!.DeleteGame(GM.game);
         labelNameVictory.Text = "Félicitation " + e.Winer + " !";
+        (Application.Current as App)!.AddVictory(e.Winer);
         winBoard.IsVisible = true;
     }
 

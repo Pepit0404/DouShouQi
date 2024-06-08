@@ -103,8 +103,9 @@
 	  <Compile Update="Views\pauseView.xaml.cs">
 	    <DependentUpon>pauseView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\regleOriginView.xaml.cs">
-	    <DependentUpon>regleOriginView.xaml</DependentUpon>
+	  <Compile Update="Views\PlayerLoadedView.xaml.cs">
+	    <DependentUpon>PlayerLoaded.xaml</DependentUpon>
+	    <SubType>Code</SubType>
 	  </Compile>
 	</ItemGroup>
 
@@ -112,11 +113,11 @@
 	  <MauiXaml Update="Pages\GamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\FloatButtonHomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\JouerViews.xaml">
 	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PlayerLoadedView.xaml">
+	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	</ItemGroup>
 
@@ -154,9 +155,6 @@
 	<ItemGroup>
 	  <Compile Update="Pages\ScoreBoardPage.xaml.cs">
 	    <DependentUpon>ScoreBoardPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\VictoireScoreBoardView.xaml.cs">
-	    <DependentUpon>VictoireScoreBoardView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

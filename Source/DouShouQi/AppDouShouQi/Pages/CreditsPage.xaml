@@ -1,48 +1,50 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Pages.CreditsPage"
              Title="Page des crédits"
              xmlns:Views="clr-namespace:AppDouShouQi.Views"
-             BackgroundImageSource="fond.png">
+             BackgroundImageSource="{AppThemeBinding Dark=dark_fond.png, Light=light_fond.png}">
 
     <ScrollView>
-    <VerticalStackLayout>
-            <Grid ColumnDefinitions="auto,*"  >
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="auto,*">
                 <!--<Views:ReturnButtonView />-->
                 <Button Style="{StaticResource Return}"
                         Clicked="OnClickedReturn" />
                 <Label Text="Crédits"
                        Grid.Column="1"
-                       Style="{StaticResource Titre}"/>
+                       Style="{StaticResource Titre}" 
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
             </Grid>
             <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="Center">
                 <HorizontalStackLayout>
                     <Frame Margin="10"
-                       BorderColor="Black"
-                       CornerRadius="90"
-                       IsClippedToBounds="True"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center">
+                           BorderColor="Black"
+                           CornerRadius="90"
+                           IsClippedToBounds="True"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
 
                         <Image Source="erwan.jpg"
-                             Aspect="AspectFill"
-                             Margin="-20"
-                             HeightRequest="80"
-                             WidthRequest="80" />  
+                               Aspect="AspectFill"
+                               Margin="-20"
+                               HeightRequest="80"
+                               WidthRequest="80" />
                     </Frame>
 
-                    <Label Grid.Column="1" 
+                    <Label Grid.Column="1"
                            Text="Erwan MECHOUD"
-                           TextColor="Black"
-                           FontSize="25" 
-                           VerticalOptions="Center" 
-                           HorizontalOptions="Center" 
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                           FontSize="25"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
                            Margin="20" />
-                    <Label Grid.Column="2" Text="Le roux et la mascotte du groupe" 
-                           FontSize="15" VerticalOptions="Center" 
-                           HorizontalOptions="Center" 
-                           TextColor="Gray" />
+                    <Label Grid.Column="2" Text="Le roux et la mascotte du groupe"
+                           FontSize="15" VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
 
                 </HorizontalStackLayout>
 
@@ -55,47 +57,44 @@
                            VerticalOptions="Center">
 
                         <Image Source="pinto.png"
-                             Aspect="AspectFill"
-                             Margin="-20"
-                             HeightRequest="80"
-                             WidthRequest="80" />   
-                    </Frame>    
-                    <Label  Text="Samuel PINTO" 
-                            TextColor="Black"
-                            FontSize="25" 
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center" 
-                            Margin="20"/>
-                    <Label  Text="Rale beaucoup et est très têtu"  
-                            FontSize="15" VerticalOptions="Center" 
-                            HorizontalOptions="Center" 
-                            TextColor="Gray"/>
+                               Aspect="AspectFill"
+                               Margin="-20"
+                               HeightRequest="80"
+                               WidthRequest="80" />
+                    </Frame>
+                    <Label Text="Samuel PINTO"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                           FontSize="25"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Margin="20" />
+                    <Label Text="Rale beaucoup et est très têtu"
+                           FontSize="15" VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
 
                 </HorizontalStackLayout>
                 <Views:ProfilCredit />
             </VerticalStackLayout>
-            <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="End" >
-                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End" >
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="End">
                     <Image Source="iut.png"
-                        Aspect="AspectFill"
-                        HeightRequest="120" />
-                    <Image Grid.Column="1" 
-                        Source="uca.png" 
-                        VerticalOptions="Center" 
-                        HorizontalOptions="Center" 
-                        HeightRequest="80" />
+                           Aspect="AspectFill"
+                           HeightRequest="120" />
+                    <Image Grid.Column="1"
+                           Source="uca.png"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HeightRequest="80" />
                     <Image Grid.Column="2"
                            Source="logo.png"
-                           HeightRequest="120"/>
+                           HeightRequest="120" />
                 </HorizontalStackLayout>
-                <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés." 
-                       TextColor="Black"
+                <Label Text="Copyright © 2024 LaRouxTeam. Tous les Droits Sont Réservés."
+                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
                        FontSize="10"
                        Grid.Column="1"
-                       VerticalOptions="Center" 
+                       VerticalOptions="Center"
                        HorizontalOptions="Center" />
-            </VerticalStackLayout>
-            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -8,8 +8,8 @@
         <Setter Property="WidthRequest" Value="100"/>
         <Setter Property="BorderWidth" Value="2"/>
         <Setter Property="Margin" Value="10,10,10,30"/>
-        <Setter Property="BackgroundColor" Value="Orange"/>
-        <Setter Property="TextColor" Value="#512b0b"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BouttonLight}, Dark={StaticResource BouttonDark}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="HorizontalOptions" Value="Start"/>
         <Setter Property="Text" Value="Retour"/>
         <Setter Property="HeightRequest" Value="50"/>

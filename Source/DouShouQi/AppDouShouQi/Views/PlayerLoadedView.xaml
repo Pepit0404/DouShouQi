@@ -2,7 +2,7 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppDouShouQi.Views.GameView"
+             x:Class="AppDouShouQi.Views.PlayerLoadedView"
              xmlns:doushouqi="clr-namespace:DouShouQiLib;assembly=DouShouQiLib">
     <Border BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
         <Border.StrokeShape>
@@ -16,12 +16,12 @@
                     WidthRequest="100"
                     Text="retour"
                     Clicked="OnMenu"/>
-            <Label Text="Parties sauvegardées" 
+            <Label Text="Charger joueur" 
                    HorizontalOptions="Center"
                    FontSize="Header"
                    Padding="10, 15"/>
         
-            <ListView x:Name="listGame"
+            <ListView x:Name="listPlayer"
                       VerticalScrollBarVisibility="Always"
                       MaximumHeightRequest="300">
                 <ListView.ItemTemplate>
@@ -31,13 +31,12 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="10" />
                                 </Border.StrokeShape>
-                                <Grid ColumnDefinitions="*,*,*" x:DataType="doushouqi:Game"
+                                <Grid ColumnDefinitions="*,*" x:DataType="doushouqi:Joueur"
                                       BackgroundColor="{AppThemeBinding Light={StaticResource BouttonLight}, Dark={StaticResource BouttonDark}}"
                                       HeightRequest="50">
-                                    <Label Text="{Binding Joueur1}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                    <Label Text="{Binding Joueur2}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                    <Label Text="{Binding startDate}" Grid.Column = "2" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                    <Button Clicked="StartGame" 
+                                    <Label Text="{Binding Name}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding nbVictory}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Button Clicked="AddPlayer" 
                                             BackgroundColor="Transparent"
                                             Grid.ColumnSpan="3"/>
                                 </Grid>

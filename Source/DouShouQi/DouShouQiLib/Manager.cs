@@ -20,6 +20,13 @@ namespace DouShouQiLib
       
         public IRegles? Regles { get; set; }
         public Joueur[] Joueurs { get; set; } = new Joueur[2];
+
+        public void SetNameJoueurs(int number, string name)
+        {
+            if (number != 1 && number != 2) return;
+            Joueurs[number - 1].Name = name;
+            OnPropertyChanged(nameof(Joueurs) );
+        }
         public string CurrentPlayer => "Au tour de " + game.JoueurCourant;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -47,6 +54,12 @@ namespace DouShouQiLib
             if (Regles == null) return ;
             game = new Game(Regles, Joueurs[0], Joueurs[1]);
             InitGame();
+        }
+        
+        public Manager()
+        {
+            Joueurs[0] = new HumainJoueur("", 1);
+            Joueurs[1] = new HumainJoueur("", 2);
         }
 
         /// <summary>
@@ -79,14 +92,22 @@ namespace DouShouQiLib
         protected virtual void OnStartingGame(Joueur j1, Joueur j2)
             => StartingGame?.Invoke(this, new StartingGameEventArgs(j1, j2));
 
+<<<<<<< HEAD
         /// <summary>
         ///     crée un joueur humain avec un nom et un id
         /// </summary>
         /// <param string="name"></param>
         /// /// <param int="id"></param>
         public void CreatePlayer(string name, int id)
+=======
+        public void CreatePlayer(string name, int id, int nbVictory = 0)
+>>>>>>> Theme
         {
             Joueurs[id - 1] = new HumainJoueur(name,id) ;
+            for (int i = 0; i <= nbVictory; i++)
+            {
+                Joueurs[id - 1].AddVictory();
+            }
             OnPropertyChanged(nameof(Joueurs) );
         }
 

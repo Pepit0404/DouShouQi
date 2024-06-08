@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Diagnostics;
+using AppDouShouQi.Pages;
 using DataContractPersist;
 using DouShouQiLib;
 
@@ -38,9 +40,19 @@ namespace AppDouShouQi
             GameList.IsVisible = true;
         }
 
+        public void ChangeTheme(object sender, EventArgs e)
+        {
+            if (Application.Current!.UserAppTheme == AppTheme.Dark)
+            {
+                Application.Current!.UserAppTheme = AppTheme.Light;
+                return;
+            }
+            Application.Current!.UserAppTheme = AppTheme.Dark;
+        }
+
         private void OnScoreBoard(object _, EventArgs __)
         {
-            Shell.Current.GoToAsync("//ScoreBoardPage");
+            Navigation.PushAsync(new ScoreBoardPage());
         }
         private void OnCreditPage(object _, EventArgs __)
         {
