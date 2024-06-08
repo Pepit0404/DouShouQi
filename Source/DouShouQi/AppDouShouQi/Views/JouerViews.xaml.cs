@@ -10,9 +10,13 @@ public partial class JouerViews : ContentView
 	public Manager  Mgr
         => (Application.Current as App)!.TheMgr;
 
-	public Joueur Joueur1 { get; set; }
-		= new HumainJoueur("", 1);
-	public Joueur Joueur2 { get; set; } = new HumainJoueur("", 2);
+	public IPersistanceManager SaveManager
+		=> (Application.Current as App)!.SaveManager;
+
+	public Joueur Joueur1 
+		=> Mgr.Joueurs[0];
+	public Joueur Joueur2 
+		=> Mgr.Joueurs[1];
 
 	public string regles { get; set; } = "classic";
 
@@ -22,14 +26,18 @@ public partial class JouerViews : ContentView
 		InitializeComponent();
 		BindingContext = this;
 	}
-	private void CreatePlayers_Clicked(object sender, EventArgs e)
+	private void ActionStart(object sender, EventArgs e)
 	{
 		if (Joueur1.Name == "" || Joueur2.Name == "") return;
+		
 		Mgr.CreatePlayer(Joueur1.Name, Joueur1.Id);
 		Mgr.CreatePlayer(Joueur2.Name, Joueur2.Id);
 		Mgr.setRegles(regles);
 		Mgr.CreateGame();
 		this.IsVisible = false;
+
+		(Application.Current as App)!.AddPlayer(Joueur1);
+		(Application.Current as App)!.AddPlayer(Joueur2);
 
 		Shell.Current.GoToAsync("//GamePage");
     }
@@ -38,5 +46,19 @@ public partial class JouerViews : ContentView
 	{
         this.IsVisible = false;
     }
+
+	public void LoadPlayer(object sender, EventArgs e)
+	{
+		Button button = (sender as Button)!;
+		PlayerLoadedView.IsVisible = true;
+		if (button == LoadPlayer1)
+		{
+			(Application.Current as App)!.loadingPlayer = 1;
+		}
+		if (button == LoadPlayer2)
+		{
+			(Application.Current as App)!.loadingPlayer = 2;
+		}
+	}
 
 }

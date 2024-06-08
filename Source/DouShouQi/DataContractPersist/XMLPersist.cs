@@ -97,14 +97,14 @@ namespace DataContractPersist
             Serializer.WriteObject(Write, games);
         }
 
-        public bool SaveAPlayer(Joueur joueur)
+        public bool SaveAPlayer(Joueur player)
         {
             string file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + path + nameFilePLayer);
 
             if (!File.Exists(file))
             {
                 List<Joueur> players = new List<Joueur>();
-                players.Add(joueur);
+                players.Add(player);
                 SavePlayer(players);
                 return true;
             }
@@ -112,9 +112,15 @@ namespace DataContractPersist
             List<Joueur> allReadySaved = LoadPlayer();
             foreach (Joueur j in allReadySaved)
             {
-                if (j.Name == joueur.Name) return false;
+                if (j.Name == player.Name)
+                {
+                    allReadySaved.Remove(j);
+                    allReadySaved.Add(player);
+                    SavePlayer(allReadySaved);
+                    return true;
+                }
             }
-            allReadySaved.Add(joueur);
+            allReadySaved.Add(player);
             SavePlayer(allReadySaved);
             return true;
         }

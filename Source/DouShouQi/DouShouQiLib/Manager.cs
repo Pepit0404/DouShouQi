@@ -20,6 +20,13 @@ namespace DouShouQiLib
       
         public IRegles? Regles { get; set; }
         public Joueur[] Joueurs { get; set; } = new Joueur[2];
+
+        public void SetNameJoueurs(int number, string name)
+        {
+            if (number != 1 && number != 2) return;
+            Joueurs[number - 1].Name = name;
+            OnPropertyChanged(nameof(Joueurs) );
+        }
         public string CurrentPlayer => "Au tour de " + game.JoueurCourant;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -41,6 +48,12 @@ namespace DouShouQiLib
             if (Regles == null) return ;
             game = new Game(Regles, Joueurs[0], Joueurs[1]);
             InitGame();
+        }
+        
+        public Manager()
+        {
+            Joueurs[0] = new HumainJoueur("", 1);
+            Joueurs[1] = new HumainJoueur("", 2);
         }
 
         public void setRegles(string regle)

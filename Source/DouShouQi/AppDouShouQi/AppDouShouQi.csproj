@@ -100,6 +100,10 @@
 	  <Compile Update="Views\pauseView.xaml.cs">
 	    <DependentUpon>pauseView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\PlayerLoadedView.xaml.cs">
+	    <DependentUpon>PlayerLoaded.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -111,6 +115,9 @@
 	  </MauiXaml>
 	  <MauiXaml Update="Views\JouerViews.xaml">
 	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PlayerLoadedView.xaml">
+	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	</ItemGroup>
 

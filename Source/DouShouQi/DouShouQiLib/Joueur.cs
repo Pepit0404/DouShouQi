@@ -18,7 +18,6 @@ namespace DouShouQiLib
         /// </summary>
         /// <param name="piece"></param>
         /// <returns>bool</returns>
-        /// 
         public bool Appartient(Piece piece)
         {
             if (piece.Proprietaire == this)
@@ -26,6 +25,15 @@ namespace DouShouQiLib
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        ///     Ajoute une victoire au joueur
+        /// </summary>
+        /// <returns>void</returns>
+        public void AddVictory()
+        {
+            nbVictory += 1;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -66,20 +74,15 @@ namespace DouShouQiLib
         /// <summary>
         ///     Constructeur de Joueur
         /// </summary>
-        /// <param name="identifiant"></param>
-        public Joueur(string identifiant, int id)
+        /// <param name="name"></param>
+        public Joueur(string name, int id)
         {
-            Name = identifiant;
+            Name = name;
             Liste_Piece = new List<Piece>();
             Id = id;
             nbVictory = 0;
         }
         public List<Joueur> Joueurs { get; set; }
-        public Joueur()
-        {
-            Joueurs = new List<Joueur>();
-            
-        }
 
         public override int GetHashCode()
             => Name.GetHashCode();
@@ -147,8 +150,8 @@ namespace DouShouQiLib
         /// <summary>
         ///    Constructeur d'un joueur ordinateur
         /// </summary>
-        /// <param name="identifiant"></param>
-        public RandomJoueur(string identifiant, int id) : base(identifiant,id)
+        /// <param name="name"></param>
+        public RandomJoueur(string name, int id) : base(name,id)
         { }
     }
     
@@ -169,8 +172,8 @@ namespace DouShouQiLib
         /// <summary>
         ///    Constructeur d'un joueur humain
         /// </summary>
-        /// <param name="identifiant"></param>
-        public HumainJoueur(string identifiant, int id) : base(identifiant, id)
+        /// <param name="name"></param>
+        public HumainJoueur(string name, int id) : base(name, id)
         { }
     }
 }

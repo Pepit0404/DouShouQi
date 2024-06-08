@@ -34,7 +34,7 @@
                         HorizontalOptions="Center"
                         FontSize="24"
                         Margin="5,5"
-                        BackgroundColor="{Binding MyTest}"
+                        BackgroundColor="{StaticResource MyTest}"
                         Clicked="RunPlay"/>
                     
                     <Button

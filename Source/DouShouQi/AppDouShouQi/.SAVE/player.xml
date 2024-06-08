@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfJoueur xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/DouShouQiLib">
+  <Joueur z:Id="2" i:type="HumainJoueur">
+    <Id>2</Id>
+    <Liste_Piece z:Id="3" z:Size="0" />
+    <Name z:Id="4">Erwan</Name>
+    <nbVictory>0</nbVictory>
+  </Joueur>
+  <Joueur z:Id="5" i:type="HumainJoueur">
+    <Id>2</Id>
+    <Liste_Piece z:Id="6" z:Size="0" />
+    <Name z:Id="7">Thomas</Name>
+    <nbVictory>0</nbVictory>
+  </Joueur>
+  <Joueur z:Id="8" i:type="HumainJoueur">
+    <Id>1</Id>
+    <Liste_Piece z:Id="9" z:Size="0" />
+    <Name z:Id="10">Samuel</Name>
+    <nbVictory>0</nbVictory>
+  </Joueur>
+  <Joueur z:Id="11" i:type="HumainJoueur">
+    <Id>2</Id>
+    <Liste_Piece z:Id="12" z:Size="0" />
+    <Name z:Id="13">Leo</Name>
+    <nbVictory>0</nbVictory>
+  </Joueur>
+</ArrayOfJoueur>

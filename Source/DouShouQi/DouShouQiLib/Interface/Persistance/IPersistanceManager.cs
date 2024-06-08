@@ -22,7 +22,7 @@ namespace DouShouQiLib
         /// <returns></returns>
         List<Game> LoadGame();
 
-        bool SaveAPlayer(Joueur j);
+        bool SaveAPlayer(Joueur player);
         bool DeleteAPlayer(string name);
         
         /// <summary>
