@@ -33,7 +33,8 @@
                         WidthRequest="350" HeightRequest="50"
                         HorizontalOptions="Center"
                         FontSize="24"
-                        Margin="5,5" 
+                        Margin="5,5"
+                        BackgroundColor="{Binding MyTest}"
                         Clicked="RunPlay"/>
                     
                     <Button
