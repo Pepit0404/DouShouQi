@@ -9,6 +9,13 @@ namespace DouShouQiLib
 {
     public class regleOrigin : IRegles
     {
+        public string name { get; init; } = "origin";
+
+        /// <summary>
+        ///    affecte des nouvelles pièces aux joueurs puis les place sur le plateau
+        /// </summary>
+        /// <param Game="game"></param>
+        /// <returns>La partie mise à jour</returns>
         private Game PlacementAnimaux(Game game)
         {
 
@@ -50,6 +57,11 @@ namespace DouShouQiLib
             game.Plateau.echequier[6, 0].Onthis = game.Joueur2.Liste_Piece[7];
             return game;
         }
+
+        /// <summary>
+        ///    Place les différentes cases au bon endroit dans le plateau
+        /// </summary>
+        /// <param Game="game"></param>
         public void initPlateau(Game game)
         {
             for (int i = 0; i < game.Plateau.echequier.GetLength(0); i++)
@@ -76,6 +88,13 @@ namespace DouShouQiLib
             }
             game = PlacementAnimaux(game);
         }
+
+        /// <summary>
+        ///    Définie les conditions ou une pièce peut en manger une autre
+        /// </summary>
+        /// <param PieceType="meurtrier">La pièce qui veut manger</param>
+        /// <param PieceType="victime">La pièce qui se fait manger</param>
+        /// <returns>true si la pièce peut manger l'autre et faux si l'inverse</returns>
         public bool Manger(PieceType meurtrier, PieceType victime)
 
         {
@@ -94,6 +113,11 @@ namespace DouShouQiLib
             return false;
         }
 
+        /// <summary>
+        ///    Vérifie si une case est un piège
+        /// </summary>
+        /// <param Case="caseAdja"></param>
+        /// <returns>true si la case est piège et faux si l'inverse</returns>
         private bool IsPiege(Case caseAdja)
         {
             if (caseAdja.Type == CaseType.Piege)
@@ -102,34 +126,39 @@ namespace DouShouQiLib
             }
             return false;
         }
-
         
+        /// <summary>
+        ///    Vérifie si un coup est valide
+        /// </summary>
+        /// <param Case="caseActu">Case de départ</param>
+        /// <param Case="caseAdja">Case d'arrivée</param>
+        /// <param Plateau="plateau"></param>
+        /// <returns>true si le coup est valide et faux si l'inverse</returns>
         public bool PouvoirBouger(Case caseActu, Case caseAdja, Plateau plateau)
         {
-            if (!CaseActuV(caseActu, caseAdja))
+            // Si la case actuelle est vide, retournez false
+            if (!caseActu.Onthis.HasValue)
             {
                 return false;
             }
 
+            if (caseActu == caseAdja) 
+            {
+
+                return false;
+            }
 
             // Vérifier si les cases sont adjacentes
             if (IsAdja(caseActu, caseAdja))
             {
-                if (!AppartientPiece(caseActu, caseAdja))
-                {
-                    return false;
-                }
-
                 // Si la case adjacente est occupée, vérifier si l'on peut la manger
                 if (caseAdja.Onthis.HasValue && !Manger(caseActu.Onthis.Value.Type, caseAdja.Onthis.Value.Type))
                 {
-
                     if (!IsPiege(caseAdja))
                     {
                         return false;
                     }
                 }
-
 
                 // Vérifier si l'animal dans l'eau n'essaye pas de manger un qui n'est pas dans l'eau
                 if (caseActu.Type == CaseType.Eau && caseAdja.Type == CaseType.Terre && caseAdja.Onthis.HasValue)
@@ -149,37 +178,31 @@ namespace DouShouQiLib
             // Vérifier si l'on peut sauter
             if (CanJump(caseActu, caseAdja, plateau))
             {
-
+                // Empêcher la souris de manger en sortant de l'eau
+                if (caseActu.Type == CaseType.Eau && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
+                {
+                    return false;
+                }
+                if (caseActu.Type == CaseType.Terre && caseAdja.Onthis.HasValue && caseActu.Onthis.Value.Type == PieceType.souris)
+                {
+                    return false;
+                }
                 return true;
             }
             return false;
         }
 
-        private bool AppartientPiece(Case caseActu, Case caseAdja)
-        {
-            if (caseAdja.Onthis.HasValue)
-            {
-                if (caseActu.Onthis.Value.Proprietaire == caseAdja.Onthis.Value.Proprietaire)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        private bool CaseActuV(Case caseActu, Case caseAdja)
-        {
-            // Si la case actuelle est vide, retournez false
-            if (!caseActu.Onthis.HasValue)
-            {
-                return false;
-            }
-            return true;
-        }
+        /// <summary>
+        ///    Vérifie si une pièce peut aller sur une case eau
+        /// </summary>
+        /// <param Case="caseActu">Case de la pièce</param>
+        /// <param Case="caseAdja">Case d'eau</param>
+        /// <returns>true si le coup est valide et faux si l'inverse</returns>
         private bool CanGoWater(Case caseActu, Case caseAdja)
         {
             if (caseActu.Onthis.Value.Type == PieceType.souris)
             {
-                if (caseActu.Type != caseAdja.Type && caseAdja.Onthis.HasValue)
+                if (caseActu.Type!=caseAdja.Type && caseAdja.Onthis.HasValue)
                 {
                     return false;
                 }
@@ -188,6 +211,12 @@ namespace DouShouQiLib
             return false;
         }
 
+        /// <summary>
+        ///    Vérifie si deux cases sont côte à côte
+        /// </summary>
+        /// <param Case="caseActu"></param>
+        /// <param Case="caseAdja"></param>
+        /// <returns>true si les case sont à côtées et faux si l'inverse</returns>
         private bool IsAdja(Case caseActu, Case caseAdja)
         {
             if (caseActu.X == caseAdja.X && Math.Abs(caseActu.Y - caseAdja.Y) == 1)
@@ -201,53 +230,51 @@ namespace DouShouQiLib
             return false;
         }
 
+        /// <summary>
+        ///    Vérifie si une pièce peut sauter
+        /// </summary>
+        /// <param Case="caseActu">Case de la pièce</param>
+        /// <param Case="caseAdja">Case d'arrivée</param>
+        /// <returns>true si la pièce peut sauter et faux si l'inverse</returns>
         private bool CanJump(Case caseActu, Case caseAdja, Plateau plateau)
         {
             if (caseActu.Onthis.Value.Type == PieceType.tigre || caseActu.Onthis.Value.Type == PieceType.lion)
             {
                 if (caseActu.X == caseAdja.X)
                 {
-                    if (CanJumpX(caseActu, caseAdja, plateau))
-                    { return true; }
+                    int minY = Math.Min(caseActu.Y, caseAdja.Y);
+                    int maxY = Math.Max(caseActu.Y, caseAdja.Y);
+                    for (int y = minY + 1; y < maxY; y++)
+                    {
+                        if (plateau.echequier[caseActu.X, y].Type != CaseType.Eau)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
                 }
                 if (caseActu.Y == caseAdja.Y)
                 {
-                    if (CanJumpY(caseActu, caseAdja, plateau))
-                    { return true; }
+                    int minX = Math.Min(caseActu.X, caseAdja.X);
+                    int maxX = Math.Max(caseActu.X, caseAdja.X);
+                    for (int x = minX + 1; x < maxX; x++)
+                    {
+                        if (plateau.echequier[x, caseActu.Y].Type != CaseType.Eau)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
                 }
             }
             return false;
         }
 
-        private bool CanJumpX(Case caseActu, Case caseAdja, Plateau plateau)
-        {
-
-            int minY = Math.Min(caseActu.Y, caseAdja.Y);
-            int maxY = Math.Max(caseActu.Y, caseAdja.Y);
-            for (int y = minY + 1; y < maxY; y++)
-            {
-                if (plateau.echequier[caseActu.X, y].Type != CaseType.Eau)
-                {
-                    return false;
-                }
-            }
-            return true;
-
-        }
-        private bool CanJumpY(Case caseActu, Case caseAdja, Plateau plateau)
-        {
-            int minX = Math.Min(caseActu.X, caseAdja.X);
-            int maxX = Math.Max(caseActu.X, caseAdja.X);
-            for (int x = minX + 1; x < maxX; x++)
-            {
-                if (plateau.echequier[x, caseActu.Y].Type != CaseType.Eau)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
+        /// <summary>
+        ///    Vérifie si la partie est terminé
+        /// </summary>
+        /// <param Game="game"></param>
+        /// <returns>true si la partie est terminé et faux si l'inverse</returns>
         public bool EstFini(Game game)
         {
             if (game.Plateau.echequier[0, 3].Onthis.HasValue)
@@ -276,6 +303,12 @@ namespace DouShouQiLib
             return false;
         }
 
+        /// <summary>
+        ///    Vérifie les coups possibles depuis une case
+        /// </summary>
+        /// <param Case="caseActu"></param>
+        /// <param Game="game"></param>
+        /// <returns>Une liste des coups possibles</returns>
         public List<Case> CoupPossible(Case caseActu, Game game)
         {
             List<Case> posssible = new List<Case>();

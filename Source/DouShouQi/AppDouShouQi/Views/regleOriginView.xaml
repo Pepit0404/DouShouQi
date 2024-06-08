@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppDouShouQi.Views.regleOriginView"
+             HeightRequest="400" WidthRequest="600">
+    <Border BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+              <Border.StrokeShape>
+                     <RoundRectangle CornerRadius="10" />
+              </Border.StrokeShape>
+              <VerticalStackLayout>
+               <Grid ColumnDefinitions="*,1.5*"
+                     RowDefinitions="*"
+                     HorizontalOptions="Center" VerticalOptions="Center">
+                   <Grid RowDefinitions="*,*,*,*,*,*,*,*,*"
+                         ColumnDefinitions="40,*"
+                         Padding="20">
+                       <Label Text="VALEUR"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"/>
+                       <Image Source="souris.png"
+                              Grid.Row="1"/>
+                       <Label Text="souris : 1"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              VerticalOptions="Center"/>
+                       <Image Source="chat.png"
+                              Grid.Row="2"/>
+                       <Label Text="chat : 2"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                              VerticalOptions="Center"/>
+                       <Image Source="chien.png"
+                              Grid.Row="3"/>
+                       <Label Text="chien : 3"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="3"
+                              VerticalOptions="Center"/>
+                       <Image Source="loup.png"
+                              Grid.Row="4"/>
+                       <Label Text="loup : 4"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="4"
+                              VerticalOptions="Center"/>
+                       <Image Source="leopard.png"
+                              Grid.Row="5"/>
+                       <Label Text="leopard : 5"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="5"
+                              VerticalOptions="Center"/>
+                       <Image Source="tigre.png"
+                              Grid.Row="6"/>
+                       <Label Text="tigre : 6"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="6"
+                              VerticalOptions="Center"/>
+                       <Image Source="lion.png"
+                              Grid.Row="7"/>
+                       <Label Text="lion : 7"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="7"
+                              VerticalOptions="Center"/>
+                       <Image Source="elephant.png"
+                              Grid.Row="8"/>
+                       <Label Text="elephant : 8"
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              Grid.Column="1"
+                              Grid.Row="8"
+                              VerticalOptions="Center"/>
+                   </Grid>
+                   <Grid ColumnDefinitions="*"
+                         RowDefinitions="auto,*,*,*"
+                         Grid.Column="1"
+                         Padding="20">
+                       <Label Text="Régles" HorizontalOptions="Center" />
+                       <Label 
+                           Text="Chaque pièce se déplace de 1 case horizontal ou vertical.
+                           Une pièce ne peu en manger une autre que si elle a une valeur supérieur ou égal.
+                           Sauf la souris qui peut manger l'éléphant mais pas l'inverse"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                           VerticalOptions="End"
+                           Grid.Row="1"/>
+                       <Label 
+                              Text="Seul les souris peuvent se déplacer sur les cases eau. Les lions et les tigres peuvent quand à eux sauter par dessus celle-ci."
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              VerticalOptions="Center"
+                              Grid.Row="2"/>
+                       <Label 
+                              Text="Des qu'une pièce se retrouve dans un piège adverse elle prend tant qu'elle reste sur le piège la valeur de 0.
+                              Pour gagner une partie un joueur doit manger toutes les pièces de son adversaire ou mettre une de ses pièce dans la tanière adverse."
+                              TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                              VerticalOptions="Start"
+                              Grid.Row="3"/>
+                   </Grid>
+
+               </Grid>
+           </VerticalStackLayout>
+       </Border>
+</ContentView>

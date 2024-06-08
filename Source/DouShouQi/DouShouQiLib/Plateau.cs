@@ -4,40 +4,50 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
-    public class Plateau 
+    [DataContract]
+    public class Plateau
     {
         /// <summary>
         ///    Hauteur du plateau
         /// </summary>
-        public int height
-        {
-            get
-            {
-                return echequier.GetLength(1);
-            }
-        }
+        [DataMember]
+        public int height { get; private set; }
 
         /// <summary>
         ///    Largeur du plateau
         /// </summary>
-        public int width
-        {
-            get
-            {
-                return echequier.GetLength(0);
-            }
-        }
+        [DataMember]
+        public int width { get; private set; }
 
         /// <summary>
         ///    Tableau contenant toutes les cases du plateau
         /// </summary>
         public Case[,] echequier { get; private set; }
+        
+        [DataMember]
+        private IEnumerable<Case> serialEchequier { get; set; }
 
+        [OnSerializing]
+        private void OnSerializing(StreamingContext sc = new StreamingContext())
+        {
+            serialEchequier = FlatBoard2d;
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext sc = new StreamingContext())
+        {
+            echequier = new Case[width, height];
+            foreach (Case c in serialEchequier)
+            {
+                echequier[c.X, c.Y] = c;
+            }
+        }
         /// <summary>
         ///     Permet a Plateau d'avoir accés aux case de l'achéquier directement
         /// </summary>
@@ -75,8 +85,13 @@ namespace DouShouQiLib
         public Plateau(int height, int width)
         {
             echequier = new Case[height, width];
+            this.width = echequier.GetLength(0);
+            this.height = echequier.GetLength(1);
         }
 
+        /// <summary>
+        ///    Fonction renvoyant une liste 1D du plateau
+        /// </summary>
         public IEnumerable<Case> FlatBoard2d
         {
             get
@@ -116,8 +131,6 @@ namespace DouShouQiLib
             }
             return str.ToString();
         }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
     }
 
     public class MyOutOfRangeException : Exception

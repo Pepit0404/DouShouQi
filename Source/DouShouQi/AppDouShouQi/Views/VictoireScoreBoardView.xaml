@@ -7,7 +7,7 @@
             Text="0 victoire(s)"
             VerticalOptions="Start"
             HorizontalOptions="End"
-            TextColor="MediumPurple" 
+            TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
             FontSize="15" />
     </VerticalStackLayout>
 </ContentView>

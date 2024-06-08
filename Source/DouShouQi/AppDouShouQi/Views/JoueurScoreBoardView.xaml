@@ -7,7 +7,7 @@
             Text="4. Maeva"
             VerticalOptions="Center"
             HorizontalOptions="Center"
-            TextColor="MediumPurple" 
+            TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
             FontSize="20" />
     </VerticalStackLayout>
 </ContentView>

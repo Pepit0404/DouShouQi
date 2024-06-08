@@ -412,3 +412,5 @@ FodyWeavers.xsd
 # Built Visual Studio Code Extensions
 *.vsix
 
+# Intelinj file
+.idea

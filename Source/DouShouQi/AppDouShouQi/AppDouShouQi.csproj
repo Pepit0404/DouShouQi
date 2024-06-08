@@ -97,8 +97,15 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ButtonHomePage.xaml.cs">
-	    <DependentUpon>ButtonHomePage.xaml</DependentUpon>
+	  <Compile Update="Views\regleVarienteView.xaml.cs">
+	    <DependentUpon>regleVarienteView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\pauseView.xaml.cs">
+	    <DependentUpon>pauseView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PlayerLoadedView.xaml.cs">
+	    <DependentUpon>PlayerLoaded.xaml</DependentUpon>
+	    <SubType>Code</SubType>
 	  </Compile>
 	</ItemGroup>
 
@@ -106,14 +113,11 @@
 	  <MauiXaml Update="Pages\GamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ButtonHomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\FloatButtonHomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\JouerViews.xaml">
 	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PlayerLoadedView.xaml">
+	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	</ItemGroup>
 
@@ -122,15 +126,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\DataContractPersist\DataContractPersist.csproj" />
 	  <ProjectReference Include="..\DouShouQiLib\DouShouQiLib.csproj" />
+	  <ProjectReference Include="..\StubPackage\StubPackage.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<MauiXaml Update="Pages\CreditsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\regleVarienteView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\pauseView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\ProfilCredit.xaml">
 			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\regleOriginView.xaml">
+		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Views\ReturnButtonView.xaml">
 			<Generator>MSBuild:Compile</Generator>
@@ -140,9 +155,6 @@
 	<ItemGroup>
 	  <Compile Update="Pages\ScoreBoardPage.xaml.cs">
 	    <DependentUpon>ScoreBoardPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\VictoireScoreBoardView.xaml.cs">
-	    <DependentUpon>VictoireScoreBoardView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

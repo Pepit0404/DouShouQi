@@ -1,6 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using DouShouQiLib;
+using StubPackage;
+using DataContractPersist;
 using System;
+using System.Data;
+using System.Globalization;
 using static DouShouQiLib.Joueur;
 
 // nécéssaire
@@ -295,7 +299,12 @@ void main()
 
 void main2()
 {
-    Game game = ChooseGame();
+    IPersistanceManager save = new XMLPersist();
+    List<Game> games = new List<Game>();
+    games = save.LoadGame();
+    
+    Game game = games[0];
+    game.AskMoove += Game_OnAskMooveHuman;
     game.BoardChanged += Game_OnBoardChanged;
     game.PieceMoved += Game_OnPieceMoved;
     game.PlayerChanged += Game_OnPlayerChanged;
@@ -304,6 +313,20 @@ void main2()
 
     Console.Clear();
     affichePlateau(game.Plateau.echequier);
+
+    game.Start();
 }
 
-main();
+// main();
+main2();
+
+void testPersistance()
+{
+    IPersistanceManager XMLPersist = new XMLPersist();
+    List<Game> games = new List<Game>();
+    Game g1 = new Game(new regleOrigin(), new HumainJoueur("Unknow", 1), new HumainJoueur("Toto", 2));
+    XMLPersist.SaveAGame(g1);
+    Console.WriteLine("[DEBUG] => END");
+}
+
+// testPersistance();

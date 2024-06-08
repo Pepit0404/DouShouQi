@@ -2,23 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DouShouQiLib
 {
+    [DataContract, KnownType(typeof(HumainJoueur) ), KnownType(typeof(RandomJoueur) )]
     abstract public class Joueur : INotifyPropertyChanged
     {
 
 
         /// <summary>
-        ///     Vérifie si une pièce appartient à joueur
+        ///     Vï¿½rifie si une piï¿½ce appartient ï¿½ joueur
         /// </summary>
         /// <param name="piece"></param>
         /// <returns>bool</returns>
-        /// 
-
-
         public bool Appartient(Piece piece)
         {
             if (piece.Proprietaire == this)
@@ -28,6 +27,15 @@ namespace DouShouQiLib
             return false;
         }
 
+        /// <summary>
+        ///     Ajoute une victoire au joueur
+        /// </summary>
+        /// <returns>void</returns>
+        public void AddVictory()
+        {
+            nbVictory += 1;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         void OnPropertyChanged(string propertyName)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -35,13 +43,15 @@ namespace DouShouQiLib
         abstract public Case[] ChoisirCoup(Game game);
 
         /// <summary>
-        ///    Liste des pièces que possède le joueur
+        ///    Liste des piï¿½ces que possï¿½de le joueur
         /// </summary>
+        [DataMember]
         public List<Piece> Liste_Piece { get; private set; }
 
         /// <summary>
         ///    Nom du joueur
         /// </summary>
+        [DataMember]
         public string? Name
         {
             get => name;
@@ -54,22 +64,41 @@ namespace DouShouQiLib
             }
         }
         private string name;
+        
+        [DataMember]
         public int Id {  get; set; }
 
-
+        [DataMember]
+        public int nbVictory { get; private set; }
 
         /// <summary>
         ///     Constructeur de Joueur
         /// </summary>
-        /// <param name="identifiant"></param>
-        public Joueur(string identifiant, int id)
+        /// <param name="name"></param>
+        public Joueur(string name, int id)
         {
-            Name = identifiant;
+            Name = name;
             Liste_Piece = new List<Piece>();
             Id = id;
+            nbVictory = 0;
+        }
+        public List<Joueur> Joueurs { get; set; }
+
+        public override int GetHashCode()
+            => Name.GetHashCode();
+
+        public override bool Equals(object right)
+        {
+            if (object.ReferenceEquals(right, null)) return false;
+            if (object.ReferenceEquals(this, right)) return true;
+            if (this.GetType() != right.GetType()) return false;
+            return this.Equals(right as Joueur);
         }
 
+        public bool Equals(Joueur other)
+            => (this.Name.Equals(other.Name) && this.Id == other.Id);
 
+        
         /// <summary>
         ///     Affichage des Joueur
         /// </summary>
@@ -79,11 +108,12 @@ namespace DouShouQiLib
             return $"{Name}";
         }
     }
+    [DataContract]
     public class RandomJoueur : Joueur
     {
 
         /// <summary>
-        ///     Choisit un coup aléatoirement parmit une liste de tous les coups possible
+        ///     Choisit un coup alï¿½atoirement parmit une liste de tous les coups possible
         /// </summary>
         /// <param name="game"></param>
         /// <returns>Un coup possible</returns>
@@ -120,15 +150,16 @@ namespace DouShouQiLib
         /// <summary>
         ///    Constructeur d'un joueur ordinateur
         /// </summary>
-        /// <param name="identifiant"></param>
-        public RandomJoueur(string identifiant, int id) : base(identifiant,id)
+        /// <param name="name"></param>
+        public RandomJoueur(string name, int id) : base(name,id)
         { }
     }
-
+    
+    [DataContract]
     public class HumainJoueur : Joueur
     {
         /// <summary>
-        ///    Ne sert pas, car le joueur humain choisira lui même son coup
+        ///    Ne sert pas, car le joueur humain choisira lui mï¿½me son coup
         /// </summary>
         /// <param name="game"></param>
         /// <returns>Rien</returns>
@@ -141,8 +172,8 @@ namespace DouShouQiLib
         /// <summary>
         ///    Constructeur d'un joueur humain
         /// </summary>
-        /// <param name="identifiant"></param>
-        public HumainJoueur(string identifiant, int id) : base(identifiant, id)
+        /// <param name="name"></param>
+        public HumainJoueur(string name, int id) : base(name, id)
         { }
     }
 }
