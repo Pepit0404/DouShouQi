@@ -3,7 +3,9 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    
-    <Color x:Key="MyTest">#3F86CD</Color>
-    
+
+    <Color x:Key="BouttonLight">#DEB268</Color>
+    <Color x:Key="LightBackground">#3F86CD</Color>
+    <Color x:Key="BouttonDark">#8D6788</Color>
+    <Color x:Key="DarkBackground">#AD3D24</Color>
 </ResourceDictionary>

@@ -7,7 +7,7 @@
               <Border.StrokeShape>
                      <RoundRectangle CornerRadius="10" />
               </Border.StrokeShape>
-              <VerticalStackLayout >
+        <VerticalStackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
                       <Button HorizontalOptions="Start"
                                    VerticalOptions="Start"
                                    Margin="20"
@@ -27,6 +27,7 @@
                                  TextColor="White"
                                  Text="{Binding Joueur1.Name}"
                                  MaxLength="16"/>
+                          
                           <Button Text="Charger" />
                           
                       </HorizontalStackLayout>

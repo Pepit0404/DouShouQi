@@ -21,7 +21,8 @@ public partial class JouerViews : ContentView
 	{
 		InitializeComponent();
 		BindingContext = this;
-	}
+			
+    }
 	private void CreatePlayers_Clicked(object sender, EventArgs e)
 	{
 		if (Joueur1.Name == "" || Joueur2.Name == "") return;
