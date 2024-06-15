@@ -32,6 +32,14 @@ public partial class PlayerLoadedView : ContentView
         
         this.IsVisible = false;
     }
+
+    public void AddRandom(Object sender, EventArgs e)
+    {
+        Gm.SetRobotPlayer(app.loadingPlayer);
+        app.loadingPlayer = 0;
+
+        this.IsVisible = false;
+    }
     
     public void OnMenu(object sender, EventArgs e)
     {

@@ -4,72 +4,73 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppDouShouQi.Views.JouerViews"
              xmlns:Views="clr-namespace:AppDouShouQi.Views">
-       <Border BackgroundColor="Black"
-               WidthRequest="750">
-              <Border.StrokeShape>
-                     <RoundRectangle CornerRadius="10" />
-              </Border.StrokeShape>
-              <Grid ColumnDefinitions="*" RowDefinitions="*">
-        <VerticalStackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
-                      <Button HorizontalOptions="Start"
-                                   VerticalOptions="Start"
-                                   Margin="20"
-                              WidthRequest="100"
-                              Text="retour"
-                              Clicked="OnMenu"/>
-                      <HorizontalStackLayout Margin="10,20"
-                                             HorizontalOptions="Center">
-                          <Label Text="Joueur 1:"
-                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
-                                 VerticalOptions="Center"/>
-                          <Entry VerticalOptions="Center"
-                                 Placeholder="Entrez le nom du 1er joueur..." 
-                                 PlaceholderColor="{AppThemeBinding Dark={StaticResource Gray300}, Light={StaticResource Gray500} }"
-                                 WidthRequest="200"
-                                 Margin="20,0"
-                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
-                                 Text="{Binding Joueur1.Name}"
-                                 MaxLength="16"/>
-                          
-                          <Button Text="Charger" x:Name="LoadPlayer1"
-                                  Clicked="LoadPlayer" />
-                          
-                      </HorizontalStackLayout>
-                      <HorizontalStackLayout Margin="10,20"
-                                             HorizontalOptions="Center">
-                          <Label Text="Joueur 2:"
-                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
-                                 VerticalOptions="Center"/>
-                          <Entry VerticalOptions="Center"
-                                 Placeholder="Entrez le nom du 2e joueur..."
-                                 PlaceholderColor="{AppThemeBinding Dark={StaticResource Gray300}, Light={StaticResource Gray500} }"
-                                 WidthRequest="200"
-                                 HeightRequest="10"
-                                 Margin="20,0"
-                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
-                                 Text="{Binding Joueur2.Name}"
-                                 MaxLength="16"/>
-                          <Button Text="Charger" x:Name="LoadPlayer2"
-                                  Clicked="LoadPlayer" />
-                      </HorizontalStackLayout>
-                      <HorizontalStackLayout Margin="10,20"
-                                             HorizontalOptions="Center"
-                                             RadioButtonGroup.GroupName="Rules"
-                                             RadioButtonGroup.SelectedValue="{Binding regles}">
-                          <RadioButton Content="Version classique"
-                                       Value="classic"
-                                       IsChecked="True"
-                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"/>
-                          <RadioButton Content="Version modifiée"
-                                       Value="remix"
-                                       TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
-                      </HorizontalStackLayout>
-                      <Button Text="Jouer" 
-                              Margin="20,20"
-                              Clicked="ActionStart"/>
-              </VerticalStackLayout>
-              <Views:PlayerLoadedView x:Name="PlayerLoadedView" IsVisible="False"/>
-              </Grid>
-       </Border>
-       
+    <Border BackgroundColor="Black"
+            WidthRequest="750">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+        <Grid ColumnDefinitions="*" RowDefinitions="*">
+            <VerticalStackLayout
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+                <Button HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="20"
+                        WidthRequest="100"
+                        Text="retour"
+                        Clicked="OnMenu" />
+                <HorizontalStackLayout Margin="10,20"
+                                       HorizontalOptions="Center">
+                    <Label Text="Joueur 1:"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                           VerticalOptions="Center" />
+                    <Entry VerticalOptions="Center"
+                           Placeholder="Entrez le nom du 1er joueur..."
+                           PlaceholderColor="{AppThemeBinding Dark={StaticResource Gray300}, Light={StaticResource Gray500} }"
+                           WidthRequest="200"
+                           Margin="20,0"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                           Text="{Binding Joueur1.Name}"
+                           MaxLength="16" />
+
+                    <Button Text="Charger" x:Name="LoadPlayer1"
+                            Clicked="LoadPlayer" />
+
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Margin="10,20"
+                                       HorizontalOptions="Center">
+                    <Label Text="Joueur 2:"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                           VerticalOptions="Center" />
+                    <Entry VerticalOptions="Center"
+                           Placeholder="Entrez le nom du 2e joueur..."
+                           PlaceholderColor="{AppThemeBinding Dark={StaticResource Gray300}, Light={StaticResource Gray500} }"
+                           WidthRequest="200"
+                           HeightRequest="10"
+                           Margin="20,0"
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }"
+                           Text="{Binding Joueur2.Name}"
+                           MaxLength="16" />
+                    <Button Text="Charger" x:Name="LoadPlayer2"
+                            Clicked="LoadPlayer" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Margin="10,20"
+                                       HorizontalOptions="Center"
+                                       RadioButtonGroup.GroupName="Rules"
+                                       RadioButtonGroup.SelectedValue="{Binding regles}">
+                    <RadioButton Content="Version classique"
+                                 Value="classic"
+                                 IsChecked="True"
+                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
+                    <RadioButton Content="Version modifiée"
+                                 Value="remix"
+                                 TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black} }" />
+                </HorizontalStackLayout>
+                <Button Text="Jouer"
+                        Margin="20,20"
+                        Clicked="ActionStart" />
+            </VerticalStackLayout>
+            <Views:PlayerLoadedView x:Name="PlayerLoadedView" IsVisible="False" />
+        </Grid>
+    </Border>
+
 </ContentView>

@@ -49,6 +49,14 @@ public partial class GamePage : ContentPage
         return;
     }
 
+    void GamePage_ToRandom(object? sender, EventArgs e)
+    {
+        Case[] couts = GM.game.JoueurCourant.ChoisirCoup(GM.game);
+        GM.game.MovePiece(couts[0], couts[1], GM.game.Plateau);
+        GM.game.IsFini();
+        GM.game.ChangePlayer();
+    }
+
     void HomeButton(object sender, EventArgs e)
     {
         winBoard.IsVisible = false;
@@ -76,6 +84,8 @@ public partial class GamePage : ContentPage
         BindingContext = this;
         GM.StartingGame += GamePage_StartingGame;
         GM.game.GameOver += GamePage_OnGameOver;
+        GM.toRandom += GamePage_ToRandom;
+
     }
 
     public void OnRegle(object sender, EventArgs e)

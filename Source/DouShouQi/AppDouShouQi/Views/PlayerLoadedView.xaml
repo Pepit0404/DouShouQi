@@ -20,7 +20,22 @@
                    HorizontalOptions="Center"
                    FontSize="Header"
                    Padding="10, 15"/>
-        
+            
+            <Border Margin="50, 10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,*"
+                      BackgroundColor="{AppThemeBinding Light={StaticResource BouttonLight}, Dark={StaticResource BouttonDark}}"
+                      HeightRequest="50">
+                    <Label Text="Robot" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Clicked="AddRandom" 
+                            BackgroundColor="Transparent"
+                            Grid.ColumnSpan="3"/>
+                </Grid>
+            </Border>
+            
             <ListView x:Name="listPlayer"
                       VerticalScrollBarVisibility="Always"
                       MaximumHeightRequest="300">

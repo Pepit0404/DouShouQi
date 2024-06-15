@@ -515,4 +515,519 @@
     <regle z:Id="74">origin</regle>
     <startDate z:Id="75">09/06/24 00:54</startDate>
   </Game>
+  <Game z:Id="76">
+    <Joueur1 z:Id="77" i:type="HumainJoueur">
+      <Id>1</Id>
+      <Liste_Piece z:Id="78" z:Size="8">
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>souris</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>chat</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>chien</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>loup</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>leopard</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>tigre</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>lion</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="77" i:nil="true" />
+          <Type>elephant</Type>
+        </Piece>
+      </Liste_Piece>
+      <Name z:Id="79">Samuel</Name>
+      <nbVictory>1</nbVictory>
+    </Joueur1>
+    <Joueur2 z:Id="80" i:type="HumainJoueur">
+      <Id>2</Id>
+      <Liste_Piece z:Id="81" z:Size="8">
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>souris</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>chat</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>chien</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>loup</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>leopard</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>tigre</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>lion</Type>
+        </Piece>
+        <Piece>
+          <Proprietaire z:Ref="80" i:nil="true" />
+          <Type>elephant</Type>
+        </Piece>
+      </Liste_Piece>
+      <Name z:Id="82">Erwan</Name>
+      <nbVictory>1</nbVictory>
+    </Joueur2>
+    <JoueurCourant z:Ref="77" i:nil="true" />
+    <Plateau z:Id="83">
+      <height>7</height>
+      <serialEchequier z:Id="84">
+        <Case z:Id="85">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>lion</Type>
+          </Onthis>
+          <X>0</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="86">
+          <Onthis i:nil="true" />
+          <X>0</X>
+          <Y>1</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="87">
+          <Onthis i:nil="true" />
+          <X>0</X>
+          <Y>2</Y>
+          <type>3</type>
+        </Case>
+        <Case z:Id="88">
+          <Onthis i:nil="true" />
+          <X>0</X>
+          <Y>3</Y>
+          <type>4</type>
+        </Case>
+        <Case z:Id="89">
+          <Onthis i:nil="true" />
+          <X>0</X>
+          <Y>4</Y>
+          <type>3</type>
+        </Case>
+        <Case z:Id="90">
+          <Onthis i:nil="true" />
+          <X>0</X>
+          <Y>5</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="91">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>tigre</Type>
+          </Onthis>
+          <X>0</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="92">
+          <Onthis i:nil="true" />
+          <X>1</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="93">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>chien</Type>
+          </Onthis>
+          <X>1</X>
+          <Y>1</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="94">
+          <Onthis i:nil="true" />
+          <X>1</X>
+          <Y>2</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="95">
+          <Onthis i:nil="true" />
+          <X>1</X>
+          <Y>3</Y>
+          <type>3</type>
+        </Case>
+        <Case z:Id="96">
+          <Onthis i:nil="true" />
+          <X>1</X>
+          <Y>4</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="97">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>chat</Type>
+          </Onthis>
+          <X>1</X>
+          <Y>5</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="98">
+          <Onthis i:nil="true" />
+          <X>1</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="99">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>souris</Type>
+          </Onthis>
+          <X>2</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="100">
+          <Onthis i:nil="true" />
+          <X>2</X>
+          <Y>1</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="101">
+          <Onthis i:nil="true" />
+          <X>2</X>
+          <Y>2</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="102">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>leopard</Type>
+          </Onthis>
+          <X>2</X>
+          <Y>3</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="103">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>loup</Type>
+          </Onthis>
+          <X>2</X>
+          <Y>4</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="104">
+          <Onthis i:nil="true" />
+          <X>2</X>
+          <Y>5</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="105">
+          <Onthis>
+            <Proprietaire z:Ref="77" i:nil="true" />
+            <Type>elephant</Type>
+          </Onthis>
+          <X>2</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="106">
+          <Onthis i:nil="true" />
+          <X>3</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="107">
+          <Onthis i:nil="true" />
+          <X>3</X>
+          <Y>1</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="108">
+          <Onthis i:nil="true" />
+          <X>3</X>
+          <Y>2</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="109">
+          <Onthis i:nil="true" />
+          <X>3</X>
+          <Y>3</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="110">
+          <Onthis i:nil="true" />
+          <X>3</X>
+          <Y>4</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="111">
+          <Onthis i:nil="true" />
+          <X>3</X>
+          <Y>5</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="112">
+          <Onthis i:nil="true" />
+          <X>3</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="113">
+          <Onthis i:nil="true" />
+          <X>4</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="114">
+          <Onthis i:nil="true" />
+          <X>4</X>
+          <Y>1</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="115">
+          <Onthis i:nil="true" />
+          <X>4</X>
+          <Y>2</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="116">
+          <Onthis i:nil="true" />
+          <X>4</X>
+          <Y>3</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="117">
+          <Onthis i:nil="true" />
+          <X>4</X>
+          <Y>4</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="118">
+          <Onthis i:nil="true" />
+          <X>4</X>
+          <Y>5</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="119">
+          <Onthis i:nil="true" />
+          <X>4</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="120">
+          <Onthis i:nil="true" />
+          <X>5</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="121">
+          <Onthis i:nil="true" />
+          <X>5</X>
+          <Y>1</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="122">
+          <Onthis i:nil="true" />
+          <X>5</X>
+          <Y>2</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="123">
+          <Onthis i:nil="true" />
+          <X>5</X>
+          <Y>3</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="124">
+          <Onthis i:nil="true" />
+          <X>5</X>
+          <Y>4</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="125">
+          <Onthis i:nil="true" />
+          <X>5</X>
+          <Y>5</Y>
+          <type>2</type>
+        </Case>
+        <Case z:Id="126">
+          <Onthis i:nil="true" />
+          <X>5</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="127">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>elephant</Type>
+          </Onthis>
+          <X>6</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="128">
+          <Onthis i:nil="true" />
+          <X>6</X>
+          <Y>1</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="129">
+          <Onthis i:nil="true" />
+          <X>6</X>
+          <Y>2</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="130">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>loup</Type>
+          </Onthis>
+          <X>6</X>
+          <Y>3</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="131">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>leopard</Type>
+          </Onthis>
+          <X>6</X>
+          <Y>4</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="132">
+          <Onthis i:nil="true" />
+          <X>6</X>
+          <Y>5</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="133">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>souris</Type>
+          </Onthis>
+          <X>6</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="134">
+          <Onthis i:nil="true" />
+          <X>7</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="135">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>chat</Type>
+          </Onthis>
+          <X>7</X>
+          <Y>1</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="136">
+          <Onthis i:nil="true" />
+          <X>7</X>
+          <Y>2</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="137">
+          <Onthis i:nil="true" />
+          <X>7</X>
+          <Y>3</Y>
+          <type>3</type>
+        </Case>
+        <Case z:Id="138">
+          <Onthis i:nil="true" />
+          <X>7</X>
+          <Y>4</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="139">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>chien</Type>
+          </Onthis>
+          <X>7</X>
+          <Y>5</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="140">
+          <Onthis i:nil="true" />
+          <X>7</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="141">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>tigre</Type>
+          </Onthis>
+          <X>8</X>
+          <Y>0</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="142">
+          <Onthis i:nil="true" />
+          <X>8</X>
+          <Y>1</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="143">
+          <Onthis i:nil="true" />
+          <X>8</X>
+          <Y>2</Y>
+          <type>3</type>
+        </Case>
+        <Case z:Id="144">
+          <Onthis i:nil="true" />
+          <X>8</X>
+          <Y>3</Y>
+          <type>4</type>
+        </Case>
+        <Case z:Id="145">
+          <Onthis i:nil="true" />
+          <X>8</X>
+          <Y>4</Y>
+          <type>3</type>
+        </Case>
+        <Case z:Id="146">
+          <Onthis i:nil="true" />
+          <X>8</X>
+          <Y>5</Y>
+          <type>1</type>
+        </Case>
+        <Case z:Id="147">
+          <Onthis>
+            <Proprietaire z:Ref="80" i:nil="true" />
+            <Type>lion</Type>
+          </Onthis>
+          <X>8</X>
+          <Y>6</Y>
+          <type>1</type>
+        </Case>
+      </serialEchequier>
+      <width>9</width>
+    </Plateau>
+    <regle z:Ref="74" i:nil="true" />
+    <startDate z:Id="148">10/06/24 12:50</startDate>
+  </Game>
 </ArrayOfGame>

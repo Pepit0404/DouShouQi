@@ -27,6 +27,13 @@ namespace DouShouQiLib
             Joueurs[number - 1].Name = name;
             OnPropertyChanged(nameof(Joueurs) );
         }
+
+        public void SetRobotPlayer(int number)
+        {
+            if (number != 1 && number != 2) return;
+            Joueurs[number - 1 ] = new RandomJoueur($"Robot {number}", number);
+            OnPropertyChanged(nameof(Joueurs) );
+        }
         public string CurrentPlayer => "Au tour de " + game.JoueurCourant;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -99,8 +106,14 @@ namespace DouShouQiLib
         /// <param string="name"></param>
         /// <param int="id"></param>
         /// <param int="nbVictory"></param>
-        public void CreatePlayer(string name, int id, int nbVictory = 0)
+        public void CreatePlayer(string name, int id, int nbVictory, bool isRobot = false)
         {
+            if (isRobot)
+            {
+                Joueurs[id - 1] = new RandomJoueur(name, id);
+                OnPropertyChanged(nameof(Joueurs));
+                return;
+            }
             Joueurs[id - 1] = new HumainJoueur(name,id) ;
             for (int i = 0; i <= nbVictory; i++)
             {
@@ -125,6 +138,14 @@ namespace DouShouQiLib
         void Manager_OnPlayerChanged(object? sender, PlayerChangedEventArgs e)
         {
             OnPropertyChanged(nameof(CurrentPlayer));
+            OnToRandom();
         }
+        
+        public event EventHandler<EventArgs>? toRandom;
+
+        protected virtual void OnToRandom()
+            => toRandom?.Invoke(this, new EventArgs());
+
+        
     }
 }

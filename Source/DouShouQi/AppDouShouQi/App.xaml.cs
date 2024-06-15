@@ -37,6 +37,7 @@ namespace AppDouShouQi
         public bool AddPlayer(Joueur player)
         {
             if (players.Contains(player)) return false;
+            if (player is RandomJoueur) return true;
             SaveManager.SaveAPlayer(player);
             players.Add(player);
             return true;
